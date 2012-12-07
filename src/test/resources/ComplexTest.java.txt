@@ -1,0 +1,21 @@
+@MarkerAnnotation
+@SingleMemberAnnotation("SingleMember")
+@NormalAnnotation(name="Name", value="value")
+@ComplexAnnotation(@SimpleAnnotation(a="...", b=3))
+@ReallyComplexAnnotation( { @SimpleAnnotation(a="...", b=3), @SimpleAnnotation(a="...", b=4) } )
+package net.java.antlrjavaparser.test.resources;
+
+import java.lang.Integer;
+import java.lang.*;
+import static java.lang.*;
+
+/*
+This is a test
+*/
+public class SimpleTest {
+    public static void main(String args[]) {
+        if (a == true && b == false && c == true) {
+
+        }
+    }
+}
