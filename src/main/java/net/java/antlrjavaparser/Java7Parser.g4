@@ -1,912 +1,1286 @@
+/*
+ [The "BSD licence"]
+ Copyright (c) 2007-2008 Terence Parr
+ All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+/*
+ *  Updated - December 14, 2012 - Mike De Haan,
+ *      Added multi-catch, diamond type arguments, try with resources, and underscores in literals to support Java 7.
+ *      This grammar successfully parses every .java file in the JDK 1.7 source
+ */
+
+/* This is the Parser part of the Java 6 grammar from Terry Parr as modified by
+   Yang Jiang - modified to work as separate lexer and parser grammars by
+   George S. Cowan, June, 2012.
+
+   The motivation for this was to speed up the process of making iterative
+   changes to the Java grammar for experimenting with new language features.
+   Generate and compile with my ant script only dropped from 14 to 6 seconds,
+   but it helps a little.
+
+   The only changes to the parser that were needed were to replace token
+   literals with token names, e.g., replace ',' with COMMA, and then add
+   the tokenVocab=Java6Lex option. And of course change the grammar line to
+     parser grammar Java6Parse;
+
+   The full set of previous comments by Terry Parr and Yang Jiang follows.
+   That parser is apparently the parser from the OpenJava project after
+   automatic elimination of manual code to construct the AST that is
+   used by the OpenJava compiler
+   See http://openjdk.java.net/projects/compiler-grammar/
+   and http://openjdk.java.net/projects/compiler-grammar/antlrworks/Java.g
+ */
+
+/*
+ * This file is modified by Yang Jiang (yang.jiang.z@gmail.com), taken from the original
+ * java grammar in www.antlr.org, with the goal to provide a standard ANTLR grammar
+ * for java, as well as an implementation to construct the same AST trees as javac does.
+ *
+ * The major changes of this version as compared to the original version include:
+ * 1) Top level rules are changed to include all of their sub-components.
+ *    For example, the rule
+ *
+ *      classOrInterfaceDeclaration
+ *          :   classOrInterfaceModifiers (classDeclaration | interfaceDeclaration)
+ *      ;
+ *
+ *    is changed to
+ *
+ *      classOrInterfaceDeclaration
+ *          :   classDeclaration | interfaceDeclaration
+ *      ;
+ *
+ *    with classOrInterfaceModifiers been moved inside classDeclaration and
+ *    interfaceDeclaration.
+ *
+ * 2) The original version is not quite clear on certain rules like memberDecl,
+ *    where it mixed the styles of listing of top level rules and listing of sub rules.
+ *
+ *    memberDecl
+ *      :   genericMethodOrConstructorDecl
+ *      |   memberDeclaration
+ *      |   VOID Identifier voidMethodDeclaratorRest
+ *      |   Identifier constructorDeclaratorRest
+ *      |   interfaceDeclaration
+ *      |   classDeclaration
+ *      ;
+ *
+ *    This is changed to a
+ *
+ *    memberDecl
+ *      :   fieldDeclaration
+ *      |   methodDeclaration
+ *      |   classDeclaration
+ *      |   interfaceDeclaration
+ *      ;
+ *    by folding similar rules into single rule.
+ *
+ * 3) Some syntactical predicates are added for efficiency, although this is not necessary
+ *    for correctness.
+ *
+ * 4) Lexer part is rewritten completely to construct tokens needed for the parser.
+ *
+ * 5) This grammar adds more source level support
+ *
+ *
+ * This grammar also adds bug fixes.
+ *
+ * 1) Adding typeArguments to superSuffix to alHexSignificandlow input like
+ *      super.<TYPE>method()
+ *
+ * 2) Adding typeArguments to innerCreator to allow input like
+ *      new Type1<String, Integer>().new Type2<String>()
+ *
+ * 3) conditionalExpression is changed to
+ *    conditionalExpression
+ *      :   conditionalOrExpression ( '?' expression ':' conditionalExpression )?
+ *      ;
+ *    to accept input like
+ *      true?1:2=3
+ *
+ *    Note: note this is by no means a valid input, by the grammar should be able to parse
+ *    this as
+ *            (true?1:2)=3
+ *    rather than
+ *            true?1:(2=3)
+ *
+ *
+ *  Know problems:
+ *    Won't pass input containing unicode sequence like this
+ *      char c = '\uffff'
+ *      String s = "\uffff";
+ *    Because Antlr does not treat '\uffff' as an valid char. This will be fixed in the next Antlr
+ *    release. [Fixed in Antlr-3.1.1]
+ *
+ *  Things to do:
+ *    More effort to make this grammar faster.
+ *    Error reporting/recovering.
+ *
+ *
+ *  NOTE: If you try to compile this file from command line and Antlr gives an exception
+ *    like error message while compiling, add option
+ *    -Xconversiontimeout 100000
+ *    to the command line.
+ *    If it still doesn't work or the compilation process
+ *    takes too long, try to comment out the following two lines:
+ *    |    {isValidSurrogateIdentifierStart((char)input.LT(1), (char)input.LT(2))}?=>('\ud800'..'\udbff') ('\udc00'..'\udfff')
+ *    |    {isValidSurrogateIdentifierPart((char)input.LT(1), (char)input.LT(2))}?=>('\ud800'..'\udbff') ('\udc00'..'\udfff')
+ *
+ *
+ *  Below are comments found in the original version.
+ */
+
+
+/** A Java 1.5 grammar for ANTLR v3 derived from the spec
+ *
+ *  This is a very close representation of the spec; the changes
+ *  are comestic (remove left recursion) and also fixes (the spec
+ *  isn't exactly perfect).  I have run this on the 1.4.2 source
+ *  and some nasty looking enums from 1.5, but have not really
+ *  tested for 1.5 compatibility.
+ *
+ *  I built this with: java -Xmx100M org.antlr.Tool java.g
+ *  and got two errors that are ok (for now):
+ *  java.g:691:9: Decision can match input such as
+ *    "'0'..'9'{'E', 'e'}{'+', '-'}'0'..'9'{'D', 'F', 'd', 'f'}"
+ *    using multiple alternatives: 3, 4
+ *  As a result, alternative(s) 4 were disabled for that input
+ *  java.g:734:35: Decision can match input such as "{'$', 'A'..'Z',
+ *    '_', 'a'..'z', '\u00C0'..'\u00D6', '\u00D8'..'\u00F6',
+ *    '\u00F8'..'\u1FFF', '\u3040'..'\u318F', '\u3300'..'\u337F',
+ *    '\u3400'..'\u3D2D', '\u4E00'..'\u9FFF', '\uF900'..'\uFAFF'}"
+ *    using multiple alternatives: 1, 2
+ *  As a result, alternative(s) 2 were disabled for that input
+ *
+ *  You can turn enum on/off as a keyword :)
+ *
+ *  Version 1.0 -- initial release July 5, 2006 (requires 3.0b2 or higher)
+ *
+ *  Primary author: Terence Parr, July 2006
+ *
+ *  Version 1.0.1 -- corrections by Koen Vanderkimpen & Marko van Dooren,
+ *      October 25, 2006;
+ *      fixed normalInterfaceDeclaration: now uses typeParameters instead
+ *          of typeParameter (according to JLS, 3rd edition)
+ *      fixed castExpression: no longer allows expression next to type
+ *          (according to semantics in JLS, in contrast with syntax in JLS)
+ *
+ *  Version 1.0.2 -- Terence Parr, Nov 27, 2006
+ *      java spec I built this from had some bizarre for-loop control.
+ *          Looked weird and so I looked elsewhere...Yep, it's messed up.
+ *          simplified.
+ *
+ *  Version 1.0.3 -- Chris Hogue, Feb 26, 2007
+ *      Factored out an annotationName rule and used it in the annotation rule.
+ *          Not sure why, but typeName wasn't recognizing references to inner
+ *          annotations (e.g. @InterfaceName.InnerAnnotation())
+ *      Factored out the elementValue section of an annotation reference.  Created
+ *          elementValuePair and elementValuePairs rules, then used them in the
+ *          annotation rule.  Allows it to recognize annotation references with
+ *          multiple, comma separated attributes.
+ *      Updated elementValueArrayInitializer so that it allows multiple elements.
+ *          (It was only allowing 0 or 1 element).
+ *      Updated localVariableDeclaration to allow annotations.  Interestingly the JLS
+ *          doesn't appear to indicate this is legal, but it does work as of at least
+ *          JDK 1.5.0_06.
+ *      Moved the Identifier portion of annotationTypeElementRest to annotationMethodRest.
+ *          Because annotationConstantRest already references variableDeclarator which
+ *          has the Identifier portion in it, the parser would fail on constants in
+ *          annotation definitions because it expected two identifiers.
+ *      Added optional trailing ';' to the alternatives in annotationTypeElementRest.
+ *          Wouldn't handle an inner interface that has a trailing ';'.
+ *      Swapped the expression and type rule reference order in castExpression to
+ *          make it check for genericized casts first.  It was failing to recognize a
+ *          statement like  "Class<Byte> TYPE = (Class<Byte>)...;" because it was seeing
+ *          'Class<Byte' in the cast expression as a less than expression, then failing
+ *          on the '>'.
+ *      Changed createdName to use typeArguments instead of nonWildcardTypeArguments.
+ *
+ *      Changed the 'this' alternative in primary to allow 'identifierSuffix' rather than
+ *          just 'arguments'.  The case it couldn't handle was a call to an explicit
+ *          generic method invocation (e.g. this.<E>doSomething()).  Using identifierSuffix
+ *          may be overly aggressive--perhaps should create a more constrained thisSuffix rule?
+ *
+ *  Version 1.0.4 -- Hiroaki Nakamura, May 3, 2007
+ *
+ *  Fixed formalParameterDecls, localVariableDeclaration, forInit,
+ *  and forVarControl to use variableModifier* not 'final'? (annotation)?
+ *
+ *  Version 1.0.5 -- Terence, June 21, 2007
+ *  --a[i].foo didn't work. Fixed unaryExpression
+ *
+ *  Version 1.0.6 -- John Ridgway, March 17, 2008
+ *      Made "assert" a switchable keyword like "enum".
+ *      Fixed compilationUnit to disallow "annotation importDeclaration ...".
+ *      Changed "Identifier ('.' Identifier)*" to "qualifiedName" in more
+ *          places.
+ *      Changed modifier* and/or variableModifier* to classOrInterfaceModifiers,
+ *          modifiers or variableModifiers, as appropriate.
+ *      Renamed "bound" to "typeBound" to better match language in the JLS.
+ *      Added "memberDeclaration" which rewrites to methodDeclaration or
+ *      fieldDeclaration and pulled type into memberDeclaration.  So we parse
+ *          type and then move on to decide whether we're dealing with a field
+ *          or a method.
+ *      Modified "constructorDeclaration" to use "constructorBody" instead of
+ *          "methodBody".  constructorBody starts with explicitConstructorInvocation,
+ *          then goes on to blockStatement*.  Pulling explicitConstructorInvocation
+ *          out of expressions allowed me to simplify "primary".
+ *      Changed variableDeclarator to simplify it.
+ *      Changed type to use classOrInterfaceType, thus simplifying it; of course
+ *          I then had to add classOrInterfaceType, but it is used in several
+ *          places.
+ *      Fixed annotations, old version allowed "@X(y,z)", which is illegal.
+ *      Added optional comma to end of "elementValueArrayInitializer"; as per JLS.
+ *      Changed annotationTypeElementRest to use normalClassDeclaration and
+ *          normalInterfaceDeclaration rather than classDeclaration and
+ *          interfaceDeclaration, thus getting rid of a couple of grammar ambiguities.
+ *      Split localVariableDeclaration into localVariableDeclarationStatement
+ *          (includes the terminating semi-colon) and localVariableDeclaration.
+ *          This allowed me to use localVariableDeclaration in "forInit" clauses,
+ *           simplifying them.
+ *      Changed switchBlockStatementGroup to use multiple labels.  This adds an
+ *          ambiguity, but if one uses appropriately greedy parsing it yields the
+ *           parse that is closest to the meaning of the switch statement.
+ *      Renamed "forVarControl" to "enhancedForControl" -- JLS language.
+ *      Added semantic predicates to test for shift operations rather than other
+ *          things.  Thus, for instance, the string "< <" will never be treated
+ *          as a left-shift operator.
+ *      In "creator" we rule out "nonWildcardTypeArguments" on arrayCreation,
+ *          which are illegal.
+ *      Moved "nonWildcardTypeArguments into innerCreator.
+ *      Removed 'super' superSuffix from explicitGenericInvocation, since that
+ *          is only used in explicitConstructorInvocation at the beginning of a
+ *           constructorBody.  (This is part of the simplification of expressions
+ *           mentioned earlier.)
+ *      Simplified primary (got rid of those things that are only used in
+ *          explicitConstructorInvocation).
+ *      Lexer -- removed "Exponent?" from FloatingPointLiteral choice 4, since it
+ *          led to an ambiguity.
+ *
+ *      This grammar successfully parses every .java file in the JDK 1.5 source
+ *          tree (excluding those whose file names include '-', which are not
+ *          valid Java compilation units).
+ *
+ *  Known remaining problems:
+ *      "Letter" and "JavaIDDigit" are wrong.  The actual specification of
+ *      "Letter" should be "a character for which the method
+ *      Character.isJavaIdentifierStart(int) returns true."  A "Java
+ *      letter-or-digit is a character for which the method
+ *      Character.isJavaIdentifierPart(int) returns true."
+ *
+ */
 parser grammar Java7Parser;
 
 @parser::header {
 package net.java.antlrjavaparser;
 }
 
-@lexer::header {
-package net.java.antlrjavaparser;
-}
-
-@lexer::members {
-  protected boolean enumIsKeyword = true;
-  protected boolean assertIsKeyword = true;
-}
-
 options {
-    tokenVocab=Java7;
+    tokenVocab=Java7Lexer;
 }
+
+/********************************************************************************************
+                          Parser section
+*********************************************************************************************/
 
 compilationUnit
-    :    packageDeclaration? importDeclarations? typeDeclarations?
+    :   packageDeclaration?
+        (importDeclaration
+        )*
+        (typeDeclaration
+        )*
     ;
 
 packageDeclaration
-    :    annotations? PACKAGE qualifiedName SEMI
-    ;
-
-annotations
-    :    annotation+
-    ;
-
-annotation
-    :    markerAnnotation                                                                                              // MarkerAnnotation
-    |    singleElementAnnotation                                                                                       // SingleElementAnnotation
-    |    normalAnnotation                                                                                              // NormalAnnotation
-    ;
-
-markerAnnotation
-    :    AT Identifier                                                                                                // @ Identifier
-    ;
-
-normalAnnotation
-    :    AT Identifier LPAREN elementValuePairs? RPAREN                                                                     // @ TypeName ( ElementValuePairsopt )
-    ;
-
-singleElementAnnotation
-    :    AT Identifier LPAREN elementValue RPAREN                                                                           // @ Identifier ( ElementValue )
-    ;
-
-elementValuePairs
-    :    elementValuePair (COMMA elementValuePair)*
-    ;
-
-elementValuePair
-    :    Identifier EQ elementValue                                                                                   // Identifier = ElementValue
-    ;
-
-elementValue
-    :    annotation                                                                                                    // Annotation
-    |    LBRACE (elementValue (COMMA elementValue)*)? COMMA? RBRACE                                                                                  // ElementValueArrayInitializer
-    |    expression                                                                                         // ConditionalExpression
-    ;
-
-/*
-elementValueArrayInitializer
-    :    LBRACE elementValues? COMMA? RBRACE                                                                               // { ElementValuesopt ,opt }
-    ;
-
-elementValues
-    :    elementValue (COMMA elementValue)*
-    ;
-
-*/
-importDeclarations
-    :    importDeclaration+                                                                                             // ImportDeclaration
+    :   annotations?
+        PACKAGE qualifiedName
+        SEMI
     ;
 
 importDeclaration
-    :    singleTypeImportDeclaration                                                                                   // SingleTypeImportDeclaration
-    |    typeImportOnDemandDeclaration                                                                                 // TypeImportOnDemandDeclaration
-    |    singleStaticImportDeclaration                                                                                 // SingleStaticImportDeclaration
-    |    staticImportOnDemandDeclaration                                                                               // StaticImportOnDemandDeclaration
+    :   IMPORT
+        (STATIC
+        )?
+        Identifier DOT STAR
+        SEMI
+    |   IMPORT
+        (STATIC
+        )?
+        Identifier
+        (DOT Identifier
+        )+
+        (DOT STAR
+        )?
+        SEMI
     ;
 
-singleTypeImportDeclaration
-    :    IMPORT qualifiedName SEMI                                                                                         // import qualifiedName ;
-    ;
-
-typeImportOnDemandDeclaration
-    :    IMPORT qualifiedName DOT STAR SEMI
-    ;
-
-singleStaticImportDeclaration
-    :    IMPORT STATIC qualifiedName DOT Identifier SEMI                                                                 // import static TypeName . Identifier ;
-    ;
-
-staticImportOnDemandDeclaration
-    :    IMPORT STATIC qualifiedName DOT STAR SEMI                                                                        // import static TypeName . * ;
-    ;
-
-///////////////////////////// ABOVE IS GOOD ////////////////////////
-
-typeDeclarations
-    :    typeDeclaration+                                                                                               // TypeDeclaration
+qualifiedImportName
+    :   Identifier
+        (DOT Identifier
+        )*
     ;
 
 typeDeclaration
-    :    classDeclaration                                                                                              // ClassDeclaration
-    |    interfaceDeclaration                                                                                          // InterfaceDeclaration
-    |    SEMI                                                                                                           // ;
+    :   classOrInterfaceDeclaration
+    |   SEMI
     ;
 
+classOrInterfaceDeclaration
+    :    classDeclaration
+    |   interfaceDeclaration
+    ;
+
+
+modifiers
+    :
+    (    annotation
+    |   PUBLIC
+    |   PROTECTED
+    |   PRIVATE
+    |   STATIC
+    |   ABSTRACT
+    |   FINAL
+    |   NATIVE
+    |   SYNCHRONIZED
+    |   TRANSIENT
+    |   VOLATILE
+    |   STRICTFP
+    )*
+    ;
+
+
+variableModifiers
+    :   (   FINAL
+        |   annotation
+        )*
+    ;
+
+
 classDeclaration
-    :    normalClassDeclaration                                                                                        // NormalClassDeclaration
-    |    enumDeclaration                                                                                               // EnumDeclaration
+    :   normalClassDeclaration
+    |   enumDeclaration
     ;
 
 normalClassDeclaration
-    :    classModifiers? 'class' Identifier typeParameters? superRule? interfaces? classBody                     // ClassModifiersopt class Identifier TypeParametersopt Superopt Interfacesopt ClassBody
+    :   modifiers  CLASS Identifier
+        (typeParameters
+        )?
+        (EXTENDS type
+        )?
+        (IMPLEMENTS typeList
+        )?
+        classBody
     ;
 
-classModifiers
-    :    classModifier+                                                                                                 // ClassModifier
-    ;
-
-classModifier
-    :    annotation
-    |    PUBLIC
-    |    PROTECTED
-    |    PRIVATE
-    |    'abstract'
-    |    'static'
-    |    'final'
-    |    'strictfp'
-    ;
 
 typeParameters
-    :    LT typeParameterList GT                                                                                     // < TypeParameterList >
-    ;
-
-typeParameterList
-    :    typeParameter (COMMA typeParameter)*                                                                           // TypeParameterList , TypeParameter
-    ;
-
-superRule
-    :    EXTENDS classOrInterfaceType                                                                                           // extends ClassType
-    ;
-
-interfaces
-    :    IMPLEMENTS interfaceTypeList                                                                                // implements InterfaceTypeList
-    ;
-
-interfaceTypeList
-    :    classOrInterfaceType (COMMA classOrInterfaceType)*
-    ;
-
-classBody
-    :    LBRACE classBodyDeclarations? RBRACE                                                                                  // { ClassBodyDeclarationsopt }
-    ;
-
-classBodyDeclarations
-    :    classBodyDeclaration+
-    ;
-
-classBodyDeclaration
-    :    classMemberDeclaration                                                                                        // ClassMemberDeclaration
-    |    instanceInitializer                                                                                           // InstanceInitializer
-    |    staticInitializer                                                                                             // StaticInitializer
-    |    constructorDeclaration                                                                                        // ConstructorDeclaration
-    ;
-
-classMemberDeclaration
-    :    fieldDeclaration                                                                                              // FieldDeclaration
-    |    methodDeclaration                                                                                             // MethodDeclaration
-    |    classDeclaration                                                                                              // ClassDeclaration
-    |    interfaceDeclaration                                                                                          // InterfaceDeclaration
-    |    SEMI                                                                                                           // ;
-    ;
-
-// public static final String mike = "\2g\u037a\6\uffff\2\0\7\0\2\1\7\1\2\2\7\2\2\3\7\3\2\4\7\4\2\5\7\5\2\6";
-fieldDeclaration
-    :    fieldModifiers? type variableDeclarators SEMI                                                                // FieldModifiersopt Type VariableDeclarators ;
-    ;
-
-variableDeclarators
-    :    variableDeclarator (COMMA variableDeclarator)*
-    ;
-
-variableDeclarator
-    :    variableDeclaratorId                                                                                          // VariableDeclaratorId
-    |    variableDeclaratorId EQ variableInitializer                                                                  // VariableDeclaratorId = VariableInitializer
-    ;
-
-variableDeclaratorId
-    :    Identifier ('[' ']')*                                                                                                   // Identifier
-    ;
-
-fieldModifiers
-    :    fieldModifier+
-    ;
-
-fieldModifier
-    :    annotation
-    |    PUBLIC
-    |    PROTECTED
-    |    PRIVATE                                                                     // Annotation public protected private
-    |    STATIC
-    |    FINAL
-    |    TRANSIENT
-    |    VOLATILE                                                                       // static final transient volatile
-    ;
-
-methodDeclaration
-//    :    methodModifiers? result Identifier LPAREN RPAREN methodBody
-    :    methodHeader methodBody                                                                                       // MethodHeader MethodBody
-    ;
-
-methodHeader
-    :    methodModifiers? typeParameters? result methodDeclarator throwsRule?                                        // MethodModifiersopt TypeParametersopt Result MethodDeclarator Throwsopt
-    ;
-
-methodDeclarator
-    :    Identifier LPAREN formalParameterList? RPAREN                                                                     // Identifier ( FormalParameterListopt )
-    ;
-
-
-// For compatibility with older versions of the Java SE platform, the declaration of a
-// method that returns an array is allowed to place (some or all of) the empty bracket
-// pairs that form the declaration of the array type after the formal parameter list. This
-// is supported by the following obsolescent production, but should not be used in
-// new code.
-//
-//methodDeclarator
-//    :    ('[' ']')+
-//    ;
-
-formalParameterList
-    :    lastFormalParameter                                                                                           // LastFormalParameter
-    |    formalParameters COMMA lastFormalParameter                                                                      // FormalParameters , LastFormalParameter
-    ;
-
-formalParameters
-    :    formalParameter (COMMA formalParameter)*
-    ;
-
-formalParameter
-    :    variableModifiers? type variableDeclaratorId                                                                // VariableModifiersopt Type VariableDeclaratorId
-    ;
-
-variableModifiers
-    :    variableModifier+                                                                                              // VariableModifier
-    ;
-
-variableModifier
-    :    annotation
-    |    'final'
-    ;
-
-lastFormalParameter
-    :    variableModifiers? type ELLIPSIS variableDeclaratorId                                                       // VariableModifiersopt Type... VariableDeclaratorId
-    |    formalParameter                                                                                               // FormalParameter
-    ;
-
-methodModifiers
-    :    methodModifier+
-    ;
-
-methodModifier
-    :    annotation
-    |    PUBLIC
-    |    PROTECTED
-    |    PRIVATE
-    |    ABSTRACT                                                          // Annotation public protected private abstract
-    |    STATIC
-    |    FINAL
-    |    SYNCHRONIZED
-    |    NATIVE
-    |    STRICTFP                                                           // static final synchronized native strictfp
-    ;
-
-result
-    :    type                                                                                                          // Type
-    |    VOID                                                                                                        // void
-    ;
-
-throwsRule
-    :    THROWS exceptionTypeList                                                                                    // throws ExceptionTypeList
-    ;
-
-exceptionTypeList
-    :    exceptionType (COMMA exceptionType)*
-    ;
-
-exceptionType
-    :    qualifiedName                                                                                                      // TypeName
-    |    typeVariable                                                                                                  // TypeVariable
-    ;
-
-methodBody
-    :    block                                                                                                         // Block
-    |    SEMI                                                                                                           // ;
-    ;
-
-instanceInitializer
-    :    block                                                                                                         // Block
-    ;
-
-staticInitializer
-    :    'static' block                                                                                                // static Block
-    ;
-
-constructorDeclaration
-    :    constructorModifiers? constructorDeclarator throwsRule? constructorBody                                       // ConstructorModifiersopt ConstructorDeclarator Throwsopt ConstructorBody
-    ;
-
-constructorBody
-    :    '{' explicitConstructorInvocation? blockStatements? '}'
-    ;
-
-constructorDeclarator
-    :    typeParameters? Identifier '(' formalParameterList? ')'
-    ;
-
-constructorModifiers
-    :    constructorModifier+                                                                                           // ConstructorModifier
-    ;
-
-constructorModifier
-    :    annotation
-    |    PUBLIC
-    |    PROTECTED
-    |    PRIVATE
-    ;
-
-explicitConstructorInvocation
-    :    nonWildTypeArguments? 'this' '(' (expression (COMMA expression)*)? ')' SEMI                                                    // NonWildTypeArgumentsopt this ( ArgumentListopt ) ;
-    |    nonWildTypeArguments? 'super' '(' (expression (COMMA expression)*)? ')' SEMI                                                   // NonWildTypeArgumentsopt super ( ArgumentListopt ) ;
-    |    primary DOT nonWildTypeArguments? 'super' '(' (expression (COMMA expression)*)? ')' SEMI                                       // Primary . NonWildTypeArgumentsopt super ( ArgumentListopt ) ;
-    ;
-
-enumDeclaration
-    :    classModifiers? ENUM Identifier interfaces? enumBody                                                    // ClassModifiersopt enum Identifier Interfacesopt EnumBody
-    ;
-
-enumBody
-    :    '{' enumConstants? COMMA? enumBodyDeclarations? '}'                                                     // { EnumConstantsopt ,opt EnumBodyDeclarationsopt }
-    ;
-
-enumConstants
-    :    enumConstant (COMMA enumConstant)*
-    ;
-
-enumConstant
-    :    annotations? Identifier (expression (COMMA expression)*)? classBody?                                                           // Annotationsopt Identifier Argumentsopt ClassBodyopt
-    ;
-
-enumBodyDeclarations
-    :    SEMI classBodyDeclarations?                                                                                  // ; ClassBodyDeclarationsopt
-    ;
-
-interfaceDeclaration
-    :    normalInterfaceDeclaration                                                                                    // NormalInterfaceDeclaration
-    |    annotationTypeDeclaration                                                                                     // AnnotationTypeDeclaration
-    ;
-
-normalInterfaceDeclaration
-    :    interfaceModifiers? 'interface' Identifier                                                                // InterfaceModifiersopt interface Identifier
-    |    typeParameters? extendsInterfaces? interfaceBody                                                          // TypeParametersopt ExtendsInterfacesopt InterfaceBody
-    ;
-
-interfaceModifiers
-    :    interfaceModifier+
-    ;
-
-interfaceModifier
-    :    annotation
-    |    PUBLIC
-    |    PROTECTED
-    |    PRIVATE
-    |    'abstract'
-    |    'static'
-    |    'strictfp'
-    ;
-
-extendsInterfaces
-    :    'extends' interfaceTypeList                                                                                   // extends InterfaceTypeList
-    ;
-
-interfaceBody
-    :    '{' interfaceMemberDeclarations? '}'                                                                            // { InterfaceMemberDeclarationsopt }
-    ;
-
-interfaceMemberDeclarations
-    :    interfaceMemberDeclaration+
-    ;
-
-interfaceMemberDeclaration
-    :    constantDeclaration                                                                                           // ConstantDeclaration
-    |    abstractMethodDeclaration                                                                                     // AbstractMethodDeclaration
-    |    classDeclaration                                                                                              // ClassDeclaration
-    |    interfaceDeclaration                                                                                          // InterfaceDeclaration
-    |    SEMI                                                                                                           // ;
-    ;
-
-constantDeclaration
-    :    constantModifiers? type variableDeclarators SEMI                                                             // ConstantModifiersopt Type VariableDeclarators ;
-    ;
-
-constantModifiers
-    :    constantModifier+
-    ;
-
-constantModifier
-    :    annotation
-    |    PUBLIC
-    |    'static'
-    |    'final'
-    ;
-
-abstractMethodDeclaration
-    :    abstractMethodModifiers? typeParameters? result
-    |    methodDeclarator throwsRule? SEMI
-    ;
-
-abstractMethodModifiers
-    :    abstractMethodModifier+
-    ;
-
-abstractMethodModifier
-    :    annotation
-    |    PUBLIC
-    |    'abstract'
-    ;
-
-annotationTypeDeclaration
-    :    interfaceModifiers? AT 'interface' Identifier annotationTypeBody                                         // InterfaceModifiersopt @ interface Identifier AnnotationTypeBody
-    ;
-
-annotationTypeBody
-    :    '{' annotationTypeElementDeclarations? '}'                                                                      // { AnnotationTypeElementDeclarationsopt }
-    ;
-
-annotationTypeElementDeclarations
-    :    annotationTypeElementDeclaration+
-    ;
-
-annotationTypeElementDeclaration
-    :    abstractMethodModifiers? type Identifier '(' ')' dims? defaultValue? SEMI                                // AbstractMethodModifiersopt Type Identifier ( ) Dimsopt DefaultValueopt ;
-    |    constantDeclaration                                                                                           // ConstantDeclaration
-    |    classDeclaration                                                                                              // ClassDeclaration
-    |    interfaceDeclaration                                                                                          // InterfaceDeclaration
-    |    enumDeclaration                                                                                               // EnumDeclaration
-    |    annotationTypeDeclaration                                                                                     // AnnotationTypeDeclaration
-    |    SEMI                                                                                                           // ;
-    ;
-
-defaultValue
-    :    'default' elementValue                                                                                        // default ElementValue
+    :   LT
+            typeParameter
+            (COMMA typeParameter
+            )*
+        GT
     ;
 
 typeParameter
-    :    typeVariable typeBound?                                                                                     // TypeVariable TypeBoundopt
+    :   Identifier
+        (EXTENDS typeBound
+        )?
     ;
+
 
 typeBound
-    :    EXTENDS typeVariable                                                                                        // extends TypeVariable
-    |    EXTENDS classOrInterfaceType additionalBoundList?                                                         // extends ClassOrInterfaceType AdditionalBoundListopt
+    :   type
+        (AMP type
+        )*
     ;
 
-additionalBoundList
-    :    additionalBound+
+
+enumDeclaration
+    :   modifiers
+        (ENUM
+        )
+        Identifier
+        (IMPLEMENTS typeList
+        )?
+        enumBody
     ;
 
-additionalBound
-    :    '&' classOrInterfaceType                                                                                             // & InterfaceType
+
+enumBody
+    :   LBRACE
+        (enumConstants
+        )?
+        COMMA?
+        (enumBodyDeclarations
+        )?
+        RBRACE
     ;
 
-block
-    :    '{' blockStatements? '}'                                                                                        // { BlockStatementsopt }
+enumConstants
+    :   enumConstant
+        (COMMA enumConstant
+        )*
     ;
 
-blockStatements
-    :    blockStatement+
+/**
+ * NOTE: here differs from the javac grammar, missing TypeArguments.
+ * EnumeratorDeclaration = AnnotationsOpt [TypeArguments] Identifier [ Arguments ] [ "{" ClassBody "}" ]
+ */
+enumConstant
+    :   (annotations
+        )?
+        Identifier
+        (arguments
+        )?
+        (classBody
+        )?
+        /* TODO: $GScope::name = names.empty. enum constant body is actually
+        an anonymous class, where constructor isn't allowed, have to add this check*/
     ;
 
-blockStatement
-    :    localVariableDeclarationStatement                                                                             // LocalVariableDeclarationStatement
-    |    classDeclaration                                                                                              // ClassDeclaration
-    |    statement                                                                                                     // Statement
+enumBodyDeclarations
+    :   SEMI
+        (classBodyDeclaration
+        )*
     ;
 
-localVariableDeclarationStatement
-    :    localVariableDeclaration SEMI                                                                                  // LocalVariableDeclaration ;
+interfaceDeclaration
+    :   normalInterfaceDeclaration
+    |   annotationTypeDeclaration
     ;
 
-localVariableDeclaration
-    :    variableModifiers? type variableDeclarators                                                                 // VariableModifiersopt Type VariableDeclarators
+normalInterfaceDeclaration
+    :   modifiers INTERFACE Identifier
+        (typeParameters
+        )?
+        (EXTENDS typeList
+        )?
+        interfaceBody
     ;
 
-statement
-    :    labeledStatement                                                                                              // LabeledStatement
-    |    ifThenStatement                                                                                               // IfThenStatement
-    |    ifThenElseStatement                                                                                           // IfThenElseStatement
-    |    whileStatement                                                                                                // WhileStatement
-    |    forStatement                                                                                                  // ForStatement
-    |    statementWithoutTrailingSubstatement                                                                          // StatementWithoutTrailingSubstatement
+typeList
+    :   type
+        (COMMA type
+        )*
     ;
 
-statementWithoutTrailingSubstatement
-    :    block                                                                                                         // Block
-    |    emptyStatement                                                                                                // EmptyStatement
-    |    expressionStatement                                                                                           // ExpressionStatement
-    |    assertStatement                                                                                               // AssertStatement
-    |    switchStatement                                                                                               // SwitchStatement
-    |    doStatement                                                                                                   // DoStatement
-    |    breakStatement                                                                                                // BreakStatement
-    |    continueStatement                                                                                             // ContinueStatement
-    |    returnStatement                                                                                               // ReturnStatement
-    |    synchronizedStatement                                                                                         // SynchronizedStatement
-    |    throwStatement                                                                                                // ThrowStatement
-    |    tryStatement                                                                                                  // TryStatement
+classBody
+    :   LBRACE
+        (classBodyDeclaration
+        )*
+        RBRACE
     ;
 
-statementNoShortIf
-    :    statementWithoutTrailingSubstatement                                                                          // StatementWithoutTrailingSubstatement
-    |    labeledStatementNoShortIf                                                                                     // LabeledStatementNoShortIf
-    |    ifThenElseStatementNoShortIf                                                                                  // IfThenElseStatementNoShortIf
-    |    whileStatementNoShortIf                                                                                       // WhileStatementNoShortIf
-    |    forStatementNoShortIf                                                                                         // ForStatementNoShortIf
+interfaceBody
+    :   LBRACE
+        (interfaceBodyDeclaration
+        )*
+        RBRACE
     ;
 
-emptyStatement
-    :    SEMI                                                                                                           // ;
+classBodyDeclaration
+    :   SEMI
+    |   (STATIC
+        )?
+        block
+    |   memberDecl
     ;
 
-labeledStatement
-    :    Identifier COLON statement                                                                                      // Identifier : Statement
+memberDecl
+    :    fieldDeclaration
+    |    methodDeclaration
+    |    classDeclaration
+    |    interfaceDeclaration
     ;
 
-labeledStatementNoShortIf
-    :    Identifier COLON statementNoShortIf                                                                             // Identifier : StatementNoShortIf
+
+methodDeclaration
+    :
+        /* For constructor, return type is null, name is 'init' */
+         modifiers
+        (typeParameters
+        )?
+        Identifier
+        formalParameters
+        (THROWS qualifiedNameList
+        )?
+        LBRACE
+        (explicitConstructorInvocation
+        )?
+        (blockStatement
+        )*
+        RBRACE
+    |   modifiers
+        (typeParameters
+        )?
+        (type
+        |   VOID
+        )
+        Identifier
+        formalParameters
+        (LBRACKET RBRACKET
+        )*
+        (THROWS qualifiedNameList
+        )?
+        (
+            block
+        |   SEMI
+        )
     ;
 
-expressionStatement
-    :    statementExpression SEMI                                                                                       // StatementExpression ;
+
+fieldDeclaration
+    :   modifiers
+        type
+        variableDeclarator
+        (COMMA variableDeclarator
+        )*
+        SEMI
     ;
 
-statementExpression
-    :    methodInvocation                                                                                              // MethodInvocation
-    |    classInstanceCreationExpression                                                                               // ClassInstanceCreationExpression
-    |    expression                                                                                                    // Assignment
+variableDeclarator
+    :   Identifier
+        (LBRACKET RBRACKET
+        )*
+        (EQ variableInitializer
+        )?
     ;
 
-ifThenStatement
-    :    IF LPAREN expression RPAREN statement                                                                             // if ( Expression ) Statement
+/**
+ *TODO: add predicates
+ */
+interfaceBodyDeclaration
+    :   interfaceFieldDeclaration
+    |   interfaceMethodDeclaration
+    |   interfaceDeclaration
+    |   classDeclaration
+    |   SEMI
     ;
 
-ifThenElseStatement
-    :    IF '(' expression ')' statementNoShortIf 'else' statement                                                   // if ( Expression ) StatementNoShortIf else Statement
+interfaceMethodDeclaration
+    :   modifiers
+        (typeParameters
+        )?
+        (type
+        |VOID
+        )
+        Identifier
+        formalParameters
+        (LBRACKET RBRACKET
+        )*
+        (THROWS qualifiedNameList
+        )? SEMI
     ;
 
-ifThenElseStatementNoShortIf
-    :    IF '(' expression ')' statementNoShortIf 'else' statementNoShortIf                                          // if ( Expression ) StatementNoShortIf else StatementNoShortIf
+/**
+ * NOTE, should not use variableDeclarator here, as it doesn't necessary require
+ * an initializer, while an interface field does, or judge by the returned value.
+ * But this gives better diagnostic message, or antlr won't predict this rule.
+ */
+interfaceFieldDeclaration
+    :   modifiers type variableDeclarator
+        (COMMA variableDeclarator
+        )*
+        SEMI
     ;
 
-assertStatement
-    :    ASSERT expression SEMI                                                                                      // assert Expression1 ;
-    |    ASSERT expression COLON expression SEMI                                                                      // assert Expression1 : Expression2 ;
-    ;
-
-switchStatement
-    :    SWITCH '(' expression ')' switchBlock                                                                       // switch ( Expression ) SwitchBlock
-    ;
-
-switchBlock
-    :    '{' switchBlockStatementGroups? switchLabels? '}'                                                             // { SwitchBlockStatementGroupsopt SwitchLabelsopt }
-    ;
-
-switchBlockStatementGroups
-    :    switchBlockStatementGroup+
-    ;
-
-switchBlockStatementGroup
-    :    switchLabels blockStatements                                                                                  // SwitchLabels BlockStatements
-    ;
-
-switchLabels
-    :    switchLabel+                                                                                                   // SwitchLabel
-    ;
-
-switchLabel
-    :    CASE expression COLON
-    |    CASE Identifier COLON
-    |    DEFAULT COLON
-    ;
-
-whileStatement
-    :    'while' '(' expression ')' statement                                                                          // while ( Expression ) Statement
-    ;
-
-whileStatementNoShortIf
-    :    'while' '(' expression ')' statementNoShortIf                                                                 // while ( Expression ) StatementNoShortIf
-    ;
-
-doStatement
-    :    'do' statement 'while' '(' expression ')' SEMI                                                                 // do Statement while ( Expression ) ;
-    ;
-
-forStatement
-    :    basicForStatement                                                                                             // BasicForStatement
-    |    enhancedForStatement                                                                                          // EnhancedForStatement
-    ;
-
-basicForStatement
-    :    'for' '(' forInit? SEMI expression? SEMI forUpdate? ')' statement                                         // for ( ForInitopt ; Expressionopt ; ForUpdateopt ) Statement
-    ;
-
-forStatementNoShortIf
-    :    'for' '(' forInit? SEMI expression? SEMI forUpdate? ')' statementNoShortIf                                // for ( ForInitopt ; Expressionopt ; ForUpdateopt ) StatementNoShortIf
-    ;
-
-forInit
-    :    statementExpressionList                                                                                       // StatementExpressionList
-    |    localVariableDeclaration                                                                                      // LocalVariableDeclaration
-    ;
-
-forUpdate
-    :    statementExpressionList                                                                                       // StatementExpressionList
-    ;
-
-statementExpressionList
-    :    statementExpression (COMMA statementExpression)*
-    ;
-
-enhancedForStatement
-    :    FOR '(' formalParameter COLON expression ')' statement                                                        // for ( FormalParameter : Expression ) Statement
-    ;
-
-breakStatement
-    :    BREAK Identifier? SEMI                                                                                     // break Identifieropt ;
-    ;
-
-continueStatement
-    :    CONTINUE Identifier? SEMI                                                                                  // continue Identifieropt ;
-    ;
-
-returnStatement
-    :    'return' expression? SEMI                                                                                    // return Expressionopt ;
-    ;
-
-throwStatement
-    :    THROW expression SEMI                                                                                        // throw Expression ;
-    ;
-
-synchronizedStatement
-    :    'synchronized' '(' expression ')' block                                                                       // synchronized ( Expression ) Block
-    ;
-
-tryStatement
-    :    'try' block catches                                                                                           // try Block Catches
-    |    'try' block catches? finallyRule                                                                                // try Block Catchesopt Finally
-    |    tryWithResourcesStatement                                                                                     // TryWithResourcesStatement
-    ;
-
-catches
-    :    catchClause (catchClause)*                                                                                                  // CatchClause
-    ;
-
-catchClause
-    :    CATCH '(' catchFormalParameter ')' block                                                                    // catch ( CatchFormalParameter ) Block
-    ;
-
-catchFormalParameter
-    :    variableModifiers? catchType variableDeclaratorId                                                           // VariableModifiersopt CatchType VariableDeclaratorId
-    ;
-
-catchType
-    :    classOrInterfaceType (BAR classOrInterfaceType)*
-    ;
-
-finallyRule
-    :    FINALLY block                                                                                               // finally Block
-    ;
-
-tryWithResourcesStatement
-    :    'try' resourceSpecification block catches? finallyRule?                                                       // try ResourceSpecification Block Catchesopt Finallyopt
-    ;
-
-resourceSpecification
-    :    '(' resources SEMI? ')'                                                                                    // ( Resources ;opt )
-    ;
-
-resources
-    :    resource (SEMI resource)*                                                                                                     // Resource
-    ;
-
-resource
-    :    variableModifiers? type variableDeclaratorId EQ expression                                                 // VariableModifiersopt Type VariableDeclaratorId = Expression
-    ;
-
-primary
-    :    expression
-    ;
-
-methodInvocation
-    :    primary
-    ;
-
-classInstanceCreationExpression
-    :    primary
-    ;
-
-fieldAccess
-    :    primary
-    ;
-
-arrayAccess
-    :    primary
-    ;
-
-primaryNoNewArray
-    :    primary
-    ;
 
 type
-    :    primitiveType (LBRACKET RBRACKET)*
-    |    classOrInterfaceType (LBRACKET RBRACKET)*
-    |    typeVariable (LBRACKET RBRACKET)*
+    :   classOrInterfaceType
+        (LBRACKET RBRACKET
+        )*
+    |   primitiveType
+        (LBRACKET RBRACKET
+        )*
     ;
+
 
 classOrInterfaceType
-    :    typeDeclSpecifier typeArguments?
+    :   Identifier
+        (typeArguments
+        )?
+        (DOT Identifier
+            (typeArguments
+            )?
+        )*
     ;
 
-typeDeclSpecifier
-    :    qualifiedName                                                                                                      // qualifiedName
-    |    (qualifiedName typeArguments?)+ DOT Identifier                                                                           // ClassOrInterfaceType . Identifier
-    ;
-
-typeVariable
-    :    Identifier                                                                                                    // Identifier
-    ;
-
-typeArgumentsOrDiamond
-    :    typeArguments                                                                                                 // TypeArguments
-    |    LT GT                                                                                                        // <>
+primitiveType
+    :   BOOLEAN
+    |   CHAR
+    |   BYTE
+    |   SHORT
+    |   INT
+    |   LONG
+    |   FLOAT
+    |   DOUBLE
     ;
 
 typeArguments
-    :    LT typeArgumentList GT                                                                                      // < TypeArgumentList >
-    ;
-
-typeArgumentList
-    :    typeArgument (COMMA typeArgument)*                                                                                                 // TypeArgument
+    :    LT typeArgument (COMMA typeArgument)* GT
+    |    LT GT
     ;
 
 typeArgument
-    :    referenceType                                                                                                 // ReferenceType
-    |    wildcard                                                                                                      // Wildcard
+    :   type
+    |   QUES
+        (
+            (EXTENDS
+            |SUPER
+            )
+            type
+        )?
     ;
 
-wildcard
-    :    '?' wildcardBounds?                                                                                         // ? WildcardBoundsopt
+qualifiedNameList
+    :   qualifiedName
+        (COMMA qualifiedName
+        )*
     ;
 
-wildcardBounds
-    :    'extends' referenceType                                                                                       // extends ReferenceType
-    |    'super' referenceType                                                                                         // super ReferenceType
+formalParameters
+    :   LPAREN
+        (formalParameterDecls
+        )?
+        RPAREN
     ;
 
-nonWildTypeArguments
-    :    LT referenceTypeList GT                                                                                     // < ReferenceTypeList >
+formalParameterDecls
+    :   ellipsisParameterDecl
+    |   normalParameterDecl
+        (COMMA normalParameterDecl
+        )*
+    |   (normalParameterDecl
+        COMMA
+        )+
+        ellipsisParameterDecl
     ;
 
-referenceTypeList
-    :    referenceType (COMMA referenceType)*
+normalParameterDecl
+    :   variableModifiers type Identifier
+        (LBRACKET RBRACKET
+        )*
     ;
 
-referenceType
-    :    type
+ellipsisParameterDecl
+    :   variableModifiers
+        type  ELLIPSIS
+        Identifier
     ;
 
-dims
-    :    ('[' ']')+
-    ;
+explicitConstructorInvocation
+    :   (nonWildcardTypeArguments
+        )?     //NOTE: the position of Identifier 'super' is set to the type args position here
+        (THIS
+        |SUPER
+        )
+        arguments SEMI
 
-//////////////////////////////////////////// EXPRESSIONS ///////////////////////////////////
-expression
-    :    qualifiedName                                                                                                // qualifiedName
-    |    qualifiedName '[' expression ']'                                                                             // ArrayAccess
-    |    expression assignmentOperator expression                                                                      // Assignment
-    |    expression '[' expression ']'<assoc=right>                                                                                    // ArrayAccess
-    |    expression DOT Identifier                                                                                        // Field Access
-    |    'super' DOT Identifier                                                                                        // Field Access
-    |    Identifier DOT 'super' DOT Identifier                                                                          // Field Access
-    |    expression PLUSPLUS                                                                                           // PostIncrementExpression
-    |    expression SUBSUB                                                                                             // PostDecrementExpression
-    |    expression '?'<assoc=right> expression COLON expression                                            // conditionalExpression
-    |    expression BARBAR<assoc=right> expression                                                       // conditionalOrExpression
-    |    expression AMPAMP<assoc=right> expression                                                         // conditionalAndExpression
-    |    expression '&'<assoc=right> expression                                                                          // andExpression
-    |    expression '^'<assoc=right> expression                                                                       // exclusiveOrExpression
-    |    expression BAR<assoc=right> expression                                                               // inclusiveOrExpression
-    |    PLUS expression                                                                                          // + UnaryExpression
-    |    SUB expression                                                                                           // - UnaryExpression
-    |    PLUSPLUS expression                                                                                      // PreIncrementExpression
-    |    SUBSUB expression                                                                                        // PreDecrementExpression:
-    |    '~' expression                                                                                           // UnaryExpressionNotPlusMinus
-    |    '!' expression                                                                                           // UnaryExpressionNotPlusMinus
-    |    '(' primitiveType ')' expression                                                                         // CastExpression
-    |    '(' referenceType ')' expression                                                             // CastExpression
-    |    expression STAR<assoc=right> expression                                                                 // MultiplicativeExpression
-    |    expression '/'<assoc=right> expression                                                                  // MultiplicativeExpression
-    |    expression '%'<assoc=right> expression                                                                  // MultiplicativeExpression
-    |    expression PLUS<assoc=right> expression                                                              // additiveExpression
-    |    expression SUB<assoc=right> expression                                                               // additiveExpression
-    |    expression LTLT<assoc=right> expression                                                                       // ShiftExpression
-    |    expression GTGT<assoc=right> expression                                                                       // ShiftExpression
-    |    expression GTGT<assoc=right> expression                                                                       // ShiftExpression
-    |    expression LT<assoc=right> expression                                                                       // RelationalExpression
-    |    expression GT<assoc=right> expression                                                                       // RelationalExpression
-    |    expression LTEQ<assoc=right> expression                                                                     // RelationalExpression
-    |    expression GTEQ<assoc=right> expression                                                                     // RelationalExpression
-    |    expression 'instanceof' referenceType                                                               // RelationalExpression
-    |    expression EQEQ<assoc=right> expression                                                                  // EqualityExpression
-    |    expression BANGEQ<assoc=right> expression                                                                // EqualityExpression
-    |    literal                                                                                                       // Literal
-    |    type DOT 'class'                                                                                              // PrimaryNoNewArray
-    |    'void' DOT 'class'                                                                                            // PrimaryNoNewArray
-    |    'this'                                                                                                        // PrimaryNoNewArray
-    |    Identifier DOT 'this'                                                                                          // PrimaryNoNewArray
-    |    '(' expression ')'                                                                                            // PrimaryNoNewArray
-    |    'new' typeArguments? typeDeclSpecifier typeArgumentsOrDiamond? '(' (expression (COMMA expression)*)? ')' classBody?               // classInstanceCreationExpression
-    |    expression DOT 'new' typeArguments? Identifier typeArgumentsOrDiamond? '(' (expression (COMMA expression)*)? ')' classBody?          // classInstanceCreationExpression
-    |    qualifiedName '(' (expression (COMMA expression)*)? ')'                                                                              // Method Invocation
-    |    expression DOT nonWildTypeArguments? Identifier '(' (expression (COMMA expression)*)? ')'                                            // Method Invocation
-    |    'super' DOT nonWildTypeArguments? Identifier '(' (expression (COMMA expression)*)? ')'                                            // Method Invocation
-    |    Identifier DOT 'super' DOT nonWildTypeArguments? Identifier '(' (expression (COMMA expression)*)? ')'                              // Method Invocation
-    |    qualifiedName DOT nonWildTypeArguments Identifier '(' (expression (COMMA expression)*)? ')'                                            // Method Invocation
-    |    'new' primitiveType ('[' expression ']')+ dims?                                       // arrayCreationExpression
-    |    'new' classOrInterfaceType ('[' expression ']')+ dims?                                // arrayCreationExpression
-    |    'new' primitiveType dims '{' (expression (COMMA expression)*)? COMMA? '}'             // arrayCreationExpression
-    |    'new' classOrInterfaceType dims '{' (expression (COMMA expression)*)? COMMA? '}'      // arrayCreationExpression
-    ;
-
-variableInitializer
-    :    '{' (expression (COMMA expression)*)? COMMA? '}'
-    |    expression
-    ;
-
-assignmentOperator
-    :
-    |    EQ<assoc=right>
-    |    STAREQ<assoc=right>
-    |    SLASHEQ<assoc=right>
-    |    PERCENTEQ<assoc=right>
-    |    PLUSEQ<assoc=right>
-    |    SUBEQ<assoc=right>
-    |    LTLTEQ<assoc=right>
-    |    GTGTEQ<assoc=right>
-    |    GTGTGTEQ<assoc=right>
-    |    AMPEQ<assoc=right>
-    |    CARETEQ<assoc=right>
-    |    BAREQ<assoc=right>
-    ;
-
-
-primitiveType
-    :    numericType
-    |    BOOLEAN                                                                                                     // boolean
-    ;
-
-numericType
-    :    integralType                                                                                                  // IntegralType
-    |    floatingPointType                                                                                             // FloatingPointType
-    ;
-
-integralType
-    :    BYTE
-    |    SHORT
-    |    INT
-    |    LONG
-    |    CHAR
-    ;
-
-floatingPointType
-    :    FLOAT
-    |    DOUBLE                                                                                              // float double
+    |   primary
+        DOT
+        (nonWildcardTypeArguments
+        )?
+        SUPER
+        arguments SEMI
     ;
 
 qualifiedName
-    :    Identifier (DOT Identifier)*
+    :   Identifier
+        (DOT Identifier
+        )*
     ;
 
+annotations
+    :   (annotation
+        )+
+    ;
+
+/**
+ *  Using an annotation.
+ * '@' is flagged in modifier
+ */
+annotation
+    :   AT qualifiedName
+        (   LPAREN
+                  (   elementValuePairs
+                  |   elementValue
+                  )?
+            RPAREN
+        )?
+    ;
+
+elementValuePairs
+    :   elementValuePair
+        (COMMA elementValuePair
+        )*
+    ;
+
+elementValuePair
+    :   Identifier EQ elementValue
+    ;
+
+elementValue
+    :   conditionalExpression
+    |   annotation
+    |   elementValueArrayInitializer
+    ;
+
+elementValueArrayInitializer
+    :   LBRACE
+        (elementValue
+            (COMMA elementValue
+            )*
+        )? (COMMA)? RBRACE
+    ;
+
+/**
+ * Annotation declaration.
+ */
+annotationTypeDeclaration
+    :   modifiers AT
+        INTERFACE
+        Identifier
+        annotationTypeBody
+    ;
+
+annotationTypeBody
+    :   LBRACE
+        (annotationTypeElementDeclaration
+        )*
+        RBRACE
+    ;
+
+/**
+ * NOTE: here use interfaceFieldDeclaration for field declared inside annotation. they are syntactically the same.
+ */
+annotationTypeElementDeclaration
+    :   annotationMethodDeclaration
+    |   interfaceFieldDeclaration
+    |   normalClassDeclaration
+    |   normalInterfaceDeclaration
+    |   enumDeclaration
+    |   annotationTypeDeclaration
+    |   SEMI
+    ;
+
+annotationMethodDeclaration
+    :   modifiers type Identifier
+        LPAREN RPAREN (DEFAULT elementValue
+                )?
+        SEMI
+        ;
+
+block
+    :   LBRACE
+        (blockStatement
+        )*
+        RBRACE
+    ;
+
+/*
+staticBlock returns [JCBlock tree]
+        @init {
+            ListBuffer<JCStatement> stats = new ListBuffer<JCStatement>();
+            int pos = ((AntlrJavacToken) $start).getStartIndex();
+        }
+        @after {
+            $tree = T.at(pos).Block(Flags.STATIC, stats.toList());
+            pu.storeEnd($tree, $stop);
+            // construct a dummy static modifiers for end position
+            pu.storeEnd(T.at(pos).Modifiers(Flags.STATIC,  com.sun.tools.javac.util.List.<JCAnnotation>nil()),$st);
+        }
+    :   st_1=STATIC LBRACE
+        (blockStatement
+            {
+                if ($blockStatement.tree == null) {
+                    stats.appendList($blockStatement.list);
+                } else {
+                    stats.append($blockStatement.tree);
+                }
+            }
+        )* RBRACE
+    ;
+*/
+blockStatement
+    :   localVariableDeclarationStatement
+    |   classOrInterfaceDeclaration
+    |   statement
+    ;
+
+
+localVariableDeclarationStatement
+    :   localVariableDeclaration
+        SEMI
+    ;
+
+localVariableDeclaration
+    :   variableModifiers type
+        variableDeclarator
+        (COMMA variableDeclarator
+        )*
+    ;
+
+statement
+    :   block
+    |   ASSERT  expression (COLON expression)? SEMI
+    |   ASSERT  expression (COLON expression)? SEMI
+    |   IF parExpression statement (ELSE statement)?
+    |   forstatement
+    |   WHILE parExpression statement
+    |   DO statement WHILE parExpression SEMI
+    |   trystatement
+    |   SWITCH parExpression LBRACE switchBlockStatementGroups RBRACE
+    |   SYNCHRONIZED parExpression block
+    |   RETURN (expression )? SEMI
+    |   THROW expression SEMI
+    |   BREAK
+            (Identifier
+            )? SEMI
+    |   CONTINUE
+            (Identifier
+            )? SEMI
+    |   expression  SEMI
+    |   Identifier COLON statement
+    |   SEMI
+    ;
+
+switchBlockStatementGroups
+    :   (switchBlockStatementGroup )*
+    ;
+
+switchBlockStatementGroup
+    :
+        switchLabel
+        (blockStatement
+        )*
+    ;
+
+switchLabel
+    :   CASE expression COLON
+    |   DEFAULT COLON
+    ;
+
+
+trystatement
+    :   TRY block
+        (   catches FINALLY block
+        |   catches
+        |   FINALLY block
+        )
+    |    tryWithResources
+    ;
+
+tryWithResources
+    :    TRY resourceSpecification block catches? (FINALLY block)?
+    ;
+
+resourceSpecification
+    :    '(' resources (';')? ')'                                                                      // ( Resources [;] )
+    ;
+
+resources
+    :    resource ( ';' resource )*                                                                // Resource { ; Resource }
+    ;
+
+resource
+    :    variableModifiers? type Identifier EQ expression                       // {VariableModifier} ReferenceType VariableDeclaratorId = Expression
+    ;
+
+catches
+    :   catchClause
+        (catchClause
+        )*
+    ;
+
+catchClause
+    :   CATCH LPAREN catchFormalParameter RPAREN block
+    ;
+
+catchFormalParameter
+    :    variableModifiers type (BAR type)* Identifier (LBRACKET RBRACKET)*
+    ;
+
+formalParameter
+    :   variableModifiers type Identifier
+        (LBRACKET RBRACKET)*
+    ;
+
+forstatement
+    :
+        // enhanced for loop
+        FOR LPAREN variableModifiers type Identifier COLON
+        expression RPAREN statement
+
+        // normal for loop
+    |   FOR LPAREN
+                (forInit
+                )? SEMI
+                (expression
+                )? SEMI
+                (expressionList
+                )? RPAREN statement
+    ;
+
+forInit
+    :   localVariableDeclaration
+    |   expressionList
+    ;
+
+parExpression
+    :   LPAREN expression RPAREN
+    ;
+
+expressionList
+    :   expression
+        (COMMA expression
+        )*
+    ;
+
+expression
+    :   conditionalExpression
+        (assignmentOperator expression
+        )?
+    ;
+
+assignmentOperator
+    :   EQ
+    |   PLUSEQ
+    |   SUBEQ
+    |   STAREQ
+    |   SLASHEQ
+    |   AMPEQ
+    |   BAREQ
+    |   CARETEQ
+    |   PERCENTEQ
+    |   LT LT EQ
+    |   GT GT GT EQ
+    |   GT GT EQ
+    ;
+
+conditionalExpression
+    :   conditionalOrExpression
+        (QUES expression COLON conditionalExpression
+        )?
+    ;
+
+conditionalOrExpression
+    :   conditionalAndExpression
+        (BARBAR conditionalAndExpression
+        )*
+    ;
+
+conditionalAndExpression
+    :   inclusiveOrExpression
+        (AMPAMP inclusiveOrExpression
+        )*
+    ;
+
+inclusiveOrExpression
+    :   exclusiveOrExpression
+        (BAR exclusiveOrExpression
+        )*
+    ;
+
+exclusiveOrExpression
+    :   andExpression
+        (CARET andExpression
+        )*
+    ;
+
+andExpression
+    :   equalityExpression
+        (AMP equalityExpression
+        )*
+    ;
+
+equalityExpression
+    :   instanceOfExpression
+        (
+            (   EQEQ
+            |   BANGEQ
+            )
+            instanceOfExpression
+        )*
+    ;
+
+instanceOfExpression
+    :   relationalExpression
+        (INSTANCEOF type
+        )?
+    ;
+
+relationalExpression
+    :   shiftExpression
+        (relationalOp shiftExpression
+        )*
+    ;
+
+relationalOp
+    :   LT EQ
+    |   GT EQ
+    |   LT
+    |   GT
+    ;
+
+shiftExpression
+    :   additiveExpression
+        (shiftOp additiveExpression
+        )*
+    ;
+
+
+shiftOp
+    :    LT LT
+    |    GT GT GT
+    |    GT GT
+    ;
+
+
+additiveExpression
+    :   multiplicativeExpression
+        (
+            (   PLUS
+            |   SUB
+            )
+            multiplicativeExpression
+         )*
+    ;
+
+multiplicativeExpression
+    :
+        unaryExpression
+        (
+            (   STAR
+            |   SLASH
+            |   PERCENT
+            )
+            unaryExpression
+        )*
+    ;
+
+/**
+ * NOTE: for '+' and '-', if the next token is int or long interal, then it's not a unary expression.
+ *       it's a literal with signed value. INTLTERAL AND LONG LITERAL are added here for this.
+ */
+unaryExpression
+    :   PLUS  unaryExpression
+    |   SUB unaryExpression
+    |   PLUSPLUS unaryExpression
+    |   SUBSUB unaryExpression
+    |   unaryExpressionNotPlusMinus
+    ;
+
+unaryExpressionNotPlusMinus
+    :   TILDE unaryExpression
+    |   BANG unaryExpression
+    |   castExpression
+    |   primary
+        (selector
+        )*
+        (   PLUSPLUS
+        |   SUBSUB
+        )?
+    ;
+
+castExpression
+    :   LPAREN primitiveType RPAREN unaryExpression
+    |   LPAREN type RPAREN unaryExpressionNotPlusMinus
+    ;
+
+/**
+ * have to use scope here, parameter passing isn't well supported in antlr.
+ */
+primary
+    :   parExpression
+    |   THIS
+        (DOT Identifier
+        )*
+        (identifierSuffix
+        )?
+    |   Identifier
+        (DOT Identifier
+        )*
+        (identifierSuffix
+        )?
+    |   SUPER
+        superSuffix
+    |   literal
+    |   creator
+    |   primitiveType
+        (LBRACKET RBRACKET
+        )*
+        DOT CLASS
+    |   VOID DOT CLASS
+    ;
+
+superSuffix
+    :   arguments
+    |   DOT (typeArguments
+        )?
+        Identifier
+        (arguments
+        )?
+    ;
+
+identifierSuffix
+    :   (LBRACKET RBRACKET
+        )+
+        DOT CLASS
+    |   (LBRACKET expression RBRACKET
+        )+
+    |   arguments
+    |   DOT CLASS
+    |   DOT nonWildcardTypeArguments Identifier arguments
+    |   DOT THIS
+    |   DOT SUPER arguments
+    |   innerCreator
+    ;
+
+selector
+    :   DOT Identifier
+        (arguments
+        )?
+    |   DOT THIS
+    |   DOT SUPER
+        superSuffix
+    |   innerCreator
+    |   LBRACKET expression RBRACKET
+    ;
+
+creator
+    :   NEW nonWildcardTypeArguments classOrInterfaceType classCreatorRest
+    |   NEW classOrInterfaceType classCreatorRest
+    |   arrayCreator
+    ;
+
+arrayCreator
+    :   NEW createdName
+        LBRACKET RBRACKET
+        (LBRACKET RBRACKET
+        )*
+        arrayInitializer
+
+    |   NEW createdName
+        LBRACKET expression
+        RBRACKET
+        (   LBRACKET expression
+            RBRACKET
+        )*
+        (LBRACKET RBRACKET
+        )*
+    ;
+
+variableInitializer
+    :   arrayInitializer
+    |   expression
+    ;
+
+arrayInitializer
+    :   LBRACE
+            (variableInitializer
+                (COMMA variableInitializer
+                )*
+            )?
+            (COMMA)?
+        RBRACE             //Yang's fix, position change.
+    ;
+
+createdName
+    :   classOrInterfaceType
+    |   primitiveType
+    ;
+
+innerCreator
+    :   DOT NEW
+        (nonWildcardTypeArguments
+        )?
+        Identifier
+        (typeArguments
+        )?
+        classCreatorRest
+    ;
+
+classCreatorRest
+    :   arguments
+        (classBody
+        )?
+    ;
+
+nonWildcardTypeArguments
+    :   LT typeList
+        GT
+    ;
+
+arguments
+    :   LPAREN (expressionList
+        )? RPAREN
+    ;
 
 literal
-    :    IntegerLiteral                                                                            // IntegerLiteral
-    |    FloatingPointLiteral                                                                      // FloatingPointLiteral
-    |    booleanLiteral                                                                            // BooleanLiteral
-    |    CharacterLiteral                                                                          // CharacterLiteral
-    |    StringLiteral                                                                             // StringLiteral
-    |    nullLiteral                                                                               // NullLiteral
+    :   IntegerLiteral
+    |   FloatingPointLiteral
+    |   CharacterLiteral
+    |   StringLiteral
+    |   TRUE
+    |   FALSE
+    |   NULL
     ;
 
-booleanLiteral
-    :    TRUE
-    |    FALSE
+/**
+ * These are headers help to make syntatical predicates, not necessary but helps to make grammar faster.
+ */
+
+classHeader
+    :   modifiers CLASS Identifier
     ;
 
-nullLiteral
-    :    NULL
+enumHeader
+    :   modifiers (ENUM|Identifier) Identifier
+    ;
+
+interfaceHeader
+    :   modifiers INTERFACE Identifier
+    ;
+
+annotationHeader
+    :   modifiers AT INTERFACE Identifier
+    ;
+
+typeHeader
+    :   modifiers (CLASS|ENUM|(AT ? INTERFACE)) Identifier
+    ;
+
+methodHeader
+    :   modifiers typeParameters? (type|VOID)? Identifier RPAREN
+    ;
+
+fieldHeader
+    :   modifiers type Identifier (LBRACKET RBRACKET)* (EQ|COMMA|SEMI)
+    ;
+
+localVariableHeader
+    :   variableModifiers type Identifier (LBRACKET RBRACKET)* (EQ|COMMA|SEMI)
     ;

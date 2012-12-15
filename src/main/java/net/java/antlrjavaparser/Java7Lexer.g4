@@ -1,69 +1,46 @@
-lexer grammar Java7;
+/*
+ [The "BSD licence"]
+ Copyright (c) 2007-2008 Terence Parr.
+ All rights reserved.
 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+
+/* This is the Lexer part of the Java 6 grammar from Terry Parr as modified by
+   Yang Jiang
+   - modified to work as separate lexer and parser grammars
+     by George S. Cowan, June, 2012.
+   - modified to support Java7
+     by Mike De Haan, December 14, 2012
+
+   See Java7Parser.g4 for the full set of comments from previous maintainers
+ */
+lexer grammar Java7Lexer;
 
 @lexer::header {
 package net.java.antlrjavaparser;
 }
-
-@lexer::members {
-  protected boolean enumIsKeyword = true;
-  protected boolean assertIsKeyword = true;
-}
-
-//fragment
-//Keyword
-//    :    ABSTRACT
-//    |    CONTINUE
-//    |    FOR
-//    |    NEW
-//    |    SWITCH
-//    |    ASSERT
-//    |    DEFAULT
-//    |    IF
-//    |    PACKAGE
-//    |    SYNCHRONIZED
-//    |    BOOLEAN
-//    |    DO
-//    |    GOTO
-//    |    PRIVATE
-//    |    THIS
-//    |    BREAK
-//    |    DOUBLE
-//    |    IMPLEMENTS
-//    |    PROTECTED
-//    |    THROW
-//    |    BYTE
-//    |    ELSE
-//    |    IMPORT
-//    |    PUBLIC
-//    |    THROWS
-//    |    CASE
-//    |    ENUM
-//    |    INSTANCEOF
-//    |    RETURN
-//    |    TRANSIENT
-//    |    CATCH
-//    |    EXTENDS
-//    |    INT
-//    |    SHORT
-//    |    TRY
-//    |    CHAR
-//    |    FINAL
-//    |    INTERFACE
-//    |    STATIC
-//    |    VOID
-//    |    CLASS
-//    |    FINALLY
-//    |    LONG
-//    |    STRICTFP
-//    |    VOLATILE
-//    |    CONST
-//    |    FLOAT
-//    |    NATIVE
-//    |    SUPER
-//    |    WHILE
-//    ;
-
 
 SEMI         : ';';
 PACKAGE      : 'package';
@@ -134,122 +111,35 @@ SUBSUB       : '--';
 TILDE        : '~';
 BANG         : '!';
 NEW          : 'new';
-SLASH : '/';
-PERCENT : '%';
-PLUS : '+';
-SUB : '-';
-EQEQ : '==';
-BANGEQ : '!=';
-AMP : '&';
-CARET : '^';
-BAR : '|';
-AMPAMP : '&&';
-BARBAR : '||';
-CARETEQ : '^=';
-PLUSEQ : '+=';
-SUBEQ : '-=';
-STAREQ : '*=';
-SLASHEQ : '/=';
-AMPEQ : '&=';
-BAREQ : '|=';
-PERCENTEQ : '%=';
-LTEQ : '<=';
-GTEQ : '>=';
-GTGTEQ : '>>=';
-GTGTGTEQ : '>>>=';
-LTLTEQ : '<<=';
-GTGTGT : '>>>';
-GTGT : '>>';
-LTLT : '<<';
-GT : '>';
-LT : '<';
-INSTANCEOF : 'instanceof';
-CONST     : 'const';
-GOTO      : 'goto';
-
-//fragment
-//Separator
-//    :    '('
-//    |    ')'
-//    |    '{'
-//    |    '}'
-//    |    '['
-//    |    ']'
-//    |    SEMI
-//    |    COMMA
-//    |    DOT
-//    ;
-/*
-fragment
-Operator
-    :    EQ
-    |    GT
-    |    LT
-    |    BANG
-    |    TILDE
-    |    QUES
-    |    COLON
-    |    EQEQ
-    |    LTEQ
-    |    GTEQ
-    |    BANGEQ
-    |    AMPAMP
-    |    BARBAR
-    |    PLUSPLUS
-    |    SUBSUB
-    |    PLUS
-    |    SUB
-    |    STAR
-    |    SLASH
-    |    AMP
-    |    BAR
-    |    CARET
-    |    PERCENT
-    |    LTLT
-    |    GTGT
-    |    GTGTGT
-    |    PLUSEQ
-    |    SUBEQ
-    |    STAREQ
-    |    SLASHEQ
-    |    AMPEQ
-    |    BAREQ
-    |    CARETEQ
-    |    PERCENTEQ
-    |    LTLTEQ
-    |    GTGTEQ
-    |    GTGTGTEQ
-    ;
-*/
+SLASH        : '/';
+PERCENT      : '%';
+PLUS         : '+';
+SUB          : '-';
+EQEQ         : '==';
+BANGEQ       : '!=';
+AMP          : '&';
+CARET        : '^';
+BAR          : '|';
+AMPAMP       : '&&';
+BARBAR       : '||';
+CARETEQ      : '^=';
+PLUSEQ       : '+=';
+SUBEQ        : '-=';
+STAREQ       : '*=';
+SLASHEQ      : '/=';
+AMPEQ        : '&=';
+BAREQ        : '|=';
+PERCENTEQ    : '%=';
+GT           : '>';
+LT           : '<';
+INSTANCEOF   : 'instanceof';
+CONST        : 'const';
+GOTO         : 'goto';
 
 fragment
 ZeroToThree
     :    '0'..'3'
     ;
-
-//Input
-//    :    InputElements? Sub?                                                                                       // InputElementsopt Subopt
-//    ;
-
-//fragment
-//InputElements
-//    :    InputElement+                                                                                                  // InputElement
-//    ;
-
-//fragment
-//InputElement
-//    :    WhiteSpace                                                                                                    // WhiteSpace
-//    |    Comment                                                                                                       // Comment
-//    |    Token                                                                                                         // Token
-//    ;
-
-//Token
-//    :    Identifier                                                                                                    // Identifier
-//    |    Keyword                                                                                                       // Keyword
-//    |    Literal                                                                                                       // Literal
-//    |    Separator                                                                                                     // Separator
-//    |    Operator                                                                                                      // Operator
-//    ;
 
 fragment
 IntegerTypeSuffix
@@ -268,33 +158,6 @@ DecimalFloatingPointLiteral
 fragment
 HexadecimalFloatingPointLiteral
     :    HexSignificand BinaryExponent FloatTypeSuffix?
-    ;
-
-fragment
-Sub
-    :    '\u001A'
-    ;
-
-fragment
-TraditionalComment
-    :    SLASH STAR CommentTail                                                                                           // / * CommentTail
-    ;
-
-fragment
-CommentTail
-    :    STAR+ SLASH
-    |    NotStar STAR+ SLASH                                                                                           // NotStar CommentTail
-    ;
-
-fragment
-NotStar
-    :    ~[*]                                                                                                        // InputCharacter but not *
-    |    LineTerminator
-    ;
-
-fragment
-CharactersInLine
-    :    InputCharacter+                                                                                                // InputCharacter
     ;
 
 fragment
@@ -538,8 +401,8 @@ EscapeSequence
     |    '\\f' /* \u000c: form feed FF */
     |    '\\r' /* \u000d: carriage return CR */
     |    '\\"' /* \u0022: double quote " */
-    |    '\\'' /* \u0027: single quote ' */
-    |    '\\' /* \u005c: backslash \ */
+    |    '\\\'' /* \u0027: single quote ' */
+    |    '\\\\' /* \u005c: backslash \ */
     |    OctalEscape /* \u0000 to \u00ff: from octal value */
     ;
 
@@ -580,29 +443,6 @@ BinaryIntegerLiteral
     :    BinaryNumeral IntegerTypeSuffix?
     ;
 
-/////// NON-FRAGMENTS //////////
-
-
-IntegerLiteral
-    :    DecimalIntegerLiteral
-    |    HexIntegerLiteral
-    |    OctalIntegerLiteral
-    |    BinaryIntegerLiteral
-    ;
-
-FloatingPointLiteral
-    :    DecimalFloatingPointLiteral
-    |    HexadecimalFloatingPointLiteral
-    ;
-
-CharacterLiteral
-    :    '\'' SingleCharacter '\''                                                                                           // ' SingleCharacter '
-    |    '\'' EscapeSequence '\''                                                                                            // ' EscapeSequence '
-    ;
-
-StringLiteral
-    :    '"' StringCharacter*? '"'
-    ;
 
 fragment
 InputCharacter
@@ -628,7 +468,32 @@ StringCharacters
 fragment
 StringCharacter
     :    EscapeSequence
+    |    UnicodeEscape
     |    ~('"'|'\\')
+    ;
+
+/////// NON-FRAGMENTS //////////
+
+IntegerLiteral
+    :    DecimalIntegerLiteral
+    |    HexIntegerLiteral
+    |    OctalIntegerLiteral
+    |    BinaryIntegerLiteral
+    ;
+
+FloatingPointLiteral
+    :    DecimalFloatingPointLiteral
+    |    HexadecimalFloatingPointLiteral
+    ;
+
+CharacterLiteral
+    :    '\'' SingleCharacter '\''                                                                                           // ' SingleCharacter '
+    |    '\'' EscapeSequence '\''                                                                                            // ' EscapeSequence '
+    |    '\'' UnicodeEscape '\''
+    ;
+
+StringLiteral
+    :    '"' StringCharacter*? '"'
     ;
 
 Identifier
@@ -648,16 +513,10 @@ LineTerminator
     |    '\r\n'          -> channel(HIDDEN)
     ;
 
-Comment
-    :    EndOfLineComment      -> channel(HIDDEN)                          // EndOfLineComment
-//    |    TraditionalComment    -> channel(HIDDEN)                          // TraditionalComment
-    ;
-
-Comment2
+SlashComment
     :   '/*' .*? '*/'    -> channel(HIDDEN) // match anything between /* and */
     ;
 
 EndOfLineComment
-    :    '//' .*? LineTerminator                                                                                   // / / CharactersInLineopt
+    :    '//' .*? LineTerminator -> channel(HIDDEN)
     ;
-
