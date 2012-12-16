@@ -1,46 +1,24 @@
 package net.java.antlrjavaparser.adapter;
 
 import net.java.antlrjavaparser.Java7Parser;
+import net.java.antlrjavaparser.api.body.ClassOrInterfaceDeclaration;
 import net.java.antlrjavaparser.api.body.ModifierSet;
 import net.java.antlrjavaparser.api.body.TypeDeclaration;
 import net.java.antlrjavaparser.api.expr.AnnotationExpr;
+import net.java.antlrjavaparser.api.type.ClassOrInterfaceType;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Administrator
- * Date: 12/4/12
- * Time: 7:07 PM
- * To change this template use File | Settings | File Templates.
- */
-public final class AdapterUtil {
-    private AdapterUtil() {
+public class NormalClassDeclarationContextAdapter implements Adapter<TypeDeclaration, Java7Parser.NormalClassDeclarationContext> {
+    public TypeDeclaration adapt(Java7Parser.NormalClassDeclarationContext context) {
 
-    }
+        ClassOrInterfaceDeclaration classOrInterfaceDeclaration = new ClassOrInterfaceDeclaration();
 
-    public static String dottedIdentifier(List<TerminalNode> terminalNodeList) {
-        String identifier = "";
-
-        for (int i = 0; i < terminalNodeList.size(); i++) {
-            identifier += (i > 0 ? "." : "") + terminalNodeList.get(i).getText();
-        }
-
-        return identifier;
-    }
-
-    public static void setModifiers(Java7Parser.ModifiersContext modifiersContext, TypeDeclaration typeDeclaration) {
-        if (modifiersContext != null && modifiersContext.modifier() != null) {
-            setModifiers(modifiersContext.modifier(), typeDeclaration);
-        }
-    }
-
-    public static void setModifiers(List<Java7Parser.ModifierContext> modifierList, TypeDeclaration typeDeclaration) {
         int modifiers = 0;
         List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
-        for (Java7Parser.ModifierContext modifierContext : modifierList) {
+        for (Java7Parser.ModifierContext modifierContext : context.modifiers().modifier()) {
             if (hasModifier(modifierContext.PUBLIC())) {
                 modifiers |= ModifierSet.PUBLIC;
             }
@@ -75,12 +53,25 @@ public final class AdapterUtil {
             }
         }
 
-        typeDeclaration.setModifiers(modifiers);
-        typeDeclaration.setAnnotations(annotations);
+        classOrInterfaceDeclaration.setAnnotations(annotations);
+        classOrInterfaceDeclaration.setModifiers(modifiers);
+        classOrInterfaceDeclaration.setInterface(false);
+        classOrInterfaceDeclaration.setName(context.Identifier().getText());
+
+        // Extends
+        if (context.type() != null) {
+            List<ClassOrInterfaceType> classOrInterfaceTypeList = new LinkedList<ClassOrInterfaceType>();
+            ClassOrInterfaceType extendsClassOrInterfaceType = (ClassOrInterfaceType)Adapters.getTypeContextAdapter().adapt(context.type());
+            classOrInterfaceTypeList.add(extendsClassOrInterfaceType);
+            classOrInterfaceDeclaration.setExtends(classOrInterfaceTypeList);
+        }
+
+        //classOrInterfaceDeclaration.getExtends()
+
+        return classOrInterfaceDeclaration;
     }
 
-    private static boolean hasModifier(TerminalNode modifier) {
+    private boolean hasModifier(TerminalNode modifier) {
         return modifier != null;
     }
-
 }
