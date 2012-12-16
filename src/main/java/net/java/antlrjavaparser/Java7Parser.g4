@@ -612,15 +612,12 @@ type
         )*
     ;
 
-
 classOrInterfaceType
-    :   Identifier
-        (typeArguments
-        )?
-        (DOT Identifier
-            (typeArguments
-            )?
-        )*
+    :   identifierTypeArgument (DOT identifierTypeArgument)*
+    ;
+
+identifierTypeArgument
+    :    Identifier typeArguments?
     ;
 
 primitiveType
