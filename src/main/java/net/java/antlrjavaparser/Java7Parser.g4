@@ -355,22 +355,23 @@ classOrInterfaceDeclaration
 
 
 modifiers
-    :
-    (    annotation
-    |   PUBLIC
-    |   PROTECTED
-    |   PRIVATE
-    |   STATIC
-    |   ABSTRACT
-    |   FINAL
-    |   NATIVE
-    |   SYNCHRONIZED
-    |   TRANSIENT
-    |   VOLATILE
-    |   STRICTFP
-    )*
+    :    modifier*
     ;
 
+modifier
+    :    annotation
+    |    PUBLIC
+    |    PROTECTED
+    |    PRIVATE
+    |    STATIC
+    |    ABSTRACT
+    |    FINAL
+    |    NATIVE
+    |    SYNCHRONIZED
+    |    TRANSIENT
+    |    VOLATILE
+    |    STRICTFP
+    ;
 
 variableModifiers
     :   (   FINAL
@@ -419,13 +420,7 @@ typeBound
 
 
 enumDeclaration
-    :   modifiers
-        (ENUM
-        )
-        Identifier
-        (IMPLEMENTS typeList
-        )?
-        enumBody
+    :   modifiers ENUM Identifier (IMPLEMENTS typeList)? enumBody
     ;
 
 
@@ -723,13 +718,21 @@ annotations
  * '@' is flagged in modifier
  */
 annotation
-    :   AT qualifiedName
-        (   LPAREN
-                  (   elementValuePairs
-                  |   elementValue
-                  )?
-            RPAREN
-        )?
+    :    markerAnnotation
+    |    singleElementAnnotation
+    |    normalAnnotation
+    ;
+
+markerAnnotation
+    :    AT qualifiedName
+    ;
+
+singleElementAnnotation
+    :    AT qualifiedName LPAREN elementValue RPAREN
+    ;
+
+normalAnnotation
+    :    AT qualifiedName LPAREN elementValuePairs? RPAREN
     ;
 
 elementValuePairs
