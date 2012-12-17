@@ -1,7 +1,7 @@
 package net.java.antlrjavaparser.test;
 
-import net.java.antlrjavaparser.Java7BaseListener;
 import net.java.antlrjavaparser.Java7Parser;
+import net.java.antlrjavaparser.Java7ParserBaseListener;
 import net.java.antlrjavaparser.adapter.Adapters;
 import net.java.antlrjavaparser.api.CompilationUnit;
 
@@ -12,7 +12,7 @@ import net.java.antlrjavaparser.api.CompilationUnit;
  * Time: 10:55 PM
  * To change this template use File | Settings | File Templates.
  */
-public class CompilationUnitListener extends Java7BaseListener {
+public class CompilationUnitListener extends Java7ParserBaseListener {
 
     private Java7Parser parser;
     private CompilationUnit compilationUnit;
@@ -22,14 +22,11 @@ public class CompilationUnitListener extends Java7BaseListener {
     }
 
     @Override
-    public void exitLiteral(Java7Parser.LiteralContext ctx) {
-        super.exitLiteral(ctx);    //To change body of overridden methods use File | Settings | File Templates.
-    }
-
-    @Override
     public void exitCompilationUnit(Java7Parser.CompilationUnitContext ctx) {
 
-        compilationUnit = Adapters.getCompilationUnitAdapter().adapt(ctx);
+        System.out.println("Done");
+
+        compilationUnit = Adapters.getCompilationUnitContextAdapter().adapt(ctx);
 
         System.out.println(compilationUnit.toString());
 

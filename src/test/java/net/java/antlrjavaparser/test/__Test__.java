@@ -5,6 +5,8 @@ import net.java.antlrjavaparser.Java7Parser;
 import net.java.antlrjavaparser.api.CompilationUnit;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
@@ -21,7 +23,7 @@ public class __Test__ {
     }
 
     public void test() throws Exception {
-        InputStream in = getClass().getClassLoader().getResourceAsStream("SimpleTest.java.txt");
+        InputStream in = getClass().getClassLoader().getResourceAsStream("testFiles/SimpleTest.java.txt");
 
         if (in == null) {
             System.err.println("Unable to find test file.");
@@ -30,10 +32,16 @@ public class __Test__ {
 
         Java7Lexer lex = new Java7Lexer(new ANTLRInputStream(in));
         CommonTokenStream tokens = new CommonTokenStream(lex);
+
+        //printTokens(lex);
+
         Java7Parser parser = new Java7Parser(tokens);
+        long start = System.currentTimeMillis();
 
-        ParseTree tree = parser.compilationUnit();
+        parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
+        ParseTree tree = null;
 
+        tree = parser.compilationUnit();
         ParseTreeWalker walker = new ParseTreeWalker();
 
         // Fills out the compilationUnit object
@@ -43,6 +51,31 @@ public class __Test__ {
         compilationUnit = listener.getCompilationUnit();
 
         System.out.println("==========================================================================");
+
+        long end = System.currentTimeMillis();
+
+        System.out.println((end - start) + "ms");
+
+
         //System.out.println(compilationUnit.toString());
+    }
+
+    private void printTokens(Java7Lexer lex) {
+        // Print tokens
+        Token token = null;
+        while ((token = lex.nextToken()) != null) {
+
+            if (token.getType() == Token.EOF) {
+                break;
+            }
+
+            if (token.getChannel() == Token.HIDDEN_CHANNEL) {
+                continue;
+            }
+
+            System.out.println("Token: [" + token.getText() + "][" + token.getType() + "]");
+        }
+
+        lex.reset();
     }
 }

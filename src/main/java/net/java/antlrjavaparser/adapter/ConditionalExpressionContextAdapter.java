@@ -7,8 +7,15 @@ public class ConditionalExpressionContextAdapter implements Adapter<Expression, 
     public Expression adapt(Java7Parser.ConditionalExpressionContext context) {
         //ConditionalExpr conditionalExpr =  Adapters.getConditionalOrExpressionContextAdapter().adapt(context.conditionalOrExpression());
 
-        Adapters.getConditionalOrExpressionContextAdapter().adapt(context.conditionalOrExpression());
+        Expression expression = Adapters.getConditionalOrExpressionContextAdapter().adapt(context.conditionalOrExpression());
 
-        return null;
+        if (context.QUES() != null) {
+
+            Conditional
+
+            return null;
+        } else {
+            return expression;
+        }
     }
 }

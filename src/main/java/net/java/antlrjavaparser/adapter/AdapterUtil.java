@@ -1,9 +1,10 @@
 package net.java.antlrjavaparser.adapter;
 
 import net.java.antlrjavaparser.Java7Parser;
-import net.java.antlrjavaparser.api.body.ModifierSet;
-import net.java.antlrjavaparser.api.body.TypeDeclaration;
+import net.java.antlrjavaparser.api.body.*;
 import net.java.antlrjavaparser.api.expr.AnnotationExpr;
+import net.java.antlrjavaparser.api.type.ClassOrInterfaceType;
+import net.java.antlrjavaparser.api.type.Type;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.LinkedList;
@@ -31,13 +32,13 @@ public final class AdapterUtil {
         return identifier;
     }
 
-    public static void setModifiers(Java7Parser.ModifiersContext modifiersContext, TypeDeclaration typeDeclaration) {
+    public static void setModifiers(Java7Parser.ModifiersContext modifiersContext, BodyDeclaration typeDeclaration) {
         if (modifiersContext != null && modifiersContext.modifier() != null) {
             setModifiers(modifiersContext.modifier(), typeDeclaration);
         }
     }
 
-    public static void setModifiers(List<Java7Parser.ModifierContext> modifierList, TypeDeclaration typeDeclaration) {
+    public static void setModifiers(List<Java7Parser.ModifierContext> modifierList, BodyDeclaration typeDeclaration) {
         int modifiers = 0;
         List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
         for (Java7Parser.ModifierContext modifierContext : modifierList) {
@@ -75,12 +76,35 @@ public final class AdapterUtil {
             }
         }
 
-        typeDeclaration.setModifiers(modifiers);
         typeDeclaration.setAnnotations(annotations);
+
+        if (typeDeclaration instanceof TypeDeclaration) {
+            ((TypeDeclaration)typeDeclaration).setModifiers(modifiers);
+        } else if (typeDeclaration instanceof MethodDeclaration) {
+            ((MethodDeclaration)typeDeclaration).setModifiers(modifiers);
+        } else if (typeDeclaration instanceof ConstructorDeclaration) {
+            ((ConstructorDeclaration)typeDeclaration).setModifiers(modifiers);
+        } else if (typeDeclaration instanceof FieldDeclaration) {
+            ((FieldDeclaration)typeDeclaration).setModifiers(modifiers);
+        }
     }
 
     private static boolean hasModifier(TerminalNode modifier) {
         return modifier != null;
+    }
+
+    public static List<ClassOrInterfaceType> convertTypeList(List<Type> typeList) {
+
+        if (typeList == null) {
+            return null;
+        }
+
+        List<ClassOrInterfaceType> classOrInterfaceTypeList = new LinkedList<ClassOrInterfaceType>();
+        for (Type type : typeList) {
+            classOrInterfaceTypeList.add((ClassOrInterfaceType)type);
+        }
+
+        return classOrInterfaceTypeList;
     }
 
 }

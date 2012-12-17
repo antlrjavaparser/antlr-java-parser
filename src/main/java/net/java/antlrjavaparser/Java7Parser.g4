@@ -505,47 +505,25 @@ classBodyDeclaration
     ;
 
 memberDecl
-    :    fieldDeclaration
+    :    constructorDeclaration
+    |    fieldDeclaration
     |    methodDeclaration
     |    classDeclaration
     |    interfaceDeclaration
     ;
 
-
 methodDeclaration
-    :
-        /* For constructor, return type is null, name is 'init' */
-         modifiers
-        (typeParameters
-        )?
-        Identifier
-        formalParameters
-        (THROWS qualifiedNameList
-        )?
-        LBRACE
-        (explicitConstructorInvocation
-        )?
-        (blockStatement
-        )*
-        RBRACE
-    |   modifiers
-        (typeParameters
-        )?
-        (type
-        |   VOID
-        )
-        Identifier
-        formalParameters
-        (LBRACKET RBRACKET
-        )*
-        (THROWS qualifiedNameList
-        )?
-        (
-            block
-        |   SEMI
-        )
+    :    modifiers typeParameters? (type | VOID) Identifier formalParameters (LBRACKET RBRACKET)* (THROWS qualifiedNameList)? (block | SEMI)
     ;
 
+/* For constructor, return type is null, name is 'init' */
+constructorDeclaration
+    :    modifiers typeParameters? Identifier formalParameters (THROWS qualifiedNameList)? constructorBlock
+    ;
+
+constructorBlock
+    :    LBRACE explicitConstructorInvocation? blockStatement* RBRACE
+    ;
 
 fieldDeclaration
     :   modifiers
@@ -966,18 +944,19 @@ expression
     ;
 
 assignmentOperator
-    :   EQ
-    |   PLUSEQ
-    |   SUBEQ
-    |   STAREQ
-    |   SLASHEQ
-    |   AMPEQ
-    |   BAREQ
-    |   CARETEQ
-    |   PERCENTEQ
-    |   LT LT EQ
-    |   GT GT GT EQ
-    |   GT GT EQ
+locals [int assignmentType]
+    :   EQ          {$assignmentType = 1;}
+    |   PLUSEQ      {$assignmentType = 2;}
+    |   SUBEQ       {$assignmentType = 3;}
+    |   STAREQ      {$assignmentType = 4;}
+    |   SLASHEQ     {$assignmentType = 5;}
+    |   AMPEQ       {$assignmentType = 6;}
+    |   BAREQ       {$assignmentType = 7;}
+    |   CARETEQ     {$assignmentType = 8;}
+    |   PERCENTEQ   {$assignmentType = 9;}
+    |   LT LT EQ    {$assignmentType = 10;}
+    |   GT GT GT EQ {$assignmentType = 11;}
+    |   GT GT EQ    {$assignmentType = 12;}
     ;
 
 conditionalExpression

@@ -1,5 +1,7 @@
 package net.java.antlrjavaparser.adapter;
 
+import net.java.antlrjavaparser.api.body.ConstructorDeclaration;
+
 public class Adapters {
     private static CompilationUnitContextAdapter compilationUnitContextAdapter = new CompilationUnitContextAdapter();
     private static PackageDeclarationContextAdapter packageDeclarationContextAdapter = new PackageDeclarationContextAdapter();
@@ -119,6 +121,8 @@ public class Adapters {
     private static MethodHeaderContextAdapter methodHeaderContextAdapter = new MethodHeaderContextAdapter();
     private static FieldHeaderContextAdapter fieldHeaderContextAdapter = new FieldHeaderContextAdapter();
     private static LocalVariableHeaderContextAdapter localVariableHeaderContextAdapter = new LocalVariableHeaderContextAdapter();
+    private static ConstructorDeclarationContextAdapter constructorDeclarationContextAdapter = new ConstructorDeclarationContextAdapter();
+    private static ConstructorBlockContextAdapter constructorBlockContextAdapter = new ConstructorBlockContextAdapter();
 
     private Adapters() {
 
@@ -596,5 +600,11 @@ public class Adapters {
         return localVariableHeaderContextAdapter;
     }
 
+    public static ConstructorDeclarationContextAdapter getConstructorDeclarationContextAdapter() {
+        return constructorDeclarationContextAdapter;
+    }
 
+    public static ConstructorBlockContextAdapter getConstructorBlockContextAdapter() {
+        return constructorBlockContextAdapter;
+    }
 }

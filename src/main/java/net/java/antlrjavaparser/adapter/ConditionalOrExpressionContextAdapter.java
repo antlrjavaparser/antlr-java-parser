@@ -6,6 +6,8 @@ import net.java.antlrjavaparser.api.expr.Expression;
 public class ConditionalOrExpressionContextAdapter implements Adapter<Expression, Java7Parser.ConditionalOrExpressionContext> {
     public Expression adapt(Java7Parser.ConditionalOrExpressionContext context) {
 
+        //BinaryExpr
+
         for (Java7Parser.ConditionalAndExpressionContext conditionalAndExpressionContext : context.conditionalAndExpression()) {
             Adapters.getConditionalAndExpressionContextAdapter().adapt(conditionalAndExpressionContext);
         }

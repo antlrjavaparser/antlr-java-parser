@@ -9,6 +9,7 @@ public class AnnotationTypeDeclarationContextAdapter implements Adapter<Annotati
         AnnotationDeclaration annotationDeclaration = new AnnotationDeclaration();
 
         AdapterUtil.setModifiers(context.modifiers(), annotationDeclaration);
+        annotationDeclaration.setName(context.Identifier().getText());
 
         return annotationDeclaration;
     }
