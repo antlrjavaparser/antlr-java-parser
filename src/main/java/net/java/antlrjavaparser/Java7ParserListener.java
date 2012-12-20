@@ -131,6 +131,8 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitUnaryExpression(Java7Parser.UnaryExpressionContext ctx);
 	void enterType(Java7Parser.TypeContext ctx);
 	void exitType(Java7Parser.TypeContext ctx);
+	void enterAdditiveOp(Java7Parser.AdditiveOpContext ctx);
+	void exitAdditiveOp(Java7Parser.AdditiveOpContext ctx);
 	void enterInterfaceFieldDeclaration(Java7Parser.InterfaceFieldDeclarationContext ctx);
 	void exitInterfaceFieldDeclaration(Java7Parser.InterfaceFieldDeclarationContext ctx);
 	void enterMemberDecl(Java7Parser.MemberDeclContext ctx);
@@ -207,6 +209,8 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitCreator(Java7Parser.CreatorContext ctx);
 	void enterQualifiedNameList(Java7Parser.QualifiedNameListContext ctx);
 	void exitQualifiedNameList(Java7Parser.QualifiedNameListContext ctx);
+	void enterMultiplicativeOp(Java7Parser.MultiplicativeOpContext ctx);
+	void exitMultiplicativeOp(Java7Parser.MultiplicativeOpContext ctx);
 	void enterFormalParameterDecls(Java7Parser.FormalParameterDeclsContext ctx);
 	void exitFormalParameterDecls(Java7Parser.FormalParameterDeclsContext ctx);
 	void enterNormalAnnotation(Java7Parser.NormalAnnotationContext ctx);
@@ -231,6 +235,8 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitResource(Java7Parser.ResourceContext ctx);
 	void enterElementValuePair(Java7Parser.ElementValuePairContext ctx);
 	void exitElementValuePair(Java7Parser.ElementValuePairContext ctx);
+	void enterNotEqualityExpression(Java7Parser.NotEqualityExpressionContext ctx);
+	void exitNotEqualityExpression(Java7Parser.NotEqualityExpressionContext ctx);
 	void enterMethodHeader(Java7Parser.MethodHeaderContext ctx);
 	void exitMethodHeader(Java7Parser.MethodHeaderContext ctx);
 	void enterArrayInitializer(Java7Parser.ArrayInitializerContext ctx);

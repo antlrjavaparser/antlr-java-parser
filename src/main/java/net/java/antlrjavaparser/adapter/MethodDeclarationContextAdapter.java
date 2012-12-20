@@ -2,6 +2,8 @@ package net.java.antlrjavaparser.adapter;
 
 import net.java.antlrjavaparser.Java7Parser;
 import net.java.antlrjavaparser.api.body.MethodDeclaration;
+import net.java.antlrjavaparser.api.type.ReferenceType;
+import net.java.antlrjavaparser.api.type.Type;
 import net.java.antlrjavaparser.api.type.VoidType;
 
 public class MethodDeclarationContextAdapter implements Adapter<MethodDeclaration, Java7Parser.MethodDeclarationContext> {
@@ -11,13 +13,24 @@ public class MethodDeclarationContextAdapter implements Adapter<MethodDeclaratio
         methodDeclaration.setName(context.Identifier().getText());
 
         if (context.VOID() != null) {
-            methodDeclaration.setType(new VoidType());
+            Type type = new VoidType();
+            methodDeclaration.setType(type);
         } else {
-            methodDeclaration.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
+            ReferenceType referenceType = (ReferenceType)Adapters.getTypeContextAdapter().adapt(context.type());
+            if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
+                int arraySize = referenceType.getArrayCount();
+                arraySize += context.LBRACKET().size();
+                referenceType.setArrayCount(arraySize);
+            }
+            methodDeclaration.setType(referenceType);
         }
 
         AdapterUtil.setModifiers(context.modifiers(), methodDeclaration);
         methodDeclaration.setThrows(Adapters.getQualifiedNameListContextAdapter().adapt(context.qualifiedNameList()));
+
+        methodDeclaration.setBody(Adapters.getBlockContextAdapter().adapt(context.block()));
+        methodDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
+        methodDeclaration.setParameters(Adapters.getFormalParametersContextAdapter().adapt(context.formalParameters()));
 
         return methodDeclaration;
     }

@@ -3,6 +3,8 @@ package net.java.antlrjavaparser.adapter;
 import net.java.antlrjavaparser.Java7Parser;
 import net.java.antlrjavaparser.api.body.*;
 import net.java.antlrjavaparser.api.expr.AnnotationExpr;
+import net.java.antlrjavaparser.api.expr.BinaryExpr;
+import net.java.antlrjavaparser.api.expr.Expression;
 import net.java.antlrjavaparser.api.type.ClassOrInterfaceType;
 import net.java.antlrjavaparser.api.type.Type;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -107,4 +109,40 @@ public final class AdapterUtil {
         return classOrInterfaceTypeList;
     }
 
+    /**
+     *
+     * @param adapter
+     * @param contextList
+     * @param operator
+     * @param <C> Context Type
+     * @return
+     */
+    public static <C> Expression handleExpression(Adapter<Expression, C> adapter, List<C> contextList, BinaryExpr.Operator operator) {
+        Expression expression = adapter.adapt(contextList.get(0));
+
+        // This expression represents more than one consecutive OR expression
+        if (contextList.size() > 1) {
+            BinaryExpr root = new BinaryExpr();
+
+            root.setLeft(expression);
+            root.setOperator(operator);
+            BinaryExpr currentExpression = root;
+
+            for (int i = 1; i < contextList.size(); i++) {
+                currentExpression.setRight(adapter.adapt(contextList.get(i)));
+
+                // On the last one, do not create a tail.
+                if (i < contextList.size() - 1) {
+                    BinaryExpr binaryExpr = new BinaryExpr();
+                    binaryExpr.setLeft(currentExpression);
+                    binaryExpr.setOperator(operator);
+                    currentExpression = binaryExpr;
+                }
+            }
+
+            return currentExpression;
+        }
+
+        return expression;
+    }
 }

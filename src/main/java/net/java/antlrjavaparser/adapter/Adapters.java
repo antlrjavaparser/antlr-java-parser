@@ -89,6 +89,7 @@ public class Adapters {
     private static ExclusiveOrExpressionContextAdapter exclusiveOrExpressionContextAdapter = new ExclusiveOrExpressionContextAdapter();
     private static AndExpressionContextAdapter andExpressionContextAdapter = new AndExpressionContextAdapter();
     private static EqualityExpressionContextAdapter equalityExpressionContextAdapter = new EqualityExpressionContextAdapter();
+    private static NotEqualityExpressionContextAdapter notEqualityExpressionContextAdapter = new NotEqualityExpressionContextAdapter();
     private static InstanceOfExpressionContextAdapter instanceOfExpressionContextAdapter = new InstanceOfExpressionContextAdapter();
     private static RelationalExpressionContextAdapter relationalExpressionContextAdapter = new RelationalExpressionContextAdapter();
     private static RelationalOpContextAdapter relationalOpContextAdapter = new RelationalOpContextAdapter();
@@ -606,5 +607,9 @@ public class Adapters {
 
     public static ConstructorBlockContextAdapter getConstructorBlockContextAdapter() {
         return constructorBlockContextAdapter;
+    }
+
+    public static NotEqualityExpressionContextAdapter getNotEqualityExpressionContextAdapter() {
+        return notEqualityExpressionContextAdapter;
     }
 }

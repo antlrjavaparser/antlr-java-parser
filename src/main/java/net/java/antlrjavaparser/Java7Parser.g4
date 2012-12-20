@@ -996,13 +996,11 @@ andExpression
     ;
 
 equalityExpression
-    :   instanceOfExpression
-        (
-            (   EQEQ
-            |   BANGEQ
-            )
-            instanceOfExpression
-        )*
+    :   notEqualityExpression (EQEQ notEqualityExpression)*
+    ;
+
+notEqualityExpression
+    :    instanceOfExpression (BANGEQ instanceOfExpression)*
     ;
 
 instanceOfExpression
@@ -1012,52 +1010,49 @@ instanceOfExpression
     ;
 
 relationalExpression
-    :   shiftExpression
-        (relationalOp shiftExpression
-        )*
+    :   shiftExpression (relationalOp shiftExpression)*
     ;
 
 relationalOp
-    :   LT EQ
-    |   GT EQ
-    |   LT
-    |   GT
+    locals [int operatorType]
+    :   LT EQ {$operatorType = 1;}
+    |   GT EQ {$operatorType = 2;}
+    |   LT    {$operatorType = 3;}
+    |   GT    {$operatorType = 4;}
     ;
 
 shiftExpression
-    :   additiveExpression
-        (shiftOp additiveExpression
-        )*
+    :   additiveExpression (shiftOp additiveExpression)*
     ;
 
-
 shiftOp
-    :    LT LT
-    |    GT GT GT
-    |    GT GT
+    locals [int operatorType]
+    :    LT LT    {$operatorType = 1;}
+    |    GT GT GT {$operatorType = 2;}
+    |    GT GT    {$operatorType = 3;}
     ;
 
 
 additiveExpression
-    :   multiplicativeExpression
-        (
-            (   PLUS
-            |   SUB
-            )
-            multiplicativeExpression
-         )*
+    :   multiplicativeExpression (additiveOp multiplicativeExpression)*
+    ;
+
+additiveOp
+    locals [int operatorType]
+    :    PLUS    {$operatorType = 1;}
+    |    SUB     {$operatorType = 2;}
     ;
 
 multiplicativeExpression
     :
-        unaryExpression
-        (
-            (   STAR
-            |   SLASH
-            |   PERCENT
-            )
-            unaryExpression
-        )*
+        unaryExpression (multiplicativeOp unaryExpression)*
+    ;
+
+multiplicativeOp
+    locals [int operatorType]
+    :    STAR    {$operatorType = 1;}
+    |    SLASH   {$operatorType = 2;}
+    |    PERCENT {$operatorType = 3;}
     ;
 
 /**
@@ -1069,19 +1064,14 @@ unaryExpression
     |   SUB unaryExpression
     |   PLUSPLUS unaryExpression
     |   SUBSUB unaryExpression
+    |   TILDE unaryExpression
+    |   BANG unaryExpression
     |   unaryExpressionNotPlusMinus
     ;
 
 unaryExpressionNotPlusMinus
-    :   TILDE unaryExpression
-    |   BANG unaryExpression
-    |   castExpression
-    |   primary
-        (selector
-        )*
-        (   PLUSPLUS
-        |   SUBSUB
-        )?
+    :   castExpression
+    |   primary (selector)* (PLUSPLUS | SUBSUB)?
     ;
 
 castExpression
@@ -1094,24 +1084,12 @@ castExpression
  */
 primary
     :   parExpression
-    |   THIS
-        (DOT Identifier
-        )*
-        (identifierSuffix
-        )?
-    |   Identifier
-        (DOT Identifier
-        )*
-        (identifierSuffix
-        )?
-    |   SUPER
-        superSuffix
+    |   THIS (DOT Identifier)* (identifierSuffix)?
+    |   Identifier (DOT Identifier)* (identifierSuffix)?
+    |   SUPER superSuffix
     |   literal
     |   creator
-    |   primitiveType
-        (LBRACKET RBRACKET
-        )*
-        DOT CLASS
+    |   primitiveType (LBRACKET RBRACKET)* DOT CLASS
     |   VOID DOT CLASS
     ;
 
@@ -1139,12 +1117,9 @@ identifierSuffix
     ;
 
 selector
-    :   DOT Identifier
-        (arguments
-        )?
+    :   DOT Identifier (arguments)?
     |   DOT THIS
-    |   DOT SUPER
-        superSuffix
+    |   DOT SUPER superSuffix
     |   innerCreator
     |   LBRACKET expression RBRACKET
     ;

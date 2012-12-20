@@ -134,6 +134,8 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	@Override public void exitUnaryExpression(Java7Parser.UnaryExpressionContext ctx) { }
 	@Override public void enterType(Java7Parser.TypeContext ctx) { }
 	@Override public void exitType(Java7Parser.TypeContext ctx) { }
+	@Override public void enterAdditiveOp(Java7Parser.AdditiveOpContext ctx) { }
+	@Override public void exitAdditiveOp(Java7Parser.AdditiveOpContext ctx) { }
 	@Override public void enterInterfaceFieldDeclaration(Java7Parser.InterfaceFieldDeclarationContext ctx) { }
 	@Override public void exitInterfaceFieldDeclaration(Java7Parser.InterfaceFieldDeclarationContext ctx) { }
 	@Override public void enterMemberDecl(Java7Parser.MemberDeclContext ctx) { }
@@ -210,6 +212,8 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	@Override public void exitCreator(Java7Parser.CreatorContext ctx) { }
 	@Override public void enterQualifiedNameList(Java7Parser.QualifiedNameListContext ctx) { }
 	@Override public void exitQualifiedNameList(Java7Parser.QualifiedNameListContext ctx) { }
+	@Override public void enterMultiplicativeOp(Java7Parser.MultiplicativeOpContext ctx) { }
+	@Override public void exitMultiplicativeOp(Java7Parser.MultiplicativeOpContext ctx) { }
 	@Override public void enterFormalParameterDecls(Java7Parser.FormalParameterDeclsContext ctx) { }
 	@Override public void exitFormalParameterDecls(Java7Parser.FormalParameterDeclsContext ctx) { }
 	@Override public void enterNormalAnnotation(Java7Parser.NormalAnnotationContext ctx) { }
@@ -234,6 +238,8 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	@Override public void exitResource(Java7Parser.ResourceContext ctx) { }
 	@Override public void enterElementValuePair(Java7Parser.ElementValuePairContext ctx) { }
 	@Override public void exitElementValuePair(Java7Parser.ElementValuePairContext ctx) { }
+	@Override public void enterNotEqualityExpression(Java7Parser.NotEqualityExpressionContext ctx) { }
+	@Override public void exitNotEqualityExpression(Java7Parser.NotEqualityExpressionContext ctx) { }
 	@Override public void enterMethodHeader(Java7Parser.MethodHeaderContext ctx) { }
 	@Override public void exitMethodHeader(Java7Parser.MethodHeaderContext ctx) { }
 	@Override public void enterArrayInitializer(Java7Parser.ArrayInitializerContext ctx) { }
