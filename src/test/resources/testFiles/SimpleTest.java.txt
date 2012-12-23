@@ -1,3 +1,25 @@
-public class SimpleTest {
-    String name = "Mike" == "" + " De Haan" == "";
+public class SimpleTest extends Mike2 {
+    public void SimpleTest() {
+        if (true || false) {
+            doSomethingReallyCool();
+
+            while (true) {
+                this.cool();
+                this.cool;
+                this.cool[1][2];
+            }
+
+            int i = a + 1;
+
+            for (int i = 0; i < 100; i++) {
+                System.out.println("Hello World");
+            }
+        }
+    }
+
+    public class Inner {
+        public Inner() {
+            super("");
+        }
+    }
 }

@@ -23,6 +23,8 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitNormalClassDeclaration(Java7Parser.NormalClassDeclarationContext ctx);
 	void enterImportDeclaration(Java7Parser.ImportDeclarationContext ctx);
 	void exitImportDeclaration(Java7Parser.ImportDeclarationContext ctx);
+	void enterThisSuffix(Java7Parser.ThisSuffixContext ctx);
+	void exitThisSuffix(Java7Parser.ThisSuffixContext ctx);
 	void enterElementValuePairs(Java7Parser.ElementValuePairsContext ctx);
 	void exitElementValuePairs(Java7Parser.ElementValuePairsContext ctx);
 	void enterInterfaceMethodDeclaration(Java7Parser.InterfaceMethodDeclarationContext ctx);
@@ -49,6 +51,8 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitEnumDeclaration(Java7Parser.EnumDeclarationContext ctx);
 	void enterQualifiedImportName(Java7Parser.QualifiedImportNameContext ctx);
 	void exitQualifiedImportName(Java7Parser.QualifiedImportNameContext ctx);
+	void enterForeachStatement(Java7Parser.ForeachStatementContext ctx);
+	void exitForeachStatement(Java7Parser.ForeachStatementContext ctx);
 	void enterTypeParameter(Java7Parser.TypeParameterContext ctx);
 	void exitTypeParameter(Java7Parser.TypeParameterContext ctx);
 	void enterExplicitConstructorInvocation(Java7Parser.ExplicitConstructorInvocationContext ctx);
@@ -121,10 +125,10 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitAnnotationTypeDeclaration(Java7Parser.AnnotationTypeDeclarationContext ctx);
 	void enterExpression(Java7Parser.ExpressionContext ctx);
 	void exitExpression(Java7Parser.ExpressionContext ctx);
-	void enterResources(Java7Parser.ResourcesContext ctx);
-	void exitResources(Java7Parser.ResourcesContext ctx);
 	void enterRelationalOp(Java7Parser.RelationalOpContext ctx);
 	void exitRelationalOp(Java7Parser.RelationalOpContext ctx);
+	void enterResources(Java7Parser.ResourcesContext ctx);
+	void exitResources(Java7Parser.ResourcesContext ctx);
 	void enterFormalParameter(Java7Parser.FormalParameterContext ctx);
 	void exitFormalParameter(Java7Parser.FormalParameterContext ctx);
 	void enterUnaryExpression(Java7Parser.UnaryExpressionContext ctx);
@@ -173,6 +177,8 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitArrayCreator(Java7Parser.ArrayCreatorContext ctx);
 	void enterCatchFormalParameter(Java7Parser.CatchFormalParameterContext ctx);
 	void exitCatchFormalParameter(Java7Parser.CatchFormalParameterContext ctx);
+	void enterEmptyStatement(Java7Parser.EmptyStatementContext ctx);
+	void exitEmptyStatement(Java7Parser.EmptyStatementContext ctx);
 	void enterModifier(Java7Parser.ModifierContext ctx);
 	void exitModifier(Java7Parser.ModifierContext ctx);
 	void enterStatement(Java7Parser.StatementContext ctx);
@@ -189,12 +195,12 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitMultiplicativeExpression(Java7Parser.MultiplicativeExpressionContext ctx);
 	void enterAssignmentOperator(Java7Parser.AssignmentOperatorContext ctx);
 	void exitAssignmentOperator(Java7Parser.AssignmentOperatorContext ctx);
+	void enterShiftOp(Java7Parser.ShiftOpContext ctx);
+	void exitShiftOp(Java7Parser.ShiftOpContext ctx);
 	void enterCompilationUnit(Java7Parser.CompilationUnitContext ctx);
 	void exitCompilationUnit(Java7Parser.CompilationUnitContext ctx);
 	void enterElementValue(Java7Parser.ElementValueContext ctx);
 	void exitElementValue(Java7Parser.ElementValueContext ctx);
-	void enterShiftOp(Java7Parser.ShiftOpContext ctx);
-	void exitShiftOp(Java7Parser.ShiftOpContext ctx);
 	void enterClassOrInterfaceType(Java7Parser.ClassOrInterfaceTypeContext ctx);
 	void exitClassOrInterfaceType(Java7Parser.ClassOrInterfaceTypeContext ctx);
 	void enterUnaryExpressionNotPlusMinus(Java7Parser.UnaryExpressionNotPlusMinusContext ctx);
@@ -235,6 +241,8 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitResource(Java7Parser.ResourceContext ctx);
 	void enterElementValuePair(Java7Parser.ElementValuePairContext ctx);
 	void exitElementValuePair(Java7Parser.ElementValuePairContext ctx);
+	void enterNormalForStatement(Java7Parser.NormalForStatementContext ctx);
+	void exitNormalForStatement(Java7Parser.NormalForStatementContext ctx);
 	void enterNotEqualityExpression(Java7Parser.NotEqualityExpressionContext ctx);
 	void exitNotEqualityExpression(Java7Parser.NotEqualityExpressionContext ctx);
 	void enterMethodHeader(Java7Parser.MethodHeaderContext ctx);

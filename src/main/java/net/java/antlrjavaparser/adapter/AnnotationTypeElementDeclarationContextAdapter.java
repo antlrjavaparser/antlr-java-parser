@@ -5,6 +5,6 @@ import net.java.antlrjavaparser.Java7Parser;
 
 public class AnnotationTypeElementDeclarationContextAdapter implements Adapter<Node, Java7Parser.AnnotationTypeElementDeclarationContext> {
     public Node adapt(Java7Parser.AnnotationTypeElementDeclarationContext context) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }

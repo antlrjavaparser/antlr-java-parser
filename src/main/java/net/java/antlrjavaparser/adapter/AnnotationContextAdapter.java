@@ -15,6 +15,6 @@ public class AnnotationContextAdapter implements Adapter<AnnotationExpr, Java7Pa
             return Adapters.getSingleElementAnnotationContextAdapter().adapt(context.singleElementAnnotation());
         }
 
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        throw new RuntimeException("Unexpected Annotation Type");
     }
 }

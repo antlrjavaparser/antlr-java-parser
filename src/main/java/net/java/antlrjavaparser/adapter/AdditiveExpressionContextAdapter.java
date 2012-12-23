@@ -46,6 +46,6 @@ public class AdditiveExpressionContextAdapter implements Adapter<Expression, Jav
                 return BinaryExpr.Operator.minus;
         }
 
-        return null;
+        throw new RuntimeException("Operator Not Found");
     }
 }

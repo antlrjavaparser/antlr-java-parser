@@ -374,9 +374,7 @@ modifier
     ;
 
 variableModifiers
-    :   (   FINAL
-        |   annotation
-        )*
+    :   annotation* FINAL? annotation*
     ;
 
 
@@ -824,7 +822,6 @@ localVariableDeclaration
 statement
     :   block
     |   ASSERT  expression (COLON expression)? SEMI
-    |   ASSERT  expression (COLON expression)? SEMI
     |   IF parExpression statement (ELSE statement)?
     |   forstatement
     |   WHILE parExpression statement
@@ -842,7 +839,11 @@ statement
             )? SEMI
     |   expression  SEMI
     |   Identifier COLON statement
-    |   SEMI
+    |   emptyStatement
+    ;
+
+emptyStatement
+    :    SEMI
     ;
 
 switchBlockStatementGroups
@@ -907,19 +908,16 @@ formalParameter
     ;
 
 forstatement
-    :
-        // enhanced for loop
-        FOR LPAREN variableModifiers type Identifier COLON
-        expression RPAREN statement
+    :    foreachStatement
+    |    normalForStatement
+    ;
 
-        // normal for loop
-    |   FOR LPAREN
-                (forInit
-                )? SEMI
-                (expression
-                )? SEMI
-                (expressionList
-                )? RPAREN statement
+foreachStatement
+    :    FOR LPAREN variableModifiers type Identifier COLON expression RPAREN statement
+    ;
+
+normalForStatement
+    :    FOR LPAREN (forInit)? SEMI (expression)? SEMI (expressionList)? RPAREN statement
     ;
 
 forInit
@@ -1083,45 +1081,48 @@ castExpression
  * have to use scope here, parameter passing isn't well supported in antlr.
  */
 primary
-    :   parExpression
-    |   THIS (DOT Identifier)* (identifierSuffix)?
-    |   Identifier (DOT Identifier)* (identifierSuffix)?
-    |   SUPER superSuffix
-    |   literal
-    |   creator
-    |   primitiveType (LBRACKET RBRACKET)* DOT CLASS
-    |   VOID DOT CLASS
+locals [int operationType]
+    :    parExpression                                      {$operationType = 1;}
+    |    THIS (DOT Identifier)* (thisSuffix)?               {$operationType = 2;}
+    |    Identifier (DOT Identifier)* (identifierSuffix)?   {$operationType = 3;}
+    |    SUPER superSuffix                                  {$operationType = 4;}
+    |    literal                                            {$operationType = 5;}
+    |    creator                                            {$operationType = 6;}
+    |    primitiveType (LBRACKET RBRACKET)* DOT CLASS       {$operationType = 7;}
+    |    VOID DOT CLASS                                     {$operationType = 8;}
     ;
 
 superSuffix
-    :   arguments
-    |   DOT (typeArguments
-        )?
-        Identifier
-        (arguments
-        )?
+    :   DOT (typeArguments)? Identifier (arguments)?
     ;
 
+thisSuffix
+locals [int operationType]
+    :   (LBRACKET expression RBRACKET)+                     {$operationType = 1;}
+    |   arguments                                           {$operationType = 2;}
+    |   DOT nonWildcardTypeArguments Identifier arguments   {$operationType = 3;}
+    |   innerCreator                                        {$operationType = 4;}
+    ;
+
+
 identifierSuffix
-    :   (LBRACKET RBRACKET
-        )+
-        DOT CLASS
-    |   (LBRACKET expression RBRACKET
-        )+
-    |   arguments
-    |   DOT CLASS
-    |   DOT nonWildcardTypeArguments Identifier arguments
-    |   DOT THIS
-    |   DOT SUPER arguments
-    |   innerCreator
+locals [int operationType]
+    :   (LBRACKET RBRACKET)+ DOT CLASS                      {$operationType = 1;}
+    |   (LBRACKET expression RBRACKET)+                     {$operationType = 2;}
+    |   arguments                                           {$operationType = 3;}
+    |   DOT CLASS                                           {$operationType = 4;}
+    |   DOT nonWildcardTypeArguments Identifier arguments   {$operationType = 5;}
+    |   DOT THIS                                            {$operationType = 6;}
+    |   innerCreator                                        {$operationType = 7;}
     ;
 
 selector
-    :   DOT Identifier (arguments)?
-    |   DOT THIS
-    |   DOT SUPER superSuffix
-    |   innerCreator
-    |   LBRACKET expression RBRACKET
+locals [int operationType]
+    :   DOT Identifier (arguments)?     {$operationType = 1;}
+    |   DOT THIS                        {$operationType = 2;}
+    |   DOT SUPER superSuffix           {$operationType = 3;}
+    |   innerCreator                    {$operationType = 4;}
+    |   LBRACKET expression RBRACKET    {$operationType = 5;}
     ;
 
 creator
@@ -1131,20 +1132,8 @@ creator
     ;
 
 arrayCreator
-    :   NEW createdName
-        LBRACKET RBRACKET
-        (LBRACKET RBRACKET
-        )*
-        arrayInitializer
-
-    |   NEW createdName
-        LBRACKET expression
-        RBRACKET
-        (   LBRACKET expression
-            RBRACKET
-        )*
-        (LBRACKET RBRACKET
-        )*
+    :   NEW createdName LBRACKET RBRACKET (LBRACKET RBRACKET)* arrayInitializer
+    |   NEW createdName LBRACKET expression RBRACKET (LBRACKET expression RBRACKET)* (LBRACKET RBRACKET)*
     ;
 
 variableInitializer
@@ -1168,24 +1157,15 @@ createdName
     ;
 
 innerCreator
-    :   DOT NEW
-        (nonWildcardTypeArguments
-        )?
-        Identifier
-        (typeArguments
-        )?
-        classCreatorRest
+    :   DOT NEW (nonWildcardTypeArguments)? identifierTypeArgument classCreatorRest
     ;
 
 classCreatorRest
-    :   arguments
-        (classBody
-        )?
+    :   arguments (classBody)?
     ;
 
 nonWildcardTypeArguments
-    :   LT typeList
-        GT
+    :   LT typeList GT
     ;
 
 arguments

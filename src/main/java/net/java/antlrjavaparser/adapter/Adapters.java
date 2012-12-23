@@ -1,5 +1,6 @@
 package net.java.antlrjavaparser.adapter;
 
+import net.java.antlrjavaparser.Java7Parser;
 import net.java.antlrjavaparser.api.body.ConstructorDeclaration;
 
 public class Adapters {
@@ -124,6 +125,8 @@ public class Adapters {
     private static LocalVariableHeaderContextAdapter localVariableHeaderContextAdapter = new LocalVariableHeaderContextAdapter();
     private static ConstructorDeclarationContextAdapter constructorDeclarationContextAdapter = new ConstructorDeclarationContextAdapter();
     private static ConstructorBlockContextAdapter constructorBlockContextAdapter = new ConstructorBlockContextAdapter();
+    private static ForeachStatementContextAdapter foreachStatementContextAdapter = new ForeachStatementContextAdapter();
+    private static NormalForStatementContextAdapter normalForStatementContextAdapter = new NormalForStatementContextAdapter();
 
     private Adapters() {
 
@@ -611,5 +614,13 @@ public class Adapters {
 
     public static NotEqualityExpressionContextAdapter getNotEqualityExpressionContextAdapter() {
         return notEqualityExpressionContextAdapter;
+    }
+
+    public static ForeachStatementContextAdapter getForeachStatementContextAdapter() {
+        return foreachStatementContextAdapter;
+    }
+
+    public static NormalForStatementContextAdapter getNormalForStatementContextAdapter() {
+        return normalForStatementContextAdapter;
     }
 }

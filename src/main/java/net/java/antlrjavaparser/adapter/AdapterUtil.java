@@ -99,6 +99,7 @@ public final class AdapterUtil {
 
         if (typeList == null) {
             return null;
+            //throw new RuntimeException("typeList cannot be null");
         }
 
         List<ClassOrInterfaceType> classOrInterfaceTypeList = new LinkedList<ClassOrInterfaceType>();

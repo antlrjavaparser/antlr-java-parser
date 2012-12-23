@@ -5,6 +5,6 @@ import net.java.antlrjavaparser.Java7Parser;
 
 public class AnnotationHeaderContextAdapter implements Adapter<Node, Java7Parser.AnnotationHeaderContext> {
     public Node adapt(Java7Parser.AnnotationHeaderContext context) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }

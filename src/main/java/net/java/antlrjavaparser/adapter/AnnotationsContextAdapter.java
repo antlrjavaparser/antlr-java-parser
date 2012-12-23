@@ -16,6 +16,6 @@ public class AnnotationsContextAdapter implements Adapter<List<AnnotationExpr>, 
             return annotationExprList;
         }
 
-        return null;
+        throw new RuntimeException("Null annotations context");
     }
 }

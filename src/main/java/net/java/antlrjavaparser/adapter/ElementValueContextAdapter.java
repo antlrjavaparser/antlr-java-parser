@@ -14,6 +14,6 @@ public class ElementValueContextAdapter implements Adapter<Expression, Java7Pars
             return Adapters.getElementValueArrayInitializerContextAdapter().adapt(context.elementValueArrayInitializer());
         }
 
-        return null;
+        throw new RuntimeException("Unknown Element Value type");
     }
 }

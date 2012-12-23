@@ -26,6 +26,8 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	@Override public void exitNormalClassDeclaration(Java7Parser.NormalClassDeclarationContext ctx) { }
 	@Override public void enterImportDeclaration(Java7Parser.ImportDeclarationContext ctx) { }
 	@Override public void exitImportDeclaration(Java7Parser.ImportDeclarationContext ctx) { }
+	@Override public void enterThisSuffix(Java7Parser.ThisSuffixContext ctx) { }
+	@Override public void exitThisSuffix(Java7Parser.ThisSuffixContext ctx) { }
 	@Override public void enterElementValuePairs(Java7Parser.ElementValuePairsContext ctx) { }
 	@Override public void exitElementValuePairs(Java7Parser.ElementValuePairsContext ctx) { }
 	@Override public void enterInterfaceMethodDeclaration(Java7Parser.InterfaceMethodDeclarationContext ctx) { }
@@ -52,6 +54,8 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	@Override public void exitEnumDeclaration(Java7Parser.EnumDeclarationContext ctx) { }
 	@Override public void enterQualifiedImportName(Java7Parser.QualifiedImportNameContext ctx) { }
 	@Override public void exitQualifiedImportName(Java7Parser.QualifiedImportNameContext ctx) { }
+	@Override public void enterForeachStatement(Java7Parser.ForeachStatementContext ctx) { }
+	@Override public void exitForeachStatement(Java7Parser.ForeachStatementContext ctx) { }
 	@Override public void enterTypeParameter(Java7Parser.TypeParameterContext ctx) { }
 	@Override public void exitTypeParameter(Java7Parser.TypeParameterContext ctx) { }
 	@Override public void enterExplicitConstructorInvocation(Java7Parser.ExplicitConstructorInvocationContext ctx) { }
@@ -124,10 +128,10 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	@Override public void exitAnnotationTypeDeclaration(Java7Parser.AnnotationTypeDeclarationContext ctx) { }
 	@Override public void enterExpression(Java7Parser.ExpressionContext ctx) { }
 	@Override public void exitExpression(Java7Parser.ExpressionContext ctx) { }
-	@Override public void enterResources(Java7Parser.ResourcesContext ctx) { }
-	@Override public void exitResources(Java7Parser.ResourcesContext ctx) { }
 	@Override public void enterRelationalOp(Java7Parser.RelationalOpContext ctx) { }
 	@Override public void exitRelationalOp(Java7Parser.RelationalOpContext ctx) { }
+	@Override public void enterResources(Java7Parser.ResourcesContext ctx) { }
+	@Override public void exitResources(Java7Parser.ResourcesContext ctx) { }
 	@Override public void enterFormalParameter(Java7Parser.FormalParameterContext ctx) { }
 	@Override public void exitFormalParameter(Java7Parser.FormalParameterContext ctx) { }
 	@Override public void enterUnaryExpression(Java7Parser.UnaryExpressionContext ctx) { }
@@ -176,6 +180,8 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	@Override public void exitArrayCreator(Java7Parser.ArrayCreatorContext ctx) { }
 	@Override public void enterCatchFormalParameter(Java7Parser.CatchFormalParameterContext ctx) { }
 	@Override public void exitCatchFormalParameter(Java7Parser.CatchFormalParameterContext ctx) { }
+	@Override public void enterEmptyStatement(Java7Parser.EmptyStatementContext ctx) { }
+	@Override public void exitEmptyStatement(Java7Parser.EmptyStatementContext ctx) { }
 	@Override public void enterModifier(Java7Parser.ModifierContext ctx) { }
 	@Override public void exitModifier(Java7Parser.ModifierContext ctx) { }
 	@Override public void enterStatement(Java7Parser.StatementContext ctx) { }
@@ -192,12 +198,12 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	@Override public void exitMultiplicativeExpression(Java7Parser.MultiplicativeExpressionContext ctx) { }
 	@Override public void enterAssignmentOperator(Java7Parser.AssignmentOperatorContext ctx) { }
 	@Override public void exitAssignmentOperator(Java7Parser.AssignmentOperatorContext ctx) { }
+	@Override public void enterShiftOp(Java7Parser.ShiftOpContext ctx) { }
+	@Override public void exitShiftOp(Java7Parser.ShiftOpContext ctx) { }
 	@Override public void enterCompilationUnit(Java7Parser.CompilationUnitContext ctx) { }
 	@Override public void exitCompilationUnit(Java7Parser.CompilationUnitContext ctx) { }
 	@Override public void enterElementValue(Java7Parser.ElementValueContext ctx) { }
 	@Override public void exitElementValue(Java7Parser.ElementValueContext ctx) { }
-	@Override public void enterShiftOp(Java7Parser.ShiftOpContext ctx) { }
-	@Override public void exitShiftOp(Java7Parser.ShiftOpContext ctx) { }
 	@Override public void enterClassOrInterfaceType(Java7Parser.ClassOrInterfaceTypeContext ctx) { }
 	@Override public void exitClassOrInterfaceType(Java7Parser.ClassOrInterfaceTypeContext ctx) { }
 	@Override public void enterUnaryExpressionNotPlusMinus(Java7Parser.UnaryExpressionNotPlusMinusContext ctx) { }
@@ -238,6 +244,8 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	@Override public void exitResource(Java7Parser.ResourceContext ctx) { }
 	@Override public void enterElementValuePair(Java7Parser.ElementValuePairContext ctx) { }
 	@Override public void exitElementValuePair(Java7Parser.ElementValuePairContext ctx) { }
+	@Override public void enterNormalForStatement(Java7Parser.NormalForStatementContext ctx) { }
+	@Override public void exitNormalForStatement(Java7Parser.NormalForStatementContext ctx) { }
 	@Override public void enterNotEqualityExpression(Java7Parser.NotEqualityExpressionContext ctx) { }
 	@Override public void exitNotEqualityExpression(Java7Parser.NotEqualityExpressionContext ctx) { }
 	@Override public void enterMethodHeader(Java7Parser.MethodHeaderContext ctx) { }
