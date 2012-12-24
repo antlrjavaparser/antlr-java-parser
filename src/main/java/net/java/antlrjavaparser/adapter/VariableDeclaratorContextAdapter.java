@@ -20,7 +20,6 @@ public class VariableDeclaratorContextAdapter implements Adapter<VariableDeclara
 
         variableDeclarator.setInit(Adapters.getVariableInitializerContextAdapter().adapt(context.variableInitializer()));
 
-
         return variableDeclarator;
     }
 }

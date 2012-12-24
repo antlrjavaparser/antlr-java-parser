@@ -423,19 +423,11 @@ enumDeclaration
 
 
 enumBody
-    :   LBRACE
-        (enumConstants
-        )?
-        COMMA?
-        (enumBodyDeclarations
-        )?
-        RBRACE
+    :    LBRACE (enumConstants)? COMMA? (enumBodyDeclarations)? RBRACE
     ;
 
 enumConstants
-    :   enumConstant
-        (COMMA enumConstant
-        )*
+    :    enumConstant (COMMA enumConstant)*
     ;
 
 /**
@@ -443,13 +435,7 @@ enumConstants
  * EnumeratorDeclaration = AnnotationsOpt [TypeArguments] Identifier [ Arguments ] [ "{" ClassBody "}" ]
  */
 enumConstant
-    :   (annotations
-        )?
-        Identifier
-        (arguments
-        )?
-        (classBody
-        )?
+    :   (annotations)? Identifier(arguments)? (classBody)?
         /* TODO: $GScope::name = names.empty. enum constant body is actually
         an anonymous class, where constructor isn't allowed, have to add this check*/
     ;
@@ -763,11 +749,8 @@ annotationTypeElementDeclaration
     ;
 
 annotationMethodDeclaration
-    :   modifiers type Identifier
-        LPAREN RPAREN (DEFAULT elementValue
-                )?
-        SEMI
-        ;
+    :    modifiers type Identifier LPAREN RPAREN (DEFAULT elementValue)? SEMI
+    ;
 
 block
     :   LBRACE

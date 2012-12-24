@@ -10,6 +10,7 @@ public class AnnotationTypeDeclarationContextAdapter implements Adapter<Annotati
 
         AdapterUtil.setModifiers(context.modifiers(), annotationDeclaration);
         annotationDeclaration.setName(context.Identifier().getText());
+        annotationDeclaration.setMembers(Adapters.getAnnotationTypeBodyContextAdapter().adapt(context.annotationTypeBody()));
 
         return annotationDeclaration;
     }

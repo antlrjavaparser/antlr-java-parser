@@ -2,80 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59ec6132-83fa-4475-a80e-67fecfe236da" name="Default" comment="Changed classOr">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ForeachStatementContextAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/NormalForStatementContextAdapter.java" />
-      <change type="DELETED" beforePath="C:\Users\Administrator\git\antlr-java-parser\.idea\libraries\Maven__org_antlr_ST4_4_0_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Administrator\git\antlr-java-parser\.idea\libraries\Maven__org_antlr_stringtemplate_3_2_1.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdapterUtil.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdapterUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/Adapters.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/Adapters.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdditiveExpressionContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdditiveExpressionContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationHeaderContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationHeaderContextAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationMethodDeclarationContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationMethodDeclarationContextAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeBodyContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeBodyContextAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeDeclarationContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeDeclarationContextAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeElementDeclarationContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeElementDeclarationContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationsContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationsContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AntlrJavaParser.iml" afterPath="$PROJECT_DIR$/AntlrJavaParser.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ArgumentsContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ArgumentsContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ArrayCreatorContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ArrayCreatorContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/BlockContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/BlockContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/BlockStatementContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/BlockStatementContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/CastExpressionContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/CastExpressionContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ConditionalOrExpressionContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ConditionalOrExpressionContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/CreatedNameContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/CreatedNameContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/CreatorContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/CreatorContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/api/visitor/DumpVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/api/visitor/DumpVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ElementValueContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ElementValueContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ExpressionListContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ExpressionListContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ForstatementContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ForstatementContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/IdentifierSuffixContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/IdentifierSuffixContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/InnerCreatorContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/InnerCreatorContextAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ElementValueArrayInitializerContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ElementValueArrayInitializerContextAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyContextAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyDeclarationsContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyDeclarationsContextAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumConstantContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumConstantContextAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumConstantsContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumConstantsContextAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumDeclarationContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumDeclarationContextAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/InterfaceFieldDeclarationContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/InterfaceFieldDeclarationContextAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Parser.g4" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Parser.g4" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Parser.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7ParserBaseListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7ParserBaseListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7ParserListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7ParserListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/LiteralContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/LiteralContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/LocalVariableDeclarationContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/LocalVariableDeclarationContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/LocalVariableDeclarationStatementContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/LocalVariableDeclarationStatementContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ParExpressionContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ParExpressionContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/PrimaryContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/PrimaryContextAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/testFiles/SimpleTest.java.txt" afterPath="$PROJECT_DIR$/src/test/resources/testFiles/SimpleTest.java.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/StatementContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/StatementContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/SwitchBlockStatementGroupContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/SwitchBlockStatementGroupContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/SwitchBlockStatementGroupsContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/SwitchBlockStatementGroupsContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/TrystatementContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/TrystatementContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/UnaryExpressionNotPlusMinusContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/UnaryExpressionNotPlusMinusContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/VariableDeclaratorContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/VariableDeclaratorContextAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="antlrjavaparser.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356107109625" ignored="false" />
+    <file path="/Dummy.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356308495705" ignored="false" />
     <file path="/a.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356049287306" ignored="false" />
     <file path="/sample.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356048151461" ignored="false" />
     <file path="/ParExpressionContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356053102088" ignored="false" />
-    <file path="$USER_HOME$/svn/JavaParser/src/japa/parser/SimpleTest.java.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356245288562" ignored="false" />
+    <file path="$USER_HOME$/svn/JavaParser/src/japa/parser/SimpleTest.java.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356331171473" ignored="false" />
     <file path="$USER_HOME$/svn/JavaParser/JavaParser.iml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356049616048" ignored="false" />
     <file path="$USER_HOME$/svn/JavaParser/.idea/workspace.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356049915164" ignored="false" />
     <file path="/PrimaryContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356244804031" ignored="false" />
     <file path="/ArrayCreatorContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356071745428" ignored="false" />
     <file path="/CreatedNameContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356070217267" ignored="false" />
     <file path="/a.dummy" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356127842297" ignored="false" />
-    <file path="/AdapterUtil.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356107949898" ignored="false" />
+    <file path="/AdapterUtil.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356331102088" ignored="false" />
     <file path="/AdditiveExpressionContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356107520134" ignored="false" />
     <file path="/AnnotationHeaderContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356107568535" ignored="false" />
-    <file path="/AnnotationMethodDeclarationContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356107579704" ignored="false" />
-    <file path="/AnnotationTypeBodyContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356107619907" ignored="false" />
-    <file path="/AnnotationTypeElementDeclarationContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356107627475" ignored="false" />
+    <file path="/AnnotationMethodDeclarationContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356326159074" ignored="false" />
+    <file path="/AnnotationTypeBodyContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356308951379" ignored="false" />
+    <file path="/AnnotationTypeElementDeclarationContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356324732142" ignored="false" />
     <file path="/ArgumentsContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356109459967" ignored="false" />
     <file path="/ForstatementContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356107728546" ignored="false" />
-    <file path="/SimpleTest.java.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356245299269" ignored="false" />
-    <file path="/UnaryExpressionNotPlusMinusContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356245635082" ignored="false" />
+    <file path="/SimpleTest.java.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356331147629" ignored="false" />
+    <file path="/UnaryExpressionNotPlusMinusContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356293080026" ignored="false" />
     <file path="/InnerCreatorContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356112863760" ignored="false" />
     <file path="/IdentifierSuffixContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356120790811" ignored="false" />
     <file path="/Java7Parser.g4" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356215181198" ignored="false" />
     <file path="/Spring Roo Console" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356235802434" ignored="false" />
+    <file path="/NormalInterfaceDeclarationContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356308192666" ignored="false" />
+    <file path="/AnnotationTypeDeclarationContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356308759367" ignored="false" />
+    <file path="/InterfaceFieldDeclarationContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356327953393" ignored="false" />
+    <file path="/ElementValueArrayInitializerContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356327002008" ignored="false" />
+    <file path="/EnumDeclarationContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356330082004" ignored="false" />
+    <file path="/EnumConstantsContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356330473823" ignored="false" />
+    <file path="/EnumConstantContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356330400397" ignored="false" />
+    <file path="/EnumBodyContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356330623366" ignored="false" />
+    <file path="/EnumBodyDeclarationsContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356330801339" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,55 +132,75 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PrimaryContextAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/PrimaryContextAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="0" selection-start="3822" selection-end="3822" vertical-scroll-proportion="100.73077">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UnaryExpressionNotPlusMinusContextAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/UnaryExpressionNotPlusMinusContextAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="30" selection-start="8541" selection-end="8541" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleTest.java.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/resources/testFiles/SimpleTest.java.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="514" selection-end="514" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompilationUnitListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/net/java/antlrjavaparser/test/CompilationUnitListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="866" selection-end="866" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DumpVisitor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/api/visitor/DumpVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1129" column="23" selection-start="35120" selection-end="35120" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Java7Parser.g4" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Java7Parser.g4" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Parser.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1094" column="0" selection-start="30438" selection-end="30438" vertical-scroll-proportion="2.2831216">
+            <state line="442" column="0" selection-start="16855" selection-end="16935" vertical-scroll-proportion="-12.923077">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnumDeclarationContextAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumDeclarationContextAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="68" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TypeListContextAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/TypeListContextAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="60" selection-start="605" selection-end="605" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TypeContextAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/TypeContextAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="16" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnumBodyContextAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyContextAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="67" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnumBodyDeclarationsContextAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyDeclarationsContextAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="0" selection-start="1105" selection-end="1105" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#790#807#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdapterUtil.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdapterUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="110" column="90" selection-start="4096" selection-end="4096" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleTest.java.txt" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/testFiles/SimpleTest.java.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="0" selection-start="157" selection-end="157" vertical-scroll-proportion="0.2651072">
               <folding />
             </state>
           </provider>
@@ -225,22 +224,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/CreatedNameContextAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/CreatorContextAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ElementValueContextAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ForstatementContextAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/LiteralContextAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/StatementContextAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/TrystatementContextAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdapterUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ArgumentsContextAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/InnerCreatorContextAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/IdentifierSuffixContextAdapter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/api/visitor/DumpVisitor.java" />
-        <option value="$PROJECT_DIR$/src/test/resources/testFiles/SimpleTest.java.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/PrimaryContextAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/UnaryExpressionNotPlusMinusContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeDeclarationContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeBodyContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeElementDeclarationContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationMethodDeclarationContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ElementValueArrayInitializerContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/VariableDeclaratorContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/InterfaceFieldDeclarationContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumDeclarationContextAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Parser.g4" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumConstantContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumConstantsContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyDeclarationsContextAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdapterUtil.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/testFiles/SimpleTest.java.txt" />
       </list>
     </option>
   </component>
@@ -253,24 +252,6 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="AntlrJavaParser" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="org.antlr:antlr:3.4" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
-        </PATH_ELEMENT>
-      </PATH>
       <PATH>
         <PATH_ELEMENT>
           <option name="myItemId" value="" />
@@ -1120,7 +1101,11 @@
       <created>1355694062898</created>
       <updated>1355694062898</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fixed referenceType in interface declaration and removed unused lines in unary expression.">
+      <created>1356308509730</created>
+      <updated>1356308509730</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1147,12 +1132,12 @@
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297244" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838774" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4015826" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7537092" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1161,11 +1146,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32542038" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297244" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2405131" sideWeight="0.66830707" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24038461" sideWeight="0.67161226" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27029914" sideWeight="0.5984174" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4421365" sideWeight="0.9712" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27029914" sideWeight="0.5578635" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4421365" sideWeight="0.9712" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Roo Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32937685" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1212,7 +1197,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP - Adapters." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed referenceType in interface declaration and removed unused lines in unary expression." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1234,6 +1219,7 @@
     <MESSAGE value="Changed Modifiers." />
     <MESSAGE value="Added identifierTypeArgument" />
     <MESSAGE value="WIP - Adapters." />
+    <MESSAGE value="Fixed referenceType in interface declaration and removed unused lines in unary expression." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1247,114 +1233,120 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ExpressionContextAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeBodyContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0">
+        <state line="10" column="33" selection-start="404" selection-end="404" vertical-scroll-proportion="0.13056836">
+          <folding>
+            <element signature="e#526#543#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeDeclarationContextAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="89" selection-start="714" selection-end="714" vertical-scroll-proportion="0.28725037">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/InclusiveOrExpressionContextAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AnnotationTypeElementDeclarationContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
+        <state line="30" column="65" selection-start="1625" selection-end="1625" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/MultiplicativeExpressionContextAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/api/body/TypeDeclaration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="433" selection-end="433" vertical-scroll-proportion="0.0">
+        <state line="78" column="48" selection-start="2442" selection-end="2463" vertical-scroll-proportion="0.52037615">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/UnaryExpressionContextAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ClassBodyContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
+        <state line="13" column="86" selection-start="681" selection-end="681" vertical-scroll-proportion="0.24363057">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/api/expr/ThisExpr.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumConstantContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="11" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.33224222">
+        <state line="30" column="0" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.7579618">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ArgumentsContextAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumConstantsContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="30" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0">
+        <state line="13" column="24" selection-start="577" selection-end="577" vertical-scroll-proportion="0.21656051">
+          <folding>
+            <element signature="e#671#696#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Parser.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="442" column="0" selection-start="16855" selection-end="16935" vertical-scroll-proportion="-12.923077">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/NonWildcardTypeArgumentsContextAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="144" selection-end="144" vertical-scroll-proportion="0.06917599">
+        <state line="18" column="67" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/InnerCreatorContextAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ClassBodyDeclarationContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="29" selection-start="380" selection-end="398" vertical-scroll-proportion="0.15858209">
+        <state line="7" column="27" selection-start="366" selection-end="366" vertical-scroll-proportion="0.13056836">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/BlockStatementContextAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyDeclarationsContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="1074" selection-end="1074" vertical-scroll-proportion="0.0">
+        <state line="32" column="0" selection-start="1105" selection-end="1105" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#790#807#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumDeclarationContextAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="68" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/IdentifierSuffixContextAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/TypeListContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="65" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.0">
+        <state line="17" column="60" selection-start="605" selection-end="605" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/api/visitor/DumpVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/TypeContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1129" column="23" selection-start="35120" selection-end="35120" vertical-scroll-proportion="0.0">
+        <state line="7" column="16" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/UnaryExpressionNotPlusMinusContextAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdapterUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="30" selection-start="8541" selection-end="8541" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/PrimaryContextAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="3822" selection-end="3822" vertical-scroll-proportion="100.73077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/net/java/antlrjavaparser/test/CompilationUnitListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="866" selection-end="866" vertical-scroll-proportion="0.0">
+        <state line="110" column="90" selection-start="4096" selection-end="4096" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/testFiles/SimpleTest.java.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="514" selection-end="514" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Parser.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1094" column="0" selection-start="30438" selection-end="30438" vertical-scroll-proportion="2.2831216">
+        <state line="8" column="0" selection-start="157" selection-end="157" vertical-scroll-proportion="0.2651072">
           <folding />
         </state>
       </provider>

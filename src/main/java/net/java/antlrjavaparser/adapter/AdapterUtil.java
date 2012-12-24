@@ -6,6 +6,7 @@ import net.java.antlrjavaparser.api.expr.AnnotationExpr;
 import net.java.antlrjavaparser.api.expr.BinaryExpr;
 import net.java.antlrjavaparser.api.expr.Expression;
 import net.java.antlrjavaparser.api.type.ClassOrInterfaceType;
+import net.java.antlrjavaparser.api.type.ReferenceType;
 import net.java.antlrjavaparser.api.type.Type;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -104,7 +105,13 @@ public final class AdapterUtil {
 
         List<ClassOrInterfaceType> classOrInterfaceTypeList = new LinkedList<ClassOrInterfaceType>();
         for (Type type : typeList) {
-            classOrInterfaceTypeList.add((ClassOrInterfaceType)type);
+
+            if (type instanceof ReferenceType) {
+                ReferenceType referenceType = (ReferenceType)type;
+                classOrInterfaceTypeList.add((ClassOrInterfaceType)referenceType.getType());
+            } else {
+                classOrInterfaceTypeList.add((ClassOrInterfaceType)type);
+            }
         }
 
         return classOrInterfaceTypeList;
