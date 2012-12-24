@@ -3,6 +3,7 @@ package net.java.antlrjavaparser.adapter;
 import net.java.antlrjavaparser.Java7Parser;
 import net.java.antlrjavaparser.api.body.ClassOrInterfaceDeclaration;
 import net.java.antlrjavaparser.api.type.ClassOrInterfaceType;
+import net.java.antlrjavaparser.api.type.ReferenceType;
 import net.java.antlrjavaparser.api.type.Type;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -20,7 +21,8 @@ public class NormalInterfaceDeclarationContextAdapter implements Adapter<ClassOr
         if (typeList != null) {
             List<ClassOrInterfaceType> classOrInterfaceTypeList = new LinkedList<ClassOrInterfaceType>();
             for (Type type : typeList) {
-                classOrInterfaceTypeList.add((ClassOrInterfaceType)type);
+                ReferenceType referenceType = (ReferenceType)type;
+                classOrInterfaceTypeList.add((ClassOrInterfaceType)referenceType.getType());
             }
 
             classOrInterfaceDeclaration.setExtends(classOrInterfaceTypeList);

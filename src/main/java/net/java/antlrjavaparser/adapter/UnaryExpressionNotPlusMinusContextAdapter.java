@@ -8,6 +8,7 @@ import net.java.antlrjavaparser.api.expr.MethodCallExpr;
 import net.java.antlrjavaparser.api.expr.ObjectCreationExpr;
 import net.java.antlrjavaparser.api.expr.SuperExpr;
 import net.java.antlrjavaparser.api.expr.ThisExpr;
+import net.java.antlrjavaparser.api.expr.UnaryExpr;
 
 public class UnaryExpressionNotPlusMinusContextAdapter implements Adapter<Expression, Java7Parser.UnaryExpressionNotPlusMinusContext> {
     public Expression adapt(Java7Parser.UnaryExpressionNotPlusMinusContext context) {
@@ -54,67 +55,20 @@ public class UnaryExpressionNotPlusMinusContextAdapter implements Adapter<Expres
         } else if (context.primary() != null) {
 
             Expression expression = Adapters.getPrimaryContextAdapter().adapt(context.primary());
-            Expression leftExpression = expression;
+            //Expression leftExpression = expression;
+            expression = handleSelector(context, expression);
 
-            if (context.selector() != null && context.selector().size() > 0) {
-                for (int i = 0; i < context.selector().size(); i++) {
-                    if (context.selector(i).Identifier() != null) {
-                        MethodCallExpr methodCallExpr = new MethodCallExpr();
-                        methodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.selector(i).arguments()));
-
-                        // I'm not sure if we do anything with this
-                        // methodCallExpr.setTypeArgs();
-                        methodCallExpr.setName(context.selector(i).Identifier().getText());
-                        methodCallExpr.setScope(leftExpression);
-                        leftExpression = methodCallExpr;
-                    } else if (context.selector(i).THIS() != null) {
-                        ThisExpr thisExpr = new ThisExpr();
-                        thisExpr.setClassExpr(leftExpression);
-                        leftExpression = thisExpr;
-                    } else if (context.selector(i).SUPER() != null) {
-
-                        if (context.selector(i).superSuffix().arguments() != null) {
-                            // Example: this.super("");
-                            //  scope --^
-                            //       arguments ----^^
-
-                            throw new UnsupportedOperationException("This should have been an explicitConstructorInvocation");
-
-                        } else if (context.selector(i).superSuffix().Identifier() != null) {
-
-                            SuperExpr superExpr = new SuperExpr();
-                            superExpr.setClassExpr(leftExpression);
-
-                            MethodCallExpr methodCallExpr = new MethodCallExpr();
-                            methodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.selector(i).superSuffix().arguments()));
-
-                            // I'm not sure if we do anything with this
-                            methodCallExpr.setTypeArgs(Adapters.getTypeArgumentsContextAdapter().adapt(context.selector(i).superSuffix().typeArguments()));
-                            methodCallExpr.setName(context.selector(i).superSuffix().Identifier().getText());
-                            methodCallExpr.setScope(superExpr);
-                            leftExpression = methodCallExpr;
-                        }
-                    } else if (context.selector(i).innerCreator() != null) {
-                        ObjectCreationExpr objectCreationExpr = Adapters.getInnerCreatorContextAdapter().adapt(context.selector(i).innerCreator());
-                        objectCreationExpr.setScope(leftExpression);
-                        leftExpression = objectCreationExpr;
-                    } else if (context.selector(i).expression() != null) {
-
-                    }
-
-                    // selector
-                    //:   DOT Identifier (arguments)?   // MethodCallExpr
-                    //|   DOT THIS                      // ThisExpr
-                    //|   DOT SUPER superSuffix         // SuperExpr
-                    //|   innerCreator                  // ObjectCreationExpr
-                    //|   LBRACKET expression RBRACKET  // ArrayAccessExpr
-                }
-
+            // Create the Unary Expression
+            if (context.PLUSPLUS() != null || context.SUBSUB() != null) {
+                UnaryExpr unaryExpr = new UnaryExpr();
+                unaryExpr.setExpr(expression);
+                UnaryExpr.Operator operator = (context.PLUSPLUS() != null ? UnaryExpr.Operator.posIncrement : UnaryExpr.Operator.posDecrement);
+                unaryExpr.setOperator(operator);
+                expression = unaryExpr;
             }
 
             return expression;
         }
-
 
         throw new RuntimeException("Unknown UnaryExpressionNotPlusMinusContext type");
 
