@@ -624,19 +624,8 @@ ellipsisParameterDecl
     ;
 
 explicitConstructorInvocation
-    :   (nonWildcardTypeArguments
-        )?     //NOTE: the position of Identifier 'super' is set to the type args position here
-        (THIS
-        |SUPER
-        )
-        arguments SEMI
-
-    |   primary
-        DOT
-        (nonWildcardTypeArguments
-        )?
-        SUPER
-        arguments SEMI
+    :   (nonWildcardTypeArguments)? (THIS|SUPER) arguments SEMI
+    |   primary DOT (nonWildcardTypeArguments)? SUPER arguments SEMI
     ;
 
 qualifiedName

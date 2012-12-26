@@ -12,7 +12,10 @@ public class PackageDeclarationContextAdapter implements Adapter<PackageDeclarat
 
         PackageDeclaration packageDeclaration = new PackageDeclaration();
         packageDeclaration.setName(new NameExpr(context.qualifiedName().getText()));
-        packageDeclaration.setAnnotations(Adapters.getAnnotationsContextAdapter().adapt(context.annotations()));
+
+        if (context.annotations() != null) {
+            packageDeclaration.setAnnotations(Adapters.getAnnotationsContextAdapter().adapt(context.annotations()));
+        }
 
         return packageDeclaration;
     }

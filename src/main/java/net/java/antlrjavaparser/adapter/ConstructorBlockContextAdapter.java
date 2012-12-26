@@ -2,6 +2,10 @@ package net.java.antlrjavaparser.adapter;
 
 import net.java.antlrjavaparser.Java7Parser;
 import net.java.antlrjavaparser.api.stmt.BlockStmt;
+import net.java.antlrjavaparser.api.stmt.Statement;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,6 +17,30 @@ import net.java.antlrjavaparser.api.stmt.BlockStmt;
 public class ConstructorBlockContextAdapter implements Adapter<BlockStmt, Java7Parser.ConstructorBlockContext> {
     @Override
     public BlockStmt adapt(Java7Parser.ConstructorBlockContext context) {
-        return new BlockStmt();  //To change body of implemented methods use File | Settings | File Templates.
+
+        /*
+        constructorBlock
+            :    LBRACE explicitConstructorInvocation? blockStatement* RBRACE
+            ;
+         */
+
+
+        BlockStmt blockStmt = new BlockStmt();
+
+        List<Statement> statementList = new LinkedList<Statement>();
+
+        if (context.explicitConstructorInvocation() != null) {
+            statementList.add(Adapters.getExplicitConstructorInvocationContextAdapter().adapt(context.explicitConstructorInvocation()));
+        }
+
+        if (context.blockStatement() != null && context.blockStatement().size() > 0) {
+            for (Java7Parser.BlockStatementContext blockStatementContext : context.blockStatement()) {
+                statementList.add(Adapters.getBlockStatementContextAdapter().adapt(blockStatementContext));
+            }
+        }
+
+        blockStmt.setStmts(statementList);
+
+        return blockStmt;
     }
 }
