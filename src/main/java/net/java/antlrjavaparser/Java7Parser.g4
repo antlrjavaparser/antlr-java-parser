@@ -436,8 +436,6 @@ enumConstants
  */
 enumConstant
     :   (annotations)? Identifier(arguments)? (classBody)?
-        /* TODO: $GScope::name = names.empty. enum constant body is actually
-        an anonymous class, where constructor isn't allowed, have to add this check*/
     ;
 
 enumBodyDeclarations
@@ -526,9 +524,6 @@ variableDeclarator
         )?
     ;
 
-/**
- *TODO: add predicates
- */
 interfaceBodyDeclaration
     :   interfaceFieldDeclaration
     |   interfaceMethodDeclaration
@@ -538,18 +533,7 @@ interfaceBodyDeclaration
     ;
 
 interfaceMethodDeclaration
-    :   modifiers
-        (typeParameters
-        )?
-        (type
-        |VOID
-        )
-        Identifier
-        formalParameters
-        (LBRACKET RBRACKET
-        )*
-        (THROWS qualifiedNameList
-        )? SEMI
+    :    modifiers (typeParameters)? (type|VOID) Identifier formalParameters (LBRACKET RBRACKET)* (THROWS qualifiedNameList)? SEMI
     ;
 
 /**
@@ -623,20 +607,14 @@ formalParameters
     ;
 
 formalParameterDecls
-    :   ellipsisParameterDecl
-    |   normalParameterDecl
-        (COMMA normalParameterDecl
-        )*
-    |   (normalParameterDecl
-        COMMA
-        )+
-        ellipsisParameterDecl
+locals [int parameterType]
+    :   ellipsisParameterDecl                               {$parameterType = 1;}
+    |   normalParameterDecl (COMMA normalParameterDecl)*    {$parameterType = 2;}
+    |   (normalParameterDecl COMMA)+ ellipsisParameterDecl  {$parameterType = 3;}
     ;
 
 normalParameterDecl
-    :   variableModifiers type Identifier
-        (LBRACKET RBRACKET
-        )*
+    :   variableModifiers type Identifier (LBRACKET RBRACKET)*
     ;
 
 ellipsisParameterDecl
@@ -883,11 +861,6 @@ catchClause
 
 catchFormalParameter
     :    variableModifiers type (BAR type)* Identifier (LBRACKET RBRACKET)*
-    ;
-
-formalParameter
-    :   variableModifiers type Identifier
-        (LBRACKET RBRACKET)*
     ;
 
 forstatement

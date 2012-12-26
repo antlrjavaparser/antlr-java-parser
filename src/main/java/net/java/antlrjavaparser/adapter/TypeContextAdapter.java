@@ -4,8 +4,8 @@ import net.java.antlrjavaparser.Java7Parser;
 import net.java.antlrjavaparser.api.type.ReferenceType;
 import net.java.antlrjavaparser.api.type.Type;
 
-public class TypeContextAdapter implements Adapter<Type, Java7Parser.TypeContext> {
-    public Type adapt(Java7Parser.TypeContext context) {
+public class TypeContextAdapter implements Adapter<ReferenceType, Java7Parser.TypeContext> {
+    public ReferenceType adapt(Java7Parser.TypeContext context) {
 
         if (context.classOrInterfaceType() != null) {
             ReferenceType referenceType = new ReferenceType();

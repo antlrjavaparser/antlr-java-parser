@@ -1,8 +1,5 @@
 
-public enum SimpleTest implements Mike2 {
-    MIKE, ZOYA;
-
-    public void hello() {
-        System.out.println("This is some really cool shit\n");
-    }
+public interface SimpleTest extends Mike2, Mike3 {
+    public <A,B> void testMethod(String [] name [], String ... people) throws IOException, PE;
+    public <A,B> void testMethod2(String ... people) throws IOException;
 }

@@ -35,6 +35,41 @@ public final class AdapterUtil {
         return identifier;
     }
 
+    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, Parameter parameter) {
+        /*
+        variableModifiers
+        :   annotation* FINAL? annotation*
+        ;
+        */
+        int modifiers = 0;
+        List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
+        for (Java7Parser.AnnotationContext annotationContext : context.annotation()) {
+            AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext);
+            annotations.add(annotationExpr);
+        }
+
+        if (hasModifier(context.FINAL())) {
+            modifiers |= ModifierSet.FINAL;
+        }
+
+        parameter.setAnnotations(annotations);
+        parameter.setModifiers(modifiers);
+    }
+
+    private static void setModifiersByType(BodyDeclaration bodyDeclaration, int modifiers) {
+        if (bodyDeclaration instanceof TypeDeclaration) {
+            ((TypeDeclaration)bodyDeclaration).setModifiers(modifiers);
+        } else if (bodyDeclaration instanceof MethodDeclaration) {
+            ((MethodDeclaration)bodyDeclaration).setModifiers(modifiers);
+        } else if (bodyDeclaration instanceof ConstructorDeclaration) {
+            ((ConstructorDeclaration)bodyDeclaration).setModifiers(modifiers);
+        } else if (bodyDeclaration instanceof FieldDeclaration) {
+            ((FieldDeclaration)bodyDeclaration).setModifiers(modifiers);
+        } else {
+            throw new RuntimeException("Unknown type to set modifiers");
+        }
+    }
+
     public static void setModifiers(Java7Parser.ModifiersContext modifiersContext, BodyDeclaration typeDeclaration) {
         if (modifiersContext != null && modifiersContext.modifier() != null) {
             setModifiers(modifiersContext.modifier(), typeDeclaration);
@@ -81,15 +116,7 @@ public final class AdapterUtil {
 
         typeDeclaration.setAnnotations(annotations);
 
-        if (typeDeclaration instanceof TypeDeclaration) {
-            ((TypeDeclaration)typeDeclaration).setModifiers(modifiers);
-        } else if (typeDeclaration instanceof MethodDeclaration) {
-            ((MethodDeclaration)typeDeclaration).setModifiers(modifiers);
-        } else if (typeDeclaration instanceof ConstructorDeclaration) {
-            ((ConstructorDeclaration)typeDeclaration).setModifiers(modifiers);
-        } else if (typeDeclaration instanceof FieldDeclaration) {
-            ((FieldDeclaration)typeDeclaration).setModifiers(modifiers);
-        }
+        setModifiersByType(typeDeclaration, modifiers);
     }
 
     private static boolean hasModifier(TerminalNode modifier) {
@@ -152,5 +179,11 @@ public final class AdapterUtil {
         }
 
         return expression;
+    }
+
+    public static <T> List<T> singleElementList(T element) {
+        List<T> newElementList = new LinkedList<T>();
+        newElementList.add(element);
+        return newElementList;
     }
 }

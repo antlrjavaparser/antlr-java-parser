@@ -35,6 +35,8 @@ public class NormalInterfaceDeclarationContextAdapter implements Adapter<ClassOr
         classOrInterfaceDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
         classOrInterfaceDeclaration.setName(context.Identifier().getText());
 
+        classOrInterfaceDeclaration.setMembers(Adapters.getInterfaceBodyContextAdapter().adapt(context.interfaceBody()));
+
         return classOrInterfaceDeclaration;
     }
 

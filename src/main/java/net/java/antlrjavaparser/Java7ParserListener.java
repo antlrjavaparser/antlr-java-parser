@@ -125,12 +125,10 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitAnnotationTypeDeclaration(Java7Parser.AnnotationTypeDeclarationContext ctx);
 	void enterExpression(Java7Parser.ExpressionContext ctx);
 	void exitExpression(Java7Parser.ExpressionContext ctx);
-	void enterRelationalOp(Java7Parser.RelationalOpContext ctx);
-	void exitRelationalOp(Java7Parser.RelationalOpContext ctx);
 	void enterResources(Java7Parser.ResourcesContext ctx);
 	void exitResources(Java7Parser.ResourcesContext ctx);
-	void enterFormalParameter(Java7Parser.FormalParameterContext ctx);
-	void exitFormalParameter(Java7Parser.FormalParameterContext ctx);
+	void enterRelationalOp(Java7Parser.RelationalOpContext ctx);
+	void exitRelationalOp(Java7Parser.RelationalOpContext ctx);
 	void enterUnaryExpression(Java7Parser.UnaryExpressionContext ctx);
 	void exitUnaryExpression(Java7Parser.UnaryExpressionContext ctx);
 	void enterType(Java7Parser.TypeContext ctx);

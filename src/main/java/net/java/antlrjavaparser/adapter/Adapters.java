@@ -76,7 +76,6 @@ public class Adapters {
     private static CatchesContextAdapter catchesContextAdapter = new CatchesContextAdapter();
     private static CatchClauseContextAdapter catchClauseContextAdapter = new CatchClauseContextAdapter();
     private static CatchFormalParameterContextAdapter catchFormalParameterContextAdapter = new CatchFormalParameterContextAdapter();
-    private static FormalParameterContextAdapter formalParameterContextAdapter = new FormalParameterContextAdapter();
     private static ForstatementContextAdapter forstatementContextAdapter = new ForstatementContextAdapter();
     private static ForInitContextAdapter forInitContextAdapter = new ForInitContextAdapter();
     private static ParExpressionContextAdapter parExpressionContextAdapter = new ParExpressionContextAdapter();
@@ -103,7 +102,6 @@ public class Adapters {
     private static CastExpressionContextAdapter castExpressionContextAdapter = new CastExpressionContextAdapter();
     private static PrimaryContextAdapter primaryContextAdapter = new PrimaryContextAdapter();
     private static SuperSuffixContextAdapter superSuffixContextAdapter = new SuperSuffixContextAdapter();
-    private static IdentifierSuffixContextAdapter identifierSuffixContextAdapter = new IdentifierSuffixContextAdapter();
     private static SelectorContextAdapter selectorContextAdapter = new SelectorContextAdapter();
     private static CreatorContextAdapter creatorContextAdapter = new CreatorContextAdapter();
     private static ArrayCreatorContextAdapter arrayCreatorContextAdapter = new ArrayCreatorContextAdapter();
@@ -420,10 +418,6 @@ public class Adapters {
         return catchFormalParameterContextAdapter;
     }
 
-    public static FormalParameterContextAdapter getFormalParameterContextAdapter() {
-        return formalParameterContextAdapter;
-    }
-
     public static ForstatementContextAdapter getForstatementContextAdapter() {
         return forstatementContextAdapter;
     }
@@ -522,10 +516,6 @@ public class Adapters {
 
     public static SuperSuffixContextAdapter getSuperSuffixContextAdapter() {
         return superSuffixContextAdapter;
-    }
-
-    public static IdentifierSuffixContextAdapter getIdentifierSuffixContextAdapter() {
-        return identifierSuffixContextAdapter;
     }
 
     public static SelectorContextAdapter getSelectorContextAdapter() {
