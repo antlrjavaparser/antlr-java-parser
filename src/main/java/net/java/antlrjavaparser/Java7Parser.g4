@@ -814,12 +814,12 @@ switchLabel
 
 
 trystatement
-    :   TRY block
-        (   catches FINALLY block
-        |   catches
-        |   FINALLY block
-        )
-    |    tryWithResources
+locals [int statementType]
+    :    TRY block                       {$statementType = 1;}
+    |    TRY block catches FINALLY block {$statementType = 2;}
+    |    TRY block catches               {$statementType = 3;}
+    |    TRY block FINALLY block         {$statementType = 4;}
+    |    tryWithResources                {$statementType = 5;}
     ;
 
 tryWithResources

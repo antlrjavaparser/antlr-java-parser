@@ -29,6 +29,7 @@ import net.java.antlrjavaparser.api.PackageDeclaration;
 import net.java.antlrjavaparser.api.TypeParameter;
 import net.java.antlrjavaparser.api.body.AnnotationDeclaration;
 import net.java.antlrjavaparser.api.body.AnnotationMemberDeclaration;
+import net.java.antlrjavaparser.api.body.CatchParameter;
 import net.java.antlrjavaparser.api.body.ClassOrInterfaceDeclaration;
 import net.java.antlrjavaparser.api.body.ConstructorDeclaration;
 import net.java.antlrjavaparser.api.body.EmptyMemberDeclaration;
@@ -145,6 +146,8 @@ public interface VoidVisitor<A> {
     public void visit(MethodDeclaration n, A arg);
 
     public void visit(Parameter n, A arg);
+
+    public void visit(CatchParameter n, A arg);
 
     public void visit(EmptyMemberDeclaration n, A arg);
 

@@ -30,6 +30,7 @@ import net.java.antlrjavaparser.api.PackageDeclaration;
 import net.java.antlrjavaparser.api.TypeParameter;
 import net.java.antlrjavaparser.api.body.AnnotationDeclaration;
 import net.java.antlrjavaparser.api.body.AnnotationMemberDeclaration;
+import net.java.antlrjavaparser.api.body.CatchParameter;
 import net.java.antlrjavaparser.api.body.ClassOrInterfaceDeclaration;
 import net.java.antlrjavaparser.api.body.ConstructorDeclaration;
 import net.java.antlrjavaparser.api.body.EmptyMemberDeclaration;
@@ -99,6 +100,7 @@ import net.java.antlrjavaparser.api.stmt.WhileStmt;
 import net.java.antlrjavaparser.api.type.ClassOrInterfaceType;
 import net.java.antlrjavaparser.api.type.PrimitiveType;
 import net.java.antlrjavaparser.api.type.ReferenceType;
+import net.java.antlrjavaparser.api.type.Type;
 import net.java.antlrjavaparser.api.type.VoidType;
 import net.java.antlrjavaparser.api.type.WildcardType;
 
@@ -549,6 +551,32 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
 
         if (!nodeEquals(n1.getType(), n2.getType())) {
             return Boolean.FALSE;
+        }
+
+        if (!nodesEquals(n1.getAnnotations(), n2.getAnnotations())) {
+            return Boolean.FALSE;
+        }
+
+        return Boolean.TRUE;
+    }
+
+    public Boolean visit(CatchParameter n1, Node arg) {
+        CatchParameter n2 = (CatchParameter) arg;
+
+        if (n1.getModifiers() != n2.getModifiers()) {
+            return Boolean.FALSE;
+        }
+
+        if (!nodeEquals(n1.getId(), n2.getId())) {
+            return Boolean.FALSE;
+        }
+
+        // TODO make this better
+        // I'm not sure if this class is used anyway
+        for (int i = 0; i < n1.getTypeList().size(); i++) {
+            if (!nodeEquals(n1.getTypeList().get(i), n2.getTypeList().get(i))) {
+                return Boolean.FALSE;
+            }
         }
 
         if (!nodesEquals(n1.getAnnotations(), n2.getAnnotations())) {

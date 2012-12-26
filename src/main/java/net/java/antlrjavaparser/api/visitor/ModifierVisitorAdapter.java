@@ -31,6 +31,7 @@ import net.java.antlrjavaparser.api.TypeParameter;
 import net.java.antlrjavaparser.api.body.AnnotationDeclaration;
 import net.java.antlrjavaparser.api.body.AnnotationMemberDeclaration;
 import net.java.antlrjavaparser.api.body.BodyDeclaration;
+import net.java.antlrjavaparser.api.body.CatchParameter;
 import net.java.antlrjavaparser.api.body.ClassOrInterfaceDeclaration;
 import net.java.antlrjavaparser.api.body.ConstructorDeclaration;
 import net.java.antlrjavaparser.api.body.EmptyMemberDeclaration;
@@ -108,6 +109,7 @@ import net.java.antlrjavaparser.api.type.Type;
 import net.java.antlrjavaparser.api.type.VoidType;
 import net.java.antlrjavaparser.api.type.WildcardType;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -247,7 +249,7 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(CatchClause n, A arg) {
-        n.setExcept((Parameter) n.getExcept().accept(this, arg));
+        n.setExcept((CatchParameter) n.getExcept().accept(this, arg));
         n.setCatchBlock((BlockStmt) n.getCatchBlock().accept(this, arg));
         return n;
 
@@ -757,6 +759,25 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
             removeNulls(annotations);
         }
         n.setType((Type) n.getType().accept(this, arg));
+        n.setId((VariableDeclaratorId) n.getId().accept(this, arg));
+        return n;
+    }
+
+    public Node visit(CatchParameter n, A arg) {
+        List<AnnotationExpr> annotations = n.getAnnotations();
+        if (annotations != null) {
+            for (int i = 0; i < annotations.size(); i++) {
+                annotations.set(i, (AnnotationExpr) annotations.get(i).accept(this, arg));
+            }
+            removeNulls(annotations);
+        }
+
+        List<Type> typeList = new LinkedList<Type>();
+        for (Type type : n.getTypeList()) {
+            typeList.add((Type)type.accept(this, arg));
+        }
+        n.setTypeList(typeList);
+
         n.setId((VariableDeclaratorId) n.getId().accept(this, arg));
         return n;
     }

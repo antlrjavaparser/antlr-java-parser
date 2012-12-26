@@ -30,6 +30,7 @@ import net.java.antlrjavaparser.api.TypeParameter;
 import net.java.antlrjavaparser.api.body.AnnotationDeclaration;
 import net.java.antlrjavaparser.api.body.AnnotationMemberDeclaration;
 import net.java.antlrjavaparser.api.body.BodyDeclaration;
+import net.java.antlrjavaparser.api.body.CatchParameter;
 import net.java.antlrjavaparser.api.body.ClassOrInterfaceDeclaration;
 import net.java.antlrjavaparser.api.body.ConstructorDeclaration;
 import net.java.antlrjavaparser.api.body.EmptyMemberDeclaration;
@@ -908,6 +909,20 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         if (n.isVarArgs()) {
             printer.print("...");
         }
+        printer.print(" ");
+        n.getId().accept(this, arg);
+    }
+
+    public void visit(CatchParameter n, Object arg) {
+        printAnnotations(n.getAnnotations(), arg);
+        printModifiers(n.getModifiers());
+
+        n.getTypeList().get(0).accept(this, arg);
+        for (int i = 1; i < n.getTypeList().size(); i++) {
+            printer.print(" | ");
+            n.getTypeList().get(i).accept(this, arg);
+        }
+
         printer.print(" ");
         n.getId().accept(this, arg);
     }

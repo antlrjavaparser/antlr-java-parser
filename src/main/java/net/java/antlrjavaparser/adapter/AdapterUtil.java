@@ -56,6 +56,27 @@ public final class AdapterUtil {
         parameter.setModifiers(modifiers);
     }
 
+    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, CatchParameter parameter) {
+        /*
+        variableModifiers
+        :   annotation* FINAL? annotation*
+        ;
+        */
+        int modifiers = 0;
+        List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
+        for (Java7Parser.AnnotationContext annotationContext : context.annotation()) {
+            AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext);
+            annotations.add(annotationExpr);
+        }
+
+        if (hasModifier(context.FINAL())) {
+            modifiers |= ModifierSet.FINAL;
+        }
+
+        parameter.setAnnotations(annotations);
+        parameter.setModifiers(modifiers);
+    }
+
     private static void setModifiersByType(BodyDeclaration bodyDeclaration, int modifiers) {
         if (bodyDeclaration instanceof TypeDeclaration) {
             ((TypeDeclaration)bodyDeclaration).setModifiers(modifiers);

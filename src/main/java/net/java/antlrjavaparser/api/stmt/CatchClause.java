@@ -22,6 +22,7 @@
 package net.java.antlrjavaparser.api.stmt;
 
 import net.java.antlrjavaparser.api.Node;
+import net.java.antlrjavaparser.api.body.CatchParameter;
 import net.java.antlrjavaparser.api.body.Parameter;
 import net.java.antlrjavaparser.api.visitor.GenericVisitor;
 import net.java.antlrjavaparser.api.visitor.VoidVisitor;
@@ -31,19 +32,19 @@ import net.java.antlrjavaparser.api.visitor.VoidVisitor;
  */
 public final class CatchClause extends Node {
 
-    private Parameter except;
+    private CatchParameter except;
 
     private BlockStmt catchBlock;
 
     public CatchClause() {
     }
 
-    public CatchClause(Parameter except, BlockStmt catchBlock) {
+    public CatchClause(CatchParameter except, BlockStmt catchBlock) {
         this.except = except;
         this.catchBlock = catchBlock;
     }
 
-    public CatchClause(int beginLine, int beginColumn, int endLine, int endColumn, Parameter except, BlockStmt catchBlock) {
+    public CatchClause(int beginLine, int beginColumn, int endLine, int endColumn, CatchParameter except, BlockStmt catchBlock) {
         super(beginLine, beginColumn, endLine, endColumn);
         this.except = except;
         this.catchBlock = catchBlock;
@@ -63,7 +64,7 @@ public final class CatchClause extends Node {
         return catchBlock;
     }
 
-    public Parameter getExcept() {
+    public CatchParameter getExcept() {
         return except;
     }
 
@@ -71,7 +72,7 @@ public final class CatchClause extends Node {
         this.catchBlock = catchBlock;
     }
 
-    public void setExcept(Parameter except) {
+    public void setExcept(CatchParameter except) {
         this.except = except;
     }
 }
