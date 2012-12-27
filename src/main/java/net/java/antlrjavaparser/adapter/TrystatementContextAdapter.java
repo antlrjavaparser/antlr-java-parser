@@ -6,7 +6,6 @@ import net.java.antlrjavaparser.api.stmt.TryStmt;
 
 public class TrystatementContextAdapter implements Adapter<Statement, Java7Parser.TrystatementContext> {
     public Statement adapt(Java7Parser.TrystatementContext context) {
-        // TODO
 
         /*
 

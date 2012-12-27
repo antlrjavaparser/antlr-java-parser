@@ -51,8 +51,6 @@ public class CatchClauseContextAdapter implements Adapter<CatchClause, Java7Pars
         catchClause.setExcept(parameter);
         catchClause.setCatchBlock(Adapters.getBlockContextAdapter().adapt(context.block()));
 
-        // TODO: Multi Catch
-
         return catchClause;
     }
 }
