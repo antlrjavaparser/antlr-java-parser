@@ -18,7 +18,9 @@ public class VariableDeclaratorContextAdapter implements Adapter<VariableDeclara
 
         variableDeclarator.setId(variableDeclaratorId);
 
-        variableDeclarator.setInit(Adapters.getVariableInitializerContextAdapter().adapt(context.variableInitializer()));
+        if (context.variableInitializer() != null) {
+            variableDeclarator.setInit(Adapters.getVariableInitializerContextAdapter().adapt(context.variableInitializer()));
+        }
 
         return variableDeclarator;
     }

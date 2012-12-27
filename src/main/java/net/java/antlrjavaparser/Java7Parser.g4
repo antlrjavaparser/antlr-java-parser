@@ -450,12 +450,7 @@ interfaceDeclaration
     ;
 
 normalInterfaceDeclaration
-    :   modifiers INTERFACE Identifier
-        (typeParameters
-        )?
-        (EXTENDS typeList
-        )?
-        interfaceBody
+    :   modifiers INTERFACE Identifier (typeParameters)? (EXTENDS typeList)? interfaceBody
     ;
 
 typeList
@@ -584,13 +579,7 @@ typeArguments
 
 typeArgument
     :   type
-    |   QUES
-        (
-            (EXTENDS
-            |SUPER
-            )
-            type
-        )?
+    |   QUES ( (EXTENDS | SUPER ) type )?
     ;
 
 qualifiedNameList

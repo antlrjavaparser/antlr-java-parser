@@ -121,7 +121,15 @@ public class UnaryExpressionNotPlusMinusContextAdapter implements Adapter<Expres
                     leftExpression = thisExpr;
                     break;
                 case 3:
-                    throw new UnsupportedOperationException("This should be handled in explicitConstructorInvocation");
+                    SuperExpr superExpr = new SuperExpr();
+                    superExpr.setClassExpr(leftExpression);
+
+                    MethodCallExpr methodCallExpr = Adapters.getSuperSuffixContextAdapter().adapt(selector.superSuffix());
+                    methodCallExpr.setScope(superExpr);
+
+                    leftExpression = methodCallExpr;
+                    //throw new UnsupportedOperationException("This should be handled in explicitConstructorInvocation");
+                    break;
                 case 4:
                     ObjectCreationExpr objectCreationExpr = Adapters.getInnerCreatorContextAdapter().adapt(selector.innerCreator());
                     objectCreationExpr.setScope(leftExpression);

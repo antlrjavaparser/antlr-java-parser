@@ -13,26 +13,28 @@ import java.util.List;
 public class NormalInterfaceDeclarationContextAdapter implements Adapter<ClassOrInterfaceDeclaration, Java7Parser.NormalInterfaceDeclarationContext> {
     public ClassOrInterfaceDeclaration adapt(Java7Parser.NormalInterfaceDeclarationContext context) {
 
+        /*
+            normalInterfaceDeclaration
+                :   modifiers INTERFACE Identifier (typeParameters)? (EXTENDS typeList)? interfaceBody
+                ;
+         */
+
         ClassOrInterfaceDeclaration classOrInterfaceDeclaration = new ClassOrInterfaceDeclaration();
         classOrInterfaceDeclaration.setInterface(true);
 
         // All instances should be classOrInterfaceType
-        List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(context.typeList());
-        if (typeList != null) {
-            List<ClassOrInterfaceType> classOrInterfaceTypeList = new LinkedList<ClassOrInterfaceType>();
-            for (Type type : typeList) {
-                ReferenceType referenceType = (ReferenceType)type;
-                classOrInterfaceTypeList.add((ClassOrInterfaceType)referenceType.getType());
-            }
-
-            classOrInterfaceDeclaration.setExtends(classOrInterfaceTypeList);
+        if (context.typeList() != null) {
+            List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(context.typeList());
+            classOrInterfaceDeclaration.setExtends(AdapterUtil.convertTypeList(typeList));
         }
-
 
         // Set modifiers and annotations
         AdapterUtil.setModifiers(context.modifiers(), classOrInterfaceDeclaration);
 
-        classOrInterfaceDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
+        if (context.typeParameters() != null) {
+            classOrInterfaceDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
+        }
+
         classOrInterfaceDeclaration.setName(context.Identifier().getText());
 
         classOrInterfaceDeclaration.setMembers(Adapters.getInterfaceBodyContextAdapter().adapt(context.interfaceBody()));

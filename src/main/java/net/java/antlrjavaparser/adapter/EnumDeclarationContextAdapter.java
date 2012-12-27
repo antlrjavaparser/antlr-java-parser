@@ -22,7 +22,10 @@ public class EnumDeclarationContextAdapter implements Adapter<EnumDeclaration, J
         enumDeclaration.setMembers(Adapters.getEnumBodyContextAdapter().adapt(context.enumBody()));
 
         // These come from enumBody
-        enumDeclaration.setEntries(Adapters.getEnumConstantsContextAdapter().adapt(context.enumBody().enumConstants()));
+
+        if (context.enumBody().enumConstants() != null) {
+            enumDeclaration.setEntries(Adapters.getEnumConstantsContextAdapter().adapt(context.enumBody().enumConstants()));
+        }
 
         return enumDeclaration;
     }

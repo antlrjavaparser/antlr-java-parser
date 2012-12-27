@@ -35,19 +35,22 @@ public final class AdapterUtil {
         return identifier;
     }
 
-    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, Parameter parameter) {
-        /*
-        variableModifiers
-        :   annotation* FINAL? annotation*
-        ;
-        */
+    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, Resource resource) {
+        List<AnnotationExpr> annotations = getAnnotations(context);
+
         int modifiers = 0;
-        List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
-        for (Java7Parser.AnnotationContext annotationContext : context.annotation()) {
-            AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext);
-            annotations.add(annotationExpr);
+        if (hasModifier(context.FINAL())) {
+            modifiers |= ModifierSet.FINAL;
         }
 
+        resource.setAnnotations(annotations);
+        resource.setModifiers(modifiers);
+    }
+
+    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, Parameter parameter) {
+        List<AnnotationExpr> annotations = getAnnotations(context);
+
+        int modifiers = 0;
         if (hasModifier(context.FINAL())) {
             modifiers |= ModifierSet.FINAL;
         }
@@ -63,11 +66,7 @@ public final class AdapterUtil {
         ;
         */
         int modifiers = 0;
-        List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
-        for (Java7Parser.AnnotationContext annotationContext : context.annotation()) {
-            AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext);
-            annotations.add(annotationExpr);
-        }
+        List<AnnotationExpr> annotations = getAnnotations(context);
 
         if (hasModifier(context.FINAL())) {
             modifiers |= ModifierSet.FINAL;
@@ -75,6 +74,15 @@ public final class AdapterUtil {
 
         parameter.setAnnotations(annotations);
         parameter.setModifiers(modifiers);
+    }
+
+    private static List<AnnotationExpr> getAnnotations(Java7Parser.VariableModifiersContext context) {
+        List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
+        for (Java7Parser.AnnotationContext annotationContext : context.annotation()) {
+            AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext);
+            annotations.add(annotationExpr);
+        }
+        return annotations;
     }
 
     private static void setModifiersByType(BodyDeclaration bodyDeclaration, int modifiers) {
@@ -86,8 +94,10 @@ public final class AdapterUtil {
             ((ConstructorDeclaration)bodyDeclaration).setModifiers(modifiers);
         } else if (bodyDeclaration instanceof FieldDeclaration) {
             ((FieldDeclaration)bodyDeclaration).setModifiers(modifiers);
+        } else if (bodyDeclaration instanceof AnnotationMemberDeclaration) {
+            ((AnnotationMemberDeclaration)bodyDeclaration).setModifiers(modifiers);
         } else {
-            throw new RuntimeException("Unknown type to set modifiers");
+            throw new RuntimeException("Unknown type to set modifiers: " + bodyDeclaration.getClass().getName());
         }
     }
 

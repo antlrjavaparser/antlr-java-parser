@@ -43,6 +43,7 @@ import net.java.antlrjavaparser.api.body.JavadocComment;
 import net.java.antlrjavaparser.api.body.MethodDeclaration;
 import net.java.antlrjavaparser.api.body.ModifierSet;
 import net.java.antlrjavaparser.api.body.Parameter;
+import net.java.antlrjavaparser.api.body.Resource;
 import net.java.antlrjavaparser.api.body.TypeDeclaration;
 import net.java.antlrjavaparser.api.body.VariableDeclarator;
 import net.java.antlrjavaparser.api.body.VariableDeclaratorId;
@@ -927,6 +928,18 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         n.getId().accept(this, arg);
     }
 
+    @Override
+    public void visit(Resource n, Object arg) {
+        printAnnotations(n.getAnnotations(), arg);
+        printModifiers(n.getModifiers());
+
+        n.getType().accept(this, arg);
+        printer.print(" ");
+        n.getId().accept(this, arg);
+        printer.print(" = ");
+        n.getExpression().accept(this, arg);
+    }
+
     public void visit(ExplicitConstructorInvocationStmt n, Object arg) {
         if (n.isThis()) {
             printTypeArgs(n.getTypeArgs(), arg);
@@ -1216,6 +1229,19 @@ public final class DumpVisitor implements VoidVisitor<Object> {
 
     public void visit(TryStmt n, Object arg) {
         printer.print("try ");
+
+        if (n.getResources() != null && n.getResources().size() > 0) {
+            printer.print("(");
+
+            n.getResources().get(0).accept(this, arg);
+            for (int i = 1; i < n.getResources().size(); i++) {
+                printer.print("; ");
+                n.getResources().get(i).accept(this, arg);
+            }
+
+            printer.print(")");
+        }
+
         n.getTryBlock().accept(this, arg);
         if (n.getCatchs() != null) {
             for (CatchClause c : n.getCatchs()) {

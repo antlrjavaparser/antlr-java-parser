@@ -8,9 +8,19 @@ import net.java.antlrjavaparser.api.type.VoidType;
 
 public class MethodDeclarationContextAdapter implements Adapter<MethodDeclaration, Java7Parser.MethodDeclarationContext> {
     public MethodDeclaration adapt(Java7Parser.MethodDeclarationContext context) {
+        /*
+            methodDeclaration
+                :    modifiers typeParameters? (type | VOID) Identifier formalParameters (LBRACKET RBRACKET)* (THROWS qualifiedNameList)? (block | SEMI)
+                ;
+         */
+
         MethodDeclaration methodDeclaration = new MethodDeclaration();
 
-        methodDeclaration.setName(context.Identifier().getText());
+        AdapterUtil.setModifiers(context.modifiers(), methodDeclaration);
+
+        if (context.typeParameters() != null) {
+            methodDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
+        }
 
         if (context.VOID() != null) {
             Type type = new VoidType();
@@ -25,12 +35,17 @@ public class MethodDeclarationContextAdapter implements Adapter<MethodDeclaratio
             methodDeclaration.setType(referenceType);
         }
 
-        AdapterUtil.setModifiers(context.modifiers(), methodDeclaration);
-        methodDeclaration.setThrows(Adapters.getQualifiedNameListContextAdapter().adapt(context.qualifiedNameList()));
+        methodDeclaration.setName(context.Identifier().getText());
 
-        methodDeclaration.setBody(Adapters.getBlockContextAdapter().adapt(context.block()));
-        methodDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
         methodDeclaration.setParameters(Adapters.getFormalParametersContextAdapter().adapt(context.formalParameters()));
+
+        if (context.THROWS() != null) {
+            methodDeclaration.setThrows(Adapters.getQualifiedNameListContextAdapter().adapt(context.qualifiedNameList()));
+        }
+
+        if (context.block() != null) {
+            methodDeclaration.setBody(Adapters.getBlockContextAdapter().adapt(context.block()));
+        }
 
         return methodDeclaration;
     }

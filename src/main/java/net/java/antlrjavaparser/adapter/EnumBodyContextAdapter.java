@@ -16,6 +16,11 @@ public class EnumBodyContextAdapter implements Adapter<List<BodyDeclaration>, Ja
          */
 
         // Enum Constants are handled in the EnumDeclaration Adapter
-        return Adapters.getEnumBodyDeclarationsContextAdapter().adapt(context.enumBodyDeclarations());
+
+        if (context.enumBodyDeclarations() != null) {
+            return Adapters.getEnumBodyDeclarationsContextAdapter().adapt(context.enumBodyDeclarations());
+        }
+
+        return null;
     }
 }

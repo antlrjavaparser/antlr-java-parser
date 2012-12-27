@@ -42,6 +42,7 @@ import net.java.antlrjavaparser.api.body.InitializerDeclaration;
 import net.java.antlrjavaparser.api.body.JavadocComment;
 import net.java.antlrjavaparser.api.body.MethodDeclaration;
 import net.java.antlrjavaparser.api.body.Parameter;
+import net.java.antlrjavaparser.api.body.Resource;
 import net.java.antlrjavaparser.api.body.VariableDeclarator;
 import net.java.antlrjavaparser.api.body.VariableDeclaratorId;
 import net.java.antlrjavaparser.api.expr.ArrayAccessExpr;
@@ -110,6 +111,11 @@ import java.util.List;
  * @author Julio Vilmar Gesser
  */
 public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
+    @Override
+    public Boolean visit(Resource n, Node arg) {
+        // TODO: Implement this
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 
     private static final EqualsVisitor SINGLETON = new EqualsVisitor();
 

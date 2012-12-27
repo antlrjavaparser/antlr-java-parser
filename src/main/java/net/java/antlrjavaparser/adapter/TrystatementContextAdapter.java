@@ -52,7 +52,10 @@ public class TrystatementContextAdapter implements Adapter<Statement, Java7Parse
          */
 
         TryStmt tryStmt = new TryStmt();
-        tryStmt.setTryBlock(Adapters.getBlockContextAdapter().adapt(context.block(0)));
+
+        if (context.statementType != 5) {
+            tryStmt.setTryBlock(Adapters.getBlockContextAdapter().adapt(context.block(0)));
+        }
 
         switch (context.statementType) {
             case 1:
@@ -68,8 +71,7 @@ public class TrystatementContextAdapter implements Adapter<Statement, Java7Parse
                 tryStmt.setFinallyBlock(Adapters.getBlockContextAdapter().adapt(context.block(1)));
                 break;
             case 5:
-                // TODO: Try with resources
-                break;
+                return Adapters.getTryWithResourcesContextAdapter().adapt(context.tryWithResources());
         }
 
         return tryStmt;

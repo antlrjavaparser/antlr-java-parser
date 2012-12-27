@@ -1,11 +1,7 @@
-public class ClassBodyContextAdapter implements Adapter<List<BodyDeclaration>, Java7Parser.ClassBodyContext> {
-    public List<BodyDeclaration> adapt(Java7Parser.ClassBodyContext context) {
-        try {
-
-        } catch (IOException|SQLException|MyException ex) {
-
-        } finally {
+public class ScheduledThreadPoolExecutor {
+    private class ScheduledFutureTask<V> {
+        public void run() {
+            ScheduledFutureTask.super.run();
         }
-
     }
 }

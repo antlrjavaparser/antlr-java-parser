@@ -22,10 +22,6 @@ public class TypeBoundContextAdapter implements Adapter<List<ClassOrInterfaceTyp
         }
 
         // All instances should be classOrInterfaceType
-        for (Type type : typeList) {
-            classOrInterfaceTypeList.add((ClassOrInterfaceType)type);
-        }
-
-        return classOrInterfaceTypeList;
+        return AdapterUtil.convertTypeList(typeList);
     }
 }

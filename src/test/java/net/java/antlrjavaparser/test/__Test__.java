@@ -47,7 +47,6 @@ public class __Test__ {
         // Fills out the compilationUnit object
         CompilationUnitListener listener = new CompilationUnitListener(parser);
         walker.walk(listener, tree);
-
         compilationUnit = listener.getCompilationUnit();
 
         System.out.println("==========================================================================");

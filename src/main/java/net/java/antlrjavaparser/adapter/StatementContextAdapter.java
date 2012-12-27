@@ -87,7 +87,9 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
                 return Adapters.getBlockContextAdapter().adapt(context.block());
         } else if (context.RETURN() != null) {
             ReturnStmt returnStmt = new ReturnStmt();
-            returnStmt.setExpr(Adapters.getExpressionContextAdapter().adapt(context.expression(0)));
+            if (context.expression(0) != null) {
+                returnStmt.setExpr(Adapters.getExpressionContextAdapter().adapt(context.expression(0)));
+            }
             return returnStmt;
         } else if (context.THROW() != null) {
             ThrowStmt throwStmt = new ThrowStmt();
@@ -95,7 +97,9 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
             return throwStmt;
         } else if (context.BREAK() != null) {
             BreakStmt breakStmt = new BreakStmt();
-            breakStmt.setId(context.Identifier().getText());
+            if (context.Identifier() != null) {
+                breakStmt.setId(context.Identifier().getText());
+            }
             return breakStmt;
         } else if (context.CONTINUE() != null) {
             ContinueStmt continueStmt = new ContinueStmt();

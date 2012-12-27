@@ -67,7 +67,7 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
         } else if(context.operationType == 3) {
             return handleIdentifierSuffix(context);
         } else if (context.SUPER() != null) {
-            throw new UnsupportedOperationException("This should be handled in explicitConstructorInvocation");
+            return Adapters.getSuperSuffixContextAdapter().adapt(context.superSuffix());
         } else if (context.literal() != null) {
             return Adapters.getLiteralContextAdapter().adapt(context.literal());
         } else if (context.creator() != null) {

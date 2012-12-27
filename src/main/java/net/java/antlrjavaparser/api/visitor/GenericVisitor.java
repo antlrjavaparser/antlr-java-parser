@@ -41,6 +41,7 @@ import net.java.antlrjavaparser.api.body.InitializerDeclaration;
 import net.java.antlrjavaparser.api.body.JavadocComment;
 import net.java.antlrjavaparser.api.body.MethodDeclaration;
 import net.java.antlrjavaparser.api.body.Parameter;
+import net.java.antlrjavaparser.api.body.Resource;
 import net.java.antlrjavaparser.api.body.VariableDeclarator;
 import net.java.antlrjavaparser.api.body.VariableDeclaratorId;
 import net.java.antlrjavaparser.api.expr.ArrayAccessExpr;
@@ -148,6 +149,8 @@ public interface GenericVisitor<R, A> {
     public R visit(Parameter n, A arg);
 
     public R visit(CatchParameter n, A arg);
+
+    public R visit(Resource n, A arg);
 
     public R visit(EmptyMemberDeclaration n, A arg);
 

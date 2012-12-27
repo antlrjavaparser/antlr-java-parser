@@ -3,12 +3,14 @@ package net.java.antlrjavaparser.test;
 import junit.framework.TestCase;
 import net.java.antlrjavaparser.Java7Lexer;
 import net.java.antlrjavaparser.Java7Parser;
+import net.java.antlrjavaparser.api.CompilationUnit;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.BailErrorStrategy;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.DiagnosticErrorListener;
 import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
 
 import java.io.File;
@@ -33,9 +35,18 @@ public class TestAll extends TestCase {
         File testDirectory = new File("/tmp/java-src");
 
         listFiles(testDirectory, new Listener() {
+
+            private boolean skip = true;
+
             @Override
             public void enterFile(File file) {
-                if (file.getName().endsWith(".java")) {
+
+                if (file.getPath().endsWith("\\tmp\\java-src\\src\\java\\util\\concurrent\\ScheduledFuture.java")) {
+                    skip = false;
+                }
+
+                if (file.getName().endsWith(".java") && !skip) {
+
                     try {
                         System.out.println("Parsing file: " + file.getPath());
                         parseFile(file.getPath());
@@ -76,8 +87,14 @@ public class TestAll extends TestCase {
         parser.removeErrorListeners();
         parser.addErrorListener(new DiagnosticErrorListener());
         parser.setErrorHandler(new BailErrorStrategy());
-        ParseTree tree = null;
 
-        tree = parser.compilationUnit();
+
+        ParseTree tree = parser.compilationUnit();
+
+        ParseTreeWalker walker = new ParseTreeWalker();
+        CompilationUnitListener listener = new CompilationUnitListener(parser);
+        walker.walk(listener, tree);
+        CompilationUnit compilationUnit = listener.getCompilationUnit();
+
     }
 }

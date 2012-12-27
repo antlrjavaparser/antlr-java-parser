@@ -21,6 +21,7 @@
  */
 package net.java.antlrjavaparser.api.stmt;
 
+import net.java.antlrjavaparser.api.body.Resource;
 import net.java.antlrjavaparser.api.visitor.GenericVisitor;
 import net.java.antlrjavaparser.api.visitor.VoidVisitor;
 
@@ -34,6 +35,8 @@ public final class TryStmt extends Statement {
     private BlockStmt tryBlock;
 
     private List<CatchClause> catchs;
+
+    private List<Resource> resources;
 
     private BlockStmt finallyBlock;
 
@@ -75,6 +78,10 @@ public final class TryStmt extends Statement {
         return tryBlock;
     }
 
+    public List<Resource> getResources() {
+        return resources;
+    }
+
     public void setCatchs(List<CatchClause> catchs) {
         this.catchs = catchs;
     }
@@ -85,5 +92,9 @@ public final class TryStmt extends Statement {
 
     public void setTryBlock(BlockStmt tryBlock) {
         this.tryBlock = tryBlock;
+    }
+
+    public void setResources(List<Resource> resources) {
+        this.resources = resources;
     }
 }

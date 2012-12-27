@@ -31,7 +31,10 @@ public class InnerCreatorContextAdapter implements Adapter<ObjectCreationExpr, J
 
         // arguments classBody?
         objectCreationExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.classCreatorRest().arguments()));
-        objectCreationExpr.setAnonymousClassBody(Adapters.getClassBodyContextAdapter().adapt(context.classCreatorRest().classBody()));
+
+        if (context.classCreatorRest().classBody() != null) {
+            objectCreationExpr.setAnonymousClassBody(Adapters.getClassBodyContextAdapter().adapt(context.classCreatorRest().classBody()));
+        }
 
         return objectCreationExpr;
     }
