@@ -24,11 +24,11 @@ public class CompilationUnitListener extends Java7ParserBaseListener {
     @Override
     public void exitCompilationUnit(Java7Parser.CompilationUnitContext ctx) {
 
-        System.out.println("Done");
+        //System.out.println("Done");
 
-        compilationUnit = Adapters.getCompilationUnitContextAdapter().adapt(ctx);
+        //compilationUnit = Adapters.getCompilationUnitContextAdapter().adapt(ctx);
 
-        System.out.println(compilationUnit.toString());
+        //System.out.println(compilationUnit.toString());
 
 /*
         // Annotations

@@ -160,8 +160,8 @@ public class Java7Parser extends Parser {
 		public TypeDeclarationContext typeDeclaration(int i) {
 			return getRuleContext(TypeDeclarationContext.class,i);
 		}
-		public CompilationUnitContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public CompilationUnitContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_compilationUnit; }
 		@Override
@@ -175,8 +175,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final CompilationUnitContext compilationUnit() throws RecognitionException {
-		CompilationUnitContext _localctx = new CompilationUnitContext(_ctx, 0);
-		enterRule(_localctx, RULE_compilationUnit);
+		CompilationUnitContext _localctx = new CompilationUnitContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_compilationUnit);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -205,7 +205,7 @@ public class Java7Parser extends Parser {
 			setState(268);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==SEMI || _la==CLASS || _la==PUBLIC || _la==PROTECTED || _la==PRIVATE || _la==ABSTRACT || _la==STATIC || _la==FINAL || _la==STRICTFP || _la==INTERFACE || _la==NATIVE || _la==SYNCHRONIZED || _la==TRANSIENT || _la==VOLATILE || _la==AT || _la==ENUM) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << CLASS) | (1L << PUBLIC) | (1L << PROTECTED) | (1L << PRIVATE) | (1L << ABSTRACT) | (1L << STATIC) | (1L << FINAL) | (1L << STRICTFP) | (1L << INTERFACE) | (1L << NATIVE) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOLATILE) | (1L << AT) | (1L << ENUM))) != 0)) {
 				{
 				{
 				setState(265); typeDeclaration();
@@ -237,8 +237,8 @@ public class Java7Parser extends Parser {
 		public AnnotationsContext annotations() {
 			return getRuleContext(AnnotationsContext.class,0);
 		}
-		public PackageDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public PackageDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_packageDeclaration; }
 		@Override
@@ -252,8 +252,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final PackageDeclarationContext packageDeclaration() throws RecognitionException {
-		PackageDeclarationContext _localctx = new PackageDeclarationContext(_ctx, 2);
-		enterRule(_localctx, RULE_packageDeclaration);
+		PackageDeclarationContext _localctx = new PackageDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_packageDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -295,8 +295,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode STATIC() { return getToken(Java7Parser.STATIC, 0); }
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public List<TerminalNode> Identifier() { return getTokens(Java7Parser.Identifier); }
-		public ImportDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ImportDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_importDeclaration; }
 		@Override
@@ -310,8 +310,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ImportDeclarationContext importDeclaration() throws RecognitionException {
-		ImportDeclarationContext _localctx = new ImportDeclarationContext(_ctx, 4);
-		enterRule(_localctx, RULE_importDeclaration);
+		ImportDeclarationContext _localctx = new ImportDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_importDeclaration);
 		int _la;
 		try {
 			int _alt;
@@ -335,6 +335,7 @@ public class Java7Parser extends Parser {
 				setState(285); match(SEMI);
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -402,8 +403,8 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> DOT() { return getTokens(Java7Parser.DOT); }
 		public List<TerminalNode> Identifier() { return getTokens(Java7Parser.Identifier); }
-		public QualifiedImportNameContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public QualifiedImportNameContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_qualifiedImportName; }
 		@Override
@@ -417,8 +418,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final QualifiedImportNameContext qualifiedImportName() throws RecognitionException {
-		QualifiedImportNameContext _localctx = new QualifiedImportNameContext(_ctx, 6);
-		enterRule(_localctx, RULE_qualifiedImportName);
+		QualifiedImportNameContext _localctx = new QualifiedImportNameContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_qualifiedImportName);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -456,8 +457,8 @@ public class Java7Parser extends Parser {
 		public ClassOrInterfaceDeclarationContext classOrInterfaceDeclaration() {
 			return getRuleContext(ClassOrInterfaceDeclarationContext.class,0);
 		}
-		public TypeDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TypeDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeDeclaration; }
 		@Override
@@ -471,8 +472,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TypeDeclarationContext typeDeclaration() throws RecognitionException {
-		TypeDeclarationContext _localctx = new TypeDeclarationContext(_ctx, 8);
-		enterRule(_localctx, RULE_typeDeclaration);
+		TypeDeclarationContext _localctx = new TypeDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 8, RULE_typeDeclaration);
 		try {
 			setState(314);
 			switch (_input.LA(1)) {
@@ -524,8 +525,8 @@ public class Java7Parser extends Parser {
 		public ClassDeclarationContext classDeclaration() {
 			return getRuleContext(ClassDeclarationContext.class,0);
 		}
-		public ClassOrInterfaceDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ClassOrInterfaceDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classOrInterfaceDeclaration; }
 		@Override
@@ -539,8 +540,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ClassOrInterfaceDeclarationContext classOrInterfaceDeclaration() throws RecognitionException {
-		ClassOrInterfaceDeclarationContext _localctx = new ClassOrInterfaceDeclarationContext(_ctx, 10);
-		enterRule(_localctx, RULE_classOrInterfaceDeclaration);
+		ClassOrInterfaceDeclarationContext _localctx = new ClassOrInterfaceDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_classOrInterfaceDeclaration);
 		try {
 			setState(318);
 			switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
@@ -550,6 +551,7 @@ public class Java7Parser extends Parser {
 				setState(316); classDeclaration();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -576,8 +578,8 @@ public class Java7Parser extends Parser {
 		public ModifierContext modifier(int i) {
 			return getRuleContext(ModifierContext.class,i);
 		}
-		public ModifiersContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ModifiersContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_modifiers; }
 		@Override
@@ -591,8 +593,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ModifiersContext modifiers() throws RecognitionException {
-		ModifiersContext _localctx = new ModifiersContext(_ctx, 12);
-		enterRule(_localctx, RULE_modifiers);
+		ModifiersContext _localctx = new ModifiersContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_modifiers);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
@@ -640,8 +642,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode PUBLIC() { return getToken(Java7Parser.PUBLIC, 0); }
 		public TerminalNode TRANSIENT() { return getToken(Java7Parser.TRANSIENT, 0); }
 		public TerminalNode STRICTFP() { return getToken(Java7Parser.STRICTFP, 0); }
-		public ModifierContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ModifierContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_modifier; }
 		@Override
@@ -655,8 +657,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ModifierContext modifier() throws RecognitionException {
-		ModifierContext _localctx = new ModifierContext(_ctx, 14);
-		enterRule(_localctx, RULE_modifier);
+		ModifierContext _localctx = new ModifierContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_modifier);
 		try {
 			setState(338);
 			switch (_input.LA(1)) {
@@ -755,8 +757,8 @@ public class Java7Parser extends Parser {
 		public AnnotationContext annotation(int i) {
 			return getRuleContext(AnnotationContext.class,i);
 		}
-		public VariableModifiersContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public VariableModifiersContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_variableModifiers; }
 		@Override
@@ -770,8 +772,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final VariableModifiersContext variableModifiers() throws RecognitionException {
-		VariableModifiersContext _localctx = new VariableModifiersContext(_ctx, 16);
-		enterRule(_localctx, RULE_variableModifiers);
+		VariableModifiersContext _localctx = new VariableModifiersContext(_ctx, getState());
+		enterRule(_localctx, 16, RULE_variableModifiers);
 		int _la;
 		try {
 			int _alt;
@@ -833,8 +835,8 @@ public class Java7Parser extends Parser {
 		public EnumDeclarationContext enumDeclaration() {
 			return getRuleContext(EnumDeclarationContext.class,0);
 		}
-		public ClassDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ClassDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classDeclaration; }
 		@Override
@@ -848,8 +850,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ClassDeclarationContext classDeclaration() throws RecognitionException {
-		ClassDeclarationContext _localctx = new ClassDeclarationContext(_ctx, 18);
-		enterRule(_localctx, RULE_classDeclaration);
+		ClassDeclarationContext _localctx = new ClassDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_classDeclaration);
 		try {
 			setState(357);
 			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
@@ -859,6 +861,7 @@ public class Java7Parser extends Parser {
 				setState(355); normalClassDeclaration();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -898,8 +901,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public NormalClassDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public NormalClassDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_normalClassDeclaration; }
 		@Override
@@ -913,8 +916,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final NormalClassDeclarationContext normalClassDeclaration() throws RecognitionException {
-		NormalClassDeclarationContext _localctx = new NormalClassDeclarationContext(_ctx, 20);
-		enterRule(_localctx, RULE_normalClassDeclaration);
+		NormalClassDeclarationContext _localctx = new NormalClassDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_normalClassDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -975,8 +978,8 @@ public class Java7Parser extends Parser {
 		public TypeParameterContext typeParameter(int i) {
 			return getRuleContext(TypeParameterContext.class,i);
 		}
-		public TypeParametersContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TypeParametersContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeParameters; }
 		@Override
@@ -990,8 +993,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TypeParametersContext typeParameters() throws RecognitionException {
-		TypeParametersContext _localctx = new TypeParametersContext(_ctx, 22);
-		enterRule(_localctx, RULE_typeParameters);
+		TypeParametersContext _localctx = new TypeParametersContext(_ctx, getState());
+		enterRule(_localctx, 22, RULE_typeParameters);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1032,8 +1035,8 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode EXTENDS() { return getToken(Java7Parser.EXTENDS, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
-		public TypeParameterContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TypeParameterContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeParameter; }
 		@Override
@@ -1047,8 +1050,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TypeParameterContext typeParameter() throws RecognitionException {
-		TypeParameterContext _localctx = new TypeParameterContext(_ctx, 24);
-		enterRule(_localctx, RULE_typeParameter);
+		TypeParameterContext _localctx = new TypeParameterContext(_ctx, getState());
+		enterRule(_localctx, 24, RULE_typeParameter);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1087,8 +1090,8 @@ public class Java7Parser extends Parser {
 		public List<TypeContext> type() {
 			return getRuleContexts(TypeContext.class);
 		}
-		public TypeBoundContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TypeBoundContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeBound; }
 		@Override
@@ -1102,8 +1105,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TypeBoundContext typeBound() throws RecognitionException {
-		TypeBoundContext _localctx = new TypeBoundContext(_ctx, 26);
-		enterRule(_localctx, RULE_typeBound);
+		TypeBoundContext _localctx = new TypeBoundContext(_ctx, getState());
+		enterRule(_localctx, 26, RULE_typeBound);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1149,8 +1152,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public EnumDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public EnumDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_enumDeclaration; }
 		@Override
@@ -1164,8 +1167,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final EnumDeclarationContext enumDeclaration() throws RecognitionException {
-		EnumDeclarationContext _localctx = new EnumDeclarationContext(_ctx, 28);
-		enterRule(_localctx, RULE_enumDeclaration);
+		EnumDeclarationContext _localctx = new EnumDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 28, RULE_enumDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1206,8 +1209,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode RBRACE() { return getToken(Java7Parser.RBRACE, 0); }
 		public TerminalNode COMMA() { return getToken(Java7Parser.COMMA, 0); }
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
-		public EnumBodyContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public EnumBodyContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_enumBody; }
 		@Override
@@ -1221,8 +1224,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final EnumBodyContext enumBody() throws RecognitionException {
-		EnumBodyContext _localctx = new EnumBodyContext(_ctx, 30);
-		enterRule(_localctx, RULE_enumBody);
+		EnumBodyContext _localctx = new EnumBodyContext(_ctx, getState());
+		enterRule(_localctx, 30, RULE_enumBody);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1277,8 +1280,8 @@ public class Java7Parser extends Parser {
 		public EnumConstantContext enumConstant(int i) {
 			return getRuleContext(EnumConstantContext.class,i);
 		}
-		public EnumConstantsContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public EnumConstantsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_enumConstants; }
 		@Override
@@ -1292,8 +1295,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final EnumConstantsContext enumConstants() throws RecognitionException {
-		EnumConstantsContext _localctx = new EnumConstantsContext(_ctx, 32);
-		enterRule(_localctx, RULE_enumConstants);
+		EnumConstantsContext _localctx = new EnumConstantsContext(_ctx, getState());
+		enterRule(_localctx, 32, RULE_enumConstants);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
@@ -1339,8 +1342,8 @@ public class Java7Parser extends Parser {
 			return getRuleContext(AnnotationsContext.class,0);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
-		public EnumConstantContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public EnumConstantContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_enumConstant; }
 		@Override
@@ -1354,8 +1357,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final EnumConstantContext enumConstant() throws RecognitionException {
-		EnumConstantContext _localctx = new EnumConstantContext(_ctx, 34);
-		enterRule(_localctx, RULE_enumConstant);
+		EnumConstantContext _localctx = new EnumConstantContext(_ctx, getState());
+		enterRule(_localctx, 34, RULE_enumConstant);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1406,8 +1409,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(ClassBodyDeclarationContext.class);
 		}
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
-		public EnumBodyDeclarationsContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public EnumBodyDeclarationsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_enumBodyDeclarations; }
 		@Override
@@ -1421,8 +1424,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final EnumBodyDeclarationsContext enumBodyDeclarations() throws RecognitionException {
-		EnumBodyDeclarationsContext _localctx = new EnumBodyDeclarationsContext(_ctx, 36);
-		enterRule(_localctx, RULE_enumBodyDeclarations);
+		EnumBodyDeclarationsContext _localctx = new EnumBodyDeclarationsContext(_ctx, getState());
+		enterRule(_localctx, 36, RULE_enumBodyDeclarations);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1431,7 +1434,7 @@ public class Java7Parser extends Parser {
 			setState(442);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==SEMI || _la==CLASS || _la==PUBLIC || _la==PROTECTED || _la==PRIVATE || _la==ABSTRACT || _la==STATIC || _la==FINAL || _la==STRICTFP || _la==LBRACE || _la==VOID || _la==INTERFACE || _la==NATIVE || _la==SYNCHRONIZED || _la==TRANSIENT || _la==VOLATILE || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==AT || _la==ENUM || _la==LT || _la==Identifier) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << CLASS) | (1L << PUBLIC) | (1L << PROTECTED) | (1L << PRIVATE) | (1L << ABSTRACT) | (1L << STATIC) | (1L << FINAL) | (1L << STRICTFP) | (1L << LBRACE) | (1L << VOID) | (1L << INTERFACE) | (1L << NATIVE) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOLATILE) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << AT) | (1L << ENUM))) != 0) || _la==LT || _la==Identifier) {
 				{
 				{
 				setState(439); classBodyDeclaration();
@@ -1461,8 +1464,8 @@ public class Java7Parser extends Parser {
 		public NormalInterfaceDeclarationContext normalInterfaceDeclaration() {
 			return getRuleContext(NormalInterfaceDeclarationContext.class,0);
 		}
-		public InterfaceDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public InterfaceDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_interfaceDeclaration; }
 		@Override
@@ -1476,8 +1479,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final InterfaceDeclarationContext interfaceDeclaration() throws RecognitionException {
-		InterfaceDeclarationContext _localctx = new InterfaceDeclarationContext(_ctx, 38);
-		enterRule(_localctx, RULE_interfaceDeclaration);
+		InterfaceDeclarationContext _localctx = new InterfaceDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 38, RULE_interfaceDeclaration);
 		try {
 			setState(447);
 			switch ( getInterpreter().adaptivePredict(_input,33,_ctx) ) {
@@ -1487,6 +1490,7 @@ public class Java7Parser extends Parser {
 				setState(445); normalInterfaceDeclaration();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -1522,8 +1526,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public NormalInterfaceDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public NormalInterfaceDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_normalInterfaceDeclaration; }
 		@Override
@@ -1537,8 +1541,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final NormalInterfaceDeclarationContext normalInterfaceDeclaration() throws RecognitionException {
-		NormalInterfaceDeclarationContext _localctx = new NormalInterfaceDeclarationContext(_ctx, 40);
-		enterRule(_localctx, RULE_normalInterfaceDeclaration);
+		NormalInterfaceDeclarationContext _localctx = new NormalInterfaceDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 40, RULE_normalInterfaceDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1588,8 +1592,8 @@ public class Java7Parser extends Parser {
 		public List<TypeContext> type() {
 			return getRuleContexts(TypeContext.class);
 		}
-		public TypeListContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TypeListContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeList; }
 		@Override
@@ -1603,8 +1607,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TypeListContext typeList() throws RecognitionException {
-		TypeListContext _localctx = new TypeListContext(_ctx, 42);
-		enterRule(_localctx, RULE_typeList);
+		TypeListContext _localctx = new TypeListContext(_ctx, getState());
+		enterRule(_localctx, 42, RULE_typeList);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1646,8 +1650,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(ClassBodyDeclarationContext.class);
 		}
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
-		public ClassBodyContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ClassBodyContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classBody; }
 		@Override
@@ -1661,8 +1665,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ClassBodyContext classBody() throws RecognitionException {
-		ClassBodyContext _localctx = new ClassBodyContext(_ctx, 44);
-		enterRule(_localctx, RULE_classBody);
+		ClassBodyContext _localctx = new ClassBodyContext(_ctx, getState());
+		enterRule(_localctx, 44, RULE_classBody);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1671,7 +1675,7 @@ public class Java7Parser extends Parser {
 			setState(473);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==SEMI || _la==CLASS || _la==PUBLIC || _la==PROTECTED || _la==PRIVATE || _la==ABSTRACT || _la==STATIC || _la==FINAL || _la==STRICTFP || _la==LBRACE || _la==VOID || _la==INTERFACE || _la==NATIVE || _la==SYNCHRONIZED || _la==TRANSIENT || _la==VOLATILE || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==AT || _la==ENUM || _la==LT || _la==Identifier) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << CLASS) | (1L << PUBLIC) | (1L << PROTECTED) | (1L << PRIVATE) | (1L << ABSTRACT) | (1L << STATIC) | (1L << FINAL) | (1L << STRICTFP) | (1L << LBRACE) | (1L << VOID) | (1L << INTERFACE) | (1L << NATIVE) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOLATILE) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << AT) | (1L << ENUM))) != 0) || _la==LT || _la==Identifier) {
 				{
 				{
 				setState(470); classBodyDeclaration();
@@ -1704,8 +1708,8 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode RBRACE() { return getToken(Java7Parser.RBRACE, 0); }
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
-		public InterfaceBodyContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public InterfaceBodyContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_interfaceBody; }
 		@Override
@@ -1719,8 +1723,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final InterfaceBodyContext interfaceBody() throws RecognitionException {
-		InterfaceBodyContext _localctx = new InterfaceBodyContext(_ctx, 46);
-		enterRule(_localctx, RULE_interfaceBody);
+		InterfaceBodyContext _localctx = new InterfaceBodyContext(_ctx, getState());
+		enterRule(_localctx, 46, RULE_interfaceBody);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -1729,7 +1733,7 @@ public class Java7Parser extends Parser {
 			setState(482);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==SEMI || _la==CLASS || _la==PUBLIC || _la==PROTECTED || _la==PRIVATE || _la==ABSTRACT || _la==STATIC || _la==FINAL || _la==STRICTFP || _la==VOID || _la==INTERFACE || _la==NATIVE || _la==SYNCHRONIZED || _la==TRANSIENT || _la==VOLATILE || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==AT || _la==ENUM || _la==LT || _la==Identifier) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << CLASS) | (1L << PUBLIC) | (1L << PROTECTED) | (1L << PRIVATE) | (1L << ABSTRACT) | (1L << STATIC) | (1L << FINAL) | (1L << STRICTFP) | (1L << VOID) | (1L << INTERFACE) | (1L << NATIVE) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOLATILE) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << AT) | (1L << ENUM))) != 0) || _la==LT || _la==Identifier) {
 				{
 				{
 				setState(479); interfaceBodyDeclaration();
@@ -1762,8 +1766,8 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode STATIC() { return getToken(Java7Parser.STATIC, 0); }
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
-		public ClassBodyDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ClassBodyDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classBodyDeclaration; }
 		@Override
@@ -1777,8 +1781,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ClassBodyDeclarationContext classBodyDeclaration() throws RecognitionException {
-		ClassBodyDeclarationContext _localctx = new ClassBodyDeclarationContext(_ctx, 48);
-		enterRule(_localctx, RULE_classBodyDeclaration);
+		ClassBodyDeclarationContext _localctx = new ClassBodyDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 48, RULE_classBodyDeclaration);
 		int _la;
 		try {
 			setState(493);
@@ -1789,6 +1793,7 @@ public class Java7Parser extends Parser {
 				setState(487); match(SEMI);
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -1803,6 +1808,7 @@ public class Java7Parser extends Parser {
 				setState(491); block();
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -1838,8 +1844,8 @@ public class Java7Parser extends Parser {
 		public MethodDeclarationContext methodDeclaration() {
 			return getRuleContext(MethodDeclarationContext.class,0);
 		}
-		public MemberDeclContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public MemberDeclContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_memberDecl; }
 		@Override
@@ -1853,8 +1859,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final MemberDeclContext memberDecl() throws RecognitionException {
-		MemberDeclContext _localctx = new MemberDeclContext(_ctx, 50);
-		enterRule(_localctx, RULE_memberDecl);
+		MemberDeclContext _localctx = new MemberDeclContext(_ctx, getState());
+		enterRule(_localctx, 50, RULE_memberDecl);
 		try {
 			setState(500);
 			switch ( getInterpreter().adaptivePredict(_input,41,_ctx) ) {
@@ -1864,24 +1870,28 @@ public class Java7Parser extends Parser {
 				setState(495); constructorDeclaration();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(496); fieldDeclaration();
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(497); methodDeclaration();
 				}
 				break;
+
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(498); classDeclaration();
 				}
 				break;
+
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
@@ -1932,8 +1942,8 @@ public class Java7Parser extends Parser {
 		public QualifiedNameListContext qualifiedNameList() {
 			return getRuleContext(QualifiedNameListContext.class,0);
 		}
-		public MethodDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public MethodDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_methodDeclaration; }
 		@Override
@@ -1947,8 +1957,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final MethodDeclarationContext methodDeclaration() throws RecognitionException {
-		MethodDeclarationContext _localctx = new MethodDeclarationContext(_ctx, 52);
-		enterRule(_localctx, RULE_methodDeclaration);
+		MethodDeclarationContext _localctx = new MethodDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 52, RULE_methodDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -2056,8 +2066,8 @@ public class Java7Parser extends Parser {
 		public QualifiedNameListContext qualifiedNameList() {
 			return getRuleContext(QualifiedNameListContext.class,0);
 		}
-		public ConstructorDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ConstructorDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_constructorDeclaration; }
 		@Override
@@ -2071,8 +2081,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ConstructorDeclarationContext constructorDeclaration() throws RecognitionException {
-		ConstructorDeclarationContext _localctx = new ConstructorDeclarationContext(_ctx, 54);
-		enterRule(_localctx, RULE_constructorDeclaration);
+		ConstructorDeclarationContext _localctx = new ConstructorDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 54, RULE_constructorDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -2123,8 +2133,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(BlockStatementContext.class);
 		}
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
-		public ConstructorBlockContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ConstructorBlockContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_constructorBlock; }
 		@Override
@@ -2138,8 +2148,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ConstructorBlockContext constructorBlock() throws RecognitionException {
-		ConstructorBlockContext _localctx = new ConstructorBlockContext(_ctx, 56);
-		enterRule(_localctx, RULE_constructorBlock);
+		ConstructorBlockContext _localctx = new ConstructorBlockContext(_ctx, getState());
+		enterRule(_localctx, 56, RULE_constructorBlock);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -2156,7 +2166,7 @@ public class Java7Parser extends Parser {
 			setState(546);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==SEMI || _la==CLASS || _la==PUBLIC || _la==PROTECTED || _la==PRIVATE || _la==ABSTRACT || _la==STATIC || _la==FINAL || _la==STRICTFP || _la==LBRACE || _la==LPAREN || _la==VOID || _la==INTERFACE || _la==THROW || _la==NATIVE || _la==SYNCHRONIZED || _la==TRANSIENT || _la==VOLATILE || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==THIS || _la==SUPER || _la==NULL || _la==TRUE || _la==FALSE || _la==AT || _la==IF || _la==FOR || _la==WHILE || _la==DO || _la==TRY || _la==SWITCH || _la==RETURN || _la==BREAK || _la==CONTINUE || _la==ENUM || _la==ASSERT || _la==PLUSPLUS || _la==SUBSUB || _la==TILDE || _la==BANG || _la==NEW || _la==PLUS || _la==SUB || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral || _la==Identifier) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << CLASS) | (1L << PUBLIC) | (1L << PROTECTED) | (1L << PRIVATE) | (1L << ABSTRACT) | (1L << STATIC) | (1L << FINAL) | (1L << STRICTFP) | (1L << LBRACE) | (1L << LPAREN) | (1L << VOID) | (1L << INTERFACE) | (1L << THROW) | (1L << NATIVE) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOLATILE) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << THIS) | (1L << SUPER) | (1L << NULL) | (1L << TRUE) | (1L << FALSE) | (1L << AT) | (1L << IF) | (1L << FOR) | (1L << WHILE) | (1L << DO) | (1L << TRY) | (1L << SWITCH) | (1L << RETURN) | (1L << BREAK) | (1L << CONTINUE) | (1L << ENUM))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (ASSERT - 64)) | (1L << (PLUSPLUS - 64)) | (1L << (SUBSUB - 64)) | (1L << (TILDE - 64)) | (1L << (BANG - 64)) | (1L << (NEW - 64)) | (1L << (PLUS - 64)) | (1L << (SUB - 64)) | (1L << (IntegerLiteral - 64)) | (1L << (FloatingPointLiteral - 64)) | (1L << (CharacterLiteral - 64)) | (1L << (StringLiteral - 64)) | (1L << (Identifier - 64)))) != 0)) {
 				{
 				{
 				setState(543); blockStatement();
@@ -2198,8 +2208,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public FieldDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public FieldDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_fieldDeclaration; }
 		@Override
@@ -2213,8 +2223,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final FieldDeclarationContext fieldDeclaration() throws RecognitionException {
-		FieldDeclarationContext _localctx = new FieldDeclarationContext(_ctx, 58);
-		enterRule(_localctx, RULE_fieldDeclaration);
+		FieldDeclarationContext _localctx = new FieldDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 58, RULE_fieldDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -2264,8 +2274,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode LBRACKET(int i) {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
-		public VariableDeclaratorContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public VariableDeclaratorContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_variableDeclarator; }
 		@Override
@@ -2279,8 +2289,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final VariableDeclaratorContext variableDeclarator() throws RecognitionException {
-		VariableDeclaratorContext _localctx = new VariableDeclaratorContext(_ctx, 60);
-		enterRule(_localctx, RULE_variableDeclarator);
+		VariableDeclaratorContext _localctx = new VariableDeclaratorContext(_ctx, getState());
+		enterRule(_localctx, 60, RULE_variableDeclarator);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -2336,8 +2346,8 @@ public class Java7Parser extends Parser {
 		public InterfaceFieldDeclarationContext interfaceFieldDeclaration() {
 			return getRuleContext(InterfaceFieldDeclarationContext.class,0);
 		}
-		public InterfaceBodyDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public InterfaceBodyDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_interfaceBodyDeclaration; }
 		@Override
@@ -2351,8 +2361,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final InterfaceBodyDeclarationContext interfaceBodyDeclaration() throws RecognitionException {
-		InterfaceBodyDeclarationContext _localctx = new InterfaceBodyDeclarationContext(_ctx, 62);
-		enterRule(_localctx, RULE_interfaceBodyDeclaration);
+		InterfaceBodyDeclarationContext _localctx = new InterfaceBodyDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 62, RULE_interfaceBodyDeclaration);
 		try {
 			setState(580);
 			switch ( getInterpreter().adaptivePredict(_input,54,_ctx) ) {
@@ -2362,24 +2372,28 @@ public class Java7Parser extends Parser {
 				setState(575); interfaceFieldDeclaration();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(576); interfaceMethodDeclaration();
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(577); interfaceDeclaration();
 				}
 				break;
+
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(578); classDeclaration();
 				}
 				break;
+
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
@@ -2427,8 +2441,8 @@ public class Java7Parser extends Parser {
 		public QualifiedNameListContext qualifiedNameList() {
 			return getRuleContext(QualifiedNameListContext.class,0);
 		}
-		public InterfaceMethodDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public InterfaceMethodDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_interfaceMethodDeclaration; }
 		@Override
@@ -2442,8 +2456,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final InterfaceMethodDeclarationContext interfaceMethodDeclaration() throws RecognitionException {
-		InterfaceMethodDeclarationContext _localctx = new InterfaceMethodDeclarationContext(_ctx, 64);
-		enterRule(_localctx, RULE_interfaceMethodDeclaration);
+		InterfaceMethodDeclarationContext _localctx = new InterfaceMethodDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 64, RULE_interfaceMethodDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -2537,8 +2551,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public InterfaceFieldDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public InterfaceFieldDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_interfaceFieldDeclaration; }
 		@Override
@@ -2552,8 +2566,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final InterfaceFieldDeclarationContext interfaceFieldDeclaration() throws RecognitionException {
-		InterfaceFieldDeclarationContext _localctx = new InterfaceFieldDeclarationContext(_ctx, 66);
-		enterRule(_localctx, RULE_interfaceFieldDeclaration);
+		InterfaceFieldDeclarationContext _localctx = new InterfaceFieldDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 66, RULE_interfaceFieldDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -2604,8 +2618,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode LBRACKET(int i) {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
-		public TypeContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TypeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_type; }
 		@Override
@@ -2619,8 +2633,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TypeContext type() throws RecognitionException {
-		TypeContext _localctx = new TypeContext(_ctx, 68);
-		enterRule(_localctx, RULE_type);
+		TypeContext _localctx = new TypeContext(_ctx, getState());
+		enterRule(_localctx, 68, RULE_type);
 		int _la;
 		try {
 			setState(633);
@@ -2698,8 +2712,8 @@ public class Java7Parser extends Parser {
 		public List<IdentifierTypeArgumentContext> identifierTypeArgument() {
 			return getRuleContexts(IdentifierTypeArgumentContext.class);
 		}
-		public ClassOrInterfaceTypeContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ClassOrInterfaceTypeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classOrInterfaceType; }
 		@Override
@@ -2713,8 +2727,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ClassOrInterfaceTypeContext classOrInterfaceType() throws RecognitionException {
-		ClassOrInterfaceTypeContext _localctx = new ClassOrInterfaceTypeContext(_ctx, 70);
-		enterRule(_localctx, RULE_classOrInterfaceType);
+		ClassOrInterfaceTypeContext _localctx = new ClassOrInterfaceTypeContext(_ctx, getState());
+		enterRule(_localctx, 70, RULE_classOrInterfaceType);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -2752,8 +2766,8 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeArgumentsContext.class,0);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
-		public IdentifierTypeArgumentContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public IdentifierTypeArgumentContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_identifierTypeArgument; }
 		@Override
@@ -2767,8 +2781,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final IdentifierTypeArgumentContext identifierTypeArgument() throws RecognitionException {
-		IdentifierTypeArgumentContext _localctx = new IdentifierTypeArgumentContext(_ctx, 72);
-		enterRule(_localctx, RULE_identifierTypeArgument);
+		IdentifierTypeArgumentContext _localctx = new IdentifierTypeArgumentContext(_ctx, getState());
+		enterRule(_localctx, 72, RULE_identifierTypeArgument);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -2803,8 +2817,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode INT() { return getToken(Java7Parser.INT, 0); }
 		public TerminalNode BOOLEAN() { return getToken(Java7Parser.BOOLEAN, 0); }
 		public TerminalNode LONG() { return getToken(Java7Parser.LONG, 0); }
-		public PrimitiveTypeContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public PrimitiveTypeContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_primitiveType; }
 		@Override
@@ -2818,16 +2832,15 @@ public class Java7Parser extends Parser {
 	}
 
 	public final PrimitiveTypeContext primitiveType() throws RecognitionException {
-		PrimitiveTypeContext _localctx = new PrimitiveTypeContext(_ctx, 74);
-		enterRule(_localctx, RULE_primitiveType);
+		PrimitiveTypeContext _localctx = new PrimitiveTypeContext(_ctx, getState());
+		enterRule(_localctx, 74, RULE_primitiveType);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(647);
-			_input.LT(1);
 			_la = _input.LA(1);
-			if ( !(_la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -2857,8 +2870,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(TypeArgumentContext.class);
 		}
 		public List<TerminalNode> COMMA() { return getTokens(Java7Parser.COMMA); }
-		public TypeArgumentsContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TypeArgumentsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeArguments; }
 		@Override
@@ -2872,8 +2885,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TypeArgumentsContext typeArguments() throws RecognitionException {
-		TypeArgumentsContext _localctx = new TypeArgumentsContext(_ctx, 76);
-		enterRule(_localctx, RULE_typeArguments);
+		TypeArgumentsContext _localctx = new TypeArgumentsContext(_ctx, getState());
+		enterRule(_localctx, 76, RULE_typeArguments);
 		int _la;
 		try {
 			setState(662);
@@ -2900,6 +2913,7 @@ public class Java7Parser extends Parser {
 				setState(658); match(GT);
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -2927,8 +2941,8 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeContext.class,0);
 		}
 		public TerminalNode QUES() { return getToken(Java7Parser.QUES, 0); }
-		public TypeArgumentContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TypeArgumentContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeArgument; }
 		@Override
@@ -2942,8 +2956,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TypeArgumentContext typeArgument() throws RecognitionException {
-		TypeArgumentContext _localctx = new TypeArgumentContext(_ctx, 78);
-		enterRule(_localctx, RULE_typeArgument);
+		TypeArgumentContext _localctx = new TypeArgumentContext(_ctx, getState());
+		enterRule(_localctx, 78, RULE_typeArgument);
 		int _la;
 		try {
 			setState(670);
@@ -2971,7 +2985,6 @@ public class Java7Parser extends Parser {
 				if (_la==EXTENDS || _la==SUPER) {
 					{
 					setState(666);
-					_input.LT(1);
 					_la = _input.LA(1);
 					if ( !(_la==EXTENDS || _la==SUPER) ) {
 					_errHandler.recoverInline(this);
@@ -3009,8 +3022,8 @@ public class Java7Parser extends Parser {
 		public QualifiedNameContext qualifiedName(int i) {
 			return getRuleContext(QualifiedNameContext.class,i);
 		}
-		public QualifiedNameListContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public QualifiedNameListContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_qualifiedNameList; }
 		@Override
@@ -3024,8 +3037,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final QualifiedNameListContext qualifiedNameList() throws RecognitionException {
-		QualifiedNameListContext _localctx = new QualifiedNameListContext(_ctx, 80);
-		enterRule(_localctx, RULE_qualifiedNameList);
+		QualifiedNameListContext _localctx = new QualifiedNameListContext(_ctx, getState());
+		enterRule(_localctx, 80, RULE_qualifiedNameList);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -3064,8 +3077,8 @@ public class Java7Parser extends Parser {
 			return getRuleContext(FormalParameterDeclsContext.class,0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
-		public FormalParametersContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public FormalParametersContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_formalParameters; }
 		@Override
@@ -3079,8 +3092,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final FormalParametersContext formalParameters() throws RecognitionException {
-		FormalParametersContext _localctx = new FormalParametersContext(_ctx, 82);
-		enterRule(_localctx, RULE_formalParameters);
+		FormalParametersContext _localctx = new FormalParametersContext(_ctx, getState());
+		enterRule(_localctx, 82, RULE_formalParameters);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -3088,7 +3101,7 @@ public class Java7Parser extends Parser {
 			setState(680); match(LPAREN);
 			setState(682);
 			_la = _input.LA(1);
-			if (_la==FINAL || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==AT || _la==Identifier) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << FINAL) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << AT))) != 0) || _la==Identifier) {
 				{
 				setState(681); formalParameterDecls();
 				}
@@ -3123,8 +3136,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(NormalParameterDeclContext.class);
 		}
 		public List<TerminalNode> COMMA() { return getTokens(Java7Parser.COMMA); }
-		public FormalParameterDeclsContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public FormalParameterDeclsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_formalParameterDecls; }
 		@Override
@@ -3138,8 +3151,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final FormalParameterDeclsContext formalParameterDecls() throws RecognitionException {
-		FormalParameterDeclsContext _localctx = new FormalParameterDeclsContext(_ctx, 84);
-		enterRule(_localctx, RULE_formalParameterDecls);
+		FormalParameterDeclsContext _localctx = new FormalParameterDeclsContext(_ctx, getState());
+		enterRule(_localctx, 84, RULE_formalParameterDecls);
 		int _la;
 		try {
 			int _alt;
@@ -3152,6 +3165,7 @@ public class Java7Parser extends Parser {
 				((FormalParameterDeclsContext)_localctx).parameterType =  1;
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -3173,6 +3187,7 @@ public class Java7Parser extends Parser {
 				((FormalParameterDeclsContext)_localctx).parameterType =  2;
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -3229,8 +3244,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode LBRACKET(int i) {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
-		public NormalParameterDeclContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public NormalParameterDeclContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_normalParameterDecl; }
 		@Override
@@ -3244,8 +3259,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final NormalParameterDeclContext normalParameterDecl() throws RecognitionException {
-		NormalParameterDeclContext _localctx = new NormalParameterDeclContext(_ctx, 86);
-		enterRule(_localctx, RULE_normalParameterDecl);
+		NormalParameterDeclContext _localctx = new NormalParameterDeclContext(_ctx, getState());
+		enterRule(_localctx, 86, RULE_normalParameterDecl);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -3289,8 +3304,8 @@ public class Java7Parser extends Parser {
 		public TypeContext type() {
 			return getRuleContext(TypeContext.class,0);
 		}
-		public EllipsisParameterDeclContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public EllipsisParameterDeclContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ellipsisParameterDecl; }
 		@Override
@@ -3304,8 +3319,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final EllipsisParameterDeclContext ellipsisParameterDecl() throws RecognitionException {
-		EllipsisParameterDeclContext _localctx = new EllipsisParameterDeclContext(_ctx, 88);
-		enterRule(_localctx, RULE_ellipsisParameterDecl);
+		EllipsisParameterDeclContext _localctx = new EllipsisParameterDeclContext(_ctx, getState());
+		enterRule(_localctx, 88, RULE_ellipsisParameterDecl);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -3340,8 +3355,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode DOT() { return getToken(Java7Parser.DOT, 0); }
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public TerminalNode THIS() { return getToken(Java7Parser.THIS, 0); }
-		public ExplicitConstructorInvocationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ExplicitConstructorInvocationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_explicitConstructorInvocation; }
 		@Override
@@ -3355,8 +3370,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ExplicitConstructorInvocationContext explicitConstructorInvocation() throws RecognitionException {
-		ExplicitConstructorInvocationContext _localctx = new ExplicitConstructorInvocationContext(_ctx, 90);
-		enterRule(_localctx, RULE_explicitConstructorInvocation);
+		ExplicitConstructorInvocationContext _localctx = new ExplicitConstructorInvocationContext(_ctx, getState());
+		enterRule(_localctx, 90, RULE_explicitConstructorInvocation);
 		int _la;
 		try {
 			setState(742);
@@ -3373,7 +3388,6 @@ public class Java7Parser extends Parser {
 				}
 
 				setState(729);
-				_input.LT(1);
 				_la = _input.LA(1);
 				if ( !(_la==THIS || _la==SUPER) ) {
 				_errHandler.recoverInline(this);
@@ -3383,6 +3397,7 @@ public class Java7Parser extends Parser {
 				setState(731); match(SEMI);
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -3423,8 +3438,8 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> DOT() { return getTokens(Java7Parser.DOT); }
 		public List<TerminalNode> Identifier() { return getTokens(Java7Parser.Identifier); }
-		public QualifiedNameContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public QualifiedNameContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_qualifiedName; }
 		@Override
@@ -3438,8 +3453,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final QualifiedNameContext qualifiedName() throws RecognitionException {
-		QualifiedNameContext _localctx = new QualifiedNameContext(_ctx, 92);
-		enterRule(_localctx, RULE_qualifiedName);
+		QualifiedNameContext _localctx = new QualifiedNameContext(_ctx, getState());
+		enterRule(_localctx, 92, RULE_qualifiedName);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -3479,8 +3494,8 @@ public class Java7Parser extends Parser {
 		public AnnotationContext annotation(int i) {
 			return getRuleContext(AnnotationContext.class,i);
 		}
-		public AnnotationsContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AnnotationsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_annotations; }
 		@Override
@@ -3494,8 +3509,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AnnotationsContext annotations() throws RecognitionException {
-		AnnotationsContext _localctx = new AnnotationsContext(_ctx, 94);
-		enterRule(_localctx, RULE_annotations);
+		AnnotationsContext _localctx = new AnnotationsContext(_ctx, getState());
+		enterRule(_localctx, 94, RULE_annotations);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -3536,8 +3551,8 @@ public class Java7Parser extends Parser {
 		public SingleElementAnnotationContext singleElementAnnotation() {
 			return getRuleContext(SingleElementAnnotationContext.class,0);
 		}
-		public AnnotationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AnnotationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_annotation; }
 		@Override
@@ -3551,8 +3566,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AnnotationContext annotation() throws RecognitionException {
-		AnnotationContext _localctx = new AnnotationContext(_ctx, 96);
-		enterRule(_localctx, RULE_annotation);
+		AnnotationContext _localctx = new AnnotationContext(_ctx, getState());
+		enterRule(_localctx, 96, RULE_annotation);
 		try {
 			setState(760);
 			switch ( getInterpreter().adaptivePredict(_input,80,_ctx) ) {
@@ -3562,12 +3577,14 @@ public class Java7Parser extends Parser {
 				setState(757); markerAnnotation();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(758); singleElementAnnotation();
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -3592,8 +3609,8 @@ public class Java7Parser extends Parser {
 		public QualifiedNameContext qualifiedName() {
 			return getRuleContext(QualifiedNameContext.class,0);
 		}
-		public MarkerAnnotationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public MarkerAnnotationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_markerAnnotation; }
 		@Override
@@ -3607,8 +3624,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final MarkerAnnotationContext markerAnnotation() throws RecognitionException {
-		MarkerAnnotationContext _localctx = new MarkerAnnotationContext(_ctx, 98);
-		enterRule(_localctx, RULE_markerAnnotation);
+		MarkerAnnotationContext _localctx = new MarkerAnnotationContext(_ctx, getState());
+		enterRule(_localctx, 98, RULE_markerAnnotation);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -3637,8 +3654,8 @@ public class Java7Parser extends Parser {
 			return getRuleContext(QualifiedNameContext.class,0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
-		public SingleElementAnnotationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public SingleElementAnnotationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_singleElementAnnotation; }
 		@Override
@@ -3652,8 +3669,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final SingleElementAnnotationContext singleElementAnnotation() throws RecognitionException {
-		SingleElementAnnotationContext _localctx = new SingleElementAnnotationContext(_ctx, 100);
-		enterRule(_localctx, RULE_singleElementAnnotation);
+		SingleElementAnnotationContext _localctx = new SingleElementAnnotationContext(_ctx, getState());
+		enterRule(_localctx, 100, RULE_singleElementAnnotation);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -3685,8 +3702,8 @@ public class Java7Parser extends Parser {
 			return getRuleContext(ElementValuePairsContext.class,0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
-		public NormalAnnotationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public NormalAnnotationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_normalAnnotation; }
 		@Override
@@ -3700,8 +3717,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final NormalAnnotationContext normalAnnotation() throws RecognitionException {
-		NormalAnnotationContext _localctx = new NormalAnnotationContext(_ctx, 102);
-		enterRule(_localctx, RULE_normalAnnotation);
+		NormalAnnotationContext _localctx = new NormalAnnotationContext(_ctx, getState());
+		enterRule(_localctx, 102, RULE_normalAnnotation);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -3742,8 +3759,8 @@ public class Java7Parser extends Parser {
 		public List<ElementValuePairContext> elementValuePair() {
 			return getRuleContexts(ElementValuePairContext.class);
 		}
-		public ElementValuePairsContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ElementValuePairsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_elementValuePairs; }
 		@Override
@@ -3757,8 +3774,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ElementValuePairsContext elementValuePairs() throws RecognitionException {
-		ElementValuePairsContext _localctx = new ElementValuePairsContext(_ctx, 104);
-		enterRule(_localctx, RULE_elementValuePairs);
+		ElementValuePairsContext _localctx = new ElementValuePairsContext(_ctx, getState());
+		enterRule(_localctx, 104, RULE_elementValuePairs);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -3797,8 +3814,8 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode EQ() { return getToken(Java7Parser.EQ, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
-		public ElementValuePairContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ElementValuePairContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_elementValuePair; }
 		@Override
@@ -3812,8 +3829,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ElementValuePairContext elementValuePair() throws RecognitionException {
-		ElementValuePairContext _localctx = new ElementValuePairContext(_ctx, 106);
-		enterRule(_localctx, RULE_elementValuePair);
+		ElementValuePairContext _localctx = new ElementValuePairContext(_ctx, getState());
+		enterRule(_localctx, 106, RULE_elementValuePair);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -3843,8 +3860,8 @@ public class Java7Parser extends Parser {
 		public ConditionalExpressionContext conditionalExpression() {
 			return getRuleContext(ConditionalExpressionContext.class,0);
 		}
-		public ElementValueContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ElementValueContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_elementValue; }
 		@Override
@@ -3858,8 +3875,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ElementValueContext elementValue() throws RecognitionException {
-		ElementValueContext _localctx = new ElementValueContext(_ctx, 108);
-		enterRule(_localctx, RULE_elementValue);
+		ElementValueContext _localctx = new ElementValueContext(_ctx, getState());
+		enterRule(_localctx, 108, RULE_elementValue);
 		try {
 			setState(794);
 			switch (_input.LA(1)) {
@@ -3935,8 +3952,8 @@ public class Java7Parser extends Parser {
 		public ElementValueContext elementValue(int i) {
 			return getRuleContext(ElementValueContext.class,i);
 		}
-		public ElementValueArrayInitializerContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ElementValueArrayInitializerContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_elementValueArrayInitializer; }
 		@Override
@@ -3950,8 +3967,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ElementValueArrayInitializerContext elementValueArrayInitializer() throws RecognitionException {
-		ElementValueArrayInitializerContext _localctx = new ElementValueArrayInitializerContext(_ctx, 110);
-		enterRule(_localctx, RULE_elementValueArrayInitializer);
+		ElementValueArrayInitializerContext _localctx = new ElementValueArrayInitializerContext(_ctx, getState());
+		enterRule(_localctx, 110, RULE_elementValueArrayInitializer);
 		int _la;
 		try {
 			int _alt;
@@ -3960,7 +3977,7 @@ public class Java7Parser extends Parser {
 			setState(796); match(LBRACE);
 			setState(805);
 			_la = _input.LA(1);
-			if (_la==LBRACE || _la==LPAREN || _la==VOID || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==THIS || _la==SUPER || _la==NULL || _la==TRUE || _la==FALSE || _la==AT || _la==PLUSPLUS || _la==SUBSUB || _la==TILDE || _la==BANG || _la==NEW || _la==PLUS || _la==SUB || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral || _la==Identifier) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LBRACE) | (1L << LPAREN) | (1L << VOID) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << THIS) | (1L << SUPER) | (1L << NULL) | (1L << TRUE) | (1L << FALSE) | (1L << AT))) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & ((1L << (PLUSPLUS - 65)) | (1L << (SUBSUB - 65)) | (1L << (TILDE - 65)) | (1L << (BANG - 65)) | (1L << (NEW - 65)) | (1L << (PLUS - 65)) | (1L << (SUB - 65)) | (1L << (IntegerLiteral - 65)) | (1L << (FloatingPointLiteral - 65)) | (1L << (CharacterLiteral - 65)) | (1L << (StringLiteral - 65)) | (1L << (Identifier - 65)))) != 0)) {
 				{
 				setState(797); elementValue();
 				setState(802);
@@ -4014,8 +4031,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public AnnotationTypeDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AnnotationTypeDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_annotationTypeDeclaration; }
 		@Override
@@ -4029,8 +4046,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AnnotationTypeDeclarationContext annotationTypeDeclaration() throws RecognitionException {
-		AnnotationTypeDeclarationContext _localctx = new AnnotationTypeDeclarationContext(_ctx, 112);
-		enterRule(_localctx, RULE_annotationTypeDeclaration);
+		AnnotationTypeDeclarationContext _localctx = new AnnotationTypeDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 112, RULE_annotationTypeDeclaration);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -4061,8 +4078,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(AnnotationTypeElementDeclarationContext.class);
 		}
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
-		public AnnotationTypeBodyContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AnnotationTypeBodyContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_annotationTypeBody; }
 		@Override
@@ -4076,8 +4093,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AnnotationTypeBodyContext annotationTypeBody() throws RecognitionException {
-		AnnotationTypeBodyContext _localctx = new AnnotationTypeBodyContext(_ctx, 114);
-		enterRule(_localctx, RULE_annotationTypeBody);
+		AnnotationTypeBodyContext _localctx = new AnnotationTypeBodyContext(_ctx, getState());
+		enterRule(_localctx, 114, RULE_annotationTypeBody);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -4086,7 +4103,7 @@ public class Java7Parser extends Parser {
 			setState(822);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==SEMI || _la==CLASS || _la==PUBLIC || _la==PROTECTED || _la==PRIVATE || _la==ABSTRACT || _la==STATIC || _la==FINAL || _la==STRICTFP || _la==INTERFACE || _la==NATIVE || _la==SYNCHRONIZED || _la==TRANSIENT || _la==VOLATILE || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==AT || _la==ENUM || _la==Identifier) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << CLASS) | (1L << PUBLIC) | (1L << PROTECTED) | (1L << PRIVATE) | (1L << ABSTRACT) | (1L << STATIC) | (1L << FINAL) | (1L << STRICTFP) | (1L << INTERFACE) | (1L << NATIVE) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOLATILE) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << AT) | (1L << ENUM))) != 0) || _la==Identifier) {
 				{
 				{
 				setState(819); annotationTypeElementDeclaration();
@@ -4130,8 +4147,8 @@ public class Java7Parser extends Parser {
 		public InterfaceFieldDeclarationContext interfaceFieldDeclaration() {
 			return getRuleContext(InterfaceFieldDeclarationContext.class,0);
 		}
-		public AnnotationTypeElementDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AnnotationTypeElementDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_annotationTypeElementDeclaration; }
 		@Override
@@ -4145,8 +4162,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AnnotationTypeElementDeclarationContext annotationTypeElementDeclaration() throws RecognitionException {
-		AnnotationTypeElementDeclarationContext _localctx = new AnnotationTypeElementDeclarationContext(_ctx, 116);
-		enterRule(_localctx, RULE_annotationTypeElementDeclaration);
+		AnnotationTypeElementDeclarationContext _localctx = new AnnotationTypeElementDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 116, RULE_annotationTypeElementDeclaration);
 		try {
 			setState(834);
 			switch ( getInterpreter().adaptivePredict(_input,88,_ctx) ) {
@@ -4156,36 +4173,42 @@ public class Java7Parser extends Parser {
 				setState(827); annotationMethodDeclaration();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(828); interfaceFieldDeclaration();
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(829); normalClassDeclaration();
 				}
 				break;
+
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(830); normalInterfaceDeclaration();
 				}
 				break;
+
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(831); enumDeclaration();
 				}
 				break;
+
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
 				setState(832); annotationTypeDeclaration();
 				}
 				break;
+
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
@@ -4220,8 +4243,8 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
 		public TerminalNode DEFAULT() { return getToken(Java7Parser.DEFAULT, 0); }
-		public AnnotationMethodDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AnnotationMethodDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_annotationMethodDeclaration; }
 		@Override
@@ -4235,8 +4258,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AnnotationMethodDeclarationContext annotationMethodDeclaration() throws RecognitionException {
-		AnnotationMethodDeclarationContext _localctx = new AnnotationMethodDeclarationContext(_ctx, 118);
-		enterRule(_localctx, RULE_annotationMethodDeclaration);
+		AnnotationMethodDeclarationContext _localctx = new AnnotationMethodDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 118, RULE_annotationMethodDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -4278,8 +4301,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(BlockStatementContext.class);
 		}
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
-		public BlockContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public BlockContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_block; }
 		@Override
@@ -4293,8 +4316,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final BlockContext block() throws RecognitionException {
-		BlockContext _localctx = new BlockContext(_ctx, 120);
-		enterRule(_localctx, RULE_block);
+		BlockContext _localctx = new BlockContext(_ctx, getState());
+		enterRule(_localctx, 120, RULE_block);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -4303,7 +4326,7 @@ public class Java7Parser extends Parser {
 			setState(851);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==SEMI || _la==CLASS || _la==PUBLIC || _la==PROTECTED || _la==PRIVATE || _la==ABSTRACT || _la==STATIC || _la==FINAL || _la==STRICTFP || _la==LBRACE || _la==LPAREN || _la==VOID || _la==INTERFACE || _la==THROW || _la==NATIVE || _la==SYNCHRONIZED || _la==TRANSIENT || _la==VOLATILE || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==THIS || _la==SUPER || _la==NULL || _la==TRUE || _la==FALSE || _la==AT || _la==IF || _la==FOR || _la==WHILE || _la==DO || _la==TRY || _la==SWITCH || _la==RETURN || _la==BREAK || _la==CONTINUE || _la==ENUM || _la==ASSERT || _la==PLUSPLUS || _la==SUBSUB || _la==TILDE || _la==BANG || _la==NEW || _la==PLUS || _la==SUB || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral || _la==Identifier) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << CLASS) | (1L << PUBLIC) | (1L << PROTECTED) | (1L << PRIVATE) | (1L << ABSTRACT) | (1L << STATIC) | (1L << FINAL) | (1L << STRICTFP) | (1L << LBRACE) | (1L << LPAREN) | (1L << VOID) | (1L << INTERFACE) | (1L << THROW) | (1L << NATIVE) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOLATILE) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << THIS) | (1L << SUPER) | (1L << NULL) | (1L << TRUE) | (1L << FALSE) | (1L << AT) | (1L << IF) | (1L << FOR) | (1L << WHILE) | (1L << DO) | (1L << TRY) | (1L << SWITCH) | (1L << RETURN) | (1L << BREAK) | (1L << CONTINUE) | (1L << ENUM))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (ASSERT - 64)) | (1L << (PLUSPLUS - 64)) | (1L << (SUBSUB - 64)) | (1L << (TILDE - 64)) | (1L << (BANG - 64)) | (1L << (NEW - 64)) | (1L << (PLUS - 64)) | (1L << (SUB - 64)) | (1L << (IntegerLiteral - 64)) | (1L << (FloatingPointLiteral - 64)) | (1L << (CharacterLiteral - 64)) | (1L << (StringLiteral - 64)) | (1L << (Identifier - 64)))) != 0)) {
 				{
 				{
 				setState(848); blockStatement();
@@ -4337,8 +4360,8 @@ public class Java7Parser extends Parser {
 		public ClassOrInterfaceDeclarationContext classOrInterfaceDeclaration() {
 			return getRuleContext(ClassOrInterfaceDeclarationContext.class,0);
 		}
-		public BlockStatementContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public BlockStatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_blockStatement; }
 		@Override
@@ -4352,8 +4375,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final BlockStatementContext blockStatement() throws RecognitionException {
-		BlockStatementContext _localctx = new BlockStatementContext(_ctx, 122);
-		enterRule(_localctx, RULE_blockStatement);
+		BlockStatementContext _localctx = new BlockStatementContext(_ctx, getState());
+		enterRule(_localctx, 122, RULE_blockStatement);
 		try {
 			setState(859);
 			switch ( getInterpreter().adaptivePredict(_input,91,_ctx) ) {
@@ -4363,12 +4386,14 @@ public class Java7Parser extends Parser {
 				setState(856); localVariableDeclarationStatement();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(857); classOrInterfaceDeclaration();
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -4393,8 +4418,8 @@ public class Java7Parser extends Parser {
 		public LocalVariableDeclarationContext localVariableDeclaration() {
 			return getRuleContext(LocalVariableDeclarationContext.class,0);
 		}
-		public LocalVariableDeclarationStatementContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public LocalVariableDeclarationStatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_localVariableDeclarationStatement; }
 		@Override
@@ -4408,8 +4433,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final LocalVariableDeclarationStatementContext localVariableDeclarationStatement() throws RecognitionException {
-		LocalVariableDeclarationStatementContext _localctx = new LocalVariableDeclarationStatementContext(_ctx, 124);
-		enterRule(_localctx, RULE_localVariableDeclarationStatement);
+		LocalVariableDeclarationStatementContext _localctx = new LocalVariableDeclarationStatementContext(_ctx, getState());
+		enterRule(_localctx, 124, RULE_localVariableDeclarationStatement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -4445,8 +4470,8 @@ public class Java7Parser extends Parser {
 		public TypeContext type() {
 			return getRuleContext(TypeContext.class,0);
 		}
-		public LocalVariableDeclarationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public LocalVariableDeclarationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_localVariableDeclaration; }
 		@Override
@@ -4460,8 +4485,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final LocalVariableDeclarationContext localVariableDeclaration() throws RecognitionException {
-		LocalVariableDeclarationContext _localctx = new LocalVariableDeclarationContext(_ctx, 126);
-		enterRule(_localctx, RULE_localVariableDeclaration);
+		LocalVariableDeclarationContext _localctx = new LocalVariableDeclarationContext(_ctx, getState());
+		enterRule(_localctx, 126, RULE_localVariableDeclaration);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -4543,8 +4568,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(StatementContext.class);
 		}
 		public TerminalNode THROW() { return getToken(Java7Parser.THROW, 0); }
-		public StatementContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public StatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_statement; }
 		@Override
@@ -4558,8 +4583,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final StatementContext statement() throws RecognitionException {
-		StatementContext _localctx = new StatementContext(_ctx, 128);
-		enterRule(_localctx, RULE_statement);
+		StatementContext _localctx = new StatementContext(_ctx, getState());
+		enterRule(_localctx, 128, RULE_statement);
 		int _la;
 		try {
 			setState(938);
@@ -4570,6 +4595,7 @@ public class Java7Parser extends Parser {
 				setState(874); block();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -4587,6 +4613,7 @@ public class Java7Parser extends Parser {
 				setState(881); match(SEMI);
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -4604,12 +4631,14 @@ public class Java7Parser extends Parser {
 				}
 				}
 				break;
+
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(890); forstatement();
 				}
 				break;
+
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
@@ -4618,6 +4647,7 @@ public class Java7Parser extends Parser {
 				setState(893); statement();
 				}
 				break;
+
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
@@ -4628,12 +4658,14 @@ public class Java7Parser extends Parser {
 				setState(899); match(SEMI);
 				}
 				break;
+
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
 				setState(901); trystatement();
 				}
 				break;
+
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
@@ -4644,6 +4676,7 @@ public class Java7Parser extends Parser {
 				setState(906); match(RBRACE);
 				}
 				break;
+
 			case 9:
 				enterOuterAlt(_localctx, 9);
 				{
@@ -4652,13 +4685,14 @@ public class Java7Parser extends Parser {
 				setState(910); block();
 				}
 				break;
+
 			case 10:
 				enterOuterAlt(_localctx, 10);
 				{
 				setState(912); match(RETURN);
 				setState(914);
 				_la = _input.LA(1);
-				if (_la==LPAREN || _la==VOID || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==THIS || _la==SUPER || _la==NULL || _la==TRUE || _la==FALSE || _la==PLUSPLUS || _la==SUBSUB || _la==TILDE || _la==BANG || _la==NEW || _la==PLUS || _la==SUB || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral || _la==Identifier) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LPAREN) | (1L << VOID) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << THIS) | (1L << SUPER) | (1L << NULL) | (1L << TRUE) | (1L << FALSE))) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & ((1L << (PLUSPLUS - 65)) | (1L << (SUBSUB - 65)) | (1L << (TILDE - 65)) | (1L << (BANG - 65)) | (1L << (NEW - 65)) | (1L << (PLUS - 65)) | (1L << (SUB - 65)) | (1L << (IntegerLiteral - 65)) | (1L << (FloatingPointLiteral - 65)) | (1L << (CharacterLiteral - 65)) | (1L << (StringLiteral - 65)) | (1L << (Identifier - 65)))) != 0)) {
 					{
 					setState(913); expression();
 					}
@@ -4667,6 +4701,7 @@ public class Java7Parser extends Parser {
 				setState(916); match(SEMI);
 				}
 				break;
+
 			case 11:
 				enterOuterAlt(_localctx, 11);
 				{
@@ -4675,6 +4710,7 @@ public class Java7Parser extends Parser {
 				setState(919); match(SEMI);
 				}
 				break;
+
 			case 12:
 				enterOuterAlt(_localctx, 12);
 				{
@@ -4690,6 +4726,7 @@ public class Java7Parser extends Parser {
 				setState(925); match(SEMI);
 				}
 				break;
+
 			case 13:
 				enterOuterAlt(_localctx, 13);
 				{
@@ -4705,6 +4742,7 @@ public class Java7Parser extends Parser {
 				setState(930); match(SEMI);
 				}
 				break;
+
 			case 14:
 				enterOuterAlt(_localctx, 14);
 				{
@@ -4712,6 +4750,7 @@ public class Java7Parser extends Parser {
 				setState(932); match(SEMI);
 				}
 				break;
+
 			case 15:
 				enterOuterAlt(_localctx, 15);
 				{
@@ -4720,6 +4759,7 @@ public class Java7Parser extends Parser {
 				setState(936); statement();
 				}
 				break;
+
 			case 16:
 				enterOuterAlt(_localctx, 16);
 				{
@@ -4741,8 +4781,8 @@ public class Java7Parser extends Parser {
 
 	public static class EmptyStatementContext extends ParserRuleContext {
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
-		public EmptyStatementContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public EmptyStatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_emptyStatement; }
 		@Override
@@ -4756,8 +4796,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final EmptyStatementContext emptyStatement() throws RecognitionException {
-		EmptyStatementContext _localctx = new EmptyStatementContext(_ctx, 130);
-		enterRule(_localctx, RULE_emptyStatement);
+		EmptyStatementContext _localctx = new EmptyStatementContext(_ctx, getState());
+		enterRule(_localctx, 130, RULE_emptyStatement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -4782,8 +4822,8 @@ public class Java7Parser extends Parser {
 		public List<SwitchBlockStatementGroupContext> switchBlockStatementGroup() {
 			return getRuleContexts(SwitchBlockStatementGroupContext.class);
 		}
-		public SwitchBlockStatementGroupsContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public SwitchBlockStatementGroupsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_switchBlockStatementGroups; }
 		@Override
@@ -4797,8 +4837,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final SwitchBlockStatementGroupsContext switchBlockStatementGroups() throws RecognitionException {
-		SwitchBlockStatementGroupsContext _localctx = new SwitchBlockStatementGroupsContext(_ctx, 132);
-		enterRule(_localctx, RULE_switchBlockStatementGroups);
+		SwitchBlockStatementGroupsContext _localctx = new SwitchBlockStatementGroupsContext(_ctx, getState());
+		enterRule(_localctx, 132, RULE_switchBlockStatementGroups);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -4839,8 +4879,8 @@ public class Java7Parser extends Parser {
 		public List<BlockStatementContext> blockStatement() {
 			return getRuleContexts(BlockStatementContext.class);
 		}
-		public SwitchBlockStatementGroupContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public SwitchBlockStatementGroupContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_switchBlockStatementGroup; }
 		@Override
@@ -4854,8 +4894,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final SwitchBlockStatementGroupContext switchBlockStatementGroup() throws RecognitionException {
-		SwitchBlockStatementGroupContext _localctx = new SwitchBlockStatementGroupContext(_ctx, 134);
-		enterRule(_localctx, RULE_switchBlockStatementGroup);
+		SwitchBlockStatementGroupContext _localctx = new SwitchBlockStatementGroupContext(_ctx, getState());
+		enterRule(_localctx, 134, RULE_switchBlockStatementGroup);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -4864,7 +4904,7 @@ public class Java7Parser extends Parser {
 			setState(952);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==SEMI || _la==CLASS || _la==PUBLIC || _la==PROTECTED || _la==PRIVATE || _la==ABSTRACT || _la==STATIC || _la==FINAL || _la==STRICTFP || _la==LBRACE || _la==LPAREN || _la==VOID || _la==INTERFACE || _la==THROW || _la==NATIVE || _la==SYNCHRONIZED || _la==TRANSIENT || _la==VOLATILE || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==THIS || _la==SUPER || _la==NULL || _la==TRUE || _la==FALSE || _la==AT || _la==IF || _la==FOR || _la==WHILE || _la==DO || _la==TRY || _la==SWITCH || _la==RETURN || _la==BREAK || _la==CONTINUE || _la==ENUM || _la==ASSERT || _la==PLUSPLUS || _la==SUBSUB || _la==TILDE || _la==BANG || _la==NEW || _la==PLUS || _la==SUB || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral || _la==Identifier) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << CLASS) | (1L << PUBLIC) | (1L << PROTECTED) | (1L << PRIVATE) | (1L << ABSTRACT) | (1L << STATIC) | (1L << FINAL) | (1L << STRICTFP) | (1L << LBRACE) | (1L << LPAREN) | (1L << VOID) | (1L << INTERFACE) | (1L << THROW) | (1L << NATIVE) | (1L << SYNCHRONIZED) | (1L << TRANSIENT) | (1L << VOLATILE) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << THIS) | (1L << SUPER) | (1L << NULL) | (1L << TRUE) | (1L << FALSE) | (1L << AT) | (1L << IF) | (1L << FOR) | (1L << WHILE) | (1L << DO) | (1L << TRY) | (1L << SWITCH) | (1L << RETURN) | (1L << BREAK) | (1L << CONTINUE) | (1L << ENUM))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (ASSERT - 64)) | (1L << (PLUSPLUS - 64)) | (1L << (SUBSUB - 64)) | (1L << (TILDE - 64)) | (1L << (BANG - 64)) | (1L << (NEW - 64)) | (1L << (PLUS - 64)) | (1L << (SUB - 64)) | (1L << (IntegerLiteral - 64)) | (1L << (FloatingPointLiteral - 64)) | (1L << (CharacterLiteral - 64)) | (1L << (StringLiteral - 64)) | (1L << (Identifier - 64)))) != 0)) {
 				{
 				{
 				setState(949); blockStatement();
@@ -4894,8 +4934,8 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode DEFAULT() { return getToken(Java7Parser.DEFAULT, 0); }
 		public TerminalNode CASE() { return getToken(Java7Parser.CASE, 0); }
-		public SwitchLabelContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public SwitchLabelContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_switchLabel; }
 		@Override
@@ -4909,8 +4949,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final SwitchLabelContext switchLabel() throws RecognitionException {
-		SwitchLabelContext _localctx = new SwitchLabelContext(_ctx, 136);
-		enterRule(_localctx, RULE_switchLabel);
+		SwitchLabelContext _localctx = new SwitchLabelContext(_ctx, getState());
+		enterRule(_localctx, 136, RULE_switchLabel);
 		try {
 			setState(961);
 			switch (_input.LA(1)) {
@@ -4960,8 +5000,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(BlockContext.class);
 		}
 		public TerminalNode TRY() { return getToken(Java7Parser.TRY, 0); }
-		public TrystatementContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TrystatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_trystatement; }
 		@Override
@@ -4975,8 +5015,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TrystatementContext trystatement() throws RecognitionException {
-		TrystatementContext _localctx = new TrystatementContext(_ctx, 138);
-		enterRule(_localctx, RULE_trystatement);
+		TrystatementContext _localctx = new TrystatementContext(_ctx, getState());
+		enterRule(_localctx, 138, RULE_trystatement);
 		try {
 			setState(988);
 			switch ( getInterpreter().adaptivePredict(_input,102,_ctx) ) {
@@ -4988,6 +5028,7 @@ public class Java7Parser extends Parser {
 				((TrystatementContext)_localctx).statementType =  1;
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -4999,6 +5040,7 @@ public class Java7Parser extends Parser {
 				((TrystatementContext)_localctx).statementType =  2;
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -5008,6 +5050,7 @@ public class Java7Parser extends Parser {
 				((TrystatementContext)_localctx).statementType =  3;
 				}
 				break;
+
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
@@ -5018,6 +5061,7 @@ public class Java7Parser extends Parser {
 				((TrystatementContext)_localctx).statementType =  4;
 				}
 				break;
+
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
@@ -5053,8 +5097,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(BlockContext.class);
 		}
 		public TerminalNode TRY() { return getToken(Java7Parser.TRY, 0); }
-		public TryWithResourcesContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TryWithResourcesContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_tryWithResources; }
 		@Override
@@ -5068,8 +5112,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TryWithResourcesContext tryWithResources() throws RecognitionException {
-		TryWithResourcesContext _localctx = new TryWithResourcesContext(_ctx, 140);
-		enterRule(_localctx, RULE_tryWithResources);
+		TryWithResourcesContext _localctx = new TryWithResourcesContext(_ctx, getState());
+		enterRule(_localctx, 140, RULE_tryWithResources);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -5111,8 +5155,8 @@ public class Java7Parser extends Parser {
 		public ResourcesContext resources() {
 			return getRuleContext(ResourcesContext.class,0);
 		}
-		public ResourceSpecificationContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ResourceSpecificationContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_resourceSpecification; }
 		@Override
@@ -5126,8 +5170,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ResourceSpecificationContext resourceSpecification() throws RecognitionException {
-		ResourceSpecificationContext _localctx = new ResourceSpecificationContext(_ctx, 142);
-		enterRule(_localctx, RULE_resourceSpecification);
+		ResourceSpecificationContext _localctx = new ResourceSpecificationContext(_ctx, getState());
+		enterRule(_localctx, 142, RULE_resourceSpecification);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -5163,8 +5207,8 @@ public class Java7Parser extends Parser {
 		public List<ResourceContext> resource() {
 			return getRuleContexts(ResourceContext.class);
 		}
-		public ResourcesContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ResourcesContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_resources; }
 		@Override
@@ -5178,8 +5222,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ResourcesContext resources() throws RecognitionException {
-		ResourcesContext _localctx = new ResourcesContext(_ctx, 144);
-		enterRule(_localctx, RULE_resources);
+		ResourcesContext _localctx = new ResourcesContext(_ctx, getState());
+		enterRule(_localctx, 144, RULE_resources);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
@@ -5226,8 +5270,8 @@ public class Java7Parser extends Parser {
 		public TypeContext type() {
 			return getRuleContext(TypeContext.class,0);
 		}
-		public ResourceContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ResourceContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_resource; }
 		@Override
@@ -5241,8 +5285,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ResourceContext resource() throws RecognitionException {
-		ResourceContext _localctx = new ResourceContext(_ctx, 146);
-		enterRule(_localctx, RULE_resource);
+		ResourceContext _localctx = new ResourceContext(_ctx, getState());
+		enterRule(_localctx, 146, RULE_resource);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -5278,8 +5322,8 @@ public class Java7Parser extends Parser {
 		public CatchClauseContext catchClause(int i) {
 			return getRuleContext(CatchClauseContext.class,i);
 		}
-		public CatchesContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public CatchesContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_catches; }
 		@Override
@@ -5293,8 +5337,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final CatchesContext catches() throws RecognitionException {
-		CatchesContext _localctx = new CatchesContext(_ctx, 148);
-		enterRule(_localctx, RULE_catches);
+		CatchesContext _localctx = new CatchesContext(_ctx, getState());
+		enterRule(_localctx, 148, RULE_catches);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -5336,8 +5380,8 @@ public class Java7Parser extends Parser {
 		public CatchFormalParameterContext catchFormalParameter() {
 			return getRuleContext(CatchFormalParameterContext.class,0);
 		}
-		public CatchClauseContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public CatchClauseContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_catchClause; }
 		@Override
@@ -5351,8 +5395,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final CatchClauseContext catchClause() throws RecognitionException {
-		CatchClauseContext _localctx = new CatchClauseContext(_ctx, 150);
-		enterRule(_localctx, RULE_catchClause);
+		CatchClauseContext _localctx = new CatchClauseContext(_ctx, getState());
+		enterRule(_localctx, 150, RULE_catchClause);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -5397,8 +5441,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode LBRACKET(int i) {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
-		public CatchFormalParameterContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public CatchFormalParameterContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_catchFormalParameter; }
 		@Override
@@ -5412,8 +5456,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final CatchFormalParameterContext catchFormalParameter() throws RecognitionException {
-		CatchFormalParameterContext _localctx = new CatchFormalParameterContext(_ctx, 152);
-		enterRule(_localctx, RULE_catchFormalParameter);
+		CatchFormalParameterContext _localctx = new CatchFormalParameterContext(_ctx, getState());
+		enterRule(_localctx, 152, RULE_catchFormalParameter);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -5469,8 +5513,8 @@ public class Java7Parser extends Parser {
 		public ForeachStatementContext foreachStatement() {
 			return getRuleContext(ForeachStatementContext.class,0);
 		}
-		public ForstatementContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ForstatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_forstatement; }
 		@Override
@@ -5484,8 +5528,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ForstatementContext forstatement() throws RecognitionException {
-		ForstatementContext _localctx = new ForstatementContext(_ctx, 154);
-		enterRule(_localctx, RULE_forstatement);
+		ForstatementContext _localctx = new ForstatementContext(_ctx, getState());
+		enterRule(_localctx, 154, RULE_forstatement);
 		try {
 			setState(1055);
 			switch ( getInterpreter().adaptivePredict(_input,111,_ctx) ) {
@@ -5495,6 +5539,7 @@ public class Java7Parser extends Parser {
 				setState(1053); foreachStatement();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -5532,8 +5577,8 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeContext.class,0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
-		public ForeachStatementContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ForeachStatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_foreachStatement; }
 		@Override
@@ -5547,8 +5592,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ForeachStatementContext foreachStatement() throws RecognitionException {
-		ForeachStatementContext _localctx = new ForeachStatementContext(_ctx, 156);
-		enterRule(_localctx, RULE_foreachStatement);
+		ForeachStatementContext _localctx = new ForeachStatementContext(_ctx, getState());
+		enterRule(_localctx, 156, RULE_foreachStatement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -5594,8 +5639,8 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.SEMI, i);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
-		public NormalForStatementContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public NormalForStatementContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_normalForStatement; }
 		@Override
@@ -5609,8 +5654,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final NormalForStatementContext normalForStatement() throws RecognitionException {
-		NormalForStatementContext _localctx = new NormalForStatementContext(_ctx, 158);
-		enterRule(_localctx, RULE_normalForStatement);
+		NormalForStatementContext _localctx = new NormalForStatementContext(_ctx, getState());
+		enterRule(_localctx, 158, RULE_normalForStatement);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -5619,7 +5664,7 @@ public class Java7Parser extends Parser {
 			setState(1068); match(LPAREN);
 			setState(1070);
 			_la = _input.LA(1);
-			if (_la==FINAL || _la==LPAREN || _la==VOID || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==THIS || _la==SUPER || _la==NULL || _la==TRUE || _la==FALSE || _la==AT || _la==PLUSPLUS || _la==SUBSUB || _la==TILDE || _la==BANG || _la==NEW || _la==PLUS || _la==SUB || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral || _la==Identifier) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << FINAL) | (1L << LPAREN) | (1L << VOID) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << THIS) | (1L << SUPER) | (1L << NULL) | (1L << TRUE) | (1L << FALSE) | (1L << AT))) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & ((1L << (PLUSPLUS - 65)) | (1L << (SUBSUB - 65)) | (1L << (TILDE - 65)) | (1L << (BANG - 65)) | (1L << (NEW - 65)) | (1L << (PLUS - 65)) | (1L << (SUB - 65)) | (1L << (IntegerLiteral - 65)) | (1L << (FloatingPointLiteral - 65)) | (1L << (CharacterLiteral - 65)) | (1L << (StringLiteral - 65)) | (1L << (Identifier - 65)))) != 0)) {
 				{
 				setState(1069); forInit();
 				}
@@ -5628,7 +5673,7 @@ public class Java7Parser extends Parser {
 			setState(1072); match(SEMI);
 			setState(1074);
 			_la = _input.LA(1);
-			if (_la==LPAREN || _la==VOID || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==THIS || _la==SUPER || _la==NULL || _la==TRUE || _la==FALSE || _la==PLUSPLUS || _la==SUBSUB || _la==TILDE || _la==BANG || _la==NEW || _la==PLUS || _la==SUB || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral || _la==Identifier) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LPAREN) | (1L << VOID) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << THIS) | (1L << SUPER) | (1L << NULL) | (1L << TRUE) | (1L << FALSE))) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & ((1L << (PLUSPLUS - 65)) | (1L << (SUBSUB - 65)) | (1L << (TILDE - 65)) | (1L << (BANG - 65)) | (1L << (NEW - 65)) | (1L << (PLUS - 65)) | (1L << (SUB - 65)) | (1L << (IntegerLiteral - 65)) | (1L << (FloatingPointLiteral - 65)) | (1L << (CharacterLiteral - 65)) | (1L << (StringLiteral - 65)) | (1L << (Identifier - 65)))) != 0)) {
 				{
 				setState(1073); expression();
 				}
@@ -5637,7 +5682,7 @@ public class Java7Parser extends Parser {
 			setState(1076); match(SEMI);
 			setState(1078);
 			_la = _input.LA(1);
-			if (_la==LPAREN || _la==VOID || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==THIS || _la==SUPER || _la==NULL || _la==TRUE || _la==FALSE || _la==PLUSPLUS || _la==SUBSUB || _la==TILDE || _la==BANG || _la==NEW || _la==PLUS || _la==SUB || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral || _la==Identifier) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LPAREN) | (1L << VOID) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << THIS) | (1L << SUPER) | (1L << NULL) | (1L << TRUE) | (1L << FALSE))) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & ((1L << (PLUSPLUS - 65)) | (1L << (SUBSUB - 65)) | (1L << (TILDE - 65)) | (1L << (BANG - 65)) | (1L << (NEW - 65)) | (1L << (PLUS - 65)) | (1L << (SUB - 65)) | (1L << (IntegerLiteral - 65)) | (1L << (FloatingPointLiteral - 65)) | (1L << (CharacterLiteral - 65)) | (1L << (StringLiteral - 65)) | (1L << (Identifier - 65)))) != 0)) {
 				{
 				setState(1077); expressionList();
 				}
@@ -5665,8 +5710,8 @@ public class Java7Parser extends Parser {
 		public LocalVariableDeclarationContext localVariableDeclaration() {
 			return getRuleContext(LocalVariableDeclarationContext.class,0);
 		}
-		public ForInitContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ForInitContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_forInit; }
 		@Override
@@ -5680,8 +5725,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ForInitContext forInit() throws RecognitionException {
-		ForInitContext _localctx = new ForInitContext(_ctx, 160);
-		enterRule(_localctx, RULE_forInit);
+		ForInitContext _localctx = new ForInitContext(_ctx, getState());
+		enterRule(_localctx, 160, RULE_forInit);
 		try {
 			setState(1085);
 			switch ( getInterpreter().adaptivePredict(_input,115,_ctx) ) {
@@ -5691,6 +5736,7 @@ public class Java7Parser extends Parser {
 				setState(1083); localVariableDeclaration();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -5716,8 +5762,8 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode RPAREN() { return getToken(Java7Parser.RPAREN, 0); }
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
-		public ParExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ParExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_parExpression; }
 		@Override
@@ -5731,8 +5777,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ParExpressionContext parExpression() throws RecognitionException {
-		ParExpressionContext _localctx = new ParExpressionContext(_ctx, 162);
-		enterRule(_localctx, RULE_parExpression);
+		ParExpressionContext _localctx = new ParExpressionContext(_ctx, getState());
+		enterRule(_localctx, 162, RULE_parExpression);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -5763,8 +5809,8 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.COMMA, i);
 		}
 		public List<TerminalNode> COMMA() { return getTokens(Java7Parser.COMMA); }
-		public ExpressionListContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ExpressionListContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expressionList; }
 		@Override
@@ -5778,8 +5824,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ExpressionListContext expressionList() throws RecognitionException {
-		ExpressionListContext _localctx = new ExpressionListContext(_ctx, 164);
-		enterRule(_localctx, RULE_expressionList);
+		ExpressionListContext _localctx = new ExpressionListContext(_ctx, getState());
+		enterRule(_localctx, 164, RULE_expressionList);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -5822,8 +5868,8 @@ public class Java7Parser extends Parser {
 		public ConditionalExpressionContext conditionalExpression() {
 			return getRuleContext(ConditionalExpressionContext.class,0);
 		}
-		public ExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expression; }
 		@Override
@@ -5837,8 +5883,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
-		ExpressionContext _localctx = new ExpressionContext(_ctx, 166);
-		enterRule(_localctx, RULE_expression);
+		ExpressionContext _localctx = new ExpressionContext(_ctx, getState());
+		enterRule(_localctx, 166, RULE_expression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -5846,7 +5892,7 @@ public class Java7Parser extends Parser {
 			setState(1099); conditionalExpression();
 			setState(1103);
 			_la = _input.LA(1);
-			if (_la==EQ || _la==CARETEQ || _la==PLUSEQ || _la==SUBEQ || _la==STAREQ || _la==SLASHEQ || _la==AMPEQ || _la==BAREQ || _la==PERCENTEQ || _la==GT || _la==LT) {
+			if (_la==EQ || ((((_la - 81)) & ~0x3f) == 0 && ((1L << (_la - 81)) & ((1L << (CARETEQ - 81)) | (1L << (PLUSEQ - 81)) | (1L << (SUBEQ - 81)) | (1L << (STAREQ - 81)) | (1L << (SLASHEQ - 81)) | (1L << (AMPEQ - 81)) | (1L << (BAREQ - 81)) | (1L << (PERCENTEQ - 81)) | (1L << (GT - 81)) | (1L << (LT - 81)))) != 0)) {
 				{
 				setState(1100); assignmentOperator();
 				setState(1101); expression();
@@ -5885,8 +5931,8 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode STAREQ() { return getToken(Java7Parser.STAREQ, 0); }
 		public TerminalNode PLUSEQ() { return getToken(Java7Parser.PLUSEQ, 0); }
-		public AssignmentOperatorContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AssignmentOperatorContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_assignmentOperator; }
 		@Override
@@ -5900,8 +5946,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AssignmentOperatorContext assignmentOperator() throws RecognitionException {
-		AssignmentOperatorContext _localctx = new AssignmentOperatorContext(_ctx, 168);
-		enterRule(_localctx, RULE_assignmentOperator);
+		AssignmentOperatorContext _localctx = new AssignmentOperatorContext(_ctx, getState());
+		enterRule(_localctx, 168, RULE_assignmentOperator);
 		try {
 			setState(1136);
 			switch ( getInterpreter().adaptivePredict(_input,118,_ctx) ) {
@@ -5912,6 +5958,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  1;
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -5919,6 +5966,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  2;
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -5926,6 +5974,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  3;
 				}
 				break;
+
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
@@ -5933,6 +5982,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  4;
 				}
 				break;
+
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
@@ -5940,6 +5990,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  5;
 				}
 				break;
+
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
@@ -5947,6 +5998,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  6;
 				}
 				break;
+
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
@@ -5954,6 +6006,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  7;
 				}
 				break;
+
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
@@ -5961,6 +6014,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  8;
 				}
 				break;
+
 			case 9:
 				enterOuterAlt(_localctx, 9);
 				{
@@ -5968,6 +6022,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  9;
 				}
 				break;
+
 			case 10:
 				enterOuterAlt(_localctx, 10);
 				{
@@ -5977,6 +6032,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  10;
 				}
 				break;
+
 			case 11:
 				enterOuterAlt(_localctx, 11);
 				{
@@ -5987,6 +6043,7 @@ public class Java7Parser extends Parser {
 				((AssignmentOperatorContext)_localctx).assignmentType =  11;
 				}
 				break;
+
 			case 12:
 				enterOuterAlt(_localctx, 12);
 				{
@@ -6021,8 +6078,8 @@ public class Java7Parser extends Parser {
 		public ConditionalExpressionContext conditionalExpression() {
 			return getRuleContext(ConditionalExpressionContext.class,0);
 		}
-		public ConditionalExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ConditionalExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_conditionalExpression; }
 		@Override
@@ -6036,8 +6093,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ConditionalExpressionContext conditionalExpression() throws RecognitionException {
-		ConditionalExpressionContext _localctx = new ConditionalExpressionContext(_ctx, 170);
-		enterRule(_localctx, RULE_conditionalExpression);
+		ConditionalExpressionContext _localctx = new ConditionalExpressionContext(_ctx, getState());
+		enterRule(_localctx, 170, RULE_conditionalExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6078,8 +6135,8 @@ public class Java7Parser extends Parser {
 		public ConditionalAndExpressionContext conditionalAndExpression(int i) {
 			return getRuleContext(ConditionalAndExpressionContext.class,i);
 		}
-		public ConditionalOrExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ConditionalOrExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_conditionalOrExpression; }
 		@Override
@@ -6093,8 +6150,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ConditionalOrExpressionContext conditionalOrExpression() throws RecognitionException {
-		ConditionalOrExpressionContext _localctx = new ConditionalOrExpressionContext(_ctx, 172);
-		enterRule(_localctx, RULE_conditionalOrExpression);
+		ConditionalOrExpressionContext _localctx = new ConditionalOrExpressionContext(_ctx, getState());
+		enterRule(_localctx, 172, RULE_conditionalOrExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6138,8 +6195,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode AMPAMP(int i) {
 			return getToken(Java7Parser.AMPAMP, i);
 		}
-		public ConditionalAndExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ConditionalAndExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_conditionalAndExpression; }
 		@Override
@@ -6153,8 +6210,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ConditionalAndExpressionContext conditionalAndExpression() throws RecognitionException {
-		ConditionalAndExpressionContext _localctx = new ConditionalAndExpressionContext(_ctx, 174);
-		enterRule(_localctx, RULE_conditionalAndExpression);
+		ConditionalAndExpressionContext _localctx = new ConditionalAndExpressionContext(_ctx, getState());
+		enterRule(_localctx, 174, RULE_conditionalAndExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6198,8 +6255,8 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.BAR, i);
 		}
 		public List<TerminalNode> BAR() { return getTokens(Java7Parser.BAR); }
-		public InclusiveOrExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public InclusiveOrExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_inclusiveOrExpression; }
 		@Override
@@ -6213,8 +6270,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final InclusiveOrExpressionContext inclusiveOrExpression() throws RecognitionException {
-		InclusiveOrExpressionContext _localctx = new InclusiveOrExpressionContext(_ctx, 176);
-		enterRule(_localctx, RULE_inclusiveOrExpression);
+		InclusiveOrExpressionContext _localctx = new InclusiveOrExpressionContext(_ctx, getState());
+		enterRule(_localctx, 176, RULE_inclusiveOrExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6258,8 +6315,8 @@ public class Java7Parser extends Parser {
 		public AndExpressionContext andExpression(int i) {
 			return getRuleContext(AndExpressionContext.class,i);
 		}
-		public ExclusiveOrExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ExclusiveOrExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_exclusiveOrExpression; }
 		@Override
@@ -6273,8 +6330,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ExclusiveOrExpressionContext exclusiveOrExpression() throws RecognitionException {
-		ExclusiveOrExpressionContext _localctx = new ExclusiveOrExpressionContext(_ctx, 178);
-		enterRule(_localctx, RULE_exclusiveOrExpression);
+		ExclusiveOrExpressionContext _localctx = new ExclusiveOrExpressionContext(_ctx, getState());
+		enterRule(_localctx, 178, RULE_exclusiveOrExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6318,8 +6375,8 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.AMP, i);
 		}
 		public List<TerminalNode> AMP() { return getTokens(Java7Parser.AMP); }
-		public AndExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AndExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_andExpression; }
 		@Override
@@ -6333,8 +6390,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AndExpressionContext andExpression() throws RecognitionException {
-		AndExpressionContext _localctx = new AndExpressionContext(_ctx, 180);
-		enterRule(_localctx, RULE_andExpression);
+		AndExpressionContext _localctx = new AndExpressionContext(_ctx, getState());
+		enterRule(_localctx, 180, RULE_andExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6378,8 +6435,8 @@ public class Java7Parser extends Parser {
 		public List<NotEqualityExpressionContext> notEqualityExpression() {
 			return getRuleContexts(NotEqualityExpressionContext.class);
 		}
-		public EqualityExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public EqualityExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_equalityExpression; }
 		@Override
@@ -6393,8 +6450,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final EqualityExpressionContext equalityExpression() throws RecognitionException {
-		EqualityExpressionContext _localctx = new EqualityExpressionContext(_ctx, 182);
-		enterRule(_localctx, RULE_equalityExpression);
+		EqualityExpressionContext _localctx = new EqualityExpressionContext(_ctx, getState());
+		enterRule(_localctx, 182, RULE_equalityExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6438,8 +6495,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode BANGEQ(int i) {
 			return getToken(Java7Parser.BANGEQ, i);
 		}
-		public NotEqualityExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public NotEqualityExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_notEqualityExpression; }
 		@Override
@@ -6453,8 +6510,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final NotEqualityExpressionContext notEqualityExpression() throws RecognitionException {
-		NotEqualityExpressionContext _localctx = new NotEqualityExpressionContext(_ctx, 184);
-		enterRule(_localctx, RULE_notEqualityExpression);
+		NotEqualityExpressionContext _localctx = new NotEqualityExpressionContext(_ctx, getState());
+		enterRule(_localctx, 184, RULE_notEqualityExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6495,8 +6552,8 @@ public class Java7Parser extends Parser {
 		public TypeContext type() {
 			return getRuleContext(TypeContext.class,0);
 		}
-		public InstanceOfExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public InstanceOfExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_instanceOfExpression; }
 		@Override
@@ -6510,8 +6567,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final InstanceOfExpressionContext instanceOfExpression() throws RecognitionException {
-		InstanceOfExpressionContext _localctx = new InstanceOfExpressionContext(_ctx, 186);
-		enterRule(_localctx, RULE_instanceOfExpression);
+		InstanceOfExpressionContext _localctx = new InstanceOfExpressionContext(_ctx, getState());
+		enterRule(_localctx, 186, RULE_instanceOfExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6552,8 +6609,8 @@ public class Java7Parser extends Parser {
 		public List<ShiftExpressionContext> shiftExpression() {
 			return getRuleContexts(ShiftExpressionContext.class);
 		}
-		public RelationalExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public RelationalExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_relationalExpression; }
 		@Override
@@ -6567,8 +6624,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final RelationalExpressionContext relationalExpression() throws RecognitionException {
-		RelationalExpressionContext _localctx = new RelationalExpressionContext(_ctx, 188);
-		enterRule(_localctx, RULE_relationalExpression);
+		RelationalExpressionContext _localctx = new RelationalExpressionContext(_ctx, getState());
+		enterRule(_localctx, 188, RULE_relationalExpression);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
@@ -6608,8 +6665,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode GT() { return getToken(Java7Parser.GT, 0); }
 		public TerminalNode LT() { return getToken(Java7Parser.LT, 0); }
 		public TerminalNode EQ() { return getToken(Java7Parser.EQ, 0); }
-		public RelationalOpContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public RelationalOpContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_relationalOp; }
 		@Override
@@ -6623,8 +6680,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final RelationalOpContext relationalOp() throws RecognitionException {
-		RelationalOpContext _localctx = new RelationalOpContext(_ctx, 190);
-		enterRule(_localctx, RULE_relationalOp);
+		RelationalOpContext _localctx = new RelationalOpContext(_ctx, getState());
+		enterRule(_localctx, 190, RULE_relationalOp);
 		try {
 			setState(1226);
 			switch ( getInterpreter().adaptivePredict(_input,129,_ctx) ) {
@@ -6636,6 +6693,7 @@ public class Java7Parser extends Parser {
 				((RelationalOpContext)_localctx).operatorType =  1;
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -6644,6 +6702,7 @@ public class Java7Parser extends Parser {
 				((RelationalOpContext)_localctx).operatorType =  2;
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -6651,6 +6710,7 @@ public class Java7Parser extends Parser {
 				((RelationalOpContext)_localctx).operatorType =  3;
 				}
 				break;
+
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
@@ -6684,8 +6744,8 @@ public class Java7Parser extends Parser {
 		public AdditiveExpressionContext additiveExpression(int i) {
 			return getRuleContext(AdditiveExpressionContext.class,i);
 		}
-		public ShiftExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ShiftExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_shiftExpression; }
 		@Override
@@ -6699,8 +6759,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ShiftExpressionContext shiftExpression() throws RecognitionException {
-		ShiftExpressionContext _localctx = new ShiftExpressionContext(_ctx, 192);
-		enterRule(_localctx, RULE_shiftExpression);
+		ShiftExpressionContext _localctx = new ShiftExpressionContext(_ctx, getState());
+		enterRule(_localctx, 192, RULE_shiftExpression);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
@@ -6745,8 +6805,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode GT(int i) {
 			return getToken(Java7Parser.GT, i);
 		}
-		public ShiftOpContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ShiftOpContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_shiftOp; }
 		@Override
@@ -6760,8 +6820,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ShiftOpContext shiftOp() throws RecognitionException {
-		ShiftOpContext _localctx = new ShiftOpContext(_ctx, 194);
-		enterRule(_localctx, RULE_shiftOp);
+		ShiftOpContext _localctx = new ShiftOpContext(_ctx, getState());
+		enterRule(_localctx, 194, RULE_shiftOp);
 		try {
 			setState(1247);
 			switch ( getInterpreter().adaptivePredict(_input,131,_ctx) ) {
@@ -6773,6 +6833,7 @@ public class Java7Parser extends Parser {
 				((ShiftOpContext)_localctx).operatorType =  1;
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -6782,6 +6843,7 @@ public class Java7Parser extends Parser {
 				((ShiftOpContext)_localctx).operatorType =  2;
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -6816,8 +6878,8 @@ public class Java7Parser extends Parser {
 		public List<MultiplicativeExpressionContext> multiplicativeExpression() {
 			return getRuleContexts(MultiplicativeExpressionContext.class);
 		}
-		public AdditiveExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AdditiveExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_additiveExpression; }
 		@Override
@@ -6831,8 +6893,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AdditiveExpressionContext additiveExpression() throws RecognitionException {
-		AdditiveExpressionContext _localctx = new AdditiveExpressionContext(_ctx, 196);
-		enterRule(_localctx, RULE_additiveExpression);
+		AdditiveExpressionContext _localctx = new AdditiveExpressionContext(_ctx, getState());
+		enterRule(_localctx, 196, RULE_additiveExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6869,8 +6931,8 @@ public class Java7Parser extends Parser {
 		public int operatorType;
 		public TerminalNode SUB() { return getToken(Java7Parser.SUB, 0); }
 		public TerminalNode PLUS() { return getToken(Java7Parser.PLUS, 0); }
-		public AdditiveOpContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AdditiveOpContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_additiveOp; }
 		@Override
@@ -6884,8 +6946,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AdditiveOpContext additiveOp() throws RecognitionException {
-		AdditiveOpContext _localctx = new AdditiveOpContext(_ctx, 198);
-		enterRule(_localctx, RULE_additiveOp);
+		AdditiveOpContext _localctx = new AdditiveOpContext(_ctx, getState());
+		enterRule(_localctx, 198, RULE_additiveOp);
 		try {
 			setState(1262);
 			switch (_input.LA(1)) {
@@ -6931,8 +6993,8 @@ public class Java7Parser extends Parser {
 		public UnaryExpressionContext unaryExpression(int i) {
 			return getRuleContext(UnaryExpressionContext.class,i);
 		}
-		public MultiplicativeExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public MultiplicativeExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_multiplicativeExpression; }
 		@Override
@@ -6946,8 +7008,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final MultiplicativeExpressionContext multiplicativeExpression() throws RecognitionException {
-		MultiplicativeExpressionContext _localctx = new MultiplicativeExpressionContext(_ctx, 200);
-		enterRule(_localctx, RULE_multiplicativeExpression);
+		MultiplicativeExpressionContext _localctx = new MultiplicativeExpressionContext(_ctx, getState());
+		enterRule(_localctx, 200, RULE_multiplicativeExpression);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -6985,8 +7047,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode SLASH() { return getToken(Java7Parser.SLASH, 0); }
 		public TerminalNode STAR() { return getToken(Java7Parser.STAR, 0); }
 		public TerminalNode PERCENT() { return getToken(Java7Parser.PERCENT, 0); }
-		public MultiplicativeOpContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public MultiplicativeOpContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_multiplicativeOp; }
 		@Override
@@ -7000,8 +7062,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final MultiplicativeOpContext multiplicativeOp() throws RecognitionException {
-		MultiplicativeOpContext _localctx = new MultiplicativeOpContext(_ctx, 202);
-		enterRule(_localctx, RULE_multiplicativeOp);
+		MultiplicativeOpContext _localctx = new MultiplicativeOpContext(_ctx, getState());
+		enterRule(_localctx, 202, RULE_multiplicativeOp);
 		try {
 			setState(1279);
 			switch (_input.LA(1)) {
@@ -7054,8 +7116,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode SUBSUB() { return getToken(Java7Parser.SUBSUB, 0); }
 		public TerminalNode PLUSPLUS() { return getToken(Java7Parser.PLUSPLUS, 0); }
 		public TerminalNode TILDE() { return getToken(Java7Parser.TILDE, 0); }
-		public UnaryExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public UnaryExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_unaryExpression; }
 		@Override
@@ -7069,8 +7131,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final UnaryExpressionContext unaryExpression() throws RecognitionException {
-		UnaryExpressionContext _localctx = new UnaryExpressionContext(_ctx, 204);
-		enterRule(_localctx, RULE_unaryExpression);
+		UnaryExpressionContext _localctx = new UnaryExpressionContext(_ctx, getState());
+		enterRule(_localctx, 204, RULE_unaryExpression);
 		try {
 			setState(1294);
 			switch (_input.LA(1)) {
@@ -7172,8 +7234,8 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode SUBSUB() { return getToken(Java7Parser.SUBSUB, 0); }
 		public TerminalNode PLUSPLUS() { return getToken(Java7Parser.PLUSPLUS, 0); }
-		public UnaryExpressionNotPlusMinusContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public UnaryExpressionNotPlusMinusContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_unaryExpressionNotPlusMinus; }
 		@Override
@@ -7187,8 +7249,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final UnaryExpressionNotPlusMinusContext unaryExpressionNotPlusMinus() throws RecognitionException {
-		UnaryExpressionNotPlusMinusContext _localctx = new UnaryExpressionNotPlusMinusContext(_ctx, 206);
-		enterRule(_localctx, RULE_unaryExpressionNotPlusMinus);
+		UnaryExpressionNotPlusMinusContext _localctx = new UnaryExpressionNotPlusMinusContext(_ctx, getState());
+		enterRule(_localctx, 206, RULE_unaryExpressionNotPlusMinus);
 		int _la;
 		try {
 			setState(1307);
@@ -7199,6 +7261,7 @@ public class Java7Parser extends Parser {
 				setState(1296); castExpression();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -7221,7 +7284,6 @@ public class Java7Parser extends Parser {
 				if (_la==PLUSPLUS || _la==SUBSUB) {
 					{
 					setState(1304);
-					_input.LT(1);
 					_la = _input.LA(1);
 					if ( !(_la==PLUSPLUS || _la==SUBSUB) ) {
 					_errHandler.recoverInline(this);
@@ -7260,8 +7322,8 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeContext.class,0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
-		public CastExpressionContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public CastExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_castExpression; }
 		@Override
@@ -7275,8 +7337,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final CastExpressionContext castExpression() throws RecognitionException {
-		CastExpressionContext _localctx = new CastExpressionContext(_ctx, 208);
-		enterRule(_localctx, RULE_castExpression);
+		CastExpressionContext _localctx = new CastExpressionContext(_ctx, getState());
+		enterRule(_localctx, 208, RULE_castExpression);
 		try {
 			setState(1319);
 			switch ( getInterpreter().adaptivePredict(_input,140,_ctx) ) {
@@ -7289,6 +7351,7 @@ public class Java7Parser extends Parser {
 				setState(1312); unaryExpression();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -7354,8 +7417,8 @@ public class Java7Parser extends Parser {
 		public LiteralContext literal() {
 			return getRuleContext(LiteralContext.class,0);
 		}
-		public PrimaryContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public PrimaryContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_primary; }
 		@Override
@@ -7369,8 +7432,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final PrimaryContext primary() throws RecognitionException {
-		PrimaryContext _localctx = new PrimaryContext(_ctx, 210);
-		enterRule(_localctx, RULE_primary);
+		PrimaryContext _localctx = new PrimaryContext(_ctx, getState());
+		enterRule(_localctx, 210, RULE_primary);
 		int _la;
 		try {
 			int _alt;
@@ -7536,8 +7599,8 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeArgumentsContext.class,0);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
-		public SuperSuffixContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public SuperSuffixContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_superSuffix; }
 		@Override
@@ -7551,8 +7614,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final SuperSuffixContext superSuffix() throws RecognitionException {
-		SuperSuffixContext _localctx = new SuperSuffixContext(_ctx, 212);
-		enterRule(_localctx, RULE_superSuffix);
+		SuperSuffixContext _localctx = new SuperSuffixContext(_ctx, getState());
+		enterRule(_localctx, 212, RULE_superSuffix);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -7615,8 +7678,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode LBRACKET(int i) {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
-		public ThisSuffixContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ThisSuffixContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_thisSuffix; }
 		@Override
@@ -7630,8 +7693,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ThisSuffixContext thisSuffix() throws RecognitionException {
-		ThisSuffixContext _localctx = new ThisSuffixContext(_ctx, 214);
-		enterRule(_localctx, RULE_thisSuffix);
+		ThisSuffixContext _localctx = new ThisSuffixContext(_ctx, getState());
+		enterRule(_localctx, 214, RULE_thisSuffix);
 		try {
 			int _alt;
 			setState(1406);
@@ -7663,6 +7726,7 @@ public class Java7Parser extends Parser {
 				((ThisSuffixContext)_localctx).operationType =  1;
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -7670,6 +7734,7 @@ public class Java7Parser extends Parser {
 				((ThisSuffixContext)_localctx).operationType =  2;
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -7680,6 +7745,7 @@ public class Java7Parser extends Parser {
 				((ThisSuffixContext)_localctx).operationType =  3;
 				}
 				break;
+
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
@@ -7729,8 +7795,8 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.RBRACKET, i);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
-		public IdentifierSuffixContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public IdentifierSuffixContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_identifierSuffix; }
 		@Override
@@ -7744,8 +7810,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final IdentifierSuffixContext identifierSuffix() throws RecognitionException {
-		IdentifierSuffixContext _localctx = new IdentifierSuffixContext(_ctx, 216);
-		enterRule(_localctx, RULE_identifierSuffix);
+		IdentifierSuffixContext _localctx = new IdentifierSuffixContext(_ctx, getState());
+		enterRule(_localctx, 216, RULE_identifierSuffix);
 		int _la;
 		try {
 			int _alt;
@@ -7773,6 +7839,7 @@ public class Java7Parser extends Parser {
 				((IdentifierSuffixContext)_localctx).operationType =  1;
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -7800,6 +7867,7 @@ public class Java7Parser extends Parser {
 				((IdentifierSuffixContext)_localctx).operationType =  2;
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -7807,6 +7875,7 @@ public class Java7Parser extends Parser {
 				((IdentifierSuffixContext)_localctx).operationType =  3;
 				}
 				break;
+
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
@@ -7815,6 +7884,7 @@ public class Java7Parser extends Parser {
 				((IdentifierSuffixContext)_localctx).operationType =  4;
 				}
 				break;
+
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
@@ -7825,6 +7895,7 @@ public class Java7Parser extends Parser {
 				((IdentifierSuffixContext)_localctx).operationType =  5;
 				}
 				break;
+
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
@@ -7833,6 +7904,7 @@ public class Java7Parser extends Parser {
 				((IdentifierSuffixContext)_localctx).operationType =  6;
 				}
 				break;
+
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
@@ -7873,8 +7945,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode DOT() { return getToken(Java7Parser.DOT, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TerminalNode THIS() { return getToken(Java7Parser.THIS, 0); }
-		public SelectorContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public SelectorContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_selector; }
 		@Override
@@ -7888,8 +7960,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final SelectorContext selector() throws RecognitionException {
-		SelectorContext _localctx = new SelectorContext(_ctx, 218);
-		enterRule(_localctx, RULE_selector);
+		SelectorContext _localctx = new SelectorContext(_ctx, getState());
+		enterRule(_localctx, 218, RULE_selector);
 		int _la;
 		try {
 			setState(1469);
@@ -7910,6 +7982,7 @@ public class Java7Parser extends Parser {
 				((SelectorContext)_localctx).operationType =  1;
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -7918,6 +7991,7 @@ public class Java7Parser extends Parser {
 				((SelectorContext)_localctx).operationType =  2;
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -7927,6 +8001,7 @@ public class Java7Parser extends Parser {
 				((SelectorContext)_localctx).operationType =  3;
 				}
 				break;
+
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
@@ -7934,6 +8009,7 @@ public class Java7Parser extends Parser {
 				((SelectorContext)_localctx).operationType =  4;
 				}
 				break;
+
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
@@ -7970,8 +8046,8 @@ public class Java7Parser extends Parser {
 		public ClassCreatorRestContext classCreatorRest() {
 			return getRuleContext(ClassCreatorRestContext.class,0);
 		}
-		public CreatorContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public CreatorContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_creator; }
 		@Override
@@ -7985,8 +8061,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final CreatorContext creator() throws RecognitionException {
-		CreatorContext _localctx = new CreatorContext(_ctx, 220);
-		enterRule(_localctx, RULE_creator);
+		CreatorContext _localctx = new CreatorContext(_ctx, getState());
+		enterRule(_localctx, 220, RULE_creator);
 		try {
 			setState(1481);
 			switch ( getInterpreter().adaptivePredict(_input,156,_ctx) ) {
@@ -7999,6 +8075,7 @@ public class Java7Parser extends Parser {
 				setState(1474); classCreatorRest();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -8007,6 +8084,7 @@ public class Java7Parser extends Parser {
 				setState(1478); classCreatorRest();
 				}
 				break;
+
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
@@ -8048,8 +8126,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode LBRACKET(int i) {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
-		public ArrayCreatorContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ArrayCreatorContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arrayCreator; }
 		@Override
@@ -8063,8 +8141,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ArrayCreatorContext arrayCreator() throws RecognitionException {
-		ArrayCreatorContext _localctx = new ArrayCreatorContext(_ctx, 222);
-		enterRule(_localctx, RULE_arrayCreator);
+		ArrayCreatorContext _localctx = new ArrayCreatorContext(_ctx, getState());
+		enterRule(_localctx, 222, RULE_arrayCreator);
 		int _la;
 		try {
 			int _alt;
@@ -8094,6 +8172,7 @@ public class Java7Parser extends Parser {
 				setState(1494); arrayInitializer();
 				}
 				break;
+
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
@@ -8157,8 +8236,8 @@ public class Java7Parser extends Parser {
 		public ArrayInitializerContext arrayInitializer() {
 			return getRuleContext(ArrayInitializerContext.class,0);
 		}
-		public VariableInitializerContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public VariableInitializerContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_variableInitializer; }
 		@Override
@@ -8172,8 +8251,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final VariableInitializerContext variableInitializer() throws RecognitionException {
-		VariableInitializerContext _localctx = new VariableInitializerContext(_ctx, 224);
-		enterRule(_localctx, RULE_variableInitializer);
+		VariableInitializerContext _localctx = new VariableInitializerContext(_ctx, getState());
+		enterRule(_localctx, 224, RULE_variableInitializer);
 		try {
 			setState(1521);
 			switch (_input.LA(1)) {
@@ -8243,8 +8322,8 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(VariableInitializerContext.class);
 		}
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
-		public ArrayInitializerContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ArrayInitializerContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arrayInitializer; }
 		@Override
@@ -8258,8 +8337,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ArrayInitializerContext arrayInitializer() throws RecognitionException {
-		ArrayInitializerContext _localctx = new ArrayInitializerContext(_ctx, 226);
-		enterRule(_localctx, RULE_arrayInitializer);
+		ArrayInitializerContext _localctx = new ArrayInitializerContext(_ctx, getState());
+		enterRule(_localctx, 226, RULE_arrayInitializer);
 		int _la;
 		try {
 			int _alt;
@@ -8268,7 +8347,7 @@ public class Java7Parser extends Parser {
 			setState(1523); match(LBRACE);
 			setState(1532);
 			_la = _input.LA(1);
-			if (_la==LBRACE || _la==LPAREN || _la==VOID || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==THIS || _la==SUPER || _la==NULL || _la==TRUE || _la==FALSE || _la==PLUSPLUS || _la==SUBSUB || _la==TILDE || _la==BANG || _la==NEW || _la==PLUS || _la==SUB || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral || _la==Identifier) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LBRACE) | (1L << LPAREN) | (1L << VOID) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << THIS) | (1L << SUPER) | (1L << NULL) | (1L << TRUE) | (1L << FALSE))) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & ((1L << (PLUSPLUS - 65)) | (1L << (SUBSUB - 65)) | (1L << (TILDE - 65)) | (1L << (BANG - 65)) | (1L << (NEW - 65)) | (1L << (PLUS - 65)) | (1L << (SUB - 65)) | (1L << (IntegerLiteral - 65)) | (1L << (FloatingPointLiteral - 65)) | (1L << (CharacterLiteral - 65)) | (1L << (StringLiteral - 65)) | (1L << (Identifier - 65)))) != 0)) {
 				{
 				setState(1524); variableInitializer();
 				setState(1529);
@@ -8319,8 +8398,8 @@ public class Java7Parser extends Parser {
 		public ClassOrInterfaceTypeContext classOrInterfaceType() {
 			return getRuleContext(ClassOrInterfaceTypeContext.class,0);
 		}
-		public CreatedNameContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public CreatedNameContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_createdName; }
 		@Override
@@ -8334,8 +8413,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final CreatedNameContext createdName() throws RecognitionException {
-		CreatedNameContext _localctx = new CreatedNameContext(_ctx, 228);
-		enterRule(_localctx, RULE_createdName);
+		CreatedNameContext _localctx = new CreatedNameContext(_ctx, getState());
+		enterRule(_localctx, 228, RULE_createdName);
 		try {
 			setState(1541);
 			switch (_input.LA(1)) {
@@ -8385,8 +8464,8 @@ public class Java7Parser extends Parser {
 		public ClassCreatorRestContext classCreatorRest() {
 			return getRuleContext(ClassCreatorRestContext.class,0);
 		}
-		public InnerCreatorContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public InnerCreatorContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_innerCreator; }
 		@Override
@@ -8400,8 +8479,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final InnerCreatorContext innerCreator() throws RecognitionException {
-		InnerCreatorContext _localctx = new InnerCreatorContext(_ctx, 230);
-		enterRule(_localctx, RULE_innerCreator);
+		InnerCreatorContext _localctx = new InnerCreatorContext(_ctx, getState());
+		enterRule(_localctx, 230, RULE_innerCreator);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -8438,8 +8517,8 @@ public class Java7Parser extends Parser {
 		public ClassBodyContext classBody() {
 			return getRuleContext(ClassBodyContext.class,0);
 		}
-		public ClassCreatorRestContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ClassCreatorRestContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classCreatorRest; }
 		@Override
@@ -8453,8 +8532,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ClassCreatorRestContext classCreatorRest() throws RecognitionException {
-		ClassCreatorRestContext _localctx = new ClassCreatorRestContext(_ctx, 232);
-		enterRule(_localctx, RULE_classCreatorRest);
+		ClassCreatorRestContext _localctx = new ClassCreatorRestContext(_ctx, getState());
+		enterRule(_localctx, 232, RULE_classCreatorRest);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -8487,8 +8566,8 @@ public class Java7Parser extends Parser {
 		public TypeListContext typeList() {
 			return getRuleContext(TypeListContext.class,0);
 		}
-		public NonWildcardTypeArgumentsContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public NonWildcardTypeArgumentsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_nonWildcardTypeArguments; }
 		@Override
@@ -8502,8 +8581,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final NonWildcardTypeArgumentsContext nonWildcardTypeArguments() throws RecognitionException {
-		NonWildcardTypeArgumentsContext _localctx = new NonWildcardTypeArgumentsContext(_ctx, 234);
-		enterRule(_localctx, RULE_nonWildcardTypeArguments);
+		NonWildcardTypeArgumentsContext _localctx = new NonWildcardTypeArgumentsContext(_ctx, getState());
+		enterRule(_localctx, 234, RULE_nonWildcardTypeArguments);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -8529,8 +8608,8 @@ public class Java7Parser extends Parser {
 			return getRuleContext(ExpressionListContext.class,0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
-		public ArgumentsContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ArgumentsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arguments; }
 		@Override
@@ -8544,8 +8623,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ArgumentsContext arguments() throws RecognitionException {
-		ArgumentsContext _localctx = new ArgumentsContext(_ctx, 236);
-		enterRule(_localctx, RULE_arguments);
+		ArgumentsContext _localctx = new ArgumentsContext(_ctx, getState());
+		enterRule(_localctx, 236, RULE_arguments);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -8553,7 +8632,7 @@ public class Java7Parser extends Parser {
 			setState(1559); match(LPAREN);
 			setState(1561);
 			_la = _input.LA(1);
-			if (_la==LPAREN || _la==VOID || _la==BOOLEAN || _la==CHAR || _la==BYTE || _la==SHORT || _la==INT || _la==LONG || _la==FLOAT || _la==DOUBLE || _la==THIS || _la==SUPER || _la==NULL || _la==TRUE || _la==FALSE || _la==PLUSPLUS || _la==SUBSUB || _la==TILDE || _la==BANG || _la==NEW || _la==PLUS || _la==SUB || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral || _la==Identifier) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LPAREN) | (1L << VOID) | (1L << BOOLEAN) | (1L << CHAR) | (1L << BYTE) | (1L << SHORT) | (1L << INT) | (1L << LONG) | (1L << FLOAT) | (1L << DOUBLE) | (1L << THIS) | (1L << SUPER) | (1L << NULL) | (1L << TRUE) | (1L << FALSE))) != 0) || ((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & ((1L << (PLUSPLUS - 65)) | (1L << (SUBSUB - 65)) | (1L << (TILDE - 65)) | (1L << (BANG - 65)) | (1L << (NEW - 65)) | (1L << (PLUS - 65)) | (1L << (SUB - 65)) | (1L << (IntegerLiteral - 65)) | (1L << (FloatingPointLiteral - 65)) | (1L << (CharacterLiteral - 65)) | (1L << (StringLiteral - 65)) | (1L << (Identifier - 65)))) != 0)) {
 				{
 				setState(1560); expressionList();
 				}
@@ -8581,8 +8660,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode CharacterLiteral() { return getToken(Java7Parser.CharacterLiteral, 0); }
 		public TerminalNode NULL() { return getToken(Java7Parser.NULL, 0); }
 		public TerminalNode FloatingPointLiteral() { return getToken(Java7Parser.FloatingPointLiteral, 0); }
-		public LiteralContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public LiteralContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_literal; }
 		@Override
@@ -8596,16 +8675,15 @@ public class Java7Parser extends Parser {
 	}
 
 	public final LiteralContext literal() throws RecognitionException {
-		LiteralContext _localctx = new LiteralContext(_ctx, 238);
-		enterRule(_localctx, RULE_literal);
+		LiteralContext _localctx = new LiteralContext(_ctx, getState());
+		enterRule(_localctx, 238, RULE_literal);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(1565);
-			_input.LT(1);
 			_la = _input.LA(1);
-			if ( !(_la==NULL || _la==TRUE || _la==FALSE || _la==IntegerLiteral || _la==FloatingPointLiteral || _la==CharacterLiteral || _la==StringLiteral) ) {
+			if ( !(((((_la - 44)) & ~0x3f) == 0 && ((1L << (_la - 44)) & ((1L << (NULL - 44)) | (1L << (TRUE - 44)) | (1L << (FALSE - 44)) | (1L << (IntegerLiteral - 44)) | (1L << (FloatingPointLiteral - 44)) | (1L << (CharacterLiteral - 44)) | (1L << (StringLiteral - 44)))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -8628,8 +8706,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public ClassHeaderContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public ClassHeaderContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_classHeader; }
 		@Override
@@ -8643,8 +8721,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final ClassHeaderContext classHeader() throws RecognitionException {
-		ClassHeaderContext _localctx = new ClassHeaderContext(_ctx, 240);
-		enterRule(_localctx, RULE_classHeader);
+		ClassHeaderContext _localctx = new ClassHeaderContext(_ctx, getState());
+		enterRule(_localctx, 240, RULE_classHeader);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -8673,8 +8751,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public EnumHeaderContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public EnumHeaderContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_enumHeader; }
 		@Override
@@ -8688,15 +8766,14 @@ public class Java7Parser extends Parser {
 	}
 
 	public final EnumHeaderContext enumHeader() throws RecognitionException {
-		EnumHeaderContext _localctx = new EnumHeaderContext(_ctx, 242);
-		enterRule(_localctx, RULE_enumHeader);
+		EnumHeaderContext _localctx = new EnumHeaderContext(_ctx, getState());
+		enterRule(_localctx, 242, RULE_enumHeader);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(1571); modifiers();
 			setState(1572);
-			_input.LT(1);
 			_la = _input.LA(1);
 			if ( !(_la==ENUM || _la==Identifier) ) {
 			_errHandler.recoverInline(this);
@@ -8722,8 +8799,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public InterfaceHeaderContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public InterfaceHeaderContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_interfaceHeader; }
 		@Override
@@ -8737,8 +8814,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final InterfaceHeaderContext interfaceHeader() throws RecognitionException {
-		InterfaceHeaderContext _localctx = new InterfaceHeaderContext(_ctx, 244);
-		enterRule(_localctx, RULE_interfaceHeader);
+		InterfaceHeaderContext _localctx = new InterfaceHeaderContext(_ctx, getState());
+		enterRule(_localctx, 244, RULE_interfaceHeader);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -8765,8 +8842,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public AnnotationHeaderContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public AnnotationHeaderContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_annotationHeader; }
 		@Override
@@ -8780,8 +8857,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final AnnotationHeaderContext annotationHeader() throws RecognitionException {
-		AnnotationHeaderContext _localctx = new AnnotationHeaderContext(_ctx, 246);
-		enterRule(_localctx, RULE_annotationHeader);
+		AnnotationHeaderContext _localctx = new AnnotationHeaderContext(_ctx, getState());
+		enterRule(_localctx, 246, RULE_annotationHeader);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -8811,8 +8888,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public TypeHeaderContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public TypeHeaderContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeHeader; }
 		@Override
@@ -8826,8 +8903,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final TypeHeaderContext typeHeader() throws RecognitionException {
-		TypeHeaderContext _localctx = new TypeHeaderContext(_ctx, 248);
-		enterRule(_localctx, RULE_typeHeader);
+		TypeHeaderContext _localctx = new TypeHeaderContext(_ctx, getState());
+		enterRule(_localctx, 248, RULE_typeHeader);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -8891,8 +8968,8 @@ public class Java7Parser extends Parser {
 		public ModifiersContext modifiers() {
 			return getRuleContext(ModifiersContext.class,0);
 		}
-		public MethodHeaderContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public MethodHeaderContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_methodHeader; }
 		@Override
@@ -8906,8 +8983,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final MethodHeaderContext methodHeader() throws RecognitionException {
-		MethodHeaderContext _localctx = new MethodHeaderContext(_ctx, 250);
-		enterRule(_localctx, RULE_methodHeader);
+		MethodHeaderContext _localctx = new MethodHeaderContext(_ctx, getState());
+		enterRule(_localctx, 250, RULE_methodHeader);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -8928,6 +9005,7 @@ public class Java7Parser extends Parser {
 				setState(1599); type();
 				}
 				break;
+
 			case 2:
 				{
 				setState(1600); match(VOID);
@@ -8968,8 +9046,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode LBRACKET(int i) {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
-		public FieldHeaderContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public FieldHeaderContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_fieldHeader; }
 		@Override
@@ -8983,8 +9061,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final FieldHeaderContext fieldHeader() throws RecognitionException {
-		FieldHeaderContext _localctx = new FieldHeaderContext(_ctx, 252);
-		enterRule(_localctx, RULE_fieldHeader);
+		FieldHeaderContext _localctx = new FieldHeaderContext(_ctx, getState());
+		enterRule(_localctx, 252, RULE_fieldHeader);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -9007,9 +9085,8 @@ public class Java7Parser extends Parser {
 				_la = _input.LA(1);
 			}
 			setState(1616);
-			_input.LT(1);
 			_la = _input.LA(1);
-			if ( !(_la==SEMI || _la==COMMA || _la==EQ) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << COMMA) | (1L << EQ))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -9045,8 +9122,8 @@ public class Java7Parser extends Parser {
 		public TerminalNode LBRACKET(int i) {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
-		public LocalVariableHeaderContext(ParserRuleContext parent, int state) {
-			super(parent, state);
+		public LocalVariableHeaderContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_localVariableHeader; }
 		@Override
@@ -9060,8 +9137,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public final LocalVariableHeaderContext localVariableHeader() throws RecognitionException {
-		LocalVariableHeaderContext _localctx = new LocalVariableHeaderContext(_ctx, 254);
-		enterRule(_localctx, RULE_localVariableHeader);
+		LocalVariableHeaderContext _localctx = new LocalVariableHeaderContext(_ctx, getState());
+		enterRule(_localctx, 254, RULE_localVariableHeader);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -9084,9 +9161,8 @@ public class Java7Parser extends Parser {
 				_la = _input.LA(1);
 			}
 			setState(1628);
-			_input.LT(1);
 			_la = _input.LA(1);
-			if ( !(_la==SEMI || _la==COMMA || _la==EQ) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << SEMI) | (1L << COMMA) | (1L << EQ))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -9104,8 +9180,8 @@ public class Java7Parser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\1f\u065f\2\0\7\0\2\1\7\1\2\2\7\2\2\3\7\3\2\4\7\4\2\5\7\5\2\6\7\6\2\7"+
-		"\7\7\2\b\7\b\2\t\7\t\2\n\7\n\2\13\7\13\2\f\7\f\2\r\7\r\2\16\7\16\2\17"+
+		"\1\1f\u065f\2\0\7\0\2\1\7\1\2\2\7\2\2\3\7\3\2\4\7\4\2\5\7\5\2\6\7\6\2"+
+		"\7\7\7\2\b\7\b\2\t\7\t\2\n\7\n\2\13\7\13\2\f\7\f\2\r\7\r\2\16\7\16\2\17"+
 		"\7\17\2\20\7\20\2\21\7\21\2\22\7\22\2\23\7\23\2\24\7\24\2\25\7\25\2\26"+
 		"\7\26\2\27\7\27\2\30\7\30\2\31\7\31\2\32\7\32\2\33\7\33\2\34\7\34\2\35"+
 		"\7\35\2\36\7\36\2\37\7\37\2 \7 \2!\7!\2\"\7\"\2#\7#\2$\7$\2%\7%\2&\7&"+
@@ -9207,8 +9283,8 @@ public class Java7Parser extends Parser {
 		"\1{\1{\1{\1{\1|\1|\1|\1|\3|\u0635\b|\1|\3|\u0638\b|\1|\1|\1}\1}\3}\u063e"+
 		"\b}\1}\1}\3}\u0642\b}\1}\1}\1}\1~\1~\1~\1~\1~\5~\u064c\b~\n~\f~\u064f"+
 		"\t~\1~\1~\1\177\1\177\1\177\1\177\1\177\5\177\u0658\b\177\n\177\f\177"+
-		"\u065b\t\177\1\177\1\177\1\177\u0080\0\2\4\6\b\n\f\16\20\22\24\26\30\32"+
-		"\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080"+
+		"\u065b\t\177\1\177\1\177\1\177\0\u0080\0\2\4\6\b\n\f\16\20\22\24\26\30"+
+		"\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080"+
 		"\u0082\u0084\u0086\u0088\u008a\u008c\u008e\u0090\u0092\u0094\u0096\u0098"+
 		"\u009a\u009c\u009e\u00a0\u00a2\u00a4\u00a6\u00a8\u00aa\u00ac\u00ae\u00b0"+
 		"\u00b2\u00b4\u00b6\u00b8\u00ba\u00bc\u00be\u00c0\u00c2\u00c4\u00c6\u00c8"+

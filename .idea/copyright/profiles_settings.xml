@@ -1,5 +1,8 @@
 <component name="CopyrightManager">
-  <settings default="">
-    <module2copyright />
+  <settings default="LGPL">
+    <module2copyright>
+      <element module="All" copyright="LGPL" />
+    </module2copyright>
+    <LanguageOptions name="JAVA" />
   </settings>
 </component>

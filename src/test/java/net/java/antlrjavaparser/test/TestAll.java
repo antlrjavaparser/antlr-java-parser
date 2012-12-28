@@ -27,8 +27,9 @@ import java.net.URL;
  */
 public class TestAll extends TestCase {
 
-    @Test
+    //@Test
     public void testValidJavaFiles() {
+        /*
         URL url = this.getClass().getResource("/testFiles/SimpleTest.java.txt");
         File file = new File(url.getFile());
 
@@ -36,14 +37,14 @@ public class TestAll extends TestCase {
 
         listFiles(testDirectory, new Listener() {
 
-            private boolean skip = true;
+            private boolean skip = false;
 
             @Override
             public void enterFile(File file) {
 
-                if (file.getPath().endsWith("\\tmp\\java-src\\src\\java\\util\\concurrent\\ScheduledFuture.java")) {
-                    skip = false;
-                }
+                //if (file.getPath().endsWith("\\tmp\\java-src\\src\\java\\util\\concurrent\\ScheduledFuture.java")) {
+//                    skip = false;
+//                }
 
                 if (file.getName().endsWith(".java") && !skip) {
 
@@ -57,6 +58,7 @@ public class TestAll extends TestCase {
                 }
             }
         });
+        */
     }
 
 

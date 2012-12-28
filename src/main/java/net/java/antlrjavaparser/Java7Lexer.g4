@@ -171,11 +171,6 @@ UnicodeMarker
     :    'u'+                                                                                                           // u
     ;
 
-fragment
-HexDigit
-    :    ('0'..'9' | 'a'..'f' | 'A'..'F')
-    ;
-
 /////////////////////////////////////////////// NUMBERS ///////////////////////////////////////
 
 fragment
@@ -501,16 +496,16 @@ Identifier
     ;
 
 WhiteSpace
-    :    ' '             -> channel(HIDDEN)
-    |    '\u0009'        -> channel(HIDDEN)                                // the ASCII HT character, also known as "horizontal tab"
-    |    '\u000C'        -> channel(HIDDEN)                                // the ASCII FF character, also known as "form feed"
-    |    LineTerminator  -> channel(HIDDEN)                                // LineTerminator
+    :    (' '
+    |    '\u0009'                                        // the ASCII HT character, also known as "horizontal tab"
+    |    '\u000C'                                        // the ASCII FF character, also known as "form feed"
+    |    LineTerminator)  -> channel(HIDDEN)                                // LineTerminator
     ;
 
 LineTerminator
-    :    '\n'            -> channel(HIDDEN)
-    |    '\r'            -> channel(HIDDEN)
-    |    '\r\n'          -> channel(HIDDEN)
+    :    ('\n'
+    |    '\r'
+    |    '\r\n')          -> channel(HIDDEN)
     ;
 
 SlashComment

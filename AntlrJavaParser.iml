@@ -14,13 +14,21 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/java/antlr/antlr-4.0b3-complete.jar!/" />
+          <root url="jar://C:/java/antlr/antlr-4.0-rc-1-complete.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="junit:junit:4.9" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4:4.0-rc-1" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.0-rc-1" level="project" />
+    <orderEntry type="library" name="Maven: org.abego.treelayout:org.abego.treelayout.core:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr-runtime:3.5-rc-2" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:stringtemplate:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: antlr:antlr:2.7.7" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:ST4:4.0.7-rc-2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
   </component>
 </module>
 
