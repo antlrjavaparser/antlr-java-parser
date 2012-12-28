@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.antlrjavaparser</groupId>
     <artifactId>antlr-java-parser</artifactId>
-    <version>0.1b</version>
+    <version>0.2b</version>
     <packaging>jar</packaging>
     <name>antlr-java-parser</name>
     <description>Antlr Java Parser aims to create a Java parser using Antlr 4 grammar rules.</description>
-    <url>https://github.com/mikedehaan/antlr-java-parser</url>
+    <url>https://github.com/antlr-java-parser/antlr-java-parser</url>
     <licenses>
         <license>
             <name>GNU LESSER GENERAL PUBLIC LICENSE</name>
@@ -19,8 +19,8 @@
         </license>
     </licenses>
     <scm>
-        <url>https://github.com/mikedehaan/antlr-java-parser.git</url>
-        <connection>scm:git:https://github.com/mikedehaan/antlr-java-parser.git</connection>
+        <url>https://github.com/antlr-java-parser/antlr-java-parser.git</url>
+        <connection>scm:git:https://github.com/antlr-java-parser/antlr-java-parser.git</connection>
     </scm>
     <developers>
         <developer>
