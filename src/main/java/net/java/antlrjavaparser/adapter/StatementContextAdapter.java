@@ -24,7 +24,7 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
     /**
      *
      * @param context
-     * @return
+     * @return Statement
      */
     public Statement adapt(Java7Parser.StatementContext context) {
 

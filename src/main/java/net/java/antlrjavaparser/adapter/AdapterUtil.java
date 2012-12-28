@@ -35,7 +35,6 @@ import java.util.List;
  * User: Mike De Haan
  * Date: 12/4/12
  * Time: 7:07 PM
- * To change this template use File | Settings | File Templates.
  */
 public final class AdapterUtil {
     private AdapterUtil() {
@@ -198,7 +197,7 @@ public final class AdapterUtil {
      * @param contextList
      * @param operator
      * @param <C> Context Type
-     * @return
+     * @return Expression
      */
     public static <C> Expression handleExpression(Adapter<Expression, C> adapter, List<C> contextList, BinaryExpr.Operator operator) {
         Expression expression = adapter.adapt(contextList.get(0));
