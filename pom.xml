@@ -3,10 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>antlr-java-parser</groupId>
     <artifactId>antlr-java-parser</artifactId>
-    <version>0.1</version>
+    <version>0.1b</version>
+    <packaging>jar</packaging>
+    <name>antlr-java-parser</name>
+    <description>Antlr Java Parser aims to create a Java parser using Antlr 4 grammar rules.</description>
+    <url>https://github.com/mikedehaan/antlr-java-parser</url>
+    <licenses>
+        <license>
+            <name>GNU LESSER GENERAL PUBLIC LICENSE</name>
+            <url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>Version 3, 29 June 2007</comments>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/mikedehaan/antlr-java-parser.git</url>
+        <connection>scm:git:https://github.com/mikedehaan/antlr-java-parser.git</connection>
+    </scm>
+    <developers>
+        <developer>
+            <id>mikedehaan</id>
+            <name>Mike De Haan</name>
+            <email>mike@mikeandzoya.com</email>
+        </developer>
+    </developers>
     <dependencies>
         <dependency>
             <groupId>org.antlr</groupId>
@@ -19,8 +41,5 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
-
 </project>

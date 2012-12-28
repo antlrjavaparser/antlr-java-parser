@@ -2,35 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59ec6132-83fa-4475-a80e-67fecfe236da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/JavaParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_abego_treelayout_org_abego_treelayout_core_1_0_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_ST4_4_0_7_rc_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr4_4_0_rc_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr4_runtime_4_0_rc_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr_runtime_3_5_rc_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_stringtemplate_3_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/api/body/Resource.java" />
-      <change type="MOVED" beforePath="C:\Users\Administrator\git\antlr-java-parser\src\test\java\net\java\antlrjavaparser\test\CompilationUnitListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/CompilationUnitListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdapterUtil.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdapterUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ConstructorBlockContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ConstructorBlockContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/net/java/antlrjavaparser/test/ContextCreator.java" afterPath="$PROJECT_DIR$/src/test/java/net/java/antlrjavaparser/test/ContextCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ForeachStatementContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ForeachStatementContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Lexer.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Lexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Parser.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7Parser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7ParserBaseListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7ParserBaseListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7ParserListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/Java7ParserListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/NormalForStatementContextAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/NormalForStatementContextAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/net/java/antlrjavaparser/test/TestAll.java" afterPath="$PROJECT_DIR$/src/test/java/net/java/antlrjavaparser/test/TestAll.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/net/java/antlrjavaparser/test/__Test__.java" afterPath="$PROJECT_DIR$/src/test/java/net/java/antlrjavaparser/test/__Test__.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="antlrjavaparser.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356658042187" ignored="false" />
+    <file path="/Dummy.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356666746628" ignored="false" />
     <file path="/a.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356049287306" ignored="false" />
     <file path="/sample.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356048151461" ignored="false" />
     <file path="/ParExpressionContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356053102088" ignored="false" />
@@ -102,9 +79,11 @@
     <file path="/TypeArgumentContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356582769584" ignored="false" />
     <file path="/TypeBoundContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356583798423" ignored="false" />
     <file path="/OOMTest.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356638431912" ignored="false" />
-    <file path="/pom.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356658172251" ignored="false" />
+    <file path="/pom.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356667810723" ignored="false" />
     <file path="/Adapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356657699785" ignored="false" />
     <file path="/JavaParser.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356665353536" ignored="false" />
+    <file path="$USER_HOME$/svn/JavaParser/readme.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356667084942" ignored="false" />
+    <file path="/readme.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356667008104" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,14 +179,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="JavaParser.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/JavaParser.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="7" selection-start="2379" selection-end="2379" vertical-scroll-proportion="1.6921899">
-              <folding>
-                <element signature="e#0#2790#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="8" column="30" selection-start="447" selection-end="447" vertical-scroll-proportion="0.20826952">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -280,7 +256,6 @@
         <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/EnumBodyContextAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/InterfaceFieldDeclarationContextAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/api/body/Resource.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdapterUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ForeachStatementContextAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/NormalForStatementContextAdapter.java" />
@@ -291,6 +266,7 @@
         <option value="$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/JavaParser.java" />
         <option value="$PROJECT_DIR$/src/test/java/net/java/antlrjavaparser/test/__Test__.java" />
         <option value="$PROJECT_DIR$/src/test/java/net/java/antlrjavaparser/test/TestAll.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -997,7 +973,11 @@
       <created>1356658113155</created>
       <updated>1356658113155</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added LGPL, Built main parser class">
+      <created>1356666816694</created>
+      <updated>1356666816694</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1091,7 +1071,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added LGPL, updated pom, and updated antlr version." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added LGPL, Built main parser class" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1121,6 +1101,7 @@
     <MESSAGE value="Fixes.  Passed through parsing all of the Java 7 source files." />
     <MESSAGE value="Updated TODO statements" />
     <MESSAGE value="Added LGPL, updated pom, and updated antlr version." />
+    <MESSAGE value="Added LGPL, Built main parser class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1134,24 +1115,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/AdapterUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="9" selection-start="1361" selection-end="1361" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#8669#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ConstructorBlockContextAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="9" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#2236#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/adapter/ForeachStatementContextAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="9" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.0">
@@ -1255,6 +1218,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="75" selection-start="37" selection-end="112" vertical-scroll-proportion="0.07810107">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/java/antlrjavaparser/JavaParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="7" selection-start="2379" selection-end="2379" vertical-scroll-proportion="1.6921899">
@@ -1262,6 +1232,13 @@
             <element signature="e#0#2790#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="30" selection-start="447" selection-end="447" vertical-scroll-proportion="0.20826952">
+          <folding />
         </state>
       </provider>
     </entry>
