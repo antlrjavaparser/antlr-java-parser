@@ -1,6 +1,7 @@
 package net.java.antlrjavaparser.test;
 
 import junit.framework.TestCase;
+import net.java.antlrjavaparser.CompilationUnitListener;
 import net.java.antlrjavaparser.Java7Lexer;
 import net.java.antlrjavaparser.Java7Parser;
 import net.java.antlrjavaparser.api.CompilationUnit;
@@ -11,16 +12,14 @@ import org.antlr.v4.runtime.DiagnosticErrorListener;
 import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * Created with IntelliJ IDEA.
- * User: Administrator
+ * User: Mike De Haan
  * Date: 12/12/12
  * Time: 10:53 PM
  * To change this template use File | Settings | File Templates.
@@ -94,7 +93,7 @@ public class TestAll extends TestCase {
         ParseTree tree = parser.compilationUnit();
 
         ParseTreeWalker walker = new ParseTreeWalker();
-        CompilationUnitListener listener = new CompilationUnitListener(parser);
+        CompilationUnitListener listener = new CompilationUnitListener();
         walker.walk(listener, tree);
         CompilationUnit compilationUnit = listener.getCompilationUnit();
 

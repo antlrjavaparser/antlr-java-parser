@@ -1,5 +1,6 @@
 package net.java.antlrjavaparser.test;
 
+import net.java.antlrjavaparser.CompilationUnitListener;
 import net.java.antlrjavaparser.Java7Lexer;
 import net.java.antlrjavaparser.Java7Parser;
 import net.java.antlrjavaparser.api.CompilationUnit;
@@ -45,7 +46,7 @@ public class __Test__ {
         ParseTreeWalker walker = new ParseTreeWalker();
 
         // Fills out the compilationUnit object
-        CompilationUnitListener listener = new CompilationUnitListener(parser);
+        CompilationUnitListener listener = new CompilationUnitListener();
         walker.walk(listener, tree);
         compilationUnit = listener.getCompilationUnit();
 
