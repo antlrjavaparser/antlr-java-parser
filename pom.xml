@@ -26,8 +26,8 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/antlrjavaparser/antlr-java-parser.git/tags/antlr-java-parser-1.0.0</url>
-        <connection>scm:git:https://github.com/antlrjavaparser/antlr-java-parser.git/tags/antlr-java-parser-1.0.0</connection>
+        <url>https://github.com/antlrjavaparser/antlr-java-parser.git</url>
+        <connection>scm:git:https://github.com/antlrjavaparser/antlr-java-parser.git</connection>
     </scm>
 
     <repositories>
