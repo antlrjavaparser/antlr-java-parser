@@ -27,7 +27,8 @@
 
     <scm>
         <url>https://github.com/antlrjavaparser/antlr-java-parser.git</url>
-        <connection>scm:git:https://github.com/antlrjavaparser/antlr-java-parser.git</connection>
+        <connection>scm:git:git@github.com:antlrjavaparser/antlr-java-parser.git</connection>
+        <developerConnection>scm:git:git@github.com:antlrjavaparser/antlr-java-parser.git</developerConnection>
     </scm>
 
     <repositories>
