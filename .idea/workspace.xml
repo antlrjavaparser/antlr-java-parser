@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59ec6132-83fa-4475-a80e-67fecfe236da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/antlrjavaparser/ASTHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="antlrjavaparser.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356728051051" ignored="false" />
+    <file path="/Dummy.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1357100824415" ignored="false" />
     <file path="/a.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356049287306" ignored="false" />
     <file path="/sample.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356048151461" ignored="false" />
     <file path="/ParExpressionContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356053102088" ignored="false" />
@@ -81,18 +80,31 @@
     <file path="/TypeArgumentContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356582769584" ignored="false" />
     <file path="/TypeBoundContextAdapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356583798423" ignored="false" />
     <file path="/OOMTest.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356638431912" ignored="false" />
-    <file path="/pom.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356707264064" ignored="false" />
+    <file path="/pom.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919417887" ignored="false" />
     <file path="/Adapter.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356657699785" ignored="false" />
     <file path="/JavaParser.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356709403877" ignored="false" />
     <file path="$USER_HOME$/svn/JavaParser/readme.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356667084942" ignored="false" />
     <file path="/readme.txt" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356667008104" ignored="false" />
     <file path="$USER_HOME$/IdeaProjects/ParserTest/src/Main.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356670801583" ignored="false" />
     <file path="/Main.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356670658653" ignored="false" />
-    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/pom.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356707267599" ignored="false" />
-    <file path="/*.regexp" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356707368375" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/pom.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919178313" ignored="false" />
+    <file path="/*.regexp" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356734975112" ignored="false" />
     <file path="$PROJECT_DIR$/../spring-roo-project-files/org.springframework.roo.classpath.javaparser.iml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356707388644" ignored="false" />
-    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/main/java/org/springframework/roo/classpath/javaparser/CompilationUnitServices.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356707453466" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/main/java/org/springframework/roo/classpath/javaparser/CompilationUnitServices.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
     <file path="/ASTHelper.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356727640572" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/osgi-roo-bundle/pom.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/osgi-bundle/pom.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/pom.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/test/java/org/springframework/roo/classpath/javaparser/JavaParserTypeParsingServiceTest.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/main/java/org/springframework/roo/classpath/javaparser/JavaParserTypeParsingService.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/main/java/org/springframework/roo/classpath/javaparser/JavaParserTypeResolutionService.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/main/java/org/springframework/roo/classpath/javaparser/JavaParserUtils.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/main/java/org/springframework/roo/classpath/javaparser/details/JavaParserAnnotationMetadataBuilder.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/main/java/org/springframework/roo/classpath/javaparser/details/JavaParserClassOrInterfaceTypeDetailsBuilder.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/main/java/org/springframework/roo/classpath/javaparser/details/JavaParserConstructorMetadataBuilder.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/main/java/org/springframework/roo/classpath/javaparser/details/JavaParserFieldMetadataBuilder.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$PROJECT_DIR$/../spring-roo/classpath-javaparser/src/main/java/org/springframework/roo/classpath/javaparser/details/JavaParserMethodMetadataBuilder.java" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919184850" ignored="false" />
+    <file path="$USER_HOME$/.m2/settings.xml" changelist="59ec6132-83fa-4475-a80e-67fecfe236da" time="1356919894523" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,36 +126,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/github/antlrjavaparser/api/visitor/DumpVisitor.java" line="299" class="com.github.antlrjavaparser.api.visitor.DumpVisitor" package="com.github.antlrjavaparser.api.visitor">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="&#13;&#13;JAVA" />
-        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/github/antlrjavaparser/api/visitor/DumpVisitor.java" line="216" class="com.github.antlrjavaparser.api.visitor.DumpVisitor" package="com.github.antlrjavaparser.api.visitor">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -178,6 +160,36 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/github/antlrjavaparser/api/visitor/DumpVisitor.java" line="299" class="com.github.antlrjavaparser.api.visitor.DumpVisitor" package="com.github.antlrjavaparser.api.visitor">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/com/github/antlrjavaparser/api/visitor/DumpVisitor.java" line="216" class="com.github.antlrjavaparser.api.visitor.DumpVisitor" package="com.github.antlrjavaparser.api.visitor">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
@@ -200,7 +212,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="34" selection-start="490" selection-end="490" vertical-scroll-proportion="0.24401914">
+            <state line="14" column="34" selection-start="625" selection-end="625" vertical-scroll-proportion="0.2137161">
               <folding />
             </state>
           </provider>
@@ -210,12 +222,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/antlrjavaparser/ASTHelper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="259" column="19" selection-start="9078" selection-end="9078" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#9805#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#4601#4621#0" expanded="true" />
-                <element signature="e#5699#5719#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -387,6 +394,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -609,16 +626,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="docs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1032,7 +1039,11 @@
       <created>1356722894182</created>
       <updated>1356722894182</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added ASTHelper.  Changed pom to version 1 in anticipation of a release.">
+      <created>1356728105625</created>
+      <updated>1356728105625</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1126,7 +1137,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed repo name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ASTHelper.  Changed pom to version 1 in anticipation of a release." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1162,6 +1173,7 @@
     <MESSAGE value="Changed root package name" />
     <MESSAGE value="Moved central repository" />
     <MESSAGE value="Fixed repo name" />
+    <MESSAGE value="Added ASTHelper.  Changed pom to version 1 in anticipation of a release." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1256,18 +1268,13 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/antlrjavaparser/ASTHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="259" column="19" selection-start="9078" selection-end="9078" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#9805#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#4601#4621#0" expanded="true" />
-            <element signature="e#5699#5719#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="34" selection-start="490" selection-end="490" vertical-scroll-proportion="0.24401914">
+        <state line="14" column="34" selection-start="625" selection-end="625" vertical-scroll-proportion="0.2137161">
           <folding />
         </state>
       </provider>
