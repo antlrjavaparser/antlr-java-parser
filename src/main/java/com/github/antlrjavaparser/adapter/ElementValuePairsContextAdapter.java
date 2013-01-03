@@ -19,9 +19,27 @@ package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
+import com.github.antlrjavaparser.api.expr.MemberValuePair;
 
-public class ElementValuePairsContextAdapter implements Adapter<Node, Java7Parser.ElementValuePairsContext> {
-    public Node adapt(Java7Parser.ElementValuePairsContext context) {
-        return null;
+import java.util.LinkedList;
+import java.util.List;
+
+public class ElementValuePairsContextAdapter implements Adapter<List<MemberValuePair>, Java7Parser.ElementValuePairsContext> {
+    public List<MemberValuePair> adapt(Java7Parser.ElementValuePairsContext context) {
+
+        /*
+        elementValuePairs
+            :   elementValuePair
+                (COMMA elementValuePair
+                )*
+            ;
+         */
+
+        List<MemberValuePair> memberValuePairList = new LinkedList<MemberValuePair>();
+        for (Java7Parser.ElementValuePairContext elementValuePairContext : context.elementValuePair()) {
+            memberValuePairList.add(Adapters.getElementValuePairContextAdapter().adapt(elementValuePairContext));
+        }
+
+        return memberValuePairList;
     }
 }

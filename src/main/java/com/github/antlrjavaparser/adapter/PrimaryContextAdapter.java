@@ -169,7 +169,11 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
                 for (int i = 0; i < primaryContext.Identifier().size(); i++) {
                     ClassOrInterfaceType classOrInterfaceType = new ClassOrInterfaceType();
                     classOrInterfaceType.setName(primaryContext.Identifier(i).getText());
-                    classOrInterfaceType.setScope(leftType);
+
+                    // Don't set the scope on the first type (because it will be itself)
+                    if (i > 0) {
+                        classOrInterfaceType.setScope(leftType);
+                    }
 
                     leftType = classOrInterfaceType;
                 }

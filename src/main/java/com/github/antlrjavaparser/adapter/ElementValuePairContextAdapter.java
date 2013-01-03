@@ -19,9 +19,21 @@ package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
+import com.github.antlrjavaparser.api.expr.MemberValuePair;
 
-public class ElementValuePairContextAdapter implements Adapter<Node, Java7Parser.ElementValuePairContext> {
-    public Node adapt(Java7Parser.ElementValuePairContext context) {
-        return null;
+public class ElementValuePairContextAdapter implements Adapter<MemberValuePair, Java7Parser.ElementValuePairContext> {
+    public MemberValuePair adapt(Java7Parser.ElementValuePairContext context) {
+
+        /*
+        elementValuePair
+        :   Identifier EQ elementValue
+        ;
+        */
+
+        MemberValuePair memberValuePair = new MemberValuePair();
+        memberValuePair.setName(context.Identifier().getText());
+        memberValuePair.setValue(Adapters.getElementValueContextAdapter().adapt(context.elementValue()));
+
+        return memberValuePair;
     }
 }

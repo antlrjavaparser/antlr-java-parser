@@ -19,9 +19,10 @@ package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.type.ReferenceType;
+import com.github.antlrjavaparser.api.type.Type;
 
-public class TypeContextAdapter implements Adapter<ReferenceType, Java7Parser.TypeContext> {
-    public ReferenceType adapt(Java7Parser.TypeContext context) {
+public class TypeContextAdapter implements Adapter<Type, Java7Parser.TypeContext> {
+    public Type adapt(Java7Parser.TypeContext context) {
 
         if (context.classOrInterfaceType() != null) {
             ReferenceType referenceType = new ReferenceType();
@@ -31,12 +32,16 @@ public class TypeContextAdapter implements Adapter<ReferenceType, Java7Parser.Ty
             }
             return referenceType;
         } else if (context.primitiveType() != null) {
-            ReferenceType referenceType = new ReferenceType();
-            referenceType.setType(Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType()));
+
+            // If there's an array in the mix, this becomes a referenceType
             if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
+                ReferenceType referenceType = new ReferenceType();
+                referenceType.setType(Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType()));
                 referenceType.setArrayCount(context.LBRACKET().size());
+                return referenceType;
+            } else {
+                return Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType());
             }
-            return referenceType;
         }
 
         return null;

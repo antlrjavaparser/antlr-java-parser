@@ -18,6 +18,7 @@
 package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
+import com.github.antlrjavaparser.ParseException;
 import com.github.antlrjavaparser.api.type.ReferenceType;
 import com.github.antlrjavaparser.api.type.Type;
 import com.github.antlrjavaparser.api.type.WildcardType;
@@ -36,13 +37,13 @@ public class TypeArgumentContextAdapter implements Adapter<Type, Java7Parser.Typ
             WildcardType wildcardType = new WildcardType();
 
             if (context.type() != null) {
-                ReferenceType referenceType = new ReferenceType();
+                Type type = Adapters.getTypeContextAdapter().adapt(context.type());
 
-                referenceType.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
-
-                if (context.type().LBRACKET() != null) {
-                    referenceType.setArrayCount(context.type().LBRACKET().size());
+                if (!(type instanceof ReferenceType)) {
+                    throw new ParseException("type cannot be primitive when using super or extends in a type argument");
                 }
+
+                ReferenceType referenceType = (ReferenceType)type;
 
                 if (context.SUPER() != null) {
                     wildcardType.setSuper(referenceType);

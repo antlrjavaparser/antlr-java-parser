@@ -696,9 +696,9 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(CharLiteralExpr n, Object arg) {
-        //printer.print("'");
+        printer.print("'");
         printer.print(n.getValue());
-        //printer.print("'");
+        printer.print("'");
     }
 
     public void visit(DoubleLiteralExpr n, Object arg) {
@@ -722,9 +722,9 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(StringLiteralExpr n, Object arg) {
-        //printer.print("\"");
+        printer.print("\"");
         printer.print(n.getValue());
-        //printer.print("\"");
+        printer.print("\"");
     }
 
     public void visit(BooleanLiteralExpr n, Object arg) {
@@ -1142,9 +1142,9 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(IfStmt n, Object arg) {
-        printer.print("if ");
+        printer.print("if (");
         n.getCondition().accept(this, arg);
-        printer.print(" ");
+        printer.print(") ");
         n.getThenStmt().accept(this, arg);
         if (n.getElseStmt() != null) {
             printer.print(" else ");
@@ -1153,9 +1153,9 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(WhileStmt n, Object arg) {
-        printer.print("while ");
+        printer.print("while (");
         n.getCondition().accept(this, arg);
-        printer.print(" ");
+        printer.print(") ");
         n.getBody().accept(this, arg);
     }
 

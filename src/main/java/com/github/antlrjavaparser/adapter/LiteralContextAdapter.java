@@ -39,11 +39,11 @@ public class LiteralContextAdapter implements Adapter<LiteralExpr, Java7Parser.L
             return literalExpr;
         } else if (context.CharacterLiteral() != null) {
             CharLiteralExpr literalExpr = new CharLiteralExpr();
-            literalExpr.setValue(context.CharacterLiteral().getText());
+            literalExpr.setValue(stripQuotes(context.CharacterLiteral().getText()));
             return literalExpr;
         } else if (context.StringLiteral() != null) {
             StringLiteralExpr literalExpr = new StringLiteralExpr();
-            literalExpr.setValue(context.StringLiteral().toString());
+            literalExpr.setValue(stripQuotes(context.StringLiteral().getText()));
             return literalExpr;
         } else if (context.TRUE() != null) {
             BooleanLiteralExpr literalExpr = new BooleanLiteralExpr();
@@ -59,5 +59,9 @@ public class LiteralContextAdapter implements Adapter<LiteralExpr, Java7Parser.L
         }
 
         throw new RuntimeException("Unknown Literal Context");
+    }
+
+    private String stripQuotes(String str) {
+        return str.substring(1, str.length() - 1);
     }
 }

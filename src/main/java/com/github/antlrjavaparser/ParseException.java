@@ -29,7 +29,7 @@ package com.github.antlrjavaparser;
  * You can modify this class to customize your error reporting
  * mechanisms so long as you retain the public fields.
  */
-public class ParseException extends Exception {
+public class ParseException extends RuntimeException {
 
     public ParseException() {
     }

@@ -43,13 +43,25 @@ public class MethodDeclarationContextAdapter implements Adapter<MethodDeclaratio
             Type type = new VoidType();
             methodDeclaration.setType(type);
         } else {
-            ReferenceType referenceType = (ReferenceType)Adapters.getTypeContextAdapter().adapt(context.type());
+            Type type = Adapters.getTypeContextAdapter().adapt(context.type());
+
             if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
+                ReferenceType referenceType = new ReferenceType();
+                if (type instanceof ReferenceType) {
+                    referenceType = (ReferenceType)type;
+                } else {
+                    referenceType = new ReferenceType();
+                    referenceType.setType(type);
+                }
+
                 int arraySize = referenceType.getArrayCount();
                 arraySize += context.LBRACKET().size();
                 referenceType.setArrayCount(arraySize);
+
+                methodDeclaration.setType(referenceType);
+            } else {
+                methodDeclaration.setType(type);
             }
-            methodDeclaration.setType(referenceType);
         }
 
         methodDeclaration.setName(context.Identifier().getText());

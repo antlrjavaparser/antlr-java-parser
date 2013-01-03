@@ -1,7 +1,5 @@
-package java.io;
 
-import static java.io.ObjectStreamClass.WeakClassKey.*;
-
-public class ObjectInputStream {
+@RooWebScaffold(formBackingObject = Timer.class)
+public class TimerController {
 
 }

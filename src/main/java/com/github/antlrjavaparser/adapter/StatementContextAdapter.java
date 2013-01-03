@@ -77,7 +77,7 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
             return assertStmt;
         } else if (context.IF() != null) {
             IfStmt ifStmt = new IfStmt();
-            ifStmt.setCondition(Adapters.getParExpressionContextAdapter().adapt(context.parExpression()));
+            ifStmt.setCondition(Adapters.getExpressionContextAdapter().adapt(context.parExpression().expression()));
             ifStmt.setThenStmt(Adapters.getStatementContextAdapter().adapt(context.statement(0)));
 
             if (context.ELSE() != null) {
@@ -93,7 +93,7 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
             }
         } else if (context.WHILE() != null) {
             WhileStmt whileStmt = new WhileStmt();
-            whileStmt.setCondition(Adapters.getParExpressionContextAdapter().adapt(context.parExpression()));
+            whileStmt.setCondition(Adapters.getExpressionContextAdapter().adapt(context.parExpression().expression()));
             whileStmt.setBody(Adapters.getStatementContextAdapter().adapt(context.statement(0)));
             return whileStmt;
         } else if (context.DO() != null) {
