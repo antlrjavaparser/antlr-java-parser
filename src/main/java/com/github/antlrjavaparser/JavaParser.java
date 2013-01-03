@@ -24,6 +24,7 @@ import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -72,5 +73,18 @@ public class JavaParser {
      */
     public static CompilationUnit parse(File file) throws IOException, ParseException {
         return parse(new FileInputStream(file));
+    }
+
+    /**
+     * Parses a UTF-8 encoded string as java source.
+     *
+     * @param javaSource
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
+    public static CompilationUnit parse(String javaSource) throws IOException, ParseException {
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(javaSource.getBytes("UTF-8"));
+        return parse(inputStream);
     }
 }

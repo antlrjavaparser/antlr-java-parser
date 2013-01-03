@@ -18,13 +18,12 @@
 package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
-import com.github.antlrjavaparser.api.expr.NameExpr;
 import com.github.antlrjavaparser.api.expr.SingleMemberAnnotationExpr;
 
 public class SingleElementAnnotationContextAdapter implements Adapter<SingleMemberAnnotationExpr, Java7Parser.SingleElementAnnotationContext> {
     public SingleMemberAnnotationExpr adapt(Java7Parser.SingleElementAnnotationContext context) {
         SingleMemberAnnotationExpr singleMemberAnnotationExpr = new SingleMemberAnnotationExpr();
-        singleMemberAnnotationExpr.setName(new NameExpr(context.qualifiedName().getText()));
+        singleMemberAnnotationExpr.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName()));
         singleMemberAnnotationExpr.setMemberValue(Adapters.getElementValueContextAdapter().adapt(context.elementValue()));
 
         return singleMemberAnnotationExpr;

@@ -19,13 +19,11 @@ package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
-import com.github.antlrjavaparser.api.expr.NameExpr;
 
 public class MarkerAnnotationContextAdapter implements Adapter<MarkerAnnotationExpr, Java7Parser.MarkerAnnotationContext> {
     public MarkerAnnotationExpr adapt(Java7Parser.MarkerAnnotationContext context) {
         MarkerAnnotationExpr markerAnnotationExpr = new MarkerAnnotationExpr();
-        markerAnnotationExpr.setName(
-                new NameExpr(context.qualifiedName().getText()));
+        markerAnnotationExpr.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName()));
 
         return markerAnnotationExpr;
     }

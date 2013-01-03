@@ -19,14 +19,14 @@ package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.ImportDeclaration;
-import com.github.antlrjavaparser.api.expr.NameExpr;
 
 public class ImportDeclarationContextAdapter implements Adapter<ImportDeclaration, Java7Parser.ImportDeclarationContext> {
     public ImportDeclaration adapt(Java7Parser.ImportDeclarationContext context) {
 
         ImportDeclaration importDeclaration = new ImportDeclaration();
         importDeclaration.setStatic(context.STATIC() != null);
-        importDeclaration.setName(new NameExpr(AdapterUtil.dottedIdentifier(context.Identifier())));
+
+        importDeclaration.setName(AdapterUtil.qualifiedName(context.Identifier()));
         importDeclaration.setAsterisk(context.STAR() != null);
 
         return importDeclaration;

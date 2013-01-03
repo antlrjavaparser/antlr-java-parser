@@ -17,6 +17,7 @@
 
 package com.github.antlrjavaparser.adapter;
 
+import com.github.antlrjavaparser.ASTHelper;
 import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.body.AnnotationMemberDeclaration;
 import com.github.antlrjavaparser.api.body.BodyDeclaration;
@@ -31,6 +32,7 @@ import com.github.antlrjavaparser.api.body.TypeDeclaration;
 import com.github.antlrjavaparser.api.expr.AnnotationExpr;
 import com.github.antlrjavaparser.api.expr.BinaryExpr;
 import com.github.antlrjavaparser.api.expr.Expression;
+import com.github.antlrjavaparser.api.expr.NameExpr;
 import com.github.antlrjavaparser.api.type.ClassOrInterfaceType;
 import com.github.antlrjavaparser.api.type.ReferenceType;
 import com.github.antlrjavaparser.api.type.Type;
@@ -58,6 +60,11 @@ public final class AdapterUtil {
         }
 
         return identifier;
+    }
+
+    public static NameExpr qualifiedName(List<TerminalNode> terminalNodeList) {
+        String qualifiedName = dottedIdentifier(terminalNodeList);
+        return ASTHelper.createNameExpr(qualifiedName);
     }
 
     public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, Resource resource) {

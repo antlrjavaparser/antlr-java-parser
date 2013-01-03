@@ -20,8 +20,8 @@ package com.github.antlrjavaparser;
 
 
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.TerminalNode;
 import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class Java7ParserBaseListener implements Java7ParserListener {
 	@Override public void enterInnerCreator(Java7Parser.InnerCreatorContext ctx) { }

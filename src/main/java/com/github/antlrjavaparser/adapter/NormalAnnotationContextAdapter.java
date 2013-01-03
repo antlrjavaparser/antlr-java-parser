@@ -18,14 +18,12 @@
 package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
-import com.github.antlrjavaparser.api.expr.NameExpr;
 import com.github.antlrjavaparser.api.expr.NormalAnnotationExpr;
 
 public class NormalAnnotationContextAdapter implements Adapter<NormalAnnotationExpr, Java7Parser.NormalAnnotationContext> {
     public NormalAnnotationExpr adapt(Java7Parser.NormalAnnotationContext context) {
         NormalAnnotationExpr normalAnnotationExpr = new NormalAnnotationExpr();
-        normalAnnotationExpr.setName(
-                new NameExpr(context.qualifiedName().getText()));
+        normalAnnotationExpr.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName()));
 
         return normalAnnotationExpr;
     }

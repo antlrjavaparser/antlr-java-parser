@@ -19,7 +19,6 @@ package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.PackageDeclaration;
-import com.github.antlrjavaparser.api.expr.NameExpr;
 
 public class PackageDeclarationContextAdapter implements Adapter<PackageDeclaration, Java7Parser.PackageDeclarationContext> {
     public PackageDeclaration adapt(Java7Parser.PackageDeclarationContext context) {
@@ -28,7 +27,7 @@ public class PackageDeclarationContextAdapter implements Adapter<PackageDeclarat
         }
 
         PackageDeclaration packageDeclaration = new PackageDeclaration();
-        packageDeclaration.setName(new NameExpr(context.qualifiedName().getText()));
+        packageDeclaration.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName()));
 
         if (context.annotations() != null) {
             packageDeclaration.setAnnotations(Adapters.getAnnotationsContextAdapter().adapt(context.annotations()));

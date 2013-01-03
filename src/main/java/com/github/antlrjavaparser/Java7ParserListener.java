@@ -18,7 +18,7 @@
 
 package com.github.antlrjavaparser;
 
-import org.antlr.v4.runtime.tree.*;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 public interface Java7ParserListener extends ParseTreeListener {
 	void enterInnerCreator(Java7Parser.InnerCreatorContext ctx);
