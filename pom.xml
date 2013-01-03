@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.antlrjavaparser</groupId>
     <artifactId>antlr-java-parser</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>antlr-java-parser</name>
     <description>Antlr Java Parser aims to create a Java parser using Antlr 4 grammar rules.</description>
