@@ -19,10 +19,13 @@ package com.github.antlrjavaparser.test.type;
 import com.github.antlrjavaparser.JavaParser;
 import com.github.antlrjavaparser.api.CompilationUnit;
 import com.github.antlrjavaparser.api.body.FieldDeclaration;
+import com.github.antlrjavaparser.api.body.MethodDeclaration;
+import com.github.antlrjavaparser.api.body.Parameter;
 import com.github.antlrjavaparser.api.type.PrimitiveType;
 import com.github.antlrjavaparser.api.type.ReferenceType;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -101,6 +104,28 @@ public class TestPrimitive {
 
     }
 
+    @Test
+    public void testMethodParameterType() throws Exception {
+        String javaSource = "public abstract class CDRInputStream { " +
+                            "    public final int read(byte b[]) throws IOException { " +
+                            "        return impl.read(b); " +
+                            "    } " +
+                            "} ";
 
+        CompilationUnit compilationUnit = JavaParser.parse(javaSource);
+        assertTrue(compilationUnit.getTypes().size() == 1);
+        assertTrue(compilationUnit.getTypes().get(0).getMembers().size() == 1);
+        assertTrue(compilationUnit.getTypes().get(0).getMembers().get(0) instanceof MethodDeclaration);
+
+        MethodDeclaration methodDeclaration = (MethodDeclaration)compilationUnit.getTypes().get(0).getMembers().get(0);
+        assertTrue(methodDeclaration.getParameters().size() == 1);
+
+        Parameter parameter = methodDeclaration.getParameters().get(0);
+        assertTrue(parameter.getType() instanceof PrimitiveType);
+        assertTrue(parameter.getId().getArrayCount() == 1);
+
+        PrimitiveType primitiveType = (PrimitiveType)parameter.getType();
+        assertTrue(primitiveType.getType().name().equals("Byte"));
+    }
 
 }

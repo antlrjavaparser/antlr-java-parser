@@ -24,13 +24,11 @@ import com.github.antlrjavaparser.api.type.ReferenceType;
 
 public class NormalParameterDeclContextAdapter implements Adapter<Parameter, Java7Parser.NormalParameterDeclContext> {
     public Parameter adapt(Java7Parser.NormalParameterDeclContext context) {
-
         /*
         normalParameterDecl
             :   variableModifiers type Identifier (LBRACKET RBRACKET)*
             ;
          */
-
         Parameter parameter = new Parameter();
         AdapterUtil.setVariableModifiers(context.variableModifiers(), parameter);
         parameter.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
@@ -40,8 +38,7 @@ public class NormalParameterDeclContextAdapter implements Adapter<Parameter, Jav
         parameter.setId(variableDeclaratorId);
 
         if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
-            ReferenceType referenceType = (ReferenceType)parameter.getType();
-            referenceType.setArrayCount(referenceType.getArrayCount() + context.LBRACKET().size());
+            variableDeclaratorId.setArrayCount(context.LBRACKET().size());
         }
 
         return parameter;
