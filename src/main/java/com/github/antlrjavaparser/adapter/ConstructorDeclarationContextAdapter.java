@@ -31,6 +31,7 @@ public class ConstructorDeclarationContextAdapter implements Adapter<Constructor
         constructorDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
         constructorDeclaration.setBlock(Adapters.getConstructorBlockContextAdapter().adapt(context.constructorBlock()));
         constructorDeclaration.setThrows(Adapters.getQualifiedNameListContextAdapter().adapt(context.qualifiedNameList()));
+        constructorDeclaration.setParameters(Adapters.getFormalParametersContextAdapter().adapt(context.formalParameters()));
 
         return constructorDeclaration;
     }

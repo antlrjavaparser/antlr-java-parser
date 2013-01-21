@@ -23,6 +23,7 @@ import com.github.antlrjavaparser.api.expr.CharLiteralExpr;
 import com.github.antlrjavaparser.api.expr.DoubleLiteralExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralExpr;
 import com.github.antlrjavaparser.api.expr.LiteralExpr;
+import com.github.antlrjavaparser.api.expr.LongLiteralExpr;
 import com.github.antlrjavaparser.api.expr.NullLiteralExpr;
 import com.github.antlrjavaparser.api.expr.StringLiteralExpr;
 
@@ -30,9 +31,15 @@ public class LiteralContextAdapter implements Adapter<LiteralExpr, Java7Parser.L
     public LiteralExpr adapt(Java7Parser.LiteralContext context) {
 
         if (context.IntegerLiteral() != null) {
-            IntegerLiteralExpr literalExpr = new IntegerLiteralExpr();
-            literalExpr.setValue(context.IntegerLiteral().getText());
-            return literalExpr;
+            if (isLongType(context.IntegerLiteral().getText())) {
+                LongLiteralExpr literalExpr = new LongLiteralExpr();
+                literalExpr.setValue(context.IntegerLiteral().getText());
+                return literalExpr;
+            } else{
+                IntegerLiteralExpr literalExpr = new IntegerLiteralExpr();
+                literalExpr.setValue(context.IntegerLiteral().getText());
+                return literalExpr;
+            }
         } else if (context.FloatingPointLiteral() != null) {
             DoubleLiteralExpr literalExpr = new DoubleLiteralExpr();
             literalExpr.setValue(context.FloatingPointLiteral().getText());
@@ -59,6 +66,10 @@ public class LiteralContextAdapter implements Adapter<LiteralExpr, Java7Parser.L
         }
 
         throw new RuntimeException("Unknown Literal Context");
+    }
+
+    private boolean isLongType(String value) {
+        return value.endsWith("l") || value.endsWith("L");
     }
 
     private String stripQuotes(String str) {
