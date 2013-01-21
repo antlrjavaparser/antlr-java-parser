@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.body.BodyDeclaration;
 import com.github.antlrjavaparser.api.body.EmptyMemberDeclaration;
 
 public class InterfaceBodyDeclarationContextAdapter implements Adapter<BodyDeclaration, Java7Parser.InterfaceBodyDeclarationContext> {
-    public BodyDeclaration adapt(Java7Parser.InterfaceBodyDeclarationContext context) {
+    public BodyDeclaration adapt(Java7Parser.InterfaceBodyDeclarationContext context, AdapterParameters adapterParameters) {
 
         /*
         interfaceBodyDeclaration
@@ -35,13 +35,13 @@ public class InterfaceBodyDeclarationContextAdapter implements Adapter<BodyDecla
         */
 
         if (context.interfaceFieldDeclaration() != null) {
-            return Adapters.getInterfaceFieldDeclarationContextAdapter().adapt(context.interfaceFieldDeclaration());
+            return Adapters.getInterfaceFieldDeclarationContextAdapter().adapt(context.interfaceFieldDeclaration(), adapterParameters);
         } else if (context.interfaceMethodDeclaration() != null) {
-            return Adapters.getInterfaceMethodDeclarationContextAdapter().adapt(context.interfaceMethodDeclaration());
+            return Adapters.getInterfaceMethodDeclarationContextAdapter().adapt(context.interfaceMethodDeclaration(), adapterParameters);
         } else if (context.interfaceDeclaration() != null) {
-            return Adapters.getInterfaceDeclarationContextAdapter().adapt(context.interfaceDeclaration());
+            return Adapters.getInterfaceDeclarationContextAdapter().adapt(context.interfaceDeclaration(), adapterParameters);
         } else if (context.classDeclaration() != null) {
-            return Adapters.getClassDeclarationContextAdapter().adapt(context.classDeclaration());
+            return Adapters.getClassDeclarationContextAdapter().adapt(context.classDeclaration(), adapterParameters);
         } else if (context.SEMI() != null) {
             return new EmptyMemberDeclaration();
         }

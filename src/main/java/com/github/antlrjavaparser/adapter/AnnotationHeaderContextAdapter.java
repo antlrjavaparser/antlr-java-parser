@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class AnnotationHeaderContextAdapter implements Adapter<Node, Java7Parser.AnnotationHeaderContext> {
-    public Node adapt(Java7Parser.AnnotationHeaderContext context) {
+    public Node adapt(Java7Parser.AnnotationHeaderContext context, AdapterParameters adapterParameters) {
         throw new UnsupportedOperationException();
     }
 }

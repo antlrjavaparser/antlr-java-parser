@@ -22,12 +22,12 @@ import com.github.antlrjavaparser.api.expr.ConditionalExpr;
 import com.github.antlrjavaparser.api.expr.Expression;
 
 public class ConditionalExpressionContextAdapter implements Adapter<Expression, Java7Parser.ConditionalExpressionContext> {
-    public Expression adapt(Java7Parser.ConditionalExpressionContext context) {
-        Expression expression = Adapters.getConditionalOrExpressionContextAdapter().adapt(context.conditionalOrExpression());
+    public Expression adapt(Java7Parser.ConditionalExpressionContext context, AdapterParameters adapterParameters) {
+        Expression expression = Adapters.getConditionalOrExpressionContextAdapter().adapt(context.conditionalOrExpression(), adapterParameters);
 
         if (context.QUES() != null) {
-            Expression thenExpression = Adapters.getExpressionContextAdapter().adapt(context.expression());
-            Expression elseExpression = Adapters.getConditionalExpressionContextAdapter().adapt(context.conditionalExpression());
+            Expression thenExpression = Adapters.getExpressionContextAdapter().adapt(context.expression(), adapterParameters);
+            Expression elseExpression = Adapters.getConditionalExpressionContextAdapter().adapt(context.conditionalExpression(), adapterParameters);
 
             ConditionalExpr conditionalExpr = new ConditionalExpr();
             conditionalExpr.setCondition(expression);

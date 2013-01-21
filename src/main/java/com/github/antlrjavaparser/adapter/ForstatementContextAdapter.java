@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.stmt.ForStmt;
 
 public class ForstatementContextAdapter implements Adapter<ForStmt, Java7Parser.ForstatementContext> {
-    public ForStmt adapt(Java7Parser.ForstatementContext context) {
+    public ForStmt adapt(Java7Parser.ForstatementContext context, AdapterParameters adapterParameters) {
         // Not used
         throw new UnsupportedOperationException();
     }

@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.Node;
 import com.github.antlrjavaparser.api.expr.MemberValuePair;
 
 public class ElementValuePairContextAdapter implements Adapter<MemberValuePair, Java7Parser.ElementValuePairContext> {
-    public MemberValuePair adapt(Java7Parser.ElementValuePairContext context) {
+    public MemberValuePair adapt(Java7Parser.ElementValuePairContext context, AdapterParameters adapterParameters) {
 
         /*
         elementValuePair
@@ -32,7 +32,7 @@ public class ElementValuePairContextAdapter implements Adapter<MemberValuePair, 
 
         MemberValuePair memberValuePair = new MemberValuePair();
         memberValuePair.setName(context.Identifier().getText());
-        memberValuePair.setValue(Adapters.getElementValueContextAdapter().adapt(context.elementValue()));
+        memberValuePair.setValue(Adapters.getElementValueContextAdapter().adapt(context.elementValue(), adapterParameters));
 
         return memberValuePair;
     }

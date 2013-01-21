@@ -25,7 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ElementValuePairsContextAdapter implements Adapter<List<MemberValuePair>, Java7Parser.ElementValuePairsContext> {
-    public List<MemberValuePair> adapt(Java7Parser.ElementValuePairsContext context) {
+    public List<MemberValuePair> adapt(Java7Parser.ElementValuePairsContext context, AdapterParameters adapterParameters) {
 
         /*
         elementValuePairs
@@ -37,7 +37,7 @@ public class ElementValuePairsContextAdapter implements Adapter<List<MemberValue
 
         List<MemberValuePair> memberValuePairList = new LinkedList<MemberValuePair>();
         for (Java7Parser.ElementValuePairContext elementValuePairContext : context.elementValuePair()) {
-            memberValuePairList.add(Adapters.getElementValuePairContextAdapter().adapt(elementValuePairContext));
+            memberValuePairList.add(Adapters.getElementValuePairContextAdapter().adapt(elementValuePairContext, adapterParameters));
         }
 
         return memberValuePairList;

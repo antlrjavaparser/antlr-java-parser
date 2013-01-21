@@ -25,7 +25,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import java.util.List;
 
 public class NormalInterfaceDeclarationContextAdapter implements Adapter<ClassOrInterfaceDeclaration, Java7Parser.NormalInterfaceDeclarationContext> {
-    public ClassOrInterfaceDeclaration adapt(Java7Parser.NormalInterfaceDeclarationContext context) {
+    public ClassOrInterfaceDeclaration adapt(Java7Parser.NormalInterfaceDeclarationContext context, AdapterParameters adapterParameters) {
 
         /*
             normalInterfaceDeclaration
@@ -38,20 +38,20 @@ public class NormalInterfaceDeclarationContextAdapter implements Adapter<ClassOr
 
         // All instances should be classOrInterfaceType
         if (context.typeList() != null) {
-            List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(context.typeList());
+            List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(context.typeList(), adapterParameters);
             classOrInterfaceDeclaration.setExtends(AdapterUtil.convertTypeList(typeList));
         }
 
         // Set modifiers and annotations
-        AdapterUtil.setModifiers(context.modifiers(), classOrInterfaceDeclaration);
+        AdapterUtil.setModifiers(context.modifiers(), classOrInterfaceDeclaration, adapterParameters);
 
         if (context.typeParameters() != null) {
-            classOrInterfaceDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
+            classOrInterfaceDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters(), adapterParameters));
         }
 
         classOrInterfaceDeclaration.setName(context.Identifier().getText());
 
-        classOrInterfaceDeclaration.setMembers(Adapters.getInterfaceBodyContextAdapter().adapt(context.interfaceBody()));
+        classOrInterfaceDeclaration.setMembers(Adapters.getInterfaceBodyContextAdapter().adapt(context.interfaceBody(), adapterParameters));
 
         return classOrInterfaceDeclaration;
     }

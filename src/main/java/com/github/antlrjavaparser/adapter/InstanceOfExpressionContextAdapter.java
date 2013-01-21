@@ -23,12 +23,12 @@ import com.github.antlrjavaparser.api.expr.InstanceOfExpr;
 import com.github.antlrjavaparser.api.type.Type;
 
 public class InstanceOfExpressionContextAdapter implements Adapter<Expression, Java7Parser.InstanceOfExpressionContext> {
-    public Expression adapt(Java7Parser.InstanceOfExpressionContext context) {
+    public Expression adapt(Java7Parser.InstanceOfExpressionContext context, AdapterParameters adapterParameters) {
 
-        Expression expression = Adapters.getRelationalExpressionContextAdapter().adapt(context.relationalExpression());
+        Expression expression = Adapters.getRelationalExpressionContextAdapter().adapt(context.relationalExpression(), adapterParameters);
 
         if (context.type() != null) {
-            Type type = Adapters.getTypeContextAdapter().adapt(context.type());
+            Type type = Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters);
             InstanceOfExpr instanceOfExpr = new InstanceOfExpr();
             instanceOfExpr.setType(type);
             instanceOfExpr.setExpr(expression);

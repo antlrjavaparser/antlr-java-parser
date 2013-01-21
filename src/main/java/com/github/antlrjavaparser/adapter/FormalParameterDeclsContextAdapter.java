@@ -24,7 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class FormalParameterDeclsContextAdapter implements Adapter<List<Parameter>, Java7Parser.FormalParameterDeclsContext> {
-    public List<Parameter> adapt(Java7Parser.FormalParameterDeclsContext context) {
+    public List<Parameter> adapt(Java7Parser.FormalParameterDeclsContext context, AdapterParameters adapterParameters) {
 
         /*
         formalParameterDecls
@@ -38,12 +38,12 @@ public class FormalParameterDeclsContextAdapter implements Adapter<List<Paramete
 
         if (context.normalParameterDecl() != null && context.normalParameterDecl().size() > 0) {
             for (Java7Parser.NormalParameterDeclContext normalParameterDeclContext : context.normalParameterDecl()) {
-                parameterList.add(Adapters.getNormalParameterDeclContextAdapter().adapt(normalParameterDeclContext));
+                parameterList.add(Adapters.getNormalParameterDeclContextAdapter().adapt(normalParameterDeclContext, adapterParameters));
             }
         }
 
         if (context.ellipsisParameterDecl() != null) {
-            parameterList.add(Adapters.getEllipsisParameterDeclContextAdapter().adapt(context.ellipsisParameterDecl()));
+            parameterList.add(Adapters.getEllipsisParameterDeclContextAdapter().adapt(context.ellipsisParameterDecl(), adapterParameters));
         }
 
         return parameterList;

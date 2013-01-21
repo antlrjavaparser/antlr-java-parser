@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.expr.BinaryExpr;
 import com.github.antlrjavaparser.api.expr.Expression;
 
 public class EqualityExpressionContextAdapter implements Adapter<Expression, Java7Parser.EqualityExpressionContext> {
-    public Expression adapt(Java7Parser.EqualityExpressionContext context) {
-        return AdapterUtil.handleExpression(Adapters.getNotEqualityExpressionContextAdapter(), context.notEqualityExpression(), BinaryExpr.Operator.equals);
+    public Expression adapt(Java7Parser.EqualityExpressionContext context, AdapterParameters adapterParameters) {
+        return AdapterUtil.handleExpression(Adapters.getNotEqualityExpressionContextAdapter(), context.notEqualityExpression(), BinaryExpr.Operator.equals, adapterParameters);
     }
 }

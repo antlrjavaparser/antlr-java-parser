@@ -39,7 +39,12 @@
 lexer grammar Java7Lexer;
 
 @lexer::header {
-package net.java.antlrjavaparser;
+package com.github.antlrjavaparser;
+}
+
+@lexer::members {
+public static final int WHITESPACE = 1;
+public static final int COMMENTS = 2;
 }
 
 SEMI         : ';';
@@ -499,19 +504,19 @@ WhiteSpace
     :    (' '
     |    '\u0009'                                        // the ASCII HT character, also known as "horizontal tab"
     |    '\u000C'                                        // the ASCII FF character, also known as "form feed"
-    |    LineTerminator)  -> channel(HIDDEN)                                // LineTerminator
+    |    LineTerminator)  -> channel(WHITESPACE)                                // LineTerminator
     ;
 
 LineTerminator
     :    ('\n'
     |    '\r'
-    |    '\r\n')          -> channel(HIDDEN)
+    |    '\r\n')          -> channel(WHITESPACE)
     ;
 
 SlashComment
-    :   '/*' .*? '*/'    -> channel(HIDDEN) // match anything between /* and */
+    :   '/*' .*? '*/'    -> channel(COMMENTS) // match anything between /* and */
     ;
 
 EndOfLineComment
-    :    '//' .*? LineTerminator -> channel(HIDDEN)
+    :    '//' .*? LineTerminator -> channel(COMMENTS)
     ;

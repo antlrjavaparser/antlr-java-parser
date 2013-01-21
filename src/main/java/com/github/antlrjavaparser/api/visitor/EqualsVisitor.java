@@ -113,7 +113,7 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
     @Override
     public Boolean visit(Resource n, Node arg) {
         // TODO: Implement this
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 
     private static final EqualsVisitor SINGLETON = new EqualsVisitor();
@@ -194,10 +194,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
             return Boolean.FALSE;
         }
 
-        if (!nodesEquals(n1.getComments(), n2.getComments())) {
-            return Boolean.FALSE;
-        }
-
         return Boolean.TRUE;
     }
 
@@ -233,26 +229,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
         }
 
         if (!nodesEquals(n1.getTypeBound(), n2.getTypeBound())) {
-            return Boolean.FALSE;
-        }
-
-        return Boolean.TRUE;
-    }
-
-    public Boolean visit(LineComment n1, Node arg) {
-        LineComment n2 = (LineComment) arg;
-
-        if (!objEquals(n1.getContent(), n2.getContent())) {
-            return Boolean.FALSE;
-        }
-
-        return Boolean.TRUE;
-    }
-
-    public Boolean visit(BlockComment n1, Node arg) {
-        BlockComment n2 = (BlockComment) arg;
-
-        if (!objEquals(n1.getContent(), n2.getContent())) {
             return Boolean.FALSE;
         }
 
@@ -603,16 +579,6 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
         }
 
         if (!nodesEquals(n1.getAnnotations(), n2.getAnnotations())) {
-            return Boolean.FALSE;
-        }
-
-        return Boolean.TRUE;
-    }
-
-    public Boolean visit(JavadocComment n1, Node arg) {
-        JavadocComment n2 = (JavadocComment) arg;
-
-        if (!objEquals(n1.getContent(), n2.getContent())) {
             return Boolean.FALSE;
         }
 

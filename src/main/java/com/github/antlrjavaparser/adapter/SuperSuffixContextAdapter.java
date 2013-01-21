@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.expr.MethodCallExpr;
 import com.github.antlrjavaparser.api.expr.SuperExpr;
 
 public class SuperSuffixContextAdapter implements Adapter<MethodCallExpr, Java7Parser.SuperSuffixContext> {
-    public MethodCallExpr adapt(Java7Parser.SuperSuffixContext context) {
+    public MethodCallExpr adapt(Java7Parser.SuperSuffixContext context, AdapterParameters adapterParameters) {
 
         /*
         superSuffix
@@ -35,13 +35,13 @@ public class SuperSuffixContextAdapter implements Adapter<MethodCallExpr, Java7P
         methodCallExpr.setScope(new SuperExpr());
 
         if (context.typeArguments() != null) {
-            methodCallExpr.setTypeArgs(Adapters.getTypeArgumentsContextAdapter().adapt(context.typeArguments()));
+            methodCallExpr.setTypeArgs(Adapters.getTypeArgumentsContextAdapter().adapt(context.typeArguments(), adapterParameters));
         }
 
         methodCallExpr.setName(context.Identifier().getText());
 
         if (context.arguments() != null) {
-            methodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.arguments()));
+            methodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.arguments(), adapterParameters));
         }
 
         return methodCallExpr;

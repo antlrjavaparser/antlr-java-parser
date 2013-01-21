@@ -24,10 +24,10 @@ import com.github.antlrjavaparser.api.expr.Expression;
 import java.util.List;
 
 public class RelationalExpressionContextAdapter implements Adapter<Expression, Java7Parser.RelationalExpressionContext> {
-    public Expression adapt(Java7Parser.RelationalExpressionContext context) {
+    public Expression adapt(Java7Parser.RelationalExpressionContext context, AdapterParameters adapterParameters) {
 
         List<Java7Parser.ShiftExpressionContext> contextList = context.shiftExpression();
-        Expression expression = Adapters.getShiftExpressionContextAdapter().adapt(contextList.get(0));
+        Expression expression = Adapters.getShiftExpressionContextAdapter().adapt(contextList.get(0), adapterParameters);
 
         // This expression represents more than one consecutive OR expression
         if (contextList.size() > 1) {
@@ -38,7 +38,7 @@ public class RelationalExpressionContextAdapter implements Adapter<Expression, J
             BinaryExpr currentExpression = root;
 
             for (int i = 1; i < contextList.size(); i++) {
-                currentExpression.setRight(Adapters.getShiftExpressionContextAdapter().adapt(contextList.get(i)));
+                currentExpression.setRight(Adapters.getShiftExpressionContextAdapter().adapt(contextList.get(i), adapterParameters));
 
                 // On the last one, do not create a tail.
                 if (i < contextList.size() - 1) {

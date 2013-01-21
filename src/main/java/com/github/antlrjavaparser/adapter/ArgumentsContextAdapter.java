@@ -23,7 +23,7 @@ import com.github.antlrjavaparser.api.expr.Expression;
 import java.util.List;
 
 public class ArgumentsContextAdapter implements Adapter<List<Expression>, Java7Parser.ArgumentsContext> {
-    public List<Expression> adapt(Java7Parser.ArgumentsContext context) {
+    public List<Expression> adapt(Java7Parser.ArgumentsContext context, AdapterParameters adapterParameters) {
         /*
             arguments
                 :   LPAREN (expressionList
@@ -32,7 +32,7 @@ public class ArgumentsContextAdapter implements Adapter<List<Expression>, Java7P
          */
 
         if (context.expressionList() != null) {
-            return Adapters.getExpressionListContextAdapter().adapt(context.expressionList());
+            return Adapters.getExpressionListContextAdapter().adapt(context.expressionList(), adapterParameters);
         } else {
             // This is allowed to be empty/null
             return null;

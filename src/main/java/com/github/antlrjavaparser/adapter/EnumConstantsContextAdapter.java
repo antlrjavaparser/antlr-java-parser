@@ -24,7 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class EnumConstantsContextAdapter implements Adapter<List<EnumConstantDeclaration>, Java7Parser.EnumConstantsContext> {
-    public List<EnumConstantDeclaration> adapt(Java7Parser.EnumConstantsContext context) {
+    public List<EnumConstantDeclaration> adapt(Java7Parser.EnumConstantsContext context, AdapterParameters adapterParameters) {
 
         if (context.enumConstant() == null || context.enumConstant().size() == 0) {
             return null;
@@ -32,7 +32,7 @@ public class EnumConstantsContextAdapter implements Adapter<List<EnumConstantDec
 
         List<EnumConstantDeclaration> enumConstantDeclarationList = new LinkedList<EnumConstantDeclaration>();
         for (Java7Parser.EnumConstantContext enumConstantContext : context.enumConstant()) {
-            enumConstantDeclarationList.add(Adapters.getEnumConstantContextAdapter().adapt(enumConstantContext));
+            enumConstantDeclarationList.add(Adapters.getEnumConstantContextAdapter().adapt(enumConstantContext, adapterParameters));
         }
 
         return enumConstantDeclarationList;

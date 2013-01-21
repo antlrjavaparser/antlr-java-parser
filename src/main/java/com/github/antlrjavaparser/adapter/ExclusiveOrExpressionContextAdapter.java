@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.expr.BinaryExpr;
 import com.github.antlrjavaparser.api.expr.Expression;
 
 public class ExclusiveOrExpressionContextAdapter implements Adapter<Expression, Java7Parser.ExclusiveOrExpressionContext> {
-    public Expression adapt(Java7Parser.ExclusiveOrExpressionContext context) {
-        return AdapterUtil.handleExpression(Adapters.getAndExpressionContextAdapter(), context.andExpression(), BinaryExpr.Operator.xor);
+    public Expression adapt(Java7Parser.ExclusiveOrExpressionContext context, AdapterParameters adapterParameters) {
+        return AdapterUtil.handleExpression(Adapters.getAndExpressionContextAdapter(), context.andExpression(), BinaryExpr.Operator.xor, adapterParameters);
     }
 }

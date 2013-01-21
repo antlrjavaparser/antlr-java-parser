@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class RelationalOpContextAdapter implements Adapter<Node, Java7Parser.RelationalOpContext> {
-    public Node adapt(Java7Parser.RelationalOpContext context) {
+    public Node adapt(Java7Parser.RelationalOpContext context, AdapterParameters adapterParameters) {
         return null;
     }
 }

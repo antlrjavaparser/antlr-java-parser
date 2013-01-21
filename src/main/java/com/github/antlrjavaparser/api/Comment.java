@@ -22,6 +22,7 @@
 package com.github.antlrjavaparser.api;
 
 import com.github.antlrjavaparser.api.body.JavadocComment;
+import com.github.antlrjavaparser.api.visitor.VoidVisitor;
 
 /**
  * Abstract class for all AST nodes that represent comments.
@@ -31,7 +32,7 @@ import com.github.antlrjavaparser.api.body.JavadocComment;
  * @see JavadocComment
  * @author Julio Vilmar Gesser
  */
-public abstract class Comment extends Node {
+public abstract class Comment {
 
     private String content;
 
@@ -39,11 +40,6 @@ public abstract class Comment extends Node {
     }
 
     public Comment(String content) {
-        this.content = content;
-    }
-
-    public Comment(int beginLine, int beginColumn, int endLine, int endColumn, String content) {
-        super(beginLine, beginColumn, endLine, endColumn);
         this.content = content;
     }
 
@@ -64,5 +60,9 @@ public abstract class Comment extends Node {
      */
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public <A> void accept(VoidVisitor<A> v, A arg) {
+        v.visit(this, arg);
     }
 }

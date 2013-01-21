@@ -23,15 +23,15 @@ import com.github.antlrjavaparser.api.body.EmptyMemberDeclaration;
 import com.github.antlrjavaparser.api.body.InitializerDeclaration;
 
 public class ClassBodyDeclarationContextAdapter implements Adapter<BodyDeclaration, Java7Parser.ClassBodyDeclarationContext> {
-    public BodyDeclaration adapt(Java7Parser.ClassBodyDeclarationContext context) {
+    public BodyDeclaration adapt(Java7Parser.ClassBodyDeclarationContext context, AdapterParameters adapterParameters) {
 
         if (context.block() != null) {
             InitializerDeclaration initializerDeclaration = new InitializerDeclaration();
             initializerDeclaration.setStatic(context.STATIC() != null);
-            initializerDeclaration.setBlock(Adapters.getBlockContextAdapter().adapt(context.block()));
+            initializerDeclaration.setBlock(Adapters.getBlockContextAdapter().adapt(context.block(), adapterParameters));
             return initializerDeclaration;
         } else if (context.memberDecl() != null) {
-            return Adapters.getMemberDeclContextAdapter().adapt(context.memberDecl());
+            return Adapters.getMemberDeclContextAdapter().adapt(context.memberDecl(), adapterParameters);
         } else if (context.SEMI() != null) {
             return new EmptyMemberDeclaration();
         }

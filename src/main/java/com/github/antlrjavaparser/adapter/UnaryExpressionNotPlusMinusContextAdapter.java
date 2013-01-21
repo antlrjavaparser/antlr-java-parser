@@ -28,7 +28,7 @@ import com.github.antlrjavaparser.api.expr.ThisExpr;
 import com.github.antlrjavaparser.api.expr.UnaryExpr;
 
 public class UnaryExpressionNotPlusMinusContextAdapter implements Adapter<Expression, Java7Parser.UnaryExpressionNotPlusMinusContext> {
-    public Expression adapt(Java7Parser.UnaryExpressionNotPlusMinusContext context) {
+    public Expression adapt(Java7Parser.UnaryExpressionNotPlusMinusContext context, AdapterParameters adapterParameters) {
 
         /*
             unaryExpressionNotPlusMinus
@@ -68,12 +68,12 @@ public class UnaryExpressionNotPlusMinusContextAdapter implements Adapter<Expres
          */
 
         if (context.castExpression() != null) {
-            return Adapters.getCastExpressionContextAdapter().adapt(context.castExpression());
+            return Adapters.getCastExpressionContextAdapter().adapt(context.castExpression(), adapterParameters);
         } else if (context.primary() != null) {
 
-            Expression expression = Adapters.getPrimaryContextAdapter().adapt(context.primary());
+            Expression expression = Adapters.getPrimaryContextAdapter().adapt(context.primary(), adapterParameters);
             //Expression leftExpression = expression;
-            expression = handleSelector(context, expression);
+            expression = handleSelector(context, expression, adapterParameters);
 
             // Create the Unary Expression
             if (context.PLUSPLUS() != null || context.SUBSUB() != null) {
@@ -91,7 +91,7 @@ public class UnaryExpressionNotPlusMinusContextAdapter implements Adapter<Expres
 
     }
 
-    private Expression handleSelector(Java7Parser.UnaryExpressionNotPlusMinusContext context, Expression expression) {
+    private Expression handleSelector(Java7Parser.UnaryExpressionNotPlusMinusContext context, Expression expression, AdapterParameters adapterParameters) {
 
         Expression leftExpression = expression;
 
@@ -120,7 +120,7 @@ public class UnaryExpressionNotPlusMinusContextAdapter implements Adapter<Expres
                     if (selector.arguments() != null) {
                         // Method Call
                         MethodCallExpr methodCallExpr = new MethodCallExpr();
-                        methodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(selector.arguments()));
+                        methodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(selector.arguments(), adapterParameters));
                         methodCallExpr.setName(selector.Identifier().getText());
                         methodCallExpr.setScope(leftExpression);
                         leftExpression = methodCallExpr;
@@ -141,21 +141,21 @@ public class UnaryExpressionNotPlusMinusContextAdapter implements Adapter<Expres
                     SuperExpr superExpr = new SuperExpr();
                     superExpr.setClassExpr(leftExpression);
 
-                    MethodCallExpr methodCallExpr = Adapters.getSuperSuffixContextAdapter().adapt(selector.superSuffix());
+                    MethodCallExpr methodCallExpr = Adapters.getSuperSuffixContextAdapter().adapt(selector.superSuffix(), adapterParameters);
                     methodCallExpr.setScope(superExpr);
 
                     leftExpression = methodCallExpr;
                     //throw new UnsupportedOperationException("This should be handled in explicitConstructorInvocation");
                     break;
                 case 4:
-                    ObjectCreationExpr objectCreationExpr = Adapters.getInnerCreatorContextAdapter().adapt(selector.innerCreator());
+                    ObjectCreationExpr objectCreationExpr = Adapters.getInnerCreatorContextAdapter().adapt(selector.innerCreator(), adapterParameters);
                     objectCreationExpr.setScope(leftExpression);
                     leftExpression = objectCreationExpr;
                     break;
                 case 5:
                     ArrayAccessExpr arrayAccessExpr = new ArrayAccessExpr();
                     arrayAccessExpr.setName(leftExpression);
-                    arrayAccessExpr.setIndex(Adapters.getExpressionContextAdapter().adapt(selector.expression()));
+                    arrayAccessExpr.setIndex(Adapters.getExpressionContextAdapter().adapt(selector.expression(), adapterParameters));
                     leftExpression = arrayAccessExpr;
                     break;
             }

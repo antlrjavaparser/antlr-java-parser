@@ -113,9 +113,6 @@ import com.github.antlrjavaparser.api.type.WildcardType;
 public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A> {
 
     public R visit(AnnotationDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         if (n.getAnnotations() != null) {
             for (AnnotationExpr a : n.getAnnotations()) {
                 a.accept(this, arg);
@@ -130,9 +127,6 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     }
 
     public R visit(AnnotationMemberDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         if (n.getAnnotations() != null) {
             for (AnnotationExpr a : n.getAnnotations()) {
                 a.accept(this, arg);
@@ -233,9 +227,6 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     }
 
     public R visit(ClassOrInterfaceDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         if (n.getAnnotations() != null) {
             for (AnnotationExpr a : n.getAnnotations()) {
                 a.accept(this, arg);
@@ -302,9 +293,6 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     }
 
     public R visit(ConstructorDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         if (n.getAnnotations() != null) {
             for (AnnotationExpr a : n.getAnnotations()) {
                 a.accept(this, arg);
@@ -344,9 +332,6 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     }
 
     public R visit(EmptyMemberDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         return null;
     }
 
@@ -355,9 +340,6 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     }
 
     public R visit(EmptyTypeDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         return null;
     }
 
@@ -367,9 +349,6 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     }
 
     public R visit(EnumConstantDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         if (n.getAnnotations() != null) {
             for (AnnotationExpr a : n.getAnnotations()) {
                 a.accept(this, arg);
@@ -389,9 +368,6 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     }
 
     public R visit(EnumDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         if (n.getAnnotations() != null) {
             for (AnnotationExpr a : n.getAnnotations()) {
                 a.accept(this, arg);
@@ -445,9 +421,6 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     }
 
     public R visit(FieldDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         if (n.getAnnotations() != null) {
             for (AnnotationExpr a : n.getAnnotations()) {
                 a.accept(this, arg);
@@ -500,9 +473,6 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     }
 
     public R visit(InitializerDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         n.getBlock().accept(this, arg);
         return null;
     }
@@ -566,9 +536,6 @@ public abstract class GenericVisitorAdapter<R, A> implements GenericVisitor<R, A
     }
 
     public R visit(MethodDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.getJavaDoc().accept(this, arg);
-        }
         if (n.getAnnotations() != null) {
             for (AnnotationExpr a : n.getAnnotations()) {
                 a.accept(this, arg);

@@ -25,15 +25,22 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class BlockContextAdapter implements Adapter<BlockStmt, Java7Parser.BlockContext> {
-    public BlockStmt adapt(Java7Parser.BlockContext context) {
+    public BlockStmt adapt(Java7Parser.BlockContext context, AdapterParameters adapterParameters) {
         BlockStmt blockStmt = new BlockStmt();
+        AdapterUtil.setComments(blockStmt, context, adapterParameters);
 
         List<Statement> blockStmtList = new LinkedList<Statement>();
         for (Java7Parser.BlockStatementContext blockStatementContext : context.blockStatement()) {
-            blockStmtList.add(Adapters.getBlockStatementContextAdapter().adapt(blockStatementContext));
+            blockStmtList.add(Adapters.getBlockStatementContextAdapter().adapt(blockStatementContext, adapterParameters));
         }
 
-        blockStmt.setStmts(blockStmtList);
+        if (blockStmtList.size() > 0) {
+            blockStmt.setStmts(blockStmtList);
+        } else {
+            // This is a block with no statements
+            // We still need to go in and grab the comments
+            AdapterUtil.setInternalComments(blockStmt, context, adapterParameters);
+        }
 
         return blockStmt;
     }

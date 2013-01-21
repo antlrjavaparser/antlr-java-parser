@@ -22,10 +22,10 @@ import com.github.antlrjavaparser.api.stmt.ExpressionStmt;
 import com.github.antlrjavaparser.api.stmt.Statement;
 
 public class LocalVariableDeclarationStatementContextAdapter implements Adapter<Statement, Java7Parser.LocalVariableDeclarationStatementContext> {
-    public Statement adapt(Java7Parser.LocalVariableDeclarationStatementContext context) {
+    public Statement adapt(Java7Parser.LocalVariableDeclarationStatementContext context, AdapterParameters adapterParameters) {
 
         ExpressionStmt expressionStmt = new ExpressionStmt();
-        expressionStmt.setExpression(Adapters.getLocalVariableDeclarationContextAdapter().adapt(context.localVariableDeclaration()));
+        expressionStmt.setExpression(Adapters.getLocalVariableDeclarationContextAdapter().adapt(context.localVariableDeclaration(), adapterParameters));
 
         return expressionStmt;
     }

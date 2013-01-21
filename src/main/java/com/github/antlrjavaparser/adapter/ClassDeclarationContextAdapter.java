@@ -21,12 +21,12 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.body.TypeDeclaration;
 
 public class ClassDeclarationContextAdapter implements Adapter<TypeDeclaration, Java7Parser.ClassDeclarationContext> {
-    public TypeDeclaration adapt(Java7Parser.ClassDeclarationContext context) {
+    public TypeDeclaration adapt(Java7Parser.ClassDeclarationContext context, AdapterParameters adapterParameters) {
 
         if (context.enumDeclaration() != null) {
-            return Adapters.getEnumDeclarationContextAdapter().adapt(context.enumDeclaration());
+            return Adapters.getEnumDeclarationContextAdapter().adapt(context.enumDeclaration(), adapterParameters);
         } else if (context.normalClassDeclaration() != null) {
-            return Adapters.getNormalClassDeclarationContextAdapter().adapt(context.normalClassDeclaration());
+            return Adapters.getNormalClassDeclarationContextAdapter().adapt(context.normalClassDeclaration(), adapterParameters);
         }
 
         return null;

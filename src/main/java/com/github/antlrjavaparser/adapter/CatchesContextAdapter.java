@@ -24,11 +24,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CatchesContextAdapter implements Adapter<List<CatchClause>, Java7Parser.CatchesContext> {
-    public List<CatchClause> adapt(Java7Parser.CatchesContext context) {
+    public List<CatchClause> adapt(Java7Parser.CatchesContext context, AdapterParameters adapterParameters) {
 
         List<CatchClause> catchClauseList = new LinkedList<CatchClause>();
         for (Java7Parser.CatchClauseContext catchClauseContext : context.catchClause()) {
-            catchClauseList.add(Adapters.getCatchClauseContextAdapter().adapt(catchClauseContext));
+            catchClauseList.add(Adapters.getCatchClauseContextAdapter().adapt(catchClauseContext, adapterParameters));
         }
 
         return catchClauseList;

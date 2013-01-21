@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class ModifiersContextAdapter implements Adapter<Node, Java7Parser.ModifiersContext> {
-    public Node adapt(Java7Parser.ModifiersContext context) {
+    public Node adapt(Java7Parser.ModifiersContext context, AdapterParameters adapterParameters) {
         return null;
     }
 }

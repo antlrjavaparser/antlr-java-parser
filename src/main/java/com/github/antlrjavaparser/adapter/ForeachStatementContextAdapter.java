@@ -37,7 +37,7 @@ import java.util.List;
  */
 public class ForeachStatementContextAdapter implements Adapter<ForeachStmt, Java7Parser.ForeachStatementContext> {
     @Override
-    public ForeachStmt adapt(Java7Parser.ForeachStatementContext context) {
+    public ForeachStmt adapt(Java7Parser.ForeachStatementContext context, AdapterParameters adapterParameters) {
 
         /*
             foreachStatement
@@ -53,7 +53,7 @@ public class ForeachStatementContextAdapter implements Adapter<ForeachStmt, Java
         List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
         if (context.variableModifiers() != null) {
             for (Java7Parser.AnnotationContext annotationContext : context.variableModifiers().annotation()) {
-                AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext);
+                AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext, adapterParameters);
                 annotations.add(annotationExpr);
             }
 
@@ -66,7 +66,7 @@ public class ForeachStatementContextAdapter implements Adapter<ForeachStmt, Java
 
         // Set the loop variable
         variableDeclarationExpr.setAnnotations(annotations);
-        variableDeclarationExpr.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
+        variableDeclarationExpr.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
 
         List<VariableDeclarator> variableDeclaratorList = new LinkedList<VariableDeclarator>();
         VariableDeclarator variableDeclarator = new VariableDeclarator();
@@ -78,8 +78,8 @@ public class ForeachStatementContextAdapter implements Adapter<ForeachStmt, Java
 
         foreachStmt.setVariable(variableDeclarationExpr);
 
-        foreachStmt.setBody(Adapters.getStatementContextAdapter().adapt(context.statement()));
-        foreachStmt.setIterable(Adapters.getExpressionContextAdapter().adapt(context.expression()));
+        foreachStmt.setBody(Adapters.getStatementContextAdapter().adapt(context.statement(), adapterParameters));
+        foreachStmt.setIterable(Adapters.getExpressionContextAdapter().adapt(context.expression(), adapterParameters));
 
         return foreachStmt;
     }

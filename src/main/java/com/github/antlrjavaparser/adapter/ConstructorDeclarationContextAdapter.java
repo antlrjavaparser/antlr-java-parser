@@ -22,15 +22,15 @@ import com.github.antlrjavaparser.api.body.ConstructorDeclaration;
 
 public class ConstructorDeclarationContextAdapter implements Adapter<ConstructorDeclaration, Java7Parser.ConstructorDeclarationContext> {
     @Override
-    public ConstructorDeclaration adapt(Java7Parser.ConstructorDeclarationContext context) {
+    public ConstructorDeclaration adapt(Java7Parser.ConstructorDeclarationContext context, AdapterParameters adapterParameters) {
 
         ConstructorDeclaration constructorDeclaration = new ConstructorDeclaration();
-        AdapterUtil.setModifiers(context.modifiers(), constructorDeclaration);
+        AdapterUtil.setModifiers(context.modifiers(), constructorDeclaration, adapterParameters);
 
         constructorDeclaration.setName(context.Identifier().getText());
-        constructorDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
-        constructorDeclaration.setBlock(Adapters.getConstructorBlockContextAdapter().adapt(context.constructorBlock()));
-        constructorDeclaration.setThrows(Adapters.getQualifiedNameListContextAdapter().adapt(context.qualifiedNameList()));
+        constructorDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters(), adapterParameters));
+        constructorDeclaration.setBlock(Adapters.getConstructorBlockContextAdapter().adapt(context.constructorBlock(), adapterParameters));
+        constructorDeclaration.setThrows(Adapters.getQualifiedNameListContextAdapter().adapt(context.qualifiedNameList(), adapterParameters));
 
         return constructorDeclaration;
     }

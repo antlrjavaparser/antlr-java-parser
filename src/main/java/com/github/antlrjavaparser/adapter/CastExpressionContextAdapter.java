@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.expr.CastExpr;
 import com.github.antlrjavaparser.api.expr.Expression;
 
 public class CastExpressionContextAdapter implements Adapter<Expression, Java7Parser.CastExpressionContext> {
-    public Expression adapt(Java7Parser.CastExpressionContext context) {
+    public Expression adapt(Java7Parser.CastExpressionContext context, AdapterParameters adapterParameters) {
 
         /*
             castExpression
@@ -34,11 +34,11 @@ public class CastExpressionContextAdapter implements Adapter<Expression, Java7Pa
         CastExpr castExpr = new CastExpr();
 
         if (context.type() != null) {
-            castExpr.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
-            castExpr.setExpr(Adapters.getUnaryExpressionNotPlusMinusContextAdapter().adapt(context.unaryExpressionNotPlusMinus()));
+            castExpr.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
+            castExpr.setExpr(Adapters.getUnaryExpressionNotPlusMinusContextAdapter().adapt(context.unaryExpressionNotPlusMinus(), adapterParameters));
         } else if (context.primitiveType() != null) {
-            castExpr.setType(Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType()));
-            castExpr.setExpr(Adapters.getUnaryExpressionContextAdapter().adapt(context.unaryExpression()));
+            castExpr.setType(Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType(), adapterParameters));
+            castExpr.setExpr(Adapters.getUnaryExpressionContextAdapter().adapt(context.unaryExpression(), adapterParameters));
         }
 
         return castExpr;

@@ -23,7 +23,7 @@ import com.github.antlrjavaparser.api.body.BodyDeclaration;
 import java.util.List;
 
 public class EnumBodyContextAdapter implements Adapter<List<BodyDeclaration>, Java7Parser.EnumBodyContext> {
-    public List<BodyDeclaration> adapt(Java7Parser.EnumBodyContext context) {
+    public List<BodyDeclaration> adapt(Java7Parser.EnumBodyContext context, AdapterParameters adapterParameters) {
 
         /*
         enumBody
@@ -34,7 +34,7 @@ public class EnumBodyContextAdapter implements Adapter<List<BodyDeclaration>, Ja
         // Enum Constants are handled in the EnumDeclaration Adapter
 
         if (context.enumBodyDeclarations() != null) {
-            return Adapters.getEnumBodyDeclarationsContextAdapter().adapt(context.enumBodyDeclarations());
+            return Adapters.getEnumBodyDeclarationsContextAdapter().adapt(context.enumBodyDeclarations(), adapterParameters);
         }
 
         return null;

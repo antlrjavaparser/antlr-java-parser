@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class QualifiedImportNameContextAdapter implements Adapter<Node, Java7Parser.QualifiedImportNameContext> {
-    public Node adapt(Java7Parser.QualifiedImportNameContext context) {
+    public Node adapt(Java7Parser.QualifiedImportNameContext context, AdapterParameters adapterParameters) {
         return null;
     }
 }

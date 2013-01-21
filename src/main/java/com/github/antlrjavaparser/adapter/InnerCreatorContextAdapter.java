@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.expr.ObjectCreationExpr;
 import com.github.antlrjavaparser.api.type.ClassOrInterfaceType;
 
 public class InnerCreatorContextAdapter implements Adapter<ObjectCreationExpr, Java7Parser.InnerCreatorContext> {
-    public ObjectCreationExpr adapt(Java7Parser.InnerCreatorContext context) {
+    public ObjectCreationExpr adapt(Java7Parser.InnerCreatorContext context, AdapterParameters adapterParameters) {
 
         /*
             innerCreator
@@ -33,23 +33,23 @@ public class InnerCreatorContextAdapter implements Adapter<ObjectCreationExpr, J
         ObjectCreationExpr objectCreationExpr = new ObjectCreationExpr();
 
         if (context.nonWildcardTypeArguments() != null) {
-            objectCreationExpr.setTypeArgs(Adapters.getTypeListContextAdapter().adapt(context.nonWildcardTypeArguments().typeList()));
+            objectCreationExpr.setTypeArgs(Adapters.getTypeListContextAdapter().adapt(context.nonWildcardTypeArguments().typeList(), adapterParameters));
         }
 
         ClassOrInterfaceType classOrInterfaceType = new ClassOrInterfaceType();
         classOrInterfaceType.setName(context.identifierTypeArgument().Identifier().getText());
 
         if (context.identifierTypeArgument().typeArguments() != null) {
-            classOrInterfaceType.setTypeArgs(Adapters.getTypeArgumentsContextAdapter().adapt(context.identifierTypeArgument().typeArguments()));
+            classOrInterfaceType.setTypeArgs(Adapters.getTypeArgumentsContextAdapter().adapt(context.identifierTypeArgument().typeArguments(), adapterParameters));
         }
 
         objectCreationExpr.setType(classOrInterfaceType);
 
         // arguments classBody?
-        objectCreationExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.classCreatorRest().arguments()));
+        objectCreationExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.classCreatorRest().arguments(), adapterParameters));
 
         if (context.classCreatorRest().classBody() != null) {
-            objectCreationExpr.setAnonymousClassBody(Adapters.getClassBodyContextAdapter().adapt(context.classCreatorRest().classBody()));
+            objectCreationExpr.setAnonymousClassBody(Adapters.getClassBodyContextAdapter().adapt(context.classCreatorRest().classBody(), adapterParameters));
         }
 
         return objectCreationExpr;

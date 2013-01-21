@@ -24,7 +24,7 @@ import com.github.antlrjavaparser.api.type.Type;
 import com.github.antlrjavaparser.api.type.VoidType;
 
 public class MethodDeclarationContextAdapter implements Adapter<MethodDeclaration, Java7Parser.MethodDeclarationContext> {
-    public MethodDeclaration adapt(Java7Parser.MethodDeclarationContext context) {
+    public MethodDeclaration adapt(Java7Parser.MethodDeclarationContext context, AdapterParameters adapterParameters) {
         /*
             methodDeclaration
                 :    modifiers typeParameters? (type | VOID) Identifier formalParameters (LBRACKET RBRACKET)* (THROWS qualifiedNameList)? (block | SEMI)
@@ -32,18 +32,18 @@ public class MethodDeclarationContextAdapter implements Adapter<MethodDeclaratio
          */
 
         MethodDeclaration methodDeclaration = new MethodDeclaration();
-
-        AdapterUtil.setModifiers(context.modifiers(), methodDeclaration);
+        AdapterUtil.setComments(methodDeclaration, context, adapterParameters);
+        AdapterUtil.setModifiers(context.modifiers(), methodDeclaration, adapterParameters);
 
         if (context.typeParameters() != null) {
-            methodDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
+            methodDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters(), adapterParameters));
         }
 
         if (context.VOID() != null) {
             Type type = new VoidType();
             methodDeclaration.setType(type);
         } else {
-            Type type = Adapters.getTypeContextAdapter().adapt(context.type());
+            Type type = Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters);
 
             if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
                 ReferenceType referenceType = new ReferenceType();
@@ -66,14 +66,14 @@ public class MethodDeclarationContextAdapter implements Adapter<MethodDeclaratio
 
         methodDeclaration.setName(context.Identifier().getText());
 
-        methodDeclaration.setParameters(Adapters.getFormalParametersContextAdapter().adapt(context.formalParameters()));
+        methodDeclaration.setParameters(Adapters.getFormalParametersContextAdapter().adapt(context.formalParameters(), adapterParameters));
 
         if (context.THROWS() != null) {
-            methodDeclaration.setThrows(Adapters.getQualifiedNameListContextAdapter().adapt(context.qualifiedNameList()));
+            methodDeclaration.setThrows(Adapters.getQualifiedNameListContextAdapter().adapt(context.qualifiedNameList(), adapterParameters));
         }
 
         if (context.block() != null) {
-            methodDeclaration.setBody(Adapters.getBlockContextAdapter().adapt(context.block()));
+            methodDeclaration.setBody(Adapters.getBlockContextAdapter().adapt(context.block(), adapterParameters));
         }
 
         return methodDeclaration;

@@ -25,16 +25,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class FieldDeclarationContextAdapter implements Adapter<FieldDeclaration, Java7Parser.FieldDeclarationContext> {
-    public FieldDeclaration adapt(Java7Parser.FieldDeclarationContext context) {
+    public FieldDeclaration adapt(Java7Parser.FieldDeclarationContext context, AdapterParameters adapterParameters) {
 
         FieldDeclaration fieldDeclaration = new FieldDeclaration();
-        AdapterUtil.setModifiers(context.modifiers(), fieldDeclaration);
-        fieldDeclaration.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
+        AdapterUtil.setModifiers(context.modifiers(), fieldDeclaration, adapterParameters);
+        fieldDeclaration.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
 
 
         List<VariableDeclarator> variableDeclaratorList = new LinkedList<VariableDeclarator>();
         for (Java7Parser.VariableDeclaratorContext variableDeclaratorContext : context.variableDeclarator()) {
-            variableDeclaratorList.add(Adapters.getVariableDeclaratorContextAdapter().adapt(variableDeclaratorContext));
+            variableDeclaratorList.add(Adapters.getVariableDeclaratorContextAdapter().adapt(variableDeclaratorContext, adapterParameters));
         }
         fieldDeclaration.setVariables(variableDeclaratorList);
 

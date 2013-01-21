@@ -28,11 +28,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class NormalClassDeclarationContextAdapter implements Adapter<TypeDeclaration, Java7Parser.NormalClassDeclarationContext> {
-    public TypeDeclaration adapt(Java7Parser.NormalClassDeclarationContext context) {
+    public TypeDeclaration adapt(Java7Parser.NormalClassDeclarationContext context, AdapterParameters adapterParameters) {
 
         ClassOrInterfaceDeclaration classOrInterfaceDeclaration = new ClassOrInterfaceDeclaration();
 
-        AdapterUtil.setModifiers(context.modifiers(), classOrInterfaceDeclaration);
+        AdapterUtil.setComments(classOrInterfaceDeclaration, context, adapterParameters);
+        AdapterUtil.setModifiers(context.modifiers(), classOrInterfaceDeclaration, adapterParameters);
         classOrInterfaceDeclaration.setInterface(false);
         classOrInterfaceDeclaration.setName(context.Identifier().getText());
 
@@ -41,18 +42,18 @@ public class NormalClassDeclarationContextAdapter implements Adapter<TypeDeclara
 
             // In this case, context.type() has to be a reference type since you cannot extend from a primitive
             // Though the declaration is expecting a ClassOrInterfaceType rather than a ReferenceType
-            ReferenceType referenceType = (ReferenceType)Adapters.getTypeContextAdapter().adapt(context.type());
+            ReferenceType referenceType = (ReferenceType)Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters);
 
             ClassOrInterfaceType extendsClassOrInterfaceType = (ClassOrInterfaceType)referenceType.getType();
             classOrInterfaceTypeList.add(extendsClassOrInterfaceType);
             classOrInterfaceDeclaration.setExtends(classOrInterfaceTypeList);
         }
 
-        List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(context.typeList());
+        List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(context.typeList(), adapterParameters);
         classOrInterfaceDeclaration.setImplements(AdapterUtil.convertTypeList(typeList));
-        classOrInterfaceDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
+        classOrInterfaceDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters(), adapterParameters));
 
-        classOrInterfaceDeclaration.setMembers(Adapters.getClassBodyContextAdapter().adapt(context.classBody()));
+        classOrInterfaceDeclaration.setMembers(Adapters.getClassBodyContextAdapter().adapt(context.classBody(), adapterParameters));
 
         return classOrInterfaceDeclaration;
     }

@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class FieldHeaderContextAdapter implements Adapter<Node, Java7Parser.FieldHeaderContext> {
-    public Node adapt(Java7Parser.FieldHeaderContext context) {
+    public Node adapt(Java7Parser.FieldHeaderContext context, AdapterParameters adapterParameters) {
         return null;
     }
 }

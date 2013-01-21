@@ -23,7 +23,7 @@ import com.github.antlrjavaparser.api.expr.Expression;
 
 public class NotEqualityExpressionContextAdapter implements Adapter<Expression, Java7Parser.NotEqualityExpressionContext> {
     @Override
-    public Expression adapt(Java7Parser.NotEqualityExpressionContext context) {
-        return AdapterUtil.handleExpression(Adapters.getInstanceOfExpressionContextAdapter(), context.instanceOfExpression(), BinaryExpr.Operator.notEquals);
+    public Expression adapt(Java7Parser.NotEqualityExpressionContext context, AdapterParameters adapterParameters) {
+        return AdapterUtil.handleExpression(Adapters.getInstanceOfExpressionContextAdapter(), context.instanceOfExpression(), BinaryExpr.Operator.notEquals, adapterParameters);
     }
 }

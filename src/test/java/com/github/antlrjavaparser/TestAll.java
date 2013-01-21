@@ -93,7 +93,7 @@ public class TestAll extends TestCase {
         ParseTree tree = parser.compilationUnit();
 
         ParseTreeWalker walker = new ParseTreeWalker();
-        CompilationUnitListener listener = new CompilationUnitListener();
+        CompilationUnitListener listener = new CompilationUnitListener(tokens);
         walker.walk(listener, tree);
         CompilationUnit compilationUnit = listener.getCompilationUnit();
 

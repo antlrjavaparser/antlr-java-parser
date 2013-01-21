@@ -21,12 +21,12 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.type.Type;
 
 public class CreatedNameContextAdapter implements Adapter<Type, Java7Parser.CreatedNameContext> {
-    public Type adapt(Java7Parser.CreatedNameContext context) {
+    public Type adapt(Java7Parser.CreatedNameContext context, AdapterParameters adapterParameters) {
 
         if (context.classOrInterfaceType() != null) {
-            return Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType());
+            return Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType(), adapterParameters);
         } else if (context.primitiveType() != null) {
-            return Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType());
+            return Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType(), adapterParameters);
         }
 
         throw new RuntimeException("Unknown created name type");

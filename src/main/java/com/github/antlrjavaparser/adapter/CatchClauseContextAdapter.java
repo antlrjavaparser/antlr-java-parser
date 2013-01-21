@@ -27,7 +27,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CatchClauseContextAdapter implements Adapter<CatchClause, Java7Parser.CatchClauseContext> {
-    public CatchClause adapt(Java7Parser.CatchClauseContext context) {
+    public CatchClause adapt(Java7Parser.CatchClauseContext context, AdapterParameters adapterParameters) {
 
         /*
         catchClause
@@ -42,11 +42,11 @@ public class CatchClauseContextAdapter implements Adapter<CatchClause, Java7Pars
 
         CatchClause catchClause = new CatchClause();
         CatchParameter parameter = new CatchParameter();
-        AdapterUtil.setVariableModifiers(context.catchFormalParameter().variableModifiers(), parameter);
+        AdapterUtil.setVariableModifiers(context.catchFormalParameter().variableModifiers(), parameter, adapterParameters);
 
         List<Type> typeList = new LinkedList<Type>();
         for (Java7Parser.TypeContext typeContext : context.catchFormalParameter().type()) {
-            typeList.add(Adapters.getTypeContextAdapter().adapt(typeContext));
+            typeList.add(Adapters.getTypeContextAdapter().adapt(typeContext, adapterParameters));
         }
         parameter.setTypeList(typeList);
 
@@ -63,7 +63,7 @@ public class CatchClauseContextAdapter implements Adapter<CatchClause, Java7Pars
         */
 
         catchClause.setExcept(parameter);
-        catchClause.setCatchBlock(Adapters.getBlockContextAdapter().adapt(context.block()));
+        catchClause.setCatchBlock(Adapters.getBlockContextAdapter().adapt(context.block(), adapterParameters));
 
         return catchClause;
     }

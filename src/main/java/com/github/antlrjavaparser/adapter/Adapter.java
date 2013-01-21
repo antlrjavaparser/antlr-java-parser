@@ -18,5 +18,5 @@
 package com.github.antlrjavaparser.adapter;
 
 public interface Adapter<J, A> {
-    public J adapt(A context);
+    public J adapt(A context, AdapterParameters adapterParameters);
 }

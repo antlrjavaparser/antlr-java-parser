@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.type.PrimitiveType;
 
 public class PrimitiveTypeContextAdapter implements Adapter<PrimitiveType, Java7Parser.PrimitiveTypeContext> {
-    public PrimitiveType adapt(Java7Parser.PrimitiveTypeContext context) {
+    public PrimitiveType adapt(Java7Parser.PrimitiveTypeContext context, AdapterParameters adapterParameters) {
 
         if (context.BOOLEAN() != null) {
             return new PrimitiveType(PrimitiveType.Primitive.Boolean);

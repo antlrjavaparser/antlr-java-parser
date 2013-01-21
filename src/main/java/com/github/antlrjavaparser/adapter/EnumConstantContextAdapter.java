@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.body.EnumConstantDeclaration;
 
 public class EnumConstantContextAdapter implements Adapter<EnumConstantDeclaration, Java7Parser.EnumConstantContext> {
-    public EnumConstantDeclaration adapt(Java7Parser.EnumConstantContext context) {
+    public EnumConstantDeclaration adapt(Java7Parser.EnumConstantContext context, AdapterParameters adapterParameters) {
 
         /*
         enumConstant
@@ -32,17 +32,17 @@ public class EnumConstantContextAdapter implements Adapter<EnumConstantDeclarati
         EnumConstantDeclaration enumConstantDeclaration = new EnumConstantDeclaration();
 
         if (context.annotations() != null) {
-            enumConstantDeclaration.setAnnotations(Adapters.getAnnotationsContextAdapter().adapt(context.annotations()));
+            enumConstantDeclaration.setAnnotations(Adapters.getAnnotationsContextAdapter().adapt(context.annotations(), adapterParameters));
         }
 
         enumConstantDeclaration.setName(context.Identifier().getText());
 
         if (context.arguments() != null) {
-            enumConstantDeclaration.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.arguments()));
+            enumConstantDeclaration.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.arguments(), adapterParameters));
         }
 
         if (context.classBody() != null) {
-            enumConstantDeclaration.setClassBody(Adapters.getClassBodyContextAdapter().adapt(context.classBody()));
+            enumConstantDeclaration.setClassBody(Adapters.getClassBodyContextAdapter().adapt(context.classBody(), adapterParameters));
         }
 
         return enumConstantDeclaration;

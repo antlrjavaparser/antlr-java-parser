@@ -24,7 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ClassOrInterfaceTypeContextAdapter implements Adapter<ClassOrInterfaceType, Java7Parser.ClassOrInterfaceTypeContext> {
-    public ClassOrInterfaceType adapt(Java7Parser.ClassOrInterfaceTypeContext context) {
+    public ClassOrInterfaceType adapt(Java7Parser.ClassOrInterfaceTypeContext context, AdapterParameters adapterParameters) {
 
         ClassOrInterfaceType classOrInterfaceType = new ClassOrInterfaceType();
 
@@ -33,7 +33,7 @@ public class ClassOrInterfaceTypeContextAdapter implements Adapter<ClassOrInterf
         for (Java7Parser.IdentifierTypeArgumentContext identifierTypeArgumentContext : context.identifierTypeArgument())  {
 
             ClassOrInterfaceType scope = new ClassOrInterfaceType();
-            scope.setTypeArgs(Adapters.getTypeArgumentsContextAdapter().adapt(identifierTypeArgumentContext.typeArguments()));
+            scope.setTypeArgs(Adapters.getTypeArgumentsContextAdapter().adapt(identifierTypeArgumentContext.typeArguments(), adapterParameters));
             scope.setName(identifierTypeArgumentContext.Identifier().getText());
 
             scopes.add(scope);

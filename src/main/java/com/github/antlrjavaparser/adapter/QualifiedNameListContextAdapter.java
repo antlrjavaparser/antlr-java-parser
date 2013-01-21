@@ -24,7 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class QualifiedNameListContextAdapter implements Adapter<List<NameExpr>, Java7Parser.QualifiedNameListContext> {
-    public List<NameExpr> adapt(Java7Parser.QualifiedNameListContext context) {
+    public List<NameExpr> adapt(Java7Parser.QualifiedNameListContext context, AdapterParameters adapterParameters) {
 
         if (context == null) {
             return null;
@@ -32,7 +32,7 @@ public class QualifiedNameListContextAdapter implements Adapter<List<NameExpr>, 
 
         List<NameExpr> nameExprList = new LinkedList<NameExpr>();
         for (Java7Parser.QualifiedNameContext qualifiedNameContext : context.qualifiedName()) {
-            nameExprList.add(Adapters.getQualifiedNameContextAdapter().adapt(qualifiedNameContext));
+            nameExprList.add(Adapters.getQualifiedNameContextAdapter().adapt(qualifiedNameContext, adapterParameters));
         }
 
         return nameExprList;

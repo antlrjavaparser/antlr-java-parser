@@ -27,7 +27,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class LocalVariableDeclarationContextAdapter implements Adapter<VariableDeclarationExpr, Java7Parser.LocalVariableDeclarationContext> {
-    public VariableDeclarationExpr adapt(Java7Parser.LocalVariableDeclarationContext context) {
+    public VariableDeclarationExpr adapt(Java7Parser.LocalVariableDeclarationContext context, AdapterParameters adapterParameters) {
 
         VariableDeclarationExpr variableDeclarationExpr = new VariableDeclarationExpr();
 
@@ -35,7 +35,7 @@ public class LocalVariableDeclarationContextAdapter implements Adapter<VariableD
         List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
         if (context.variableModifiers() != null) {
             for (Java7Parser.AnnotationContext annotationContext : context.variableModifiers().annotation()) {
-                AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext);
+                AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext, adapterParameters);
                 annotations.add(annotationExpr);
             }
 
@@ -49,11 +49,11 @@ public class LocalVariableDeclarationContextAdapter implements Adapter<VariableD
 
         List<VariableDeclarator> variableDeclaratorList = new LinkedList<VariableDeclarator>();
         for (Java7Parser.VariableDeclaratorContext variableDeclaratorContext : context.variableDeclarator()) {
-            variableDeclaratorList.add(Adapters.getVariableDeclaratorContextAdapter().adapt(variableDeclaratorContext));
+            variableDeclaratorList.add(Adapters.getVariableDeclaratorContextAdapter().adapt(variableDeclaratorContext, adapterParameters));
         }
         variableDeclarationExpr.setVars(variableDeclaratorList);
         variableDeclarationExpr.setAnnotations(annotations);
-        variableDeclarationExpr.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
+        variableDeclarationExpr.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
 
         return variableDeclarationExpr;
     }

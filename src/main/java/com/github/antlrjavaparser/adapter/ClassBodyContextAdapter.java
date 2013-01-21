@@ -24,11 +24,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ClassBodyContextAdapter implements Adapter<List<BodyDeclaration>, Java7Parser.ClassBodyContext> {
-    public List<BodyDeclaration> adapt(Java7Parser.ClassBodyContext context) {
+    public List<BodyDeclaration> adapt(Java7Parser.ClassBodyContext context, AdapterParameters adapterParameters) {
 
         List<BodyDeclaration> bodyDeclarationList = new LinkedList<BodyDeclaration>();
         for (Java7Parser.ClassBodyDeclarationContext classBodyDeclarationContext : context.classBodyDeclaration()) {
-            bodyDeclarationList.add(Adapters.getClassBodyDeclarationContextAdapter().adapt(classBodyDeclarationContext));
+            bodyDeclarationList.add(Adapters.getClassBodyDeclarationContextAdapter().adapt(classBodyDeclarationContext, adapterParameters));
         }
 
         return bodyDeclarationList;

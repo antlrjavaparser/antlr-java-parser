@@ -23,15 +23,15 @@ import com.github.antlrjavaparser.api.body.VariableDeclaratorId;
 import com.github.antlrjavaparser.api.type.ReferenceType;
 
 public class NormalParameterDeclContextAdapter implements Adapter<Parameter, Java7Parser.NormalParameterDeclContext> {
-    public Parameter adapt(Java7Parser.NormalParameterDeclContext context) {
+    public Parameter adapt(Java7Parser.NormalParameterDeclContext context, AdapterParameters adapterParameters) {
         /*
         normalParameterDecl
             :   variableModifiers type Identifier (LBRACKET RBRACKET)*
             ;
          */
         Parameter parameter = new Parameter();
-        AdapterUtil.setVariableModifiers(context.variableModifiers(), parameter);
-        parameter.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
+        AdapterUtil.setVariableModifiers(context.variableModifiers(), parameter, adapterParameters);
+        parameter.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
 
         VariableDeclaratorId variableDeclaratorId = new VariableDeclaratorId();
         variableDeclaratorId.setName(context.Identifier().getText());

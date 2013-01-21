@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class ClassHeaderContextAdapter implements Adapter<Node, Java7Parser.ClassHeaderContext> {
-    public Node adapt(Java7Parser.ClassHeaderContext context) {
+    public Node adapt(Java7Parser.ClassHeaderContext context, AdapterParameters adapterParameters) {
         return null;
     }
 }

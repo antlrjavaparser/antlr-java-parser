@@ -59,7 +59,7 @@ public class JavaParser {
         ParseTreeWalker walker = new ParseTreeWalker();
 
         // Fills out the compilationUnit object
-        CompilationUnitListener listener = new CompilationUnitListener();
+        CompilationUnitListener listener = new CompilationUnitListener(tokens);
         walker.walk(listener, tree);
         return listener.getCompilationUnit();
     }

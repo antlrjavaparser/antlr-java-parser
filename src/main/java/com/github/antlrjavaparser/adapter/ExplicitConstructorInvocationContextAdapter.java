@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.stmt.ExplicitConstructorInvocationStmt;
 import com.github.antlrjavaparser.api.stmt.Statement;
 
 public class ExplicitConstructorInvocationContextAdapter implements Adapter<Statement, Java7Parser.ExplicitConstructorInvocationContext> {
-    public Statement adapt(Java7Parser.ExplicitConstructorInvocationContext context) {
+    public Statement adapt(Java7Parser.ExplicitConstructorInvocationContext context, AdapterParameters adapterParameters) {
         /*
         explicitConstructorInvocation
             :               (nonWildcardTypeArguments)? (THIS|SUPER) arguments SEMI
@@ -36,11 +36,11 @@ public class ExplicitConstructorInvocationContextAdapter implements Adapter<Stat
 
         ExplicitConstructorInvocationStmt explicitConstructorInvocationStmt = new ExplicitConstructorInvocationStmt();
 
-        explicitConstructorInvocationStmt.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.arguments()));
+        explicitConstructorInvocationStmt.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.arguments(), adapterParameters));
         explicitConstructorInvocationStmt.setThis(context.THIS() != null);
 
         if (context.nonWildcardTypeArguments() != null) {
-            explicitConstructorInvocationStmt.setTypeArgs(Adapters.getTypeListContextAdapter().adapt(context.nonWildcardTypeArguments().typeList()));
+            explicitConstructorInvocationStmt.setTypeArgs(Adapters.getTypeListContextAdapter().adapt(context.nonWildcardTypeArguments().typeList(), adapterParameters));
         }
 
         /*
@@ -53,7 +53,7 @@ public class ExplicitConstructorInvocationContextAdapter implements Adapter<Stat
         }
 */
         if (context.primary() != null) {
-            explicitConstructorInvocationStmt.setExpr(Adapters.getPrimaryContextAdapter().adapt(context.primary()));
+            explicitConstructorInvocationStmt.setExpr(Adapters.getPrimaryContextAdapter().adapt(context.primary(), adapterParameters));
         }
 
         return explicitConstructorInvocationStmt;

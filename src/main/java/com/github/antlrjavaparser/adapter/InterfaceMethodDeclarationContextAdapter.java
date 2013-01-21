@@ -24,7 +24,7 @@ import com.github.antlrjavaparser.api.type.Type;
 import com.github.antlrjavaparser.api.type.VoidType;
 
 public class InterfaceMethodDeclarationContextAdapter implements Adapter<BodyDeclaration, Java7Parser.InterfaceMethodDeclarationContext> {
-    public BodyDeclaration adapt(Java7Parser.InterfaceMethodDeclarationContext context) {
+    public BodyDeclaration adapt(Java7Parser.InterfaceMethodDeclarationContext context, AdapterParameters adapterParameters) {
 
         /*
         interfaceMethodDeclaration
@@ -33,11 +33,11 @@ public class InterfaceMethodDeclarationContextAdapter implements Adapter<BodyDec
          */
 
         MethodDeclaration methodDeclaration = new MethodDeclaration();
-        AdapterUtil.setModifiers(context.modifiers(), methodDeclaration);
+        AdapterUtil.setModifiers(context.modifiers(), methodDeclaration, adapterParameters);
         methodDeclaration.setName(context.Identifier().getText());
 
         if (context.typeParameters() != null) {
-            methodDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters()));
+            methodDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters(), adapterParameters));
         }
 
         if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
@@ -48,14 +48,14 @@ public class InterfaceMethodDeclarationContextAdapter implements Adapter<BodyDec
         if (context.VOID() != null) {
             returnType = new VoidType();
         } else if (context.type() != null) {
-            returnType = Adapters.getTypeContextAdapter().adapt(context.type());
+            returnType = Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters);
         }
         methodDeclaration.setType(returnType);
 
-        methodDeclaration.setParameters(Adapters.getFormalParametersContextAdapter().adapt(context.formalParameters()));
+        methodDeclaration.setParameters(Adapters.getFormalParametersContextAdapter().adapt(context.formalParameters(), adapterParameters));
 
         if (context.qualifiedNameList() != null) {
-            methodDeclaration.setThrows(Adapters.getQualifiedNameListContextAdapter().adapt(context.qualifiedNameList()));
+            methodDeclaration.setThrows(Adapters.getQualifiedNameListContextAdapter().adapt(context.qualifiedNameList(), adapterParameters));
         }
 
         return methodDeclaration;

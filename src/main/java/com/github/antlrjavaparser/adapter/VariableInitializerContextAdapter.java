@@ -21,12 +21,12 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.expr.Expression;
 
 public class VariableInitializerContextAdapter implements Adapter<Expression, Java7Parser.VariableInitializerContext> {
-    public Expression adapt(Java7Parser.VariableInitializerContext context) {
+    public Expression adapt(Java7Parser.VariableInitializerContext context, AdapterParameters adapterParameters) {
 
         if (context.arrayInitializer() != null) {
-            return Adapters.getArrayInitializerContextAdapter().adapt(context.arrayInitializer());
+            return Adapters.getArrayInitializerContextAdapter().adapt(context.arrayInitializer(), adapterParameters);
         } else if (context.expression() != null) {
-            return Adapters.getExpressionContextAdapter().adapt(context.expression());
+            return Adapters.getExpressionContextAdapter().adapt(context.expression(), adapterParameters);
         }
 
         return null;

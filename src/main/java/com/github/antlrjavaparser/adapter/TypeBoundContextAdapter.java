@@ -25,7 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class TypeBoundContextAdapter implements Adapter<List<ClassOrInterfaceType>, Java7Parser.TypeBoundContext> {
-    public List<ClassOrInterfaceType> adapt(Java7Parser.TypeBoundContext context) {
+    public List<ClassOrInterfaceType> adapt(Java7Parser.TypeBoundContext context, AdapterParameters adapterParameters) {
 
         if (context == null) {
             return null;
@@ -35,7 +35,7 @@ public class TypeBoundContextAdapter implements Adapter<List<ClassOrInterfaceTyp
         List<ClassOrInterfaceType> classOrInterfaceTypeList = new LinkedList<ClassOrInterfaceType>();
 
         for (Java7Parser.TypeContext typeContext : context.type()) {
-            typeList.add(Adapters.getTypeContextAdapter().adapt(typeContext));
+            typeList.add(Adapters.getTypeContextAdapter().adapt(typeContext, adapterParameters));
         }
 
         // All instances should be classOrInterfaceType

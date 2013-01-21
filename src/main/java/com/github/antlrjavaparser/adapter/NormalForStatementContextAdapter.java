@@ -33,7 +33,7 @@ import java.util.List;
  */
 public class NormalForStatementContextAdapter implements Adapter<ForStmt, Java7Parser.NormalForStatementContext> {
     @Override
-    public ForStmt adapt(Java7Parser.NormalForStatementContext context) {
+    public ForStmt adapt(Java7Parser.NormalForStatementContext context, AdapterParameters adapterParameters) {
 
         /*
             normalForStatement
@@ -48,24 +48,24 @@ public class NormalForStatementContextAdapter implements Adapter<ForStmt, Java7P
          */
 
         ForStmt forStmt = new ForStmt();
-        forStmt.setBody(Adapters.getStatementContextAdapter().adapt(context.statement()));
+        forStmt.setBody(Adapters.getStatementContextAdapter().adapt(context.statement(), adapterParameters));
 
         if (context.forInit() != null) {
             if (context.forInit().localVariableDeclaration() != null) {
                 List<Expression> expressionList = new LinkedList<Expression>();
-                expressionList.add(Adapters.getLocalVariableDeclarationContextAdapter().adapt(context.forInit().localVariableDeclaration()));
+                expressionList.add(Adapters.getLocalVariableDeclarationContextAdapter().adapt(context.forInit().localVariableDeclaration(), adapterParameters));
                 forStmt.setInit(expressionList);
             } else if (context.forInit().expressionList() != null) {
-                forStmt.setInit(Adapters.getExpressionListContextAdapter().adapt(context.forInit().expressionList()));
+                forStmt.setInit(Adapters.getExpressionListContextAdapter().adapt(context.forInit().expressionList(), adapterParameters));
             }
         }
 
         if (context.expression() != null) {
-            forStmt.setCompare(Adapters.getExpressionContextAdapter().adapt(context.expression()));
+            forStmt.setCompare(Adapters.getExpressionContextAdapter().adapt(context.expression(), adapterParameters));
         }
 
         if (context.expressionList() != null) {
-            forStmt.setUpdate(Adapters.getExpressionListContextAdapter().adapt(context.expressionList()));
+            forStmt.setUpdate(Adapters.getExpressionListContextAdapter().adapt(context.expressionList(), adapterParameters));
         }
 
         return forStmt;

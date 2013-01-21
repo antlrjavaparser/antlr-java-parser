@@ -22,6 +22,7 @@
 package com.github.antlrjavaparser.api.visitor;
 
 import com.github.antlrjavaparser.api.BlockComment;
+import com.github.antlrjavaparser.api.Comment;
 import com.github.antlrjavaparser.api.CompilationUnit;
 import com.github.antlrjavaparser.api.ImportDeclaration;
 import com.github.antlrjavaparser.api.LineComment;
@@ -118,13 +119,11 @@ public interface GenericVisitor<R, A> {
 
     public R visit(TypeParameter n, A arg);
 
-    public R visit(LineComment n, A arg);
-
-    public R visit(BlockComment n, A arg);
-
     //- Body ----------------------------------------------
 
     public R visit(ClassOrInterfaceDeclaration n, A arg);
+
+    //public R visit(Comment n, A arg);
 
     public R visit(EnumDeclaration n, A arg);
 
@@ -155,8 +154,6 @@ public interface GenericVisitor<R, A> {
     public R visit(EmptyMemberDeclaration n, A arg);
 
     public R visit(InitializerDeclaration n, A arg);
-
-    public R visit(JavadocComment n, A arg);
 
     //- Type ----------------------------------------------
 

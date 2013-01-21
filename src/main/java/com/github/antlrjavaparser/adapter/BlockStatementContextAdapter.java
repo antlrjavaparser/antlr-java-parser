@@ -22,16 +22,17 @@ import com.github.antlrjavaparser.api.stmt.Statement;
 import com.github.antlrjavaparser.api.stmt.TypeDeclarationStmt;
 
 public class BlockStatementContextAdapter implements Adapter<Statement, Java7Parser.BlockStatementContext> {
-    public Statement adapt(Java7Parser.BlockStatementContext context) {
+    public Statement adapt(Java7Parser.BlockStatementContext context, AdapterParameters adapterParameters) {
 
         if (context.classOrInterfaceDeclaration() != null) {
             TypeDeclarationStmt typeDeclarationStmt = new TypeDeclarationStmt();
-            typeDeclarationStmt.setTypeDeclaration(Adapters.getClassOrInterfaceDeclarationContextAdapter().adapt(context.classOrInterfaceDeclaration()));
+            AdapterUtil.setComments(typeDeclarationStmt, context.classOrInterfaceDeclaration(), adapterParameters);
+            typeDeclarationStmt.setTypeDeclaration(Adapters.getClassOrInterfaceDeclarationContextAdapter().adapt(context.classOrInterfaceDeclaration(), adapterParameters));
             return typeDeclarationStmt;
         } else if (context.localVariableDeclarationStatement() != null) {
-            return Adapters.getLocalVariableDeclarationStatementContextAdapter().adapt(context.localVariableDeclarationStatement());
+            return Adapters.getLocalVariableDeclarationStatementContextAdapter().adapt(context.localVariableDeclarationStatement(), adapterParameters);
         } else if (context.statement() != null) {
-            return Adapters.getStatementContextAdapter().adapt(context.statement());
+            return Adapters.getStatementContextAdapter().adapt(context.statement(), adapterParameters);
         }
 
         throw new RuntimeException("Unknown statement type");

@@ -21,16 +21,17 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.PackageDeclaration;
 
 public class PackageDeclarationContextAdapter implements Adapter<PackageDeclaration, Java7Parser.PackageDeclarationContext> {
-    public PackageDeclaration adapt(Java7Parser.PackageDeclarationContext context) {
+    public PackageDeclaration adapt(Java7Parser.PackageDeclarationContext context, AdapterParameters adapterParameters) {
         if (context == null) {
             return null;
         }
 
         PackageDeclaration packageDeclaration = new PackageDeclaration();
-        packageDeclaration.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName()));
+        AdapterUtil.setComments(packageDeclaration, context, adapterParameters);
+        packageDeclaration.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName(), adapterParameters));
 
         if (context.annotations() != null) {
-            packageDeclaration.setAnnotations(Adapters.getAnnotationsContextAdapter().adapt(context.annotations()));
+            packageDeclaration.setAnnotations(Adapters.getAnnotationsContextAdapter().adapt(context.annotations(), adapterParameters));
         }
 
         return packageDeclaration;

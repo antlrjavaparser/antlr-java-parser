@@ -21,18 +21,18 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.body.BodyDeclaration;
 
 public class MemberDeclContextAdapter implements Adapter<BodyDeclaration, Java7Parser.MemberDeclContext> {
-    public BodyDeclaration adapt(Java7Parser.MemberDeclContext context) {
+    public BodyDeclaration adapt(Java7Parser.MemberDeclContext context, AdapterParameters adapterParameters) {
 
         if (context.methodDeclaration() != null) {
-            return Adapters.getMethodDeclarationContextAdapter().adapt(context.methodDeclaration());
+            return Adapters.getMethodDeclarationContextAdapter().adapt(context.methodDeclaration(), adapterParameters);
         } else if (context.fieldDeclaration() != null) {
-            return Adapters.getFieldDeclarationContextAdapter().adapt(context.fieldDeclaration());
+            return Adapters.getFieldDeclarationContextAdapter().adapt(context.fieldDeclaration(), adapterParameters);
         } else if (context.classDeclaration() != null) {
-            return Adapters.getClassDeclarationContextAdapter().adapt(context.classDeclaration());
+            return Adapters.getClassDeclarationContextAdapter().adapt(context.classDeclaration(), adapterParameters);
         } else if (context.interfaceDeclaration() != null) {
-            return Adapters.getInterfaceDeclarationContextAdapter().adapt(context.interfaceDeclaration());
+            return Adapters.getInterfaceDeclarationContextAdapter().adapt(context.interfaceDeclaration(), adapterParameters);
         } else if (context.constructorDeclaration() != null) {
-            return Adapters.getConstructorDeclarationContextAdapter().adapt(context.constructorDeclaration());
+            return Adapters.getConstructorDeclarationContextAdapter().adapt(context.constructorDeclaration(), adapterParameters);
         }
 
         return null;

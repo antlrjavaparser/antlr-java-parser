@@ -21,13 +21,13 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.body.AnnotationDeclaration;
 
 public class AnnotationTypeDeclarationContextAdapter implements Adapter<AnnotationDeclaration, Java7Parser.AnnotationTypeDeclarationContext> {
-    public AnnotationDeclaration adapt(Java7Parser.AnnotationTypeDeclarationContext context) {
+    public AnnotationDeclaration adapt(Java7Parser.AnnotationTypeDeclarationContext context, AdapterParameters adapterParameters) {
 
         AnnotationDeclaration annotationDeclaration = new AnnotationDeclaration();
 
-        AdapterUtil.setModifiers(context.modifiers(), annotationDeclaration);
+        AdapterUtil.setModifiers(context.modifiers(), annotationDeclaration, adapterParameters);
         annotationDeclaration.setName(context.Identifier().getText());
-        annotationDeclaration.setMembers(Adapters.getAnnotationTypeBodyContextAdapter().adapt(context.annotationTypeBody()));
+        annotationDeclaration.setMembers(Adapters.getAnnotationTypeBodyContextAdapter().adapt(context.annotationTypeBody(), adapterParameters));
 
         return annotationDeclaration;
     }

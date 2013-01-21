@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.ImportDeclaration;
 
 public class ImportDeclarationContextAdapter implements Adapter<ImportDeclaration, Java7Parser.ImportDeclarationContext> {
-    public ImportDeclaration adapt(Java7Parser.ImportDeclarationContext context) {
+    public ImportDeclaration adapt(Java7Parser.ImportDeclarationContext context, AdapterParameters adapterParameters) {
 
         ImportDeclaration importDeclaration = new ImportDeclaration();
         importDeclaration.setStatic(context.STATIC() != null);
