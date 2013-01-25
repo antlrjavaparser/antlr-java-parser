@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.body.Parameter;
 import com.github.antlrjavaparser.api.body.VariableDeclaratorId;
 
 public class EllipsisParameterDeclContextAdapter implements Adapter<Parameter, Java7Parser.EllipsisParameterDeclContext> {
-    public Parameter adapt(Java7Parser.EllipsisParameterDeclContext context) {
+    public Parameter adapt(Java7Parser.EllipsisParameterDeclContext context, AdapterParameters adapterParameters) {
 
         /*
         ellipsisParameterDecl
@@ -33,9 +33,10 @@ public class EllipsisParameterDeclContextAdapter implements Adapter<Parameter, J
          */
 
         Parameter parameter = new Parameter();
-        AdapterUtil.setVariableModifiers(context.variableModifiers(), parameter);
+        AdapterUtil.setVariableModifiers(context.variableModifiers(), parameter, adapterParameters);
+        AdapterUtil.setComments(parameter, context, adapterParameters);
 
-        parameter.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
+        parameter.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
         parameter.setVarArgs(true);
 
         VariableDeclaratorId variableDeclaratorId = new VariableDeclaratorId();

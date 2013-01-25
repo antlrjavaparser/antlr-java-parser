@@ -28,44 +28,36 @@ import com.github.antlrjavaparser.api.expr.NullLiteralExpr;
 import com.github.antlrjavaparser.api.expr.StringLiteralExpr;
 
 public class LiteralContextAdapter implements Adapter<LiteralExpr, Java7Parser.LiteralContext> {
-    public LiteralExpr adapt(Java7Parser.LiteralContext context) {
+    public LiteralExpr adapt(Java7Parser.LiteralContext context, AdapterParameters adapterParameters) {
+
+        LiteralExpr literalExpr;
 
         if (context.IntegerLiteral() != null) {
             if (isLongType(context.IntegerLiteral().getText())) {
-                LongLiteralExpr literalExpr = new LongLiteralExpr();
-                literalExpr.setValue(context.IntegerLiteral().getText());
-                return literalExpr;
+                literalExpr = new LongLiteralExpr(context.IntegerLiteral().getText());
             } else{
-                IntegerLiteralExpr literalExpr = new IntegerLiteralExpr();
-                literalExpr.setValue(context.IntegerLiteral().getText());
-                return literalExpr;
+                literalExpr = new IntegerLiteralExpr(context.IntegerLiteral().getText());
             }
         } else if (context.FloatingPointLiteral() != null) {
-            DoubleLiteralExpr literalExpr = new DoubleLiteralExpr();
-            literalExpr.setValue(context.FloatingPointLiteral().getText());
-            return literalExpr;
+            literalExpr = new DoubleLiteralExpr(context.FloatingPointLiteral().getText());
         } else if (context.CharacterLiteral() != null) {
-            CharLiteralExpr literalExpr = new CharLiteralExpr();
-            literalExpr.setValue(stripQuotes(context.CharacterLiteral().getText()));
-            return literalExpr;
+            literalExpr = new CharLiteralExpr(stripQuotes(context.CharacterLiteral().getText()));
         } else if (context.StringLiteral() != null) {
-            StringLiteralExpr literalExpr = new StringLiteralExpr();
-            literalExpr.setValue(stripQuotes(context.StringLiteral().getText()));
-            return literalExpr;
+            literalExpr = new StringLiteralExpr(stripQuotes(context.StringLiteral().getText()));
         } else if (context.TRUE() != null) {
-            BooleanLiteralExpr literalExpr = new BooleanLiteralExpr();
-            literalExpr.setValue(true);
-            return literalExpr;
+            literalExpr = new BooleanLiteralExpr(true);
         } else if (context.FALSE() != null) {
-            BooleanLiteralExpr literalExpr = new BooleanLiteralExpr();
-            literalExpr.setValue(false);
-            return literalExpr;
+            literalExpr = new BooleanLiteralExpr(false);
         } else if (context.NULL() != null) {
-            NullLiteralExpr nullLiteralExpr = new NullLiteralExpr();
-            return nullLiteralExpr;
+            literalExpr = new NullLiteralExpr();
+        } else {
+            throw new RuntimeException("Unknown Literal Context");
         }
 
-        throw new RuntimeException("Unknown Literal Context");
+        AdapterUtil.setComments(literalExpr, context, adapterParameters);
+
+        return literalExpr;
+
     }
 
     private boolean isLongType(String value) {

@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class ResourceSpecificationContextAdapter implements Adapter<Node, Java7Parser.ResourceSpecificationContext> {
-    public Node adapt(Java7Parser.ResourceSpecificationContext context) {
-        return null;
+    public Node adapt(Java7Parser.ResourceSpecificationContext context, AdapterParameters adapterParameters) {
+        throw new UnsupportedOperationException();
     }
 }

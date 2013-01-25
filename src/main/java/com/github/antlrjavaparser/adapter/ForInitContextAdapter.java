@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class ForInitContextAdapter implements Adapter<Node, Java7Parser.ForInitContext> {
-    public Node adapt(Java7Parser.ForInitContext context) {
-        return null;
+    public Node adapt(Java7Parser.ForInitContext context, AdapterParameters adapterParameters) {
+        throw new UnsupportedOperationException();
     }
 }

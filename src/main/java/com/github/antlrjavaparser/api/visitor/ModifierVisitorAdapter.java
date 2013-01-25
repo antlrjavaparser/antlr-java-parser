@@ -130,9 +130,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(AnnotationDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         List<AnnotationExpr> annotations = n.getAnnotations();
         if (annotations != null) {
             for (int i = 0; i < annotations.size(); i++) {
@@ -151,9 +148,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(AnnotationMemberDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         List<AnnotationExpr> annotations = n.getAnnotations();
         if (annotations != null) {
             for (int i = 0; i < annotations.size(); i++) {
@@ -265,9 +259,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(ClassOrInterfaceDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         List<AnnotationExpr> annotations = n.getAnnotations();
         if (annotations != null) {
             for (int i = 0; i < annotations.size(); i++) {
@@ -349,9 +340,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(ConstructorDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         List<AnnotationExpr> annotations = n.getAnnotations();
         if (annotations != null) {
             for (int i = 0; i < annotations.size(); i++) {
@@ -399,9 +387,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(EmptyMemberDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         return n;
     }
 
@@ -410,9 +395,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(EmptyTypeDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         return n;
     }
 
@@ -422,9 +404,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(EnumConstantDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         List<AnnotationExpr> annotations = n.getAnnotations();
         if (annotations != null) {
             for (int i = 0; i < annotations.size(); i++) {
@@ -450,9 +429,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(EnumDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         List<AnnotationExpr> annotations = n.getAnnotations();
         if (annotations != null) {
             for (int i = 0; i < annotations.size(); i++) {
@@ -518,9 +494,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(FieldDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         List<AnnotationExpr> annotations = n.getAnnotations();
         if (annotations != null) {
             for (int i = 0; i < annotations.size(); i++) {
@@ -581,9 +554,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(InitializerDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         n.setBlock((BlockStmt) n.getBlock().accept(this, arg));
         return n;
     }
@@ -599,10 +569,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(IntegerLiteralMinValueExpr n, A arg) {
-        return n;
-    }
-
-    public Node visit(JavadocComment n, A arg) {
         return n;
     }
 
@@ -651,9 +617,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
     }
 
     public Node visit(MethodDeclaration n, A arg) {
-        if (n.getJavaDoc() != null) {
-            n.setJavaDoc((JavadocComment) n.getJavaDoc().accept(this, arg));
-        }
         List<AnnotationExpr> annotations = n.getAnnotations();
         if (annotations != null) {
             for (int i = 0; i < annotations.size(); i++) {
@@ -947,14 +910,6 @@ public abstract class ModifierVisitorAdapter<A> implements GenericVisitor<Node, 
         if (n.getSuper() != null) {
             n.setSuper((ReferenceType) n.getSuper().accept(this, arg));
         }
-        return n;
-    }
-
-    public Node visit(BlockComment n, A arg) {
-        return n;
-    }
-
-    public Node visit(LineComment n, A arg) {
         return n;
     }
 

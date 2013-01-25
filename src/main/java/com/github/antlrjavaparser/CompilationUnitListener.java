@@ -17,8 +17,14 @@
 
 package com.github.antlrjavaparser;
 
+import com.github.antlrjavaparser.adapter.AdapterParameters;
+import com.github.antlrjavaparser.adapter.AdapterUtil;
 import com.github.antlrjavaparser.adapter.Adapters;
 import com.github.antlrjavaparser.api.CompilationUnit;
+import org.antlr.v4.runtime.BufferedTokenStream;
+import org.antlr.v4.runtime.Token;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,10 +36,23 @@ import com.github.antlrjavaparser.api.CompilationUnit;
 public class CompilationUnitListener extends Java7ParserBaseListener {
 
     private CompilationUnit compilationUnit;
+    private BufferedTokenStream tokens;
+
+    public CompilationUnitListener(BufferedTokenStream tokens) {
+        this.tokens = tokens;
+    }
 
     @Override
     public void exitCompilationUnit(Java7Parser.CompilationUnitContext ctx) {
-        compilationUnit = Adapters.getCompilationUnitContextAdapter().adapt(ctx);
+        AdapterParameters adapterParameters = new AdapterParameters();
+        adapterParameters.setTokens(tokens);
+
+        compilationUnit = Adapters.getCompilationUnitContextAdapter().adapt(ctx, adapterParameters);
+
+//        for (Integer claimedCommentTokenIndex : adapterParameters.getCommentTokensClaimed()) {
+//            System.out.println("Claimed Token Index: " + claimedCommentTokenIndex + " ================\n" + tokens.get(claimedCommentTokenIndex).getText());
+//        }
+
     }
 
 

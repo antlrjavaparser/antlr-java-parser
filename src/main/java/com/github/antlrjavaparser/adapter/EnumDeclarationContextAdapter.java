@@ -24,7 +24,7 @@ import com.github.antlrjavaparser.api.type.Type;
 import java.util.List;
 
 public class EnumDeclarationContextAdapter implements Adapter<EnumDeclaration, Java7Parser.EnumDeclarationContext> {
-    public EnumDeclaration adapt(Java7Parser.EnumDeclarationContext context) {
+    public EnumDeclaration adapt(Java7Parser.EnumDeclarationContext context, AdapterParameters adapterParameters) {
 
         /*
         enumDeclaration
@@ -32,16 +32,18 @@ public class EnumDeclarationContextAdapter implements Adapter<EnumDeclaration, J
             ;
          */
         EnumDeclaration enumDeclaration = new EnumDeclaration();
-        AdapterUtil.setModifiers(context.modifiers(), enumDeclaration);
+        AdapterUtil.setModifiers(context.modifiers(), enumDeclaration, adapterParameters);
+        AdapterUtil.setComments(enumDeclaration, context, adapterParameters);
+
         enumDeclaration.setName(context.Identifier().getText());
-        List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(context.typeList());
+        List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(context.typeList(), adapterParameters);
         enumDeclaration.setImplements(AdapterUtil.convertTypeList(typeList));
-        enumDeclaration.setMembers(Adapters.getEnumBodyContextAdapter().adapt(context.enumBody()));
+        enumDeclaration.setMembers(Adapters.getEnumBodyContextAdapter().adapt(context.enumBody(), adapterParameters));
 
         // These come from enumBody
 
         if (context.enumBody().enumConstants() != null) {
-            enumDeclaration.setEntries(Adapters.getEnumConstantsContextAdapter().adapt(context.enumBody().enumConstants()));
+            enumDeclaration.setEntries(Adapters.getEnumConstantsContextAdapter().adapt(context.enumBody().enumConstants(), adapterParameters));
         }
 
         return enumDeclaration;

@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class MethodHeaderContextAdapter implements Adapter<Node, Java7Parser.MethodHeaderContext> {
-    public Node adapt(Java7Parser.MethodHeaderContext context) {
-        return null;
+    public Node adapt(Java7Parser.MethodHeaderContext context, AdapterParameters adapterParameters) {
+        throw new UnsupportedOperationException();
     }
 }

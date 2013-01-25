@@ -22,14 +22,14 @@ import com.github.antlrjavaparser.api.expr.AnnotationExpr;
 
 public class AnnotationContextAdapter implements Adapter<AnnotationExpr, Java7Parser.AnnotationContext> {
     @Override
-    public AnnotationExpr adapt(Java7Parser.AnnotationContext context) {
+    public AnnotationExpr adapt(Java7Parser.AnnotationContext context, AdapterParameters adapterParameters) {
 
         if (context.markerAnnotation() != null) {
-            return Adapters.getMarkerAnnotationContextAdapter().adapt(context.markerAnnotation());
+            return Adapters.getMarkerAnnotationContextAdapter().adapt(context.markerAnnotation(), adapterParameters);
         } else if (context.normalAnnotation() != null) {
-            return Adapters.getNormalAnnotationContextAdapter().adapt(context.normalAnnotation());
+            return Adapters.getNormalAnnotationContextAdapter().adapt(context.normalAnnotation(), adapterParameters);
         } else if (context.singleElementAnnotation() != null) {
-            return Adapters.getSingleElementAnnotationContextAdapter().adapt(context.singleElementAnnotation());
+            return Adapters.getSingleElementAnnotationContextAdapter().adapt(context.singleElementAnnotation(), adapterParameters);
         }
 
         throw new RuntimeException("Unexpected Annotation Type");

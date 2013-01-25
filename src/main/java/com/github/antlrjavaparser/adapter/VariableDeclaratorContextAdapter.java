@@ -22,9 +22,10 @@ import com.github.antlrjavaparser.api.body.VariableDeclarator;
 import com.github.antlrjavaparser.api.body.VariableDeclaratorId;
 
 public class VariableDeclaratorContextAdapter implements Adapter<VariableDeclarator, Java7Parser.VariableDeclaratorContext> {
-    public VariableDeclarator adapt(Java7Parser.VariableDeclaratorContext context) {
+    public VariableDeclarator adapt(Java7Parser.VariableDeclaratorContext context, AdapterParameters adapterParameters) {
 
         VariableDeclarator variableDeclarator = new VariableDeclarator();
+        AdapterUtil.setComments(variableDeclarator, context, adapterParameters);
 
         VariableDeclaratorId variableDeclaratorId = new VariableDeclaratorId();
         variableDeclaratorId.setName(context.Identifier().getText());
@@ -36,7 +37,7 @@ public class VariableDeclaratorContextAdapter implements Adapter<VariableDeclara
         variableDeclarator.setId(variableDeclaratorId);
 
         if (context.variableInitializer() != null) {
-            variableDeclarator.setInit(Adapters.getVariableInitializerContextAdapter().adapt(context.variableInitializer()));
+            variableDeclarator.setInit(Adapters.getVariableInitializerContextAdapter().adapt(context.variableInitializer(), adapterParameters));
         }
 
         return variableDeclarator;

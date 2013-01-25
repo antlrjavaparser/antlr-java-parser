@@ -17,22 +17,41 @@
 
 package com.github.antlrjavaparser.adapter;
 
-import com.github.antlrjavaparser.Java7Parser;
-import com.github.antlrjavaparser.api.expr.AnnotationExpr;
+import org.antlr.v4.runtime.BufferedTokenStream;
 
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-public class AnnotationsContextAdapter implements Adapter<List<AnnotationExpr>, Java7Parser.AnnotationsContext> {
-    public List<AnnotationExpr> adapt(Java7Parser.AnnotationsContext context, AdapterParameters adapterParameters) {
-        if (context != null) {
-            List<AnnotationExpr> annotationExprList = new LinkedList<AnnotationExpr>();
-            for (Java7Parser.AnnotationContext annotationContext : context.annotation()) {
-                annotationExprList.add(Adapters.getAnnotationContextAdapter().adapt(annotationContext, adapterParameters));
-            }
-            return annotationExprList;
-        }
+/**
+ * Created with IntelliJ IDEA.
+ * User: Administrator
+ * Date: 1/10/13
+ * Time: 9:37 AM
+ */
+public class AdapterParameters {
 
-        throw new RuntimeException("Null annotations context");
+    private BufferedTokenStream tokens;
+    private Set<Integer> commentTokensClaimed = new TreeSet<Integer>();
+
+    public BufferedTokenStream getTokens() {
+        return tokens;
     }
+
+    public void setTokens(BufferedTokenStream tokens) {
+        this.tokens = tokens;
+    }
+
+    public void claimCommentToken(Integer tokenId) {
+        commentTokensClaimed.add(tokenId);
+    }
+
+    public boolean isCommentTokenClaimed(Integer tokenId) {
+        return commentTokensClaimed.contains(tokenId);
+    }
+
+    public Set<Integer> getCommentTokensClaimed() {
+        return commentTokensClaimed;
+    }
+
 }

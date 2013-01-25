@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.stmt.Statement;
 import com.github.antlrjavaparser.api.stmt.TryStmt;
 
 public class TrystatementContextAdapter implements Adapter<Statement, Java7Parser.TrystatementContext> {
-    public Statement adapt(Java7Parser.TrystatementContext context) {
+    public Statement adapt(Java7Parser.TrystatementContext context, AdapterParameters adapterParameters) {
 
         /*
 
@@ -68,26 +68,27 @@ public class TrystatementContextAdapter implements Adapter<Statement, Java7Parse
          */
 
         TryStmt tryStmt = new TryStmt();
+        AdapterUtil.setComments(tryStmt, context, adapterParameters);
 
         if (context.statementType != 5) {
-            tryStmt.setTryBlock(Adapters.getBlockContextAdapter().adapt(context.block(0)));
+            tryStmt.setTryBlock(Adapters.getBlockContextAdapter().adapt(context.block(0), adapterParameters));
         }
 
         switch (context.statementType) {
             case 1:
                 break;
             case 2:
-                tryStmt.setCatchs(Adapters.getCatchesContextAdapter().adapt(context.catches()));
-                tryStmt.setFinallyBlock(Adapters.getBlockContextAdapter().adapt(context.block(1)));
+                tryStmt.setCatchs(Adapters.getCatchesContextAdapter().adapt(context.catches(), adapterParameters));
+                tryStmt.setFinallyBlock(Adapters.getBlockContextAdapter().adapt(context.block(1), adapterParameters));
                 break;
             case 3:
-                tryStmt.setCatchs(Adapters.getCatchesContextAdapter().adapt(context.catches()));
+                tryStmt.setCatchs(Adapters.getCatchesContextAdapter().adapt(context.catches(), adapterParameters));
                 break;
             case 4:
-                tryStmt.setFinallyBlock(Adapters.getBlockContextAdapter().adapt(context.block(1)));
+                tryStmt.setFinallyBlock(Adapters.getBlockContextAdapter().adapt(context.block(1), adapterParameters));
                 break;
             case 5:
-                return Adapters.getTryWithResourcesContextAdapter().adapt(context.tryWithResources());
+                return Adapters.getTryWithResourcesContextAdapter().adapt(context.tryWithResources(), adapterParameters);
         }
 
         return tryStmt;

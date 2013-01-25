@@ -24,11 +24,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ResourcesContextAdapter implements Adapter<List<Resource>, Java7Parser.ResourcesContext> {
-    public List<Resource> adapt(Java7Parser.ResourcesContext context) {
+    public List<Resource> adapt(Java7Parser.ResourcesContext context, AdapterParameters adapterParameters) {
 
         List<Resource> resourceList = new LinkedList<Resource>();
         for (Java7Parser.ResourceContext resourceContext : context.resource()) {
-            resourceList.add(Adapters.getResourceContextAdapter().adapt(resourceContext));
+            resourceList.add(Adapters.getResourceContextAdapter().adapt(resourceContext, adapterParameters));
         }
 
         return resourceList;

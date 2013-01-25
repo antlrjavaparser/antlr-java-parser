@@ -22,11 +22,13 @@ import com.github.antlrjavaparser.api.type.ReferenceType;
 import com.github.antlrjavaparser.api.type.Type;
 
 public class TypeContextAdapter implements Adapter<Type, Java7Parser.TypeContext> {
-    public Type adapt(Java7Parser.TypeContext context) {
+    public Type adapt(Java7Parser.TypeContext context, AdapterParameters adapterParameters) {
 
         if (context.classOrInterfaceType() != null) {
             ReferenceType referenceType = new ReferenceType();
-            referenceType.setType(Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType()));
+            AdapterUtil.setComments(referenceType, context, adapterParameters);
+
+            referenceType.setType(Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType(), adapterParameters));
             if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
                 referenceType.setArrayCount(context.LBRACKET().size());
             }
@@ -36,11 +38,13 @@ public class TypeContextAdapter implements Adapter<Type, Java7Parser.TypeContext
             // If there's an array in the mix, this becomes a referenceType
             if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
                 ReferenceType referenceType = new ReferenceType();
-                referenceType.setType(Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType()));
+                AdapterUtil.setComments(referenceType, context, adapterParameters);
+
+                referenceType.setType(Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType(), adapterParameters));
                 referenceType.setArrayCount(context.LBRACKET().size());
                 return referenceType;
             } else {
-                return Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType());
+                return Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType(), adapterParameters);
             }
         }
 

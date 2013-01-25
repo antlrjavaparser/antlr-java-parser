@@ -25,7 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ElementValueArrayInitializerContextAdapter implements Adapter<ArrayInitializerExpr, Java7Parser.ElementValueArrayInitializerContext> {
-    public ArrayInitializerExpr adapt(Java7Parser.ElementValueArrayInitializerContext context) {
+    public ArrayInitializerExpr adapt(Java7Parser.ElementValueArrayInitializerContext context, AdapterParameters adapterParameters) {
         /*
             elementValueArrayInitializer
             :   LBRACE
@@ -36,10 +36,11 @@ public class ElementValueArrayInitializerContextAdapter implements Adapter<Array
             ;
         */
         ArrayInitializerExpr arrayInitializerExpr = new ArrayInitializerExpr();
+        AdapterUtil.setComments(arrayInitializerExpr, context, adapterParameters);
 
         List<Expression> expressionList = new LinkedList<Expression>();
         for (Java7Parser.ElementValueContext elementValueContext : context.elementValue()) {
-            expressionList.add(Adapters.getElementValueContextAdapter().adapt(elementValueContext));
+            expressionList.add(Adapters.getElementValueContextAdapter().adapt(elementValueContext, adapterParameters));
         }
         arrayInitializerExpr.setValues(expressionList);
 

@@ -22,6 +22,7 @@
 package com.github.antlrjavaparser.api.visitor;
 
 import com.github.antlrjavaparser.api.BlockComment;
+import com.github.antlrjavaparser.api.Comment;
 import com.github.antlrjavaparser.api.CompilationUnit;
 import com.github.antlrjavaparser.api.ImportDeclaration;
 import com.github.antlrjavaparser.api.LineComment;
@@ -307,24 +308,31 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(PackageDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printAnnotations(n.getAnnotations(), arg);
         printer.print("package ");
         n.getName().accept(this, arg);
-        printer.printLn(";");
+        printer.print(";");
+        printEndComments(n.getEndComments(), arg);
         printer.printLn();
     }
 
     public void visit(NameExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getName());
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(QualifiedNameExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getQualifier().accept(this, arg);
         printer.print(".");
         printer.print(n.getName());
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ImportDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("import ");
         if (n.isStatic()) {
             printer.print("static ");
@@ -333,11 +341,13 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         if (n.isAsterisk()) {
             printer.print(".*");
         }
-        printer.printLn(";");
+        printer.print(";");
+        printEndComments(n.getEndComments(), arg);
+        printer.printLn();
     }
 
     public void visit(ClassOrInterfaceDeclaration n, Object arg) {
-        printJavadoc(n.getJavaDoc(), arg);
+        printBeginComments(n.getBeginComments(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
 
@@ -380,11 +390,14 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
         printer.unindent();
         printer.print("}");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(EmptyTypeDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(JavadocComment n, Object arg) {
@@ -394,15 +407,18 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(ClassOrInterfaceType n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         if (n.getScope() != null) {
             n.getScope().accept(this, arg);
             printer.print(".");
         }
         printer.print(n.getName());
         printTypeArgs(n.getTypeArgs(), arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(TypeParameter n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getName());
         if (n.getTypeBound() != null) {
             printer.print(" extends ");
@@ -414,9 +430,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
                 }
             }
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(PrimitiveType n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         switch (n.getType()) {
             case Boolean:
                 printer.print("boolean");
@@ -443,16 +461,20 @@ public final class DumpVisitor implements VoidVisitor<Object> {
                 printer.print("short");
                 break;
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ReferenceType n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getType().accept(this, arg);
         for (int i = 0; i < n.getArrayCount(); i++) {
             printer.print("[]");
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(WildcardType n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("?");
         if (n.getExtends() != null) {
             printer.print(" extends ");
@@ -462,9 +484,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             printer.print(" super ");
             n.getSuper().accept(this, arg);
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(FieldDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
@@ -480,24 +504,30 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
 
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(VariableDeclarator n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getId().accept(this, arg);
         if (n.getInit() != null) {
             printer.print(" = ");
             n.getInit().accept(this, arg);
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(VariableDeclaratorId n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getName());
         for (int i = 0; i < n.getArrayCount(); i++) {
             printer.print("[]");
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ArrayInitializerExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("{");
         if (n.getValues() != null) {
             printer.print(" ");
@@ -511,20 +541,26 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             printer.print(" ");
         }
         printer.print("}");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(VoidType n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("void");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ArrayAccessExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getName().accept(this, arg);
         printer.print("[");
         n.getIndex().accept(this, arg);
         printer.print("]");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ArrayCreationExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("new ");
         n.getType().accept(this, arg);
 
@@ -544,9 +580,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             printer.print(" ");
             n.getInitializer().accept(this, arg);
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(AssignExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getTarget().accept(this, arg);
         printer.print(" ");
         switch (n.getOperator()) {
@@ -589,9 +627,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
         printer.print(" ");
         n.getValue().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(BinaryExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg, false);
         n.getLeft().accept(this, arg);
         printer.print(" ");
         switch (n.getOperator()) {
@@ -655,103 +695,139 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
         printer.print(" ");
         n.getRight().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(CastExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("(");
         n.getType().accept(this, arg);
         printer.print(") ");
         n.getExpr().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ClassExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getType().accept(this, arg);
         printer.print(".class");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ConditionalExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getCondition().accept(this, arg);
         printer.print(" ? ");
         n.getThenExpr().accept(this, arg);
         printer.print(" : ");
         n.getElseExpr().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(EnclosedExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("(");
         n.getInner().accept(this, arg);
         printer.print(")");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(FieldAccessExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getScope().accept(this, arg);
         printer.print(".");
         printer.print(n.getField());
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(InstanceOfExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getExpr().accept(this, arg);
         printer.print(" instanceof ");
         n.getType().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(CharLiteralExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("'");
         printer.print(n.getValue());
         printer.print("'");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(DoubleLiteralExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getValue());
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(IntegerLiteralExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getValue());
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(LongLiteralExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getValue());
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(IntegerLiteralMinValueExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getValue());
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(LongLiteralMinValueExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getValue());
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(StringLiteralExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("\"");
         printer.print(n.getValue());
         printer.print("\"");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(BooleanLiteralExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(String.valueOf(n.getValue()));
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(NullLiteralExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("null");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ThisExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         if (n.getClassExpr() != null) {
             n.getClassExpr().accept(this, arg);
             printer.print(".");
         }
         printer.print("this");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(SuperExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         if (n.getClassExpr() != null) {
             n.getClassExpr().accept(this, arg);
             printer.print(".");
         }
         printer.print("super");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(MethodCallExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         if (n.getScope() != null) {
             n.getScope().accept(this, arg);
             printer.print(".");
@@ -759,9 +835,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         printTypeArgs(n.getTypeArgs(), arg);
         printer.print(n.getName());
         printArguments(n.getArgs(), arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ObjectCreationExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         if (n.getScope() != null) {
             n.getScope().accept(this, arg);
             printer.print(".");
@@ -781,9 +859,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             printer.unindent();
             printer.print("}");
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(UnaryExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         switch (n.getOperator()) {
             case positive:
                 printer.print("+");
@@ -815,9 +895,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
                 printer.print("--");
                 break;
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ConstructorDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
@@ -852,10 +934,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
         printer.print(" ");
         n.getBlock().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(MethodDeclaration n, Object arg) {
-        printJavadoc(n.getJavaDoc(), arg);
+        printBeginComments(n.getBeginComments(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
 
@@ -900,9 +983,12 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             printer.print(" ");
             n.getBody().accept(this, arg);
         }
+
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(Parameter n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg, false);
         printAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
 
@@ -912,9 +998,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
         printer.print(" ");
         n.getId().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(CatchParameter n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
 
@@ -926,10 +1014,12 @@ public final class DumpVisitor implements VoidVisitor<Object> {
 
         printer.print(" ");
         n.getId().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     @Override
     public void visit(Resource n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
 
@@ -938,9 +1028,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         n.getId().accept(this, arg);
         printer.print(" = ");
         n.getExpression().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ExplicitConstructorInvocationStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         if (n.isThis()) {
             printTypeArgs(n.getTypeArgs(), arg);
             printer.print("this");
@@ -954,9 +1046,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
         printArguments(n.getArgs(), arg);
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(VariableDeclarationExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
 
@@ -970,13 +1064,17 @@ public final class DumpVisitor implements VoidVisitor<Object> {
                 printer.print(", ");
             }
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(TypeDeclarationStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getTypeDeclaration().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(AssertStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("assert ");
         n.getCheck().accept(this, arg);
         if (n.getMessage() != null) {
@@ -984,10 +1082,16 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             n.getMessage().accept(this, arg);
         }
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(BlockStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.printLn("{");
+        printer.indent();
+        printInternalComments(n.getInternalComments(), arg);
+        printer.unindent();
+
         if (n.getStmts() != null) {
             printer.indent();
             for (Statement s : n.getStmts()) {
@@ -997,25 +1101,32 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             printer.unindent();
         }
         printer.print("}");
-
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(LabeledStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getLabel());
         printer.print(": ");
         n.getStmt().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(EmptyStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ExpressionStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         n.getExpression().accept(this, arg);
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(SwitchStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("switch(");
         n.getSelector().accept(this, arg);
         printer.printLn(") {");
@@ -1027,10 +1138,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             printer.unindent();
         }
         printer.print("}");
-
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(SwitchEntryStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         if (n.getLabel() != null) {
             printer.print("case ");
             n.getLabel().accept(this, arg);
@@ -1047,27 +1159,33 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             }
         }
         printer.unindent();
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(BreakStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("break");
         if (n.getId() != null) {
             printer.print(" ");
             printer.print(n.getId());
         }
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ReturnStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("return");
         if (n.getExpr() != null) {
             printer.print(" ");
             n.getExpr().accept(this, arg);
         }
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(EnumDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
@@ -1108,9 +1226,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
         printer.unindent();
         printer.print("}");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(EnumConstantDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
         printer.print(n.getName());
@@ -1126,22 +1246,28 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             printer.unindent();
             printer.printLn("}");
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(EmptyMemberDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(InitializerDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         if (n.isStatic()) {
             printer.print("static ");
         }
         n.getBlock().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(IfStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("if (");
         n.getCondition().accept(this, arg);
         printer.print(") ");
@@ -1150,42 +1276,52 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             printer.print(" else ");
             n.getElseStmt().accept(this, arg);
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(WhileStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("while (");
         n.getCondition().accept(this, arg);
         printer.print(") ");
         n.getBody().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ContinueStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("continue");
         if (n.getId() != null) {
             printer.print(" ");
             printer.print(n.getId());
         }
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(DoStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("do ");
         n.getBody().accept(this, arg);
         printer.print(" while (");
         n.getCondition().accept(this, arg);
         printer.print(");");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ForeachStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("for (");
         n.getVariable().accept(this, arg);
         printer.print(" : ");
         n.getIterable().accept(this, arg);
         printer.print(") ");
         n.getBody().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ForStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("for (");
         if (n.getInit() != null) {
             for (Iterator<Expression> i = n.getInit().iterator(); i.hasNext();) {
@@ -1212,22 +1348,28 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
         printer.print(") ");
         n.getBody().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(ThrowStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("throw ");
         n.getExpr().accept(this, arg);
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(SynchronizedStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("synchronized (");
         n.getExpr().accept(this, arg);
         printer.print(") ");
         n.getBlock().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(TryStmt n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("try ");
 
         if (n.getResources() != null && n.getResources().size() > 0) {
@@ -1252,17 +1394,20 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             printer.print(" finally ");
             n.getFinallyBlock().accept(this, arg);
         }
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(CatchClause n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(" catch (");
         n.getExcept().accept(this, arg);
         printer.print(") ");
         n.getCatchBlock().accept(this, arg);
-
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(AnnotationDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
@@ -1276,9 +1421,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
         printer.unindent();
         printer.print("}");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(AnnotationMemberDeclaration n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
@@ -1292,22 +1439,28 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             n.getDefaultValue().accept(this, arg);
         }
         printer.print(";");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(MarkerAnnotationExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("@");
         n.getName().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(SingleMemberAnnotationExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("@");
         n.getName().accept(this, arg);
         printer.print("(");
         n.getMemberValue().accept(this, arg);
         printer.print(")");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(NormalAnnotationExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print("@");
         n.getName().accept(this, arg);
         printer.print("(");
@@ -1321,12 +1474,15 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             }
         }
         printer.print(")");
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(MemberValuePair n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getName());
         printer.print(" = ");
         n.getValue().accept(this, arg);
+        printEndComments(n.getEndComments(), arg);
     }
 
     public void visit(LineComment n, Object arg) {
@@ -1338,6 +1494,49 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         printer.print("/*");
         printer.print(n.getContent());
         printer.printLn("*/");
+    }
+
+    @Override
+    public void visit(Comment n, Object arg) {
+        printer.print(n.getContent());
+    }
+
+    private void printBeginComments(List<Comment> beginComments, Object arg, boolean endWithNewLine) {
+        if (beginComments == null) {
+            return;
+        }
+
+        for (Comment comment : beginComments) {
+            comment.accept(this, arg);
+
+            // Line comments must end with a new line.
+            // Otherwise, code may not compile
+            if (comment instanceof LineComment) {
+                printer.printLn();
+            } else if (endWithNewLine) {
+                printer.printLn();
+            }
+        }
+    }
+
+    private void printBeginComments(List<Comment> beginComments, Object arg) {
+       printBeginComments(beginComments, arg, true);
+    }
+
+    private void printInternalComments(List<Comment> internalComments, Object arg) {
+        // For now, treat the same as beginning comments
+        printBeginComments(internalComments, arg);
+    }
+
+    private void printEndComments(List<Comment> endComments, Object arg) {
+        if (endComments == null) {
+            return;
+        }
+
+        for (Comment comment : endComments) {
+            printer.print(" ");
+            comment.accept(this, arg);
+        }
     }
 
 }

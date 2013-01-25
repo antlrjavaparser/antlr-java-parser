@@ -25,13 +25,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ArrayInitializerContextAdapter implements Adapter<ArrayInitializerExpr, Java7Parser.ArrayInitializerContext> {
-    public ArrayInitializerExpr adapt(Java7Parser.ArrayInitializerContext context) {
+    public ArrayInitializerExpr adapt(Java7Parser.ArrayInitializerContext context, AdapterParameters adapterParameters) {
 
         ArrayInitializerExpr arrayInitializerExpr = new ArrayInitializerExpr();
+        AdapterUtil.setComments(arrayInitializerExpr, context, adapterParameters);
 
         List<Expression> expressionList = new LinkedList<Expression>();
         for (Java7Parser.VariableInitializerContext variableInitializerContext : context.variableInitializer()) {
-            expressionList.add(Adapters.getVariableInitializerContextAdapter().adapt(variableInitializerContext));
+            expressionList.add(Adapters.getVariableInitializerContextAdapter().adapt(variableInitializerContext, adapterParameters));
         }
         arrayInitializerExpr.setValues(expressionList);
 

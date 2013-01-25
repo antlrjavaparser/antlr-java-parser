@@ -21,12 +21,12 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.body.TypeDeclaration;
 
 public class InterfaceDeclarationContextAdapter implements Adapter<TypeDeclaration, Java7Parser.InterfaceDeclarationContext> {
-    public TypeDeclaration adapt(Java7Parser.InterfaceDeclarationContext context) {
+    public TypeDeclaration adapt(Java7Parser.InterfaceDeclarationContext context, AdapterParameters adapterParameters) {
 
         if (context.annotationTypeDeclaration() != null) {
-            return Adapters.getAnnotationTypeDeclarationContextAdapter().adapt(context.annotationTypeDeclaration());
+            return Adapters.getAnnotationTypeDeclarationContextAdapter().adapt(context.annotationTypeDeclaration(), adapterParameters);
         } else if (context.normalInterfaceDeclaration() != null) {
-            return Adapters.getNormalInterfaceDeclarationContextAdapter().adapt(context.normalInterfaceDeclaration());
+            return Adapters.getNormalInterfaceDeclarationContextAdapter().adapt(context.normalInterfaceDeclaration(), adapterParameters);
         }
 
         return null;

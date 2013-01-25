@@ -18,12 +18,18 @@
 package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.ASTHelper;
+import com.github.antlrjavaparser.Java7Lexer;
 import com.github.antlrjavaparser.Java7Parser;
+import com.github.antlrjavaparser.api.BlockComment;
+import com.github.antlrjavaparser.api.Comment;
+import com.github.antlrjavaparser.api.LineComment;
+import com.github.antlrjavaparser.api.Node;
 import com.github.antlrjavaparser.api.body.AnnotationMemberDeclaration;
 import com.github.antlrjavaparser.api.body.BodyDeclaration;
 import com.github.antlrjavaparser.api.body.CatchParameter;
 import com.github.antlrjavaparser.api.body.ConstructorDeclaration;
 import com.github.antlrjavaparser.api.body.FieldDeclaration;
+import com.github.antlrjavaparser.api.body.JavadocComment;
 import com.github.antlrjavaparser.api.body.MethodDeclaration;
 import com.github.antlrjavaparser.api.body.ModifierSet;
 import com.github.antlrjavaparser.api.body.Parameter;
@@ -36,8 +42,12 @@ import com.github.antlrjavaparser.api.expr.NameExpr;
 import com.github.antlrjavaparser.api.type.ClassOrInterfaceType;
 import com.github.antlrjavaparser.api.type.ReferenceType;
 import com.github.antlrjavaparser.api.type.Type;
+import org.antlr.v4.runtime.BufferedTokenStream;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -67,8 +77,8 @@ public final class AdapterUtil {
         return ASTHelper.createNameExpr(qualifiedName);
     }
 
-    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, Resource resource) {
-        List<AnnotationExpr> annotations = getAnnotations(context);
+    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, Resource resource, AdapterParameters adapterParameters) {
+        List<AnnotationExpr> annotations = getAnnotations(context, adapterParameters);
 
         int modifiers = 0;
         if (hasModifier(context.FINAL())) {
@@ -79,8 +89,8 @@ public final class AdapterUtil {
         resource.setModifiers(modifiers);
     }
 
-    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, Parameter parameter) {
-        List<AnnotationExpr> annotations = getAnnotations(context);
+    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, Parameter parameter, AdapterParameters adapterParameters) {
+        List<AnnotationExpr> annotations = getAnnotations(context, adapterParameters);
 
         int modifiers = 0;
         if (hasModifier(context.FINAL())) {
@@ -91,14 +101,14 @@ public final class AdapterUtil {
         parameter.setModifiers(modifiers);
     }
 
-    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, CatchParameter parameter) {
+    public static void setVariableModifiers(Java7Parser.VariableModifiersContext context, CatchParameter parameter, AdapterParameters adapterParameters) {
         /*
         variableModifiers
         :   annotation* FINAL? annotation*
         ;
         */
         int modifiers = 0;
-        List<AnnotationExpr> annotations = getAnnotations(context);
+        List<AnnotationExpr> annotations = getAnnotations(context, adapterParameters);
 
         if (hasModifier(context.FINAL())) {
             modifiers |= ModifierSet.FINAL;
@@ -108,10 +118,10 @@ public final class AdapterUtil {
         parameter.setModifiers(modifiers);
     }
 
-    private static List<AnnotationExpr> getAnnotations(Java7Parser.VariableModifiersContext context) {
+    private static List<AnnotationExpr> getAnnotations(Java7Parser.VariableModifiersContext context, AdapterParameters adapterParameters) {
         List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
         for (Java7Parser.AnnotationContext annotationContext : context.annotation()) {
-            AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext);
+            AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(annotationContext, adapterParameters);
             annotations.add(annotationExpr);
         }
         return annotations;
@@ -133,13 +143,13 @@ public final class AdapterUtil {
         }
     }
 
-    public static void setModifiers(Java7Parser.ModifiersContext modifiersContext, BodyDeclaration typeDeclaration) {
+    public static void setModifiers(Java7Parser.ModifiersContext modifiersContext, BodyDeclaration typeDeclaration, AdapterParameters adapterParameters) {
         if (modifiersContext != null && modifiersContext.modifier() != null) {
-            setModifiers(modifiersContext.modifier(), typeDeclaration);
+            setModifiers(modifiersContext.modifier(), typeDeclaration, adapterParameters);
         }
     }
 
-    public static void setModifiers(List<Java7Parser.ModifierContext> modifierList, BodyDeclaration typeDeclaration) {
+    public static void setModifiers(List<Java7Parser.ModifierContext> modifierList, BodyDeclaration typeDeclaration, AdapterParameters adapterParameters) {
         int modifiers = 0;
         List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();
         for (Java7Parser.ModifierContext modifierContext : modifierList) {
@@ -172,7 +182,7 @@ public final class AdapterUtil {
             }
 
             if (modifierContext.annotation() != null) {
-                AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(modifierContext.annotation());
+                AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(modifierContext.annotation(), adapterParameters);
                 annotations.add(annotationExpr);
             }
         }
@@ -215,8 +225,9 @@ public final class AdapterUtil {
      * @param <C> Context Type
      * @return Expression
      */
-    public static <C> Expression handleExpression(Adapter<Expression, C> adapter, List<C> contextList, BinaryExpr.Operator operator) {
-        Expression expression = adapter.adapt(contextList.get(0));
+    public static <C> Expression handleExpression(Adapter<Expression, C> adapter, List<C> contextList, BinaryExpr.Operator operator, AdapterParameters adapterParameters) {
+        Expression expression = adapter.adapt(contextList.get(0), adapterParameters);
+        AdapterUtil.setComments(expression, (ParserRuleContext)contextList.get(0), adapterParameters);
 
         // This expression represents more than one consecutive OR expression
         if (contextList.size() > 1) {
@@ -227,7 +238,9 @@ public final class AdapterUtil {
             BinaryExpr currentExpression = root;
 
             for (int i = 1; i < contextList.size(); i++) {
-                currentExpression.setRight(adapter.adapt(contextList.get(i)));
+                Expression rightExpression = adapter.adapt(contextList.get(i), adapterParameters);
+                AdapterUtil.setComments(rightExpression, (ParserRuleContext)contextList.get(i), adapterParameters);
+                currentExpression.setRight(rightExpression);
 
                 // On the last one, do not create a tail.
                 if (i < contextList.size() - 1) {
@@ -248,5 +261,134 @@ public final class AdapterUtil {
         List<T> newElementList = new LinkedList<T>();
         newElementList.add(element);
         return newElementList;
+    }
+
+    /**
+     * If there are no statements within a block, we need a special method to grab any comments that
+     * might exist between braces.
+     *
+     * @param node
+     * @param parserRuleContext
+     * @param adapterParameters
+     */
+    public static void setInternalComments(Node node, ParserRuleContext parserRuleContext, AdapterParameters adapterParameters) {
+        BufferedTokenStream tokens = adapterParameters.getTokens();
+
+        if (node == null || parserRuleContext == null || tokens == null) {
+            throw new IllegalArgumentException("Parameters must not be null");
+        }
+
+        Token startToken = parserRuleContext.getStart();
+        Token stopToken = parserRuleContext.getStop();
+
+        List<Token> commentTokens;
+        List<Comment> internalCommentList = new LinkedList<Comment>();
+
+        // Checking to the right of the start token will check inside the statement
+        commentTokens = tokens.getHiddenTokensToRight(startToken.getTokenIndex(), Java7Lexer.COMMENTS);
+        if (commentTokens != null) {
+            for (Token commentToken : commentTokens) {
+
+                // Skip already claimed comments (prevents comment repeats)
+                if (adapterParameters.isCommentTokenClaimed(commentToken.getTokenIndex())) {
+                    continue;
+                } else {
+                    // Claim it
+                    adapterParameters.claimCommentToken(commentToken.getTokenIndex());
+                }
+
+                if (commentToken.getText().startsWith("/**")) {
+                    JavadocComment javadocComment = new JavadocComment(commentToken.getText());
+                    internalCommentList.add(javadocComment);
+                } else if (commentToken.getText().startsWith("/*")) {
+                    BlockComment blockComment = new BlockComment(commentToken.getText());
+                    internalCommentList.add(blockComment);
+                } else if (commentToken.getText().startsWith("//")) {
+                    LineComment lineComment = new LineComment(commentToken.getText());
+                    internalCommentList.add(lineComment);
+                }
+            }
+        }
+
+        if (internalCommentList.size() > 0) {
+            node.setInternalComments(internalCommentList);
+        }
+    }
+
+    public static void setComments(Node node, ParserRuleContext parserRuleContext, AdapterParameters adapterParameters) {
+        BufferedTokenStream tokens = adapterParameters.getTokens();
+
+        if (node == null || parserRuleContext == null || tokens == null) {
+            // Just return
+            return;
+        }
+
+        Token startToken = parserRuleContext.getStart();
+        Token stopToken = parserRuleContext.getStop();
+
+        List<Token> commentTokens;
+        List<Comment> beginCommentList = new LinkedList<Comment>();
+        List<Comment> endCommentList = new LinkedList<Comment>();
+
+        commentTokens = tokens.getHiddenTokensToLeft(startToken.getTokenIndex(), Java7Lexer.COMMENTS);
+        if (commentTokens != null) {
+            for (Token commentToken : commentTokens) {
+
+                // Skip already claimed comments (prevents comment repeats)
+                if (adapterParameters.isCommentTokenClaimed(commentToken.getTokenIndex())) {
+                    continue;
+                } else {
+                    // Claim it
+                    adapterParameters.claimCommentToken(commentToken.getTokenIndex());
+                }
+
+                if (commentToken.getText().startsWith("/**")) {
+                    JavadocComment javadocComment = new JavadocComment(commentToken.getText());
+                    beginCommentList.add(javadocComment);
+                } else if (commentToken.getText().startsWith("/*")) {
+                    BlockComment blockComment = new BlockComment(commentToken.getText());
+                    beginCommentList.add(blockComment);
+                } else if (commentToken.getText().startsWith("//")) {
+                    LineComment lineComment = new LineComment(commentToken.getText());
+                    beginCommentList.add(lineComment);
+                }
+            }
+        }
+
+        commentTokens = tokens.getHiddenTokensToRight(stopToken.getTokenIndex(), Java7Lexer.COMMENTS);
+        if (commentTokens != null) {
+            for (Token commentToken : commentTokens) {
+
+                if (commentToken.getLine() == stopToken.getLine()) {
+
+                    // Skip already claimed comments (prevents comment repeats)
+                    if (adapterParameters.isCommentTokenClaimed(commentToken.getTokenIndex())) {
+                        continue;
+                    } else {
+                        // Claim it
+                        adapterParameters.claimCommentToken(commentToken.getTokenIndex());
+                    }
+
+                    if (commentToken.getText().startsWith("/**")) {
+                        JavadocComment javadocComment = new JavadocComment(commentToken.getText());
+                        endCommentList.add(javadocComment);
+                    } else if (commentToken.getText().startsWith("/*")) {
+                        BlockComment blockComment = new BlockComment(commentToken.getText());
+                        endCommentList.add(blockComment);
+                    } else if (commentToken.getText().startsWith("//")) {
+                        LineComment lineComment = new LineComment(commentToken.getText());
+                        endCommentList.add(lineComment);
+                    }
+                }
+            }
+        }
+
+        if (beginCommentList.size() > 0) {
+            node.setBeginComments(beginCommentList);
+        }
+
+        if (endCommentList.size() > 0) {
+            node.setEndComments(endCommentList);
+        }
     }
 }

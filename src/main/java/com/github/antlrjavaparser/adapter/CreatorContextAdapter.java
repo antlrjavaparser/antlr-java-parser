@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.expr.Expression;
 import com.github.antlrjavaparser.api.expr.ObjectCreationExpr;
 
 public class CreatorContextAdapter implements Adapter<Expression, Java7Parser.CreatorContext> {
-    public Expression adapt(Java7Parser.CreatorContext context) {
+    public Expression adapt(Java7Parser.CreatorContext context, AdapterParameters adapterParameters) {
 
         /*
             creator
@@ -45,27 +45,29 @@ public class CreatorContextAdapter implements Adapter<Expression, Java7Parser.Cr
 
         if (context.nonWildcardTypeArguments() != null) {
             ObjectCreationExpr objectCreationExpr = new ObjectCreationExpr();
-            objectCreationExpr.setTypeArgs(Adapters.getTypeListContextAdapter().adapt(context.nonWildcardTypeArguments().typeList()));
-            objectCreationExpr.setType(Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType()));
-            objectCreationExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.classCreatorRest().arguments()));
+            AdapterUtil.setComments(objectCreationExpr, context, adapterParameters);
+            objectCreationExpr.setTypeArgs(Adapters.getTypeListContextAdapter().adapt(context.nonWildcardTypeArguments().typeList(), adapterParameters));
+            objectCreationExpr.setType(Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType(), adapterParameters));
+            objectCreationExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.classCreatorRest().arguments(), adapterParameters));
 
             if (context.classCreatorRest().classBody() != null) {
-                objectCreationExpr.setAnonymousClassBody(Adapters.getClassBodyContextAdapter().adapt(context.classCreatorRest().classBody()));
+                objectCreationExpr.setAnonymousClassBody(Adapters.getClassBodyContextAdapter().adapt(context.classCreatorRest().classBody(), adapterParameters));
             }
 
             return objectCreationExpr;
         } else if (context.classOrInterfaceType() != null) {
             ObjectCreationExpr objectCreationExpr = new ObjectCreationExpr();
-            objectCreationExpr.setType(Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType()));
-            objectCreationExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.classCreatorRest().arguments()));
+            AdapterUtil.setComments(objectCreationExpr, context, adapterParameters);
+            objectCreationExpr.setType(Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType(), adapterParameters));
+            objectCreationExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.classCreatorRest().arguments(), adapterParameters));
 
             if (context.classCreatorRest().classBody() != null) {
-                objectCreationExpr.setAnonymousClassBody(Adapters.getClassBodyContextAdapter().adapt(context.classCreatorRest().classBody()));
+                objectCreationExpr.setAnonymousClassBody(Adapters.getClassBodyContextAdapter().adapt(context.classCreatorRest().classBody(), adapterParameters));
             }
 
             return objectCreationExpr;
         } else if (context.arrayCreator() != null) {
-            return Adapters.getArrayCreatorContextAdapter().adapt(context.arrayCreator());
+            return Adapters.getArrayCreatorContextAdapter().adapt(context.arrayCreator(), adapterParameters);
         }
 
         throw new RuntimeException("Unknown creator type");

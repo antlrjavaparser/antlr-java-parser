@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class CatchFormalParameterContextAdapter implements Adapter<Node, Java7Parser.CatchFormalParameterContext> {
-    public Node adapt(Java7Parser.CatchFormalParameterContext context) {
-        return null;
+    public Node adapt(Java7Parser.CatchFormalParameterContext context, AdapterParameters adapterParameters) {
+        throw new UnsupportedOperationException();
     }
 }

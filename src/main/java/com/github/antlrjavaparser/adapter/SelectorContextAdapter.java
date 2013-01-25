@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class SelectorContextAdapter implements Adapter<Node, Java7Parser.SelectorContext> {
-    public Node adapt(Java7Parser.SelectorContext context) {
-        return null;
+    public Node adapt(Java7Parser.SelectorContext context, AdapterParameters adapterParameters) {
+        throw new UnsupportedOperationException();
     }
 }

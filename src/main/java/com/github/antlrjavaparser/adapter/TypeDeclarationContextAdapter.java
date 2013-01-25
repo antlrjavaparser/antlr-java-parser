@@ -22,13 +22,15 @@ import com.github.antlrjavaparser.api.body.EmptyTypeDeclaration;
 import com.github.antlrjavaparser.api.body.TypeDeclaration;
 
 public class TypeDeclarationContextAdapter implements Adapter<TypeDeclaration, Java7Parser.TypeDeclarationContext> {
-    public TypeDeclaration adapt(Java7Parser.TypeDeclarationContext context) {
+    public TypeDeclaration adapt(Java7Parser.TypeDeclarationContext context, AdapterParameters adapterParameters) {
 
         // Determine which Type we're dealing with
         if (context.classOrInterfaceDeclaration() != null) {
-            return Adapters.getClassOrInterfaceDeclarationContextAdapter().adapt(context.classOrInterfaceDeclaration());
+            return Adapters.getClassOrInterfaceDeclarationContextAdapter().adapt(context.classOrInterfaceDeclaration(), adapterParameters);
         } else if (context.SEMI() != null) {
-            return new EmptyTypeDeclaration();
+            TypeDeclaration typeDeclaration = new EmptyTypeDeclaration();
+            AdapterUtil.setComments(typeDeclaration, context, adapterParameters);
+            return typeDeclaration;
         }
 
         return null;

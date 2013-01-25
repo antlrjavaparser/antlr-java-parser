@@ -26,15 +26,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CompilationUnitContextAdapter implements Adapter<CompilationUnit, Java7Parser.CompilationUnitContext> {
-    public CompilationUnit adapt(Java7Parser.CompilationUnitContext context) {
+    public CompilationUnit adapt(Java7Parser.CompilationUnitContext context, AdapterParameters adapterParameters) {
         CompilationUnit compilationUnit = new CompilationUnit();
 
-        compilationUnit.setPackage(Adapters.getPackageDeclarationContextAdapter().adapt(context.packageDeclaration()));
+        compilationUnit.setPackage(Adapters.getPackageDeclarationContextAdapter().adapt(context.packageDeclaration(), adapterParameters));
 
         List<ImportDeclaration> importDeclarationList = new LinkedList<ImportDeclaration>();
 
         for (Java7Parser.ImportDeclarationContext importDeclarationContext : context.importDeclaration()) {
-            importDeclarationList.add(Adapters.getImportDeclarationContextAdapter().adapt(importDeclarationContext));
+            importDeclarationList.add(Adapters.getImportDeclarationContextAdapter().adapt(importDeclarationContext, adapterParameters));
         }
 
         compilationUnit.setImports(importDeclarationList);
@@ -42,7 +42,7 @@ public class CompilationUnitContextAdapter implements Adapter<CompilationUnit, J
 
         List<TypeDeclaration> typeDeclarationList = new LinkedList<TypeDeclaration>();
         for (Java7Parser.TypeDeclarationContext typeDeclarationContext : context.typeDeclaration()) {
-            typeDeclarationList.add(Adapters.getTypeDeclarationContextAdapter().adapt(typeDeclarationContext));
+            typeDeclarationList.add(Adapters.getTypeDeclarationContextAdapter().adapt(typeDeclarationContext, adapterParameters));
         }
 
         compilationUnit.setTypes(typeDeclarationList);

@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.body.Resource;
 import com.github.antlrjavaparser.api.body.VariableDeclaratorId;
 
 public class ResourceContextAdapter implements Adapter<Resource, Java7Parser.ResourceContext> {
-    public Resource adapt(Java7Parser.ResourceContext context) {
+    public Resource adapt(Java7Parser.ResourceContext context, AdapterParameters adapterParameters) {
         /*
             resource
             :    variableModifiers? type Identifier EQ expression                       // {VariableModifier} ReferenceType VariableDeclaratorId = Expression
@@ -30,18 +30,19 @@ public class ResourceContextAdapter implements Adapter<Resource, Java7Parser.Res
         */
 
         Resource resource = new Resource();
+        AdapterUtil.setComments(resource, context, adapterParameters);
 
         if (context.variableModifiers() != null) {
-            AdapterUtil.setVariableModifiers(context.variableModifiers(), resource);
+            AdapterUtil.setVariableModifiers(context.variableModifiers(), resource, adapterParameters);
         }
 
-        resource.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
+        resource.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
 
         VariableDeclaratorId variableDeclaratorId = new VariableDeclaratorId();
         variableDeclaratorId.setName(context.Identifier().getText());
         resource.setId(variableDeclaratorId);
 
-        resource.setExpression(Adapters.getExpressionContextAdapter().adapt(context.expression()));
+        resource.setExpression(Adapters.getExpressionContextAdapter().adapt(context.expression(), adapterParameters));
 
         return resource;
     }

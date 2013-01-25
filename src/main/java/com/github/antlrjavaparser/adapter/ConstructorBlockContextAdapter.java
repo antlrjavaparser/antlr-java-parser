@@ -33,7 +33,7 @@ import java.util.List;
  */
 public class ConstructorBlockContextAdapter implements Adapter<BlockStmt, Java7Parser.ConstructorBlockContext> {
     @Override
-    public BlockStmt adapt(Java7Parser.ConstructorBlockContext context) {
+    public BlockStmt adapt(Java7Parser.ConstructorBlockContext context, AdapterParameters adapterParameters) {
 
         /*
         constructorBlock
@@ -43,16 +43,17 @@ public class ConstructorBlockContextAdapter implements Adapter<BlockStmt, Java7P
 
 
         BlockStmt blockStmt = new BlockStmt();
+        AdapterUtil.setComments(blockStmt, context, adapterParameters);
 
         List<Statement> statementList = new LinkedList<Statement>();
 
         if (context.explicitConstructorInvocation() != null) {
-            statementList.add(Adapters.getExplicitConstructorInvocationContextAdapter().adapt(context.explicitConstructorInvocation()));
+            statementList.add(Adapters.getExplicitConstructorInvocationContextAdapter().adapt(context.explicitConstructorInvocation(), adapterParameters));
         }
 
         if (context.blockStatement() != null && context.blockStatement().size() > 0) {
             for (Java7Parser.BlockStatementContext blockStatementContext : context.blockStatement()) {
-                statementList.add(Adapters.getBlockStatementContextAdapter().adapt(blockStatementContext));
+                statementList.add(Adapters.getBlockStatementContextAdapter().adapt(blockStatementContext, adapterParameters));
             }
         }
 

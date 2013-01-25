@@ -295,7 +295,7 @@
 parser grammar Java7Parser;
 
 @parser::header {
-package net.java.antlrjavaparser;
+package com.github.antlrjavaparser;
 }
 
 options {

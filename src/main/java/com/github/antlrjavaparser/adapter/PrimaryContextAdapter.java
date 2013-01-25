@@ -34,7 +34,7 @@ import com.github.antlrjavaparser.api.type.VoidType;
 import java.util.List;
 
 public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.PrimaryContext> {
-    public Expression adapt(Java7Parser.PrimaryContext context) {
+    public Expression adapt(Java7Parser.PrimaryContext context, AdapterParameters adapterParameters) {
 
         /*
             primary
@@ -77,20 +77,22 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
          */
 
         if (context.parExpression() != null) {
-            return Adapters.getParExpressionContextAdapter().adapt(context.parExpression());
+            return Adapters.getParExpressionContextAdapter().adapt(context.parExpression(), adapterParameters);
         } else if (context.operationType == 2) {
-            return handleThisSuffix(context);
+            return handleThisSuffix(context, adapterParameters);
         } else if(context.operationType == 3) {
-            return handleIdentifierSuffix(context);
+            return handleIdentifierSuffix(context, adapterParameters);
         } else if (context.SUPER() != null) {
-            return Adapters.getSuperSuffixContextAdapter().adapt(context.superSuffix());
+            return Adapters.getSuperSuffixContextAdapter().adapt(context.superSuffix(), adapterParameters);
         } else if (context.literal() != null) {
-            return Adapters.getLiteralContextAdapter().adapt(context.literal());
+            return Adapters.getLiteralContextAdapter().adapt(context.literal(), adapterParameters);
         } else if (context.creator() != null) {
-            return Adapters.getCreatorContextAdapter().adapt(context.creator());
+            return Adapters.getCreatorContextAdapter().adapt(context.creator(), adapterParameters);
         } else if (context.primitiveType() != null) {
             ClassExpr classExpr = new ClassExpr();
-            Type type = Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType());
+            AdapterUtil.setComments(classExpr, context, adapterParameters);
+
+            Type type = Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType(), adapterParameters);
 
             if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
                 ReferenceType referenceType = new ReferenceType();
@@ -104,6 +106,8 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
             return classExpr;
         } else if (context.VOID() != null) {
             ClassExpr classExpr = new ClassExpr();
+            AdapterUtil.setComments(classExpr, context, adapterParameters);
+
             classExpr.setType(new VoidType());
             return classExpr;
         }
@@ -113,7 +117,7 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
 
     // THIS (DOT Identifier)* (identifierSuffix)?         {$operationType = 2;}
     // Identifier (DOT Identifier)* (identifierSuffix)?   {$operationType = 3;}
-    private Expression handleIdentifierSuffix(Java7Parser.PrimaryContext primaryContext) {
+    private Expression handleIdentifierSuffix(Java7Parser.PrimaryContext primaryContext, AdapterParameters adapterParameters) {
         /*
             identifierSuffix
             locals [int operationType]
@@ -193,7 +197,7 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
                 for (int i = 0; i < primaryContext.identifierSuffix().LBRACKET().size(); i++) {
                     ArrayAccessExpr arrayAccessExpr = new ArrayAccessExpr();
                     arrayAccessExpr.setName(leftExpression);
-                    arrayAccessExpr.setIndex(Adapters.getExpressionContextAdapter().adapt(primaryContext.identifierSuffix().expression(i)));
+                    arrayAccessExpr.setIndex(Adapters.getExpressionContextAdapter().adapt(primaryContext.identifierSuffix().expression(i), adapterParameters));
                     leftExpression = arrayAccessExpr;
                 }
 
@@ -211,18 +215,18 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
                     methodCallExpr.setScope(leftExpression);
                 }
 
-                methodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(primaryContext.identifierSuffix().arguments()));
+                methodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(primaryContext.identifierSuffix().arguments(), adapterParameters));
                 leftExpression = methodCallExpr;
 
                 return leftExpression;
             case 5:
-                List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(primaryContext.identifierSuffix().nonWildcardTypeArguments().typeList());
+                List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(primaryContext.identifierSuffix().nonWildcardTypeArguments().typeList(), adapterParameters);
 
                 MethodCallExpr typeArgMethodCallExpr = new MethodCallExpr();
                 typeArgMethodCallExpr.setName(primaryContext.identifierSuffix().Identifier().getText());
                 typeArgMethodCallExpr.setTypeArgs(typeList);
                 typeArgMethodCallExpr.setScope(leftExpression);
-                typeArgMethodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(primaryContext.identifierSuffix().arguments()));
+                typeArgMethodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(primaryContext.identifierSuffix().arguments(), adapterParameters));
                 leftExpression = typeArgMethodCallExpr;
 
                 return leftExpression;
@@ -231,7 +235,7 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
                 thisExpr.setClassExpr(leftExpression);
                 return thisExpr;
             case 7:
-                ObjectCreationExpr objectCreationExpr = Adapters.getInnerCreatorContextAdapter().adapt(primaryContext.identifierSuffix().innerCreator());
+                ObjectCreationExpr objectCreationExpr = Adapters.getInnerCreatorContextAdapter().adapt(primaryContext.identifierSuffix().innerCreator(), adapterParameters);
                 objectCreationExpr.setScope(leftExpression);
                 return objectCreationExpr;
         }
@@ -240,7 +244,7 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
     }
 
     // THIS (DOT Identifier)* (thisSuffix)?               {$operationType = 2;}
-    private Expression handleThisSuffix(Java7Parser.PrimaryContext primaryContext) {
+    private Expression handleThisSuffix(Java7Parser.PrimaryContext primaryContext, AdapterParameters adapterParameters) {
         /*
             thisSuffix
             locals [int operationType]
@@ -287,7 +291,7 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
                 for (int i = 0; i < primaryContext.thisSuffix().LBRACKET().size(); i++) {
                     ArrayAccessExpr arrayAccessExpr = new ArrayAccessExpr();
                     arrayAccessExpr.setName(leftExpression);
-                    arrayAccessExpr.setIndex(Adapters.getExpressionContextAdapter().adapt(primaryContext.thisSuffix().expression(i)));
+                    arrayAccessExpr.setIndex(Adapters.getExpressionContextAdapter().adapt(primaryContext.thisSuffix().expression(i), adapterParameters));
                     leftExpression = arrayAccessExpr;
                 }
 
@@ -307,23 +311,23 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
                     throw new RuntimeException("Syntax Error: possibly calling 'this' as a method with arguments.  Something like 'this(\"\")'");
                 }
 
-                methodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(primaryContext.thisSuffix().arguments()));
+                methodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(primaryContext.thisSuffix().arguments(), adapterParameters));
                 leftExpression = methodCallExpr;
 
                 return leftExpression;
             case 3:
-                List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(primaryContext.thisSuffix().nonWildcardTypeArguments().typeList());
+                List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(primaryContext.thisSuffix().nonWildcardTypeArguments().typeList(), adapterParameters);
 
                 MethodCallExpr typeArgMethodCallExpr = new MethodCallExpr();
                 typeArgMethodCallExpr.setName(primaryContext.thisSuffix().Identifier().getText());
                 typeArgMethodCallExpr.setTypeArgs(typeList);
                 typeArgMethodCallExpr.setScope(leftExpression);
-                typeArgMethodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(primaryContext.thisSuffix().arguments()));
+                typeArgMethodCallExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(primaryContext.thisSuffix().arguments(), adapterParameters));
                 leftExpression = typeArgMethodCallExpr;
 
                 return leftExpression;
             case 4:
-                ObjectCreationExpr objectCreationExpr = Adapters.getInnerCreatorContextAdapter().adapt(primaryContext.thisSuffix().innerCreator());
+                ObjectCreationExpr objectCreationExpr = Adapters.getInnerCreatorContextAdapter().adapt(primaryContext.thisSuffix().innerCreator(), adapterParameters);
                 objectCreationExpr.setScope(leftExpression);
                 return objectCreationExpr;
         }

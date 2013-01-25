@@ -21,14 +21,14 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.expr.Expression;
 
 public class ElementValueContextAdapter implements Adapter<Expression, Java7Parser.ElementValueContext> {
-    public Expression adapt(Java7Parser.ElementValueContext context) {
+    public Expression adapt(Java7Parser.ElementValueContext context, AdapterParameters adapterParameters) {
 
         if (context.conditionalExpression() != null) {
-            return Adapters.getConditionalExpressionContextAdapter().adapt(context.conditionalExpression());
+            return Adapters.getConditionalExpressionContextAdapter().adapt(context.conditionalExpression(), adapterParameters);
         } else if (context.annotation() != null) {
-            return Adapters.getAnnotationContextAdapter().adapt(context.annotation());
+            return Adapters.getAnnotationContextAdapter().adapt(context.annotation(), adapterParameters);
         } else if (context.elementValueArrayInitializer() != null) {
-            return Adapters.getElementValueArrayInitializerContextAdapter().adapt(context.elementValueArrayInitializer());
+            return Adapters.getElementValueArrayInitializerContextAdapter().adapt(context.elementValueArrayInitializer(), adapterParameters);
         }
 
         throw new RuntimeException("Unknown Element Value type");

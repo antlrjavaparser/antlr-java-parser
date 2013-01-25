@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class NonWildcardTypeArgumentsContextAdapter implements Adapter<Node, Java7Parser.NonWildcardTypeArgumentsContext> {
-    public Node adapt(Java7Parser.NonWildcardTypeArgumentsContext context) {
-        return null;
+    public Node adapt(Java7Parser.NonWildcardTypeArgumentsContext context, AdapterParameters adapterParameters) {
+        throw new UnsupportedOperationException();
     }
 }

@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class ShiftOpContextAdapter implements Adapter<Node, Java7Parser.ShiftOpContext> {
-    public Node adapt(Java7Parser.ShiftOpContext context) {
-        return null;
+    public Node adapt(Java7Parser.ShiftOpContext context, AdapterParameters adapterParameters) {
+        throw new UnsupportedOperationException();
     }
 }

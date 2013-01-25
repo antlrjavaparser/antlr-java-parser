@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.body.BodyDeclaration;
 
 public class AnnotationTypeElementDeclarationContextAdapter implements Adapter<BodyDeclaration, Java7Parser.AnnotationTypeElementDeclarationContext> {
-    public BodyDeclaration adapt(Java7Parser.AnnotationTypeElementDeclarationContext context) {
+    public BodyDeclaration adapt(Java7Parser.AnnotationTypeElementDeclarationContext context, AdapterParameters adapterParameters) {
 
         /*
         annotationTypeElementDeclaration
@@ -36,17 +36,17 @@ public class AnnotationTypeElementDeclarationContextAdapter implements Adapter<B
          */
 
         if (context.annotationMethodDeclaration() != null) {
-            return Adapters.getAnnotationMethodDeclarationContextAdapter().adapt(context.annotationMethodDeclaration());
+            return Adapters.getAnnotationMethodDeclarationContextAdapter().adapt(context.annotationMethodDeclaration(), adapterParameters);
         } else if (context.interfaceFieldDeclaration() != null) {
-            return Adapters.getInterfaceFieldDeclarationContextAdapter().adapt(context.interfaceFieldDeclaration());
+            return Adapters.getInterfaceFieldDeclarationContextAdapter().adapt(context.interfaceFieldDeclaration(), adapterParameters);
         } else if (context.normalClassDeclaration() != null) {
-            return Adapters.getNormalClassDeclarationContextAdapter().adapt(context.normalClassDeclaration());
+            return Adapters.getNormalClassDeclarationContextAdapter().adapt(context.normalClassDeclaration(), adapterParameters);
         } else if (context.normalInterfaceDeclaration() != null) {
-            return Adapters.getNormalInterfaceDeclarationContextAdapter().adapt(context.normalInterfaceDeclaration());
+            return Adapters.getNormalInterfaceDeclarationContextAdapter().adapt(context.normalInterfaceDeclaration(), adapterParameters);
         } else if (context.enumDeclaration() != null) {
-            return Adapters.getEnumDeclarationContextAdapter().adapt(context.enumDeclaration());
+            return Adapters.getEnumDeclarationContextAdapter().adapt(context.enumDeclaration(), adapterParameters);
         } else if (context.annotationTypeDeclaration() != null) {
-            return Adapters.getAnnotationTypeDeclarationContextAdapter().adapt(context.annotationTypeDeclaration());
+            return Adapters.getAnnotationTypeDeclarationContextAdapter().adapt(context.annotationTypeDeclaration(), adapterParameters);
         }
 
         throw new UnsupportedOperationException("Unknown annotationTypeElementDeclaration");

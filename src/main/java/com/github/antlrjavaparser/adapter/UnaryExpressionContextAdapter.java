@@ -22,12 +22,13 @@ import com.github.antlrjavaparser.api.expr.Expression;
 import com.github.antlrjavaparser.api.expr.UnaryExpr;
 
 public class UnaryExpressionContextAdapter implements Adapter<Expression, Java7Parser.UnaryExpressionContext> {
-    public Expression adapt(Java7Parser.UnaryExpressionContext context) {
+    public Expression adapt(Java7Parser.UnaryExpressionContext context, AdapterParameters adapterParameters) {
 
         if (context.unaryExpressionNotPlusMinus() != null) {
-            return Adapters.getUnaryExpressionNotPlusMinusContextAdapter().adapt(context.unaryExpressionNotPlusMinus());
+            return Adapters.getUnaryExpressionNotPlusMinusContextAdapter().adapt(context.unaryExpressionNotPlusMinus(), adapterParameters);
         } else {
             UnaryExpr unaryExpr = new UnaryExpr();
+            AdapterUtil.setComments(unaryExpr, context, adapterParameters);
 
             UnaryExpr.Operator operator = null;
 
@@ -46,7 +47,7 @@ public class UnaryExpressionContextAdapter implements Adapter<Expression, Java7P
             }
 
             unaryExpr.setOperator(operator);
-            unaryExpr.setExpr(Adapters.getUnaryExpressionContextAdapter().adapt(context.unaryExpression()));
+            unaryExpr.setExpr(Adapters.getUnaryExpressionContextAdapter().adapt(context.unaryExpression(), adapterParameters));
 
             return unaryExpr;
         }

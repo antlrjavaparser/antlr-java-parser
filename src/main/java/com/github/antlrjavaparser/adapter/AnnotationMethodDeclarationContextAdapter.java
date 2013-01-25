@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.body.AnnotationMemberDeclaration;
 import com.github.antlrjavaparser.api.body.BodyDeclaration;
 
 public class AnnotationMethodDeclarationContextAdapter implements Adapter<BodyDeclaration, Java7Parser.AnnotationMethodDeclarationContext> {
-    public BodyDeclaration adapt(Java7Parser.AnnotationMethodDeclarationContext context) {
+    public BodyDeclaration adapt(Java7Parser.AnnotationMethodDeclarationContext context, AdapterParameters adapterParameters) {
         /*
             annotationMethodDeclaration
                 :    modifiers type Identifier LPAREN RPAREN (DEFAULT elementValue)? SEMI
@@ -30,13 +30,14 @@ public class AnnotationMethodDeclarationContextAdapter implements Adapter<BodyDe
          */
 
         AnnotationMemberDeclaration annotationMemberDeclaration = new AnnotationMemberDeclaration();
+        AdapterUtil.setComments(annotationMemberDeclaration, context, adapterParameters);
 
-        AdapterUtil.setModifiers(context.modifiers(), annotationMemberDeclaration);
-        annotationMemberDeclaration.setType(Adapters.getTypeContextAdapter().adapt(context.type()));
+        AdapterUtil.setModifiers(context.modifiers(), annotationMemberDeclaration, adapterParameters);
+        annotationMemberDeclaration.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
         annotationMemberDeclaration.setName(context.Identifier().getText());
 
         if (context.elementValue() != null) {
-            annotationMemberDeclaration.setDefaultValue(Adapters.getElementValueContextAdapter().adapt(context.elementValue()));
+            annotationMemberDeclaration.setDefaultValue(Adapters.getElementValueContextAdapter().adapt(context.elementValue(), adapterParameters));
         }
 
         return annotationMemberDeclaration;

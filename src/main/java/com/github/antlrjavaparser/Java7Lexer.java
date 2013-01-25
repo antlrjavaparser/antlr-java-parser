@@ -1,32 +1,15 @@
-/*
- * This file is part of antlr-java-parser.
- *
- *     antlr-java-parser is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     antlr-java-parser is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with antlr-java-parser.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 // $ANTLR ANTLRVersion> Java7Lexer.java generatedTimestamp>
 
 package com.github.antlrjavaparser;
 
-import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Lexer;
-import org.antlr.v4.runtime.RuleContext;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNSimulator;
-import org.antlr.v4.runtime.atn.LexerATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.TokenStream;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class Java7Lexer extends Lexer {
@@ -101,6 +84,10 @@ public class Java7Lexer extends Lexer {
 	};
 
 
+	public static final int WHITESPACE = 1;
+	public static final int COMMENTS = 2;
+
+
 	public Java7Lexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
@@ -135,22 +122,22 @@ public class Java7Lexer extends Lexer {
 	}
 	private void WhiteSpace_action(RuleContext _localctx, int actionIndex) {
 		switch (actionIndex) {
-		case 0: _channel = HIDDEN;  break;
+		case 0: _channel = WHITESPACE;  break;
 		}
 	}
 	private void SlashComment_action(RuleContext _localctx, int actionIndex) {
 		switch (actionIndex) {
-		case 2: _channel = HIDDEN;  break;
+		case 2: _channel = COMMENTS;  break;
 		}
 	}
 	private void LineTerminator_action(RuleContext _localctx, int actionIndex) {
 		switch (actionIndex) {
-		case 1: _channel = HIDDEN;  break;
+		case 1: _channel = WHITESPACE;  break;
 		}
 	}
 	private void EndOfLineComment_action(RuleContext _localctx, int actionIndex) {
 		switch (actionIndex) {
-		case 3: _channel = HIDDEN;  break;
+		case 3: _channel = COMMENTS;  break;
 		}
 	}
 

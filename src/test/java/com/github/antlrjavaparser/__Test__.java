@@ -43,7 +43,7 @@ public class __Test__ {
         ParseTreeWalker walker = new ParseTreeWalker();
 
         // Fills out the compilationUnit object
-        CompilationUnitListener listener = new CompilationUnitListener();
+        CompilationUnitListener listener = new CompilationUnitListener(tokens);
         walker.walk(listener, tree);
         compilationUnit = listener.getCompilationUnit();
 
@@ -53,7 +53,7 @@ public class __Test__ {
 
         System.out.println((end - start) + "ms");
 
-        //System.out.println(compilationUnit.toString());
+        System.out.println(compilationUnit.toString());
     }
 
     private void printTokens(Java7Lexer lex) {

@@ -22,11 +22,11 @@ import com.github.antlrjavaparser.api.expr.AssignExpr;
 import com.github.antlrjavaparser.api.expr.Expression;
 
 public class ExpressionContextAdapter implements Adapter<Expression, Java7Parser.ExpressionContext> {
-    public Expression adapt(Java7Parser.ExpressionContext context) {
+    public Expression adapt(Java7Parser.ExpressionContext context, AdapterParameters adapterParameters) {
 
         Expression expression = null;
         if (context.conditionalExpression() != null) {
-            expression = Adapters.getConditionalExpressionContextAdapter().adapt(context.conditionalExpression());
+            expression = Adapters.getConditionalExpressionContextAdapter().adapt(context.conditionalExpression(), adapterParameters);
         }
 
         if (context.assignmentOperator() != null) {
@@ -88,7 +88,7 @@ public class ExpressionContextAdapter implements Adapter<Expression, Java7Parser
                     break;
             }
             assignExpr.setOperator(operator);
-            assignExpr.setValue(Adapters.getExpressionContextAdapter().adapt(context.expression()));
+            assignExpr.setValue(Adapters.getExpressionContextAdapter().adapt(context.expression(), adapterParameters));
             assignExpr.setTarget(expression);
 
             return assignExpr;

@@ -22,7 +22,7 @@ import com.github.antlrjavaparser.api.stmt.Statement;
 import com.github.antlrjavaparser.api.stmt.TryStmt;
 
 public class TryWithResourcesContextAdapter implements Adapter<Statement, Java7Parser.TryWithResourcesContext> {
-    public Statement adapt(Java7Parser.TryWithResourcesContext context) {
+    public Statement adapt(Java7Parser.TryWithResourcesContext context, AdapterParameters adapterParameters) {
 
         /*
         tryWithResources
@@ -44,19 +44,20 @@ public class TryWithResourcesContextAdapter implements Adapter<Statement, Java7P
          */
 
         TryStmt tryStmt = new TryStmt();
-        tryStmt.setTryBlock(Adapters.getBlockContextAdapter().adapt(context.block(0)));
+        AdapterUtil.setComments(tryStmt, context, adapterParameters);
+        tryStmt.setTryBlock(Adapters.getBlockContextAdapter().adapt(context.block(0), adapterParameters));
 
         // Set resources
         if (context.resourceSpecification() != null) {
-            tryStmt.setResources(Adapters.getResourcesContextAdapter().adapt(context.resourceSpecification().resources()));
+            tryStmt.setResources(Adapters.getResourcesContextAdapter().adapt(context.resourceSpecification().resources(), adapterParameters));
         }
 
         if (context.catches() != null) {
-            tryStmt.setCatchs(Adapters.getCatchesContextAdapter().adapt(context.catches()));
+            tryStmt.setCatchs(Adapters.getCatchesContextAdapter().adapt(context.catches(), adapterParameters));
         }
 
         if (context.FINALLY() != null) {
-            tryStmt.setFinallyBlock(Adapters.getBlockContextAdapter().adapt(context.block(1)));
+            tryStmt.setFinallyBlock(Adapters.getBlockContextAdapter().adapt(context.block(1), adapterParameters));
         }
 
         return tryStmt;

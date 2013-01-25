@@ -24,7 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class EnumBodyDeclarationsContextAdapter implements Adapter<List<BodyDeclaration>, Java7Parser.EnumBodyDeclarationsContext> {
-    public List<BodyDeclaration> adapt(Java7Parser.EnumBodyDeclarationsContext context) {
+    public List<BodyDeclaration> adapt(Java7Parser.EnumBodyDeclarationsContext context, AdapterParameters adapterParameters) {
 
 /*
         enumBodyDeclarations
@@ -40,7 +40,7 @@ public class EnumBodyDeclarationsContextAdapter implements Adapter<List<BodyDecl
 
         List<BodyDeclaration> bodyDeclarationList = new LinkedList<BodyDeclaration>();
         for (Java7Parser.ClassBodyDeclarationContext classBodyDeclarationContext : context.classBodyDeclaration()) {
-            bodyDeclarationList.add(Adapters.getClassBodyDeclarationContextAdapter().adapt(classBodyDeclarationContext));
+            bodyDeclarationList.add(Adapters.getClassBodyDeclarationContextAdapter().adapt(classBodyDeclarationContext, adapterParameters));
         }
 
         return bodyDeclarationList;

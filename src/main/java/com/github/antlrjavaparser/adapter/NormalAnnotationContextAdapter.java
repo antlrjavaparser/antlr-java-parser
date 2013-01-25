@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.expr.NormalAnnotationExpr;
 
 public class NormalAnnotationContextAdapter implements Adapter<NormalAnnotationExpr, Java7Parser.NormalAnnotationContext> {
-    public NormalAnnotationExpr adapt(Java7Parser.NormalAnnotationContext context) {
+    public NormalAnnotationExpr adapt(Java7Parser.NormalAnnotationContext context, AdapterParameters adapterParameters) {
         /*
         normalAnnotation
             :    AT qualifiedName LPAREN elementValuePairs? RPAREN
@@ -29,10 +29,11 @@ public class NormalAnnotationContextAdapter implements Adapter<NormalAnnotationE
          */
 
         NormalAnnotationExpr normalAnnotationExpr = new NormalAnnotationExpr();
-        normalAnnotationExpr.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName()));
+        normalAnnotationExpr.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName(), adapterParameters));
+        AdapterUtil.setComments(normalAnnotationExpr, context, adapterParameters);
 
         if (context.elementValuePairs() != null) {
-            normalAnnotationExpr.setPairs(Adapters.getElementValuePairsContextAdapter().adapt(context.elementValuePairs()));
+            normalAnnotationExpr.setPairs(Adapters.getElementValuePairsContextAdapter().adapt(context.elementValuePairs(), adapterParameters));
         }
 
         return normalAnnotationExpr;

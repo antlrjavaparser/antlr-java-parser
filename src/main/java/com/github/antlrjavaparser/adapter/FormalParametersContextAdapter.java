@@ -23,7 +23,7 @@ import com.github.antlrjavaparser.api.body.Parameter;
 import java.util.List;
 
 public class FormalParametersContextAdapter implements Adapter<List<Parameter>, Java7Parser.FormalParametersContext> {
-    public List<Parameter> adapt(Java7Parser.FormalParametersContext context) {
+    public List<Parameter> adapt(Java7Parser.FormalParametersContext context, AdapterParameters adapterParameters) {
 
         /*
         formalParameters
@@ -35,7 +35,7 @@ public class FormalParametersContextAdapter implements Adapter<List<Parameter>, 
          */
 
         if (context.formalParameterDecls() != null) {
-            return Adapters.getFormalParameterDeclsContextAdapter().adapt(context.formalParameterDecls());
+            return Adapters.getFormalParameterDeclsContextAdapter().adapt(context.formalParameterDecls(), adapterParameters);
         }
 
         return null;

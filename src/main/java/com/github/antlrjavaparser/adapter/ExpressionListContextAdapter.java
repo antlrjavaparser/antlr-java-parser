@@ -24,10 +24,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ExpressionListContextAdapter implements Adapter<List<Expression>, Java7Parser.ExpressionListContext> {
-    public List<Expression> adapt(Java7Parser.ExpressionListContext context) {
+    public List<Expression> adapt(Java7Parser.ExpressionListContext context, AdapterParameters adapterParameters) {
         List<Expression> expressionList = new LinkedList<Expression>();
         for (Java7Parser.ExpressionContext expressionContext : context.expression()) {
-            expressionList.add(Adapters.getExpressionContextAdapter().adapt(expressionContext));
+            expressionList.add(Adapters.getExpressionContextAdapter().adapt(expressionContext, adapterParameters));
         }
         return expressionList;
     }

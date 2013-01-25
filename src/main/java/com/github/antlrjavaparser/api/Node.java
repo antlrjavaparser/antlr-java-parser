@@ -26,12 +26,20 @@ import com.github.antlrjavaparser.api.visitor.EqualsVisitor;
 import com.github.antlrjavaparser.api.visitor.GenericVisitor;
 import com.github.antlrjavaparser.api.visitor.VoidVisitor;
 
+import java.util.List;
+
 /**
  * Abstract class for all nodes of the AST.
  *
  * @author Julio Vilmar Gesser
  */
 public abstract class Node {
+
+    private List<Comment> beginComments;
+
+    private List<Comment> internalComments;
+
+    private List<Comment> endComments;
 
     private int beginLine;
 
@@ -195,4 +203,27 @@ public abstract class Node {
         return EqualsVisitor.equals(this, (Node) obj);
     }
 
+    public List<Comment> getBeginComments() {
+        return beginComments;
+    }
+
+    public void setBeginComments(List<Comment> beginComments) {
+        this.beginComments = beginComments;
+    }
+
+    public List<Comment> getInternalComments() {
+        return internalComments;
+    }
+
+    public void setInternalComments(List<Comment> internalComments) {
+        this.internalComments = internalComments;
+    }
+
+    public List<Comment> getEndComments() {
+        return endComments;
+    }
+
+    public void setEndComments(List<Comment> endComments) {
+        this.endComments = endComments;
+    }
 }

@@ -21,11 +21,11 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.body.TypeDeclaration;
 
 public class ClassOrInterfaceDeclarationContextAdapter implements Adapter<TypeDeclaration, Java7Parser.ClassOrInterfaceDeclarationContext> {
-    public TypeDeclaration adapt(Java7Parser.ClassOrInterfaceDeclarationContext context) {
+    public TypeDeclaration adapt(Java7Parser.ClassOrInterfaceDeclarationContext context, AdapterParameters adapterParameters) {
         if (context.classDeclaration() != null) {
-            return Adapters.getClassDeclarationContextAdapter().adapt(context.classDeclaration());
+            return Adapters.getClassDeclarationContextAdapter().adapt(context.classDeclaration(), adapterParameters);
         } else if (context.interfaceDeclaration() != null) {
-            return Adapters.getInterfaceDeclarationContextAdapter().adapt(context.interfaceDeclaration());
+            return Adapters.getInterfaceDeclarationContextAdapter().adapt(context.interfaceDeclaration(), adapterParameters);
         }
 
         return null;

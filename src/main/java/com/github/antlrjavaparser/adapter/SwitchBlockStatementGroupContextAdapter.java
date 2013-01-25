@@ -25,7 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SwitchBlockStatementGroupContextAdapter implements Adapter<SwitchEntryStmt, Java7Parser.SwitchBlockStatementGroupContext> {
-    public SwitchEntryStmt adapt(Java7Parser.SwitchBlockStatementGroupContext context) {
+    public SwitchEntryStmt adapt(Java7Parser.SwitchBlockStatementGroupContext context, AdapterParameters adapterParameters) {
 
         /*
             switchBlockStatementGroup
@@ -42,17 +42,18 @@ public class SwitchBlockStatementGroupContextAdapter implements Adapter<SwitchEn
          */
 
         SwitchEntryStmt switchEntryStmt = new SwitchEntryStmt();
+        AdapterUtil.setComments(switchEntryStmt, context, adapterParameters);
 
         if (context.blockStatement() != null && context.blockStatement().size() > 0) {
             List<Statement> blockStmtList = new LinkedList<Statement>();
             for (Java7Parser.BlockStatementContext blockStatementContext : context.blockStatement()) {
-                blockStmtList.add(Adapters.getBlockStatementContextAdapter().adapt(blockStatementContext));
+                blockStmtList.add(Adapters.getBlockStatementContextAdapter().adapt(blockStatementContext, adapterParameters));
             }
             switchEntryStmt.setStmts(blockStmtList);
         }
 
         if (context.switchLabel().CASE() != null) {
-            switchEntryStmt.setLabel(Adapters.getExpressionContextAdapter().adapt(context.switchLabel().expression()));
+            switchEntryStmt.setLabel(Adapters.getExpressionContextAdapter().adapt(context.switchLabel().expression(), adapterParameters));
         } else if (context.switchLabel().DEFAULT() != null) {
             // Explicitly setting these null for readability
             switchEntryStmt.setLabel(null);

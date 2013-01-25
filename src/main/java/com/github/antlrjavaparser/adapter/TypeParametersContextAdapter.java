@@ -24,7 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class TypeParametersContextAdapter implements Adapter<List<TypeParameter>, Java7Parser.TypeParametersContext> {
-    public List<TypeParameter> adapt(Java7Parser.TypeParametersContext context) {
+    public List<TypeParameter> adapt(Java7Parser.TypeParametersContext context, AdapterParameters adapterParameters) {
 
         if (context == null) {
             return null;
@@ -32,7 +32,7 @@ public class TypeParametersContextAdapter implements Adapter<List<TypeParameter>
 
         List<TypeParameter> typeParameterList = new LinkedList<TypeParameter>();
         for (Java7Parser.TypeParameterContext typeParameterContext : context.typeParameter()) {
-            typeParameterList.add(Adapters.getTypeParameterContextAdapter().adapt(typeParameterContext));
+            typeParameterList.add(Adapters.getTypeParameterContextAdapter().adapt(typeParameterContext, adapterParameters));
         }
 
         return typeParameterList;

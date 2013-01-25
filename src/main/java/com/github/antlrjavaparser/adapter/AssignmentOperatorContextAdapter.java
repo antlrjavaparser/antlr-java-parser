@@ -21,7 +21,7 @@ import com.github.antlrjavaparser.Java7Parser;
 import com.github.antlrjavaparser.api.Node;
 
 public class AssignmentOperatorContextAdapter implements Adapter<Node, Java7Parser.AssignmentOperatorContext> {
-    public Node adapt(Java7Parser.AssignmentOperatorContext context) {
-        return null;
+    public Node adapt(Java7Parser.AssignmentOperatorContext context, AdapterParameters adapterParameters) {
+        throw new UnsupportedOperationException();
     }
 }
