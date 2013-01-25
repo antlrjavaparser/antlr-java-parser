@@ -227,6 +227,7 @@ public final class AdapterUtil {
      */
     public static <C> Expression handleExpression(Adapter<Expression, C> adapter, List<C> contextList, BinaryExpr.Operator operator, AdapterParameters adapterParameters) {
         Expression expression = adapter.adapt(contextList.get(0), adapterParameters);
+        AdapterUtil.setComments(expression, (ParserRuleContext)contextList.get(0), adapterParameters);
 
         // This expression represents more than one consecutive OR expression
         if (contextList.size() > 1) {
@@ -237,7 +238,9 @@ public final class AdapterUtil {
             BinaryExpr currentExpression = root;
 
             for (int i = 1; i < contextList.size(); i++) {
-                currentExpression.setRight(adapter.adapt(contextList.get(i), adapterParameters));
+                Expression rightExpression = adapter.adapt(contextList.get(i), adapterParameters);
+                AdapterUtil.setComments(rightExpression, (ParserRuleContext)contextList.get(i), adapterParameters);
+                currentExpression.setRight(rightExpression);
 
                 // On the last one, do not create a tail.
                 if (i < contextList.size() - 1) {
@@ -260,6 +263,14 @@ public final class AdapterUtil {
         return newElementList;
     }
 
+    /**
+     * If there are no statements within a block, we need a special method to grab any comments that
+     * might exist between braces.
+     *
+     * @param node
+     * @param parserRuleContext
+     * @param adapterParameters
+     */
     public static void setInternalComments(Node node, ParserRuleContext parserRuleContext, AdapterParameters adapterParameters) {
         BufferedTokenStream tokens = adapterParameters.getTokens();
 
@@ -308,7 +319,8 @@ public final class AdapterUtil {
         BufferedTokenStream tokens = adapterParameters.getTokens();
 
         if (node == null || parserRuleContext == null || tokens == null) {
-            throw new IllegalArgumentException("Parameters must not be null");
+            // Just return
+            return;
         }
 
         Token startToken = parserRuleContext.getStart();

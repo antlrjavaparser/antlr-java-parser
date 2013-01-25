@@ -30,6 +30,7 @@ public class ResourceContextAdapter implements Adapter<Resource, Java7Parser.Res
         */
 
         Resource resource = new Resource();
+        AdapterUtil.setComments(resource, context, adapterParameters);
 
         if (context.variableModifiers() != null) {
             AdapterUtil.setVariableModifiers(context.variableModifiers(), resource, adapterParameters);

@@ -48,6 +48,8 @@ public class NormalForStatementContextAdapter implements Adapter<ForStmt, Java7P
          */
 
         ForStmt forStmt = new ForStmt();
+        AdapterUtil.setComments(forStmt, context, adapterParameters);
+
         forStmt.setBody(Adapters.getStatementContextAdapter().adapt(context.statement(), adapterParameters));
 
         if (context.forInit() != null) {

@@ -24,8 +24,8 @@ public class ImportDeclarationContextAdapter implements Adapter<ImportDeclaratio
     public ImportDeclaration adapt(Java7Parser.ImportDeclarationContext context, AdapterParameters adapterParameters) {
 
         ImportDeclaration importDeclaration = new ImportDeclaration();
+        AdapterUtil.setComments(importDeclaration, context, adapterParameters);
         importDeclaration.setStatic(context.STATIC() != null);
-
         importDeclaration.setName(AdapterUtil.qualifiedName(context.Identifier()));
         importDeclaration.setAsterisk(context.STAR() != null);
 

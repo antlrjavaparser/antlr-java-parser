@@ -24,6 +24,7 @@ public class AnnotationTypeDeclarationContextAdapter implements Adapter<Annotati
     public AnnotationDeclaration adapt(Java7Parser.AnnotationTypeDeclarationContext context, AdapterParameters adapterParameters) {
 
         AnnotationDeclaration annotationDeclaration = new AnnotationDeclaration();
+        AdapterUtil.setComments(annotationDeclaration, context, adapterParameters);
 
         AdapterUtil.setModifiers(context.modifiers(), annotationDeclaration, adapterParameters);
         annotationDeclaration.setName(context.Identifier().getText());

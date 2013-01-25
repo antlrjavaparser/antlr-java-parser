@@ -35,6 +35,7 @@ public class ExplicitConstructorInvocationContextAdapter implements Adapter<Stat
          */
 
         ExplicitConstructorInvocationStmt explicitConstructorInvocationStmt = new ExplicitConstructorInvocationStmt();
+        AdapterUtil.setComments(explicitConstructorInvocationStmt, context, adapterParameters);
 
         explicitConstructorInvocationStmt.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.arguments(), adapterParameters));
         explicitConstructorInvocationStmt.setThis(context.THIS() != null);

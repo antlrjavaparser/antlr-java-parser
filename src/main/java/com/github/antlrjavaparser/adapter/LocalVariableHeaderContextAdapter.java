@@ -22,6 +22,6 @@ import com.github.antlrjavaparser.api.Node;
 
 public class LocalVariableHeaderContextAdapter implements Adapter<Node, Java7Parser.LocalVariableHeaderContext> {
     public Node adapt(Java7Parser.LocalVariableHeaderContext context, AdapterParameters adapterParameters) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }

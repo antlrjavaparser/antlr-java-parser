@@ -24,6 +24,8 @@ public class TypeParameterContextAdapter implements Adapter<TypeParameter, Java7
     public TypeParameter adapt(Java7Parser.TypeParameterContext context, AdapterParameters adapterParameters) {
 
         TypeParameter typeParameter = new TypeParameter();
+        AdapterUtil.setComments(typeParameter, context, adapterParameters);
+
         typeParameter.setTypeBound(Adapters.getTypeBoundContextAdapter ().adapt(context.typeBound(), adapterParameters));
         typeParameter.setName(context.Identifier().getText());
 

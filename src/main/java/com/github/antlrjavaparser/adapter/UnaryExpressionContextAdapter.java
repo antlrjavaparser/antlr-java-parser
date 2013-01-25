@@ -28,6 +28,7 @@ public class UnaryExpressionContextAdapter implements Adapter<Expression, Java7P
             return Adapters.getUnaryExpressionNotPlusMinusContextAdapter().adapt(context.unaryExpressionNotPlusMinus(), adapterParameters);
         } else {
             UnaryExpr unaryExpr = new UnaryExpr();
+            AdapterUtil.setComments(unaryExpr, context, adapterParameters);
 
             UnaryExpr.Operator operator = null;
 

@@ -22,6 +22,6 @@ import com.github.antlrjavaparser.api.Node;
 
 public class SwitchLabelContextAdapter implements Adapter<Node, Java7Parser.SwitchLabelContext> {
     public Node adapt(Java7Parser.SwitchLabelContext context, AdapterParameters adapterParameters) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }

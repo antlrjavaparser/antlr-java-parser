@@ -34,6 +34,7 @@ public class InterfaceMethodDeclarationContextAdapter implements Adapter<BodyDec
 
         MethodDeclaration methodDeclaration = new MethodDeclaration();
         AdapterUtil.setModifiers(context.modifiers(), methodDeclaration, adapterParameters);
+        AdapterUtil.setComments(methodDeclaration, context, adapterParameters);
         methodDeclaration.setName(context.Identifier().getText());
 
         if (context.typeParameters() != null) {

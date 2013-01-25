@@ -22,6 +22,6 @@ import com.github.antlrjavaparser.api.Node;
 
 public class ClassCreatorRestContextAdapter implements Adapter<Node, Java7Parser.ClassCreatorRestContext> {
     public Node adapt(Java7Parser.ClassCreatorRestContext context, AdapterParameters adapterParameters) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }

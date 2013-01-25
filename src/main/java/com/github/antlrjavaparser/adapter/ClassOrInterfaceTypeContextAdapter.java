@@ -27,6 +27,7 @@ public class ClassOrInterfaceTypeContextAdapter implements Adapter<ClassOrInterf
     public ClassOrInterfaceType adapt(Java7Parser.ClassOrInterfaceTypeContext context, AdapterParameters adapterParameters) {
 
         ClassOrInterfaceType classOrInterfaceType = new ClassOrInterfaceType();
+        AdapterUtil.setComments(classOrInterfaceType, context, adapterParameters);
 
         List<ClassOrInterfaceType> scopes = new LinkedList<ClassOrInterfaceType>();
 

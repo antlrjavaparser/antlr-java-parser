@@ -26,6 +26,7 @@ public class ConstructorDeclarationContextAdapter implements Adapter<Constructor
 
         ConstructorDeclaration constructorDeclaration = new ConstructorDeclaration();
         AdapterUtil.setModifiers(context.modifiers(), constructorDeclaration, adapterParameters);
+        AdapterUtil.setComments(constructorDeclaration, context, adapterParameters);
 
         constructorDeclaration.setName(context.Identifier().getText());
         constructorDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters(), adapterParameters));

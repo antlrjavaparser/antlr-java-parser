@@ -27,13 +27,16 @@ public class ClassBodyDeclarationContextAdapter implements Adapter<BodyDeclarati
 
         if (context.block() != null) {
             InitializerDeclaration initializerDeclaration = new InitializerDeclaration();
+            AdapterUtil.setComments(initializerDeclaration, context, adapterParameters);
             initializerDeclaration.setStatic(context.STATIC() != null);
             initializerDeclaration.setBlock(Adapters.getBlockContextAdapter().adapt(context.block(), adapterParameters));
             return initializerDeclaration;
         } else if (context.memberDecl() != null) {
             return Adapters.getMemberDeclContextAdapter().adapt(context.memberDecl(), adapterParameters);
         } else if (context.SEMI() != null) {
-            return new EmptyMemberDeclaration();
+            BodyDeclaration bodyDeclaration = new EmptyMemberDeclaration();
+            AdapterUtil.setComments(bodyDeclaration, context, adapterParameters);
+            return bodyDeclaration;
         }
 
         return null;

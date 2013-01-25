@@ -68,6 +68,7 @@ public class TrystatementContextAdapter implements Adapter<Statement, Java7Parse
          */
 
         TryStmt tryStmt = new TryStmt();
+        AdapterUtil.setComments(tryStmt, context, adapterParameters);
 
         if (context.statementType != 5) {
             tryStmt.setTryBlock(Adapters.getBlockContextAdapter().adapt(context.block(0), adapterParameters));

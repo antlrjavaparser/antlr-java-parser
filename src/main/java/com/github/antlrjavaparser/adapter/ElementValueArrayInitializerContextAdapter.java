@@ -36,6 +36,7 @@ public class ElementValueArrayInitializerContextAdapter implements Adapter<Array
             ;
         */
         ArrayInitializerExpr arrayInitializerExpr = new ArrayInitializerExpr();
+        AdapterUtil.setComments(arrayInitializerExpr, context, adapterParameters);
 
         List<Expression> expressionList = new LinkedList<Expression>();
         for (Java7Parser.ElementValueContext elementValueContext : context.elementValue()) {

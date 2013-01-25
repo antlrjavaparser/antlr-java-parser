@@ -46,6 +46,7 @@ public class ForeachStatementContextAdapter implements Adapter<ForeachStmt, Java
          */
 
         ForeachStmt foreachStmt = new ForeachStmt();
+        AdapterUtil.setComments(foreachStmt, context, adapterParameters);
 
         VariableDeclarationExpr variableDeclarationExpr = new VariableDeclarationExpr();
 

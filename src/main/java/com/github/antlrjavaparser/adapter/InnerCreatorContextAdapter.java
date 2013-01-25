@@ -31,6 +31,7 @@ public class InnerCreatorContextAdapter implements Adapter<ObjectCreationExpr, J
          */
 
         ObjectCreationExpr objectCreationExpr = new ObjectCreationExpr();
+        AdapterUtil.setComments(objectCreationExpr, context, adapterParameters);
 
         if (context.nonWildcardTypeArguments() != null) {
             objectCreationExpr.setTypeArgs(Adapters.getTypeListContextAdapter().adapt(context.nonWildcardTypeArguments().typeList(), adapterParameters));

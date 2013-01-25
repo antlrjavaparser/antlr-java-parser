@@ -90,6 +90,8 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
             return Adapters.getCreatorContextAdapter().adapt(context.creator(), adapterParameters);
         } else if (context.primitiveType() != null) {
             ClassExpr classExpr = new ClassExpr();
+            AdapterUtil.setComments(classExpr, context, adapterParameters);
+
             Type type = Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType(), adapterParameters);
 
             if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
@@ -104,6 +106,8 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
             return classExpr;
         } else if (context.VOID() != null) {
             ClassExpr classExpr = new ClassExpr();
+            AdapterUtil.setComments(classExpr, context, adapterParameters);
+
             classExpr.setType(new VoidType());
             return classExpr;
         }

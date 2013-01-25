@@ -30,6 +30,7 @@ public class LocalVariableDeclarationContextAdapter implements Adapter<VariableD
     public VariableDeclarationExpr adapt(Java7Parser.LocalVariableDeclarationContext context, AdapterParameters adapterParameters) {
 
         VariableDeclarationExpr variableDeclarationExpr = new VariableDeclarationExpr();
+        AdapterUtil.setComments(variableDeclarationExpr, context, adapterParameters);
 
         int modifiers = 0;
         List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();

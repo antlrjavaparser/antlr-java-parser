@@ -1,6 +1,25 @@
-public abstract class CDRInputStream {
-    // java.io.InputStream
+/* Comment */
+@PackageAnnotation
+package something;
+
+/* Comment */
+import a.a; /* Import  */
+
+/* Comment */
+public /* Comment */ abstract /* Comment */ class /* Comment */ CDRInputStream /* Comment */ { /* End Comment */
+
+    /* Comment */
     public final int read(byte b[]) throws IOException {
-        return impl.read(b);
+
+        /* Comment */
+        return impl.read(b); // End of line
+
+        /* Comment */
+        // This if statement is the best!
+        if (true) {
+            /* Comment */
+        } else { // Do something else
+
+        } // end comment
     }
 }

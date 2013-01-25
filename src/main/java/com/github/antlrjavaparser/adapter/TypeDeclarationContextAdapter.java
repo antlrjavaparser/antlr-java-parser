@@ -28,7 +28,9 @@ public class TypeDeclarationContextAdapter implements Adapter<TypeDeclaration, J
         if (context.classOrInterfaceDeclaration() != null) {
             return Adapters.getClassOrInterfaceDeclarationContextAdapter().adapt(context.classOrInterfaceDeclaration(), adapterParameters);
         } else if (context.SEMI() != null) {
-            return new EmptyTypeDeclaration();
+            TypeDeclaration typeDeclaration = new EmptyTypeDeclaration();
+            AdapterUtil.setComments(typeDeclaration, context, adapterParameters);
+            return typeDeclaration;
         }
 
         return null;

@@ -25,6 +25,8 @@ public class LocalVariableDeclarationStatementContextAdapter implements Adapter<
     public Statement adapt(Java7Parser.LocalVariableDeclarationStatementContext context, AdapterParameters adapterParameters) {
 
         ExpressionStmt expressionStmt = new ExpressionStmt();
+        AdapterUtil.setComments(expressionStmt, context, adapterParameters);
+
         expressionStmt.setExpression(Adapters.getLocalVariableDeclarationContextAdapter().adapt(context.localVariableDeclaration(), adapterParameters));
 
         return expressionStmt;

@@ -18,29 +18,36 @@
 package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
+import com.github.antlrjavaparser.ParseException;
 import com.github.antlrjavaparser.api.type.PrimitiveType;
 
 public class PrimitiveTypeContextAdapter implements Adapter<PrimitiveType, Java7Parser.PrimitiveTypeContext> {
     public PrimitiveType adapt(Java7Parser.PrimitiveTypeContext context, AdapterParameters adapterParameters) {
 
+        PrimitiveType primitiveType;
+
         if (context.BOOLEAN() != null) {
-            return new PrimitiveType(PrimitiveType.Primitive.Boolean);
+            primitiveType = new PrimitiveType(PrimitiveType.Primitive.Boolean);
         } else if (context.BYTE() != null) {
-            return new PrimitiveType(PrimitiveType.Primitive.Byte);
+            primitiveType = new PrimitiveType(PrimitiveType.Primitive.Byte);
         } else if (context.CHAR() != null) {
-            return new PrimitiveType(PrimitiveType.Primitive.Char);
+            primitiveType = new PrimitiveType(PrimitiveType.Primitive.Char);
         } else if (context.DOUBLE() != null) {
-            return new PrimitiveType(PrimitiveType.Primitive.Double);
+            primitiveType = new PrimitiveType(PrimitiveType.Primitive.Double);
         } else if (context.FLOAT() != null) {
-            return new PrimitiveType(PrimitiveType.Primitive.Float);
+            primitiveType = new PrimitiveType(PrimitiveType.Primitive.Float);
         } else if (context.INT() != null) {
-            return new PrimitiveType(PrimitiveType.Primitive.Int);
+            primitiveType = new PrimitiveType(PrimitiveType.Primitive.Int);
         } else if (context.LONG() != null) {
-            return new PrimitiveType(PrimitiveType.Primitive.Long);
+            primitiveType = new PrimitiveType(PrimitiveType.Primitive.Long);
         } else if (context.SHORT() != null) {
-            return new PrimitiveType(PrimitiveType.Primitive.Short);
+            primitiveType = new PrimitiveType(PrimitiveType.Primitive.Short);
+        } else {
+            throw new ParseException("Unknown primitive type");
         }
 
-        return null;
+        AdapterUtil.setComments(primitiveType, context, adapterParameters);
+
+        return primitiveType;
     }
 }

@@ -45,6 +45,7 @@ public class CreatorContextAdapter implements Adapter<Expression, Java7Parser.Cr
 
         if (context.nonWildcardTypeArguments() != null) {
             ObjectCreationExpr objectCreationExpr = new ObjectCreationExpr();
+            AdapterUtil.setComments(objectCreationExpr, context, adapterParameters);
             objectCreationExpr.setTypeArgs(Adapters.getTypeListContextAdapter().adapt(context.nonWildcardTypeArguments().typeList(), adapterParameters));
             objectCreationExpr.setType(Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType(), adapterParameters));
             objectCreationExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.classCreatorRest().arguments(), adapterParameters));
@@ -56,6 +57,7 @@ public class CreatorContextAdapter implements Adapter<Expression, Java7Parser.Cr
             return objectCreationExpr;
         } else if (context.classOrInterfaceType() != null) {
             ObjectCreationExpr objectCreationExpr = new ObjectCreationExpr();
+            AdapterUtil.setComments(objectCreationExpr, context, adapterParameters);
             objectCreationExpr.setType(Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType(), adapterParameters));
             objectCreationExpr.setArgs(Adapters.getArgumentsContextAdapter().adapt(context.classCreatorRest().arguments(), adapterParameters));
 

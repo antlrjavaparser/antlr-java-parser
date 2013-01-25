@@ -31,6 +31,7 @@ public class ElementValuePairContextAdapter implements Adapter<MemberValuePair, 
         */
 
         MemberValuePair memberValuePair = new MemberValuePair();
+        AdapterUtil.setComments(memberValuePair, context, adapterParameters);
         memberValuePair.setName(context.Identifier().getText());
         memberValuePair.setValue(Adapters.getElementValueContextAdapter().adapt(context.elementValue(), adapterParameters));
 

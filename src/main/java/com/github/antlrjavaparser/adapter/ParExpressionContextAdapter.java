@@ -24,6 +24,8 @@ import com.github.antlrjavaparser.api.expr.Expression;
 public class ParExpressionContextAdapter implements Adapter<Expression, Java7Parser.ParExpressionContext> {
     public Expression adapt(Java7Parser.ParExpressionContext context, AdapterParameters adapterParameters) {
         EnclosedExpr enclosedExpr = new EnclosedExpr();
+        AdapterUtil.setComments(enclosedExpr, context, adapterParameters);
+
         enclosedExpr.setInner(Adapters.getExpressionContextAdapter().adapt(context.expression(), adapterParameters));
         return enclosedExpr;
     }

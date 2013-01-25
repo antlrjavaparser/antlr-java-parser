@@ -22,6 +22,6 @@ import com.github.antlrjavaparser.api.Node;
 
 public class EnumHeaderContextAdapter implements Adapter<Node, Java7Parser.EnumHeaderContext> {
     public Node adapt(Java7Parser.EnumHeaderContext context, AdapterParameters adapterParameters) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }

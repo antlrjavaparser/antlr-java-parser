@@ -34,6 +34,8 @@ public class NormalInterfaceDeclarationContextAdapter implements Adapter<ClassOr
          */
 
         ClassOrInterfaceDeclaration classOrInterfaceDeclaration = new ClassOrInterfaceDeclaration();
+        AdapterUtil.setComments(classOrInterfaceDeclaration, context, adapterParameters);
+
         classOrInterfaceDeclaration.setInterface(true);
 
         // All instances should be classOrInterfaceType

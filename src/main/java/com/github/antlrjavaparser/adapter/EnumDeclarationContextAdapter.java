@@ -33,6 +33,8 @@ public class EnumDeclarationContextAdapter implements Adapter<EnumDeclaration, J
          */
         EnumDeclaration enumDeclaration = new EnumDeclaration();
         AdapterUtil.setModifiers(context.modifiers(), enumDeclaration, adapterParameters);
+        AdapterUtil.setComments(enumDeclaration, context, adapterParameters);
+
         enumDeclaration.setName(context.Identifier().getText());
         List<Type> typeList = Adapters.getTypeListContextAdapter().adapt(context.typeList(), adapterParameters);
         enumDeclaration.setImplements(AdapterUtil.convertTypeList(typeList));

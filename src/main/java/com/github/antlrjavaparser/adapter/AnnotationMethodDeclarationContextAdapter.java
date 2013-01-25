@@ -30,6 +30,7 @@ public class AnnotationMethodDeclarationContextAdapter implements Adapter<BodyDe
          */
 
         AnnotationMemberDeclaration annotationMemberDeclaration = new AnnotationMemberDeclaration();
+        AdapterUtil.setComments(annotationMemberDeclaration, context, adapterParameters);
 
         AdapterUtil.setModifiers(context.modifiers(), annotationMemberDeclaration, adapterParameters);
         annotationMemberDeclaration.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));

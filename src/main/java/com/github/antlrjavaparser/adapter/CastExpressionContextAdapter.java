@@ -32,6 +32,7 @@ public class CastExpressionContextAdapter implements Adapter<Expression, Java7Pa
          */
 
         CastExpr castExpr = new CastExpr();
+        AdapterUtil.setComments(castExpr, context, adapterParameters);
 
         if (context.type() != null) {
             castExpr.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));

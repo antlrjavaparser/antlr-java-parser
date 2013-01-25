@@ -24,6 +24,7 @@ import com.github.antlrjavaparser.api.expr.Expression;
 public class ConditionalExpressionContextAdapter implements Adapter<Expression, Java7Parser.ConditionalExpressionContext> {
     public Expression adapt(Java7Parser.ConditionalExpressionContext context, AdapterParameters adapterParameters) {
         Expression expression = Adapters.getConditionalOrExpressionContextAdapter().adapt(context.conditionalOrExpression(), adapterParameters);
+        AdapterUtil.setComments(expression, context.conditionalExpression(), adapterParameters);
 
         if (context.QUES() != null) {
             Expression thenExpression = Adapters.getExpressionContextAdapter().adapt(context.expression(), adapterParameters);

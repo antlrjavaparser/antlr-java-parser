@@ -22,6 +22,8 @@ import com.github.antlrjavaparser.api.expr.NameExpr;
 
 public class QualifiedNameContextAdapter implements Adapter<NameExpr, Java7Parser.QualifiedNameContext> {
     public NameExpr adapt(Java7Parser.QualifiedNameContext context, AdapterParameters adapterParameters) {
-        return AdapterUtil.qualifiedName(context.Identifier());
+        NameExpr nameExpr = AdapterUtil.qualifiedName(context.Identifier());
+        AdapterUtil.setComments(nameExpr, context, adapterParameters);
+        return nameExpr;
     }
 }

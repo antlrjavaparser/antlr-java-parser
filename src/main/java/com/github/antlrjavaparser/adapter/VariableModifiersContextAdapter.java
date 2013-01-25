@@ -22,6 +22,6 @@ import com.github.antlrjavaparser.api.Node;
 
 public class VariableModifiersContextAdapter implements Adapter<Node, Java7Parser.VariableModifiersContext> {
     public Node adapt(Java7Parser.VariableModifiersContext context, AdapterParameters adapterParameters) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }
