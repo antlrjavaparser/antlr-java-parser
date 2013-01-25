@@ -38,7 +38,6 @@ public class ArrayCreatorContextAdapter implements Adapter<Expression, Java7Pars
          */
 
         ArrayCreationExpr arrayCreationExpr = new ArrayCreationExpr();
-        arrayCreationExpr.setArrayCount(context.LBRACKET().size());
         arrayCreationExpr.setType(Adapters.getCreatedNameContextAdapter().adapt(context.createdName(), adapterParameters));
 
         if (context.arrayInitializer() != null) {
@@ -49,6 +48,13 @@ public class ArrayCreatorContextAdapter implements Adapter<Expression, Java7Pars
                 expressionList.add(Adapters.getExpressionContextAdapter().adapt(expressionContext, adapterParameters));
             }
             arrayCreationExpr.setDimensions(expressionList);
+        }
+
+        // Subtract the brackets used as dimensions
+        if (arrayCreationExpr.getDimensions() != null && arrayCreationExpr.getDimensions().size() > 0) {
+            arrayCreationExpr.setArrayCount(context.LBRACKET().size() - arrayCreationExpr.getDimensions().size());
+        } else {
+            arrayCreationExpr.setArrayCount(context.LBRACKET().size());
         }
 
         return arrayCreationExpr;

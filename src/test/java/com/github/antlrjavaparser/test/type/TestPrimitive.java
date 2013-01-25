@@ -21,6 +21,8 @@ import com.github.antlrjavaparser.api.CompilationUnit;
 import com.github.antlrjavaparser.api.body.FieldDeclaration;
 import com.github.antlrjavaparser.api.body.MethodDeclaration;
 import com.github.antlrjavaparser.api.body.Parameter;
+import com.github.antlrjavaparser.api.expr.IntegerLiteralExpr;
+import com.github.antlrjavaparser.api.expr.LongLiteralExpr;
 import com.github.antlrjavaparser.api.type.PrimitiveType;
 import com.github.antlrjavaparser.api.type.ReferenceType;
 import org.junit.Test;
@@ -107,10 +109,10 @@ public class TestPrimitive {
     @Test
     public void testMethodParameterType() throws Exception {
         String javaSource = "public abstract class CDRInputStream { " +
-                            "    public final int read(byte b[]) throws IOException { " +
-                            "        return impl.read(b); " +
-                            "    } " +
-                            "} ";
+                "    public final int read(byte b[]) throws IOException { " +
+                "        return impl.read(b); " +
+                "    } " +
+                "} ";
 
         CompilationUnit compilationUnit = JavaParser.parse(javaSource);
         assertTrue(compilationUnit.getTypes().size() == 1);
@@ -126,6 +128,44 @@ public class TestPrimitive {
 
         PrimitiveType primitiveType = (PrimitiveType)parameter.getType();
         assertTrue(primitiveType.getType().name().equals("Byte"));
+    }
+
+    @Test
+    public void testIntegerSuffix() throws Exception {
+        String javaSource = "public abstract class CDRInputStream { " +
+                "    private long a = 0L; " +
+                "    private long b = 0l; " +
+                "    private int c = 0L; " +
+                "    private int d = 0l; " +
+                "    private int e = 0; " +
+                "} ";
+
+        CompilationUnit compilationUnit = JavaParser.parse(javaSource);
+
+        assertTrue(compilationUnit.getTypes().size() == 1);
+        assertTrue(compilationUnit.getTypes().get(0).getMembers().size() == 5);
+
+        FieldDeclaration fieldDeclaration;
+
+        fieldDeclaration = (FieldDeclaration)compilationUnit.getTypes().get(0).getMembers().get(0);
+        assertTrue(fieldDeclaration.getVariables().get(0).getInit() instanceof LongLiteralExpr);
+        assertTrue(((LongLiteralExpr) fieldDeclaration.getVariables().get(0).getInit()).getValue().equals("0L"));
+
+        fieldDeclaration = (FieldDeclaration)compilationUnit.getTypes().get(0).getMembers().get(1);
+        assertTrue(fieldDeclaration.getVariables().get(0).getInit() instanceof LongLiteralExpr);
+        assertTrue(((LongLiteralExpr) fieldDeclaration.getVariables().get(0).getInit()).getValue().equals("0l"));
+
+        fieldDeclaration = (FieldDeclaration)compilationUnit.getTypes().get(0).getMembers().get(2);
+        assertTrue(fieldDeclaration.getVariables().get(0).getInit() instanceof LongLiteralExpr);
+        assertTrue(((LongLiteralExpr) fieldDeclaration.getVariables().get(0).getInit()).getValue().equals("0L"));
+
+        fieldDeclaration = (FieldDeclaration)compilationUnit.getTypes().get(0).getMembers().get(3);
+        assertTrue(fieldDeclaration.getVariables().get(0).getInit() instanceof LongLiteralExpr);
+        assertTrue(((LongLiteralExpr) fieldDeclaration.getVariables().get(0).getInit()).getValue().equals("0l"));
+
+        fieldDeclaration = (FieldDeclaration)compilationUnit.getTypes().get(0).getMembers().get(4);
+        assertTrue(fieldDeclaration.getVariables().get(0).getInit() instanceof IntegerLiteralExpr);
+        assertTrue(((IntegerLiteralExpr) fieldDeclaration.getVariables().get(0).getInit()).getValue().equals("0"));
     }
 
 }
