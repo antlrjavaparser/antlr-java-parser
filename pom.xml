@@ -4,7 +4,7 @@
     <groupId>com.github.antlrjavaparser</groupId>
     <artifactId>antlr-java-parser</artifactId>
     <version>1.0.6-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <name>antlr-java-parser</name>
     <description>Antlr Java Parser aims to create a Java parser using Antlr 4 grammar rules.</description>
     <url>https://github.com/antlrjavaparser/antlr-java-parser</url>
@@ -61,6 +61,17 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>com.github.antlrjavaparser.*</Export-Package>
+                        <Import-Package>org.antlr.v4.runtime.tree.gui;resolution:=optional,org.antlr.v4.runtime.*</Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
