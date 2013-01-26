@@ -32,8 +32,8 @@ public class MethodDeclarationContextAdapter implements Adapter<MethodDeclaratio
          */
 
         MethodDeclaration methodDeclaration = new MethodDeclaration();
-        AdapterUtil.setComments(methodDeclaration, context, adapterParameters);
         AdapterUtil.setModifiers(context.modifiers(), methodDeclaration, adapterParameters);
+        AdapterUtil.setComments(methodDeclaration, context, adapterParameters);
 
         if (context.typeParameters() != null) {
             methodDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters(), adapterParameters));

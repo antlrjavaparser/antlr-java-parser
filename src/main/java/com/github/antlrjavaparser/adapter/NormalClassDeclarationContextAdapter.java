@@ -31,8 +31,8 @@ public class NormalClassDeclarationContextAdapter implements Adapter<TypeDeclara
     public TypeDeclaration adapt(Java7Parser.NormalClassDeclarationContext context, AdapterParameters adapterParameters) {
 
         ClassOrInterfaceDeclaration classOrInterfaceDeclaration = new ClassOrInterfaceDeclaration();
-        AdapterUtil.setComments(classOrInterfaceDeclaration, context, adapterParameters);
         AdapterUtil.setModifiers(context.modifiers(), classOrInterfaceDeclaration, adapterParameters);
+        AdapterUtil.setComments(classOrInterfaceDeclaration, context, adapterParameters);
         classOrInterfaceDeclaration.setInterface(false);
         classOrInterfaceDeclaration.setName(context.Identifier().getText());
 

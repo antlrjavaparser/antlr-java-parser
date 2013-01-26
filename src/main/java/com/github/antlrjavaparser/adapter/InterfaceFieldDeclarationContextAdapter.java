@@ -38,8 +38,8 @@ public class InterfaceFieldDeclarationContextAdapter implements Adapter<BodyDecl
          */
 
         FieldDeclaration fieldDeclaration = new FieldDeclaration();
-        AdapterUtil.setComments(fieldDeclaration, context, adapterParameters);
         AdapterUtil.setModifiers(context.modifiers(), fieldDeclaration, adapterParameters);
+        AdapterUtil.setComments(fieldDeclaration, context, adapterParameters);
         fieldDeclaration.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
 
         List<VariableDeclarator> variableDeclaratorList = new LinkedList<VariableDeclarator>();

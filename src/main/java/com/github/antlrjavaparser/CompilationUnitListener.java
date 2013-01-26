@@ -49,9 +49,9 @@ public class CompilationUnitListener extends Java7ParserBaseListener {
 
         compilationUnit = Adapters.getCompilationUnitContextAdapter().adapt(ctx, adapterParameters);
 
-//        for (Integer claimedCommentTokenIndex : adapterParameters.getCommentTokensClaimed()) {
-//            System.out.println("Claimed Token Index: " + claimedCommentTokenIndex + " ================\n" + tokens.get(claimedCommentTokenIndex).getText());
-//        }
+        //for (Integer claimedCommentTokenIndex : adapterParameters.getCommentTokensClaimed()) {
+            //System.out.println("Claimed Token Index: " + claimedCommentTokenIndex + " ================\n" + tokens.get(claimedCommentTokenIndex).getText());
+        //}
 
     }
 

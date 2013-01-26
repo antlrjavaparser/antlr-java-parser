@@ -347,8 +347,8 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(ClassOrInterfaceDeclaration n, Object arg) {
-        printBeginComments(n.getBeginComments(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
+        printBeginComments(n.getBeginComments(), arg);
         printModifiers(n.getModifiers());
 
         if (n.isInterface()) {
@@ -488,9 +488,9 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(FieldDeclaration n, Object arg) {
-        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
+        printBeginComments(n.getBeginComments(), arg);
         printModifiers(n.getModifiers());
         n.getType().accept(this, arg);
 
@@ -899,9 +899,9 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(ConstructorDeclaration n, Object arg) {
-        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
+        printBeginComments(n.getBeginComments(), arg);
         printModifiers(n.getModifiers());
 
         printTypeParameters(n.getTypeParameters(), arg);
@@ -938,8 +938,8 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(MethodDeclaration n, Object arg) {
-        printBeginComments(n.getBeginComments(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
+        printBeginComments(n.getBeginComments(), arg);
         printModifiers(n.getModifiers());
 
         printTypeParameters(n.getTypeParameters(), arg);
@@ -1185,9 +1185,9 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(EnumDeclaration n, Object arg) {
-        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
+        printBeginComments(n.getBeginComments(), arg);
         printModifiers(n.getModifiers());
 
         printer.print("enum ");
@@ -1230,9 +1230,9 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(EnumConstantDeclaration n, Object arg) {
-        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
+        printBeginComments(n.getBeginComments(), arg);
         printer.print(n.getName());
 
         if (n.getArgs() != null) {
@@ -1407,9 +1407,9 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(AnnotationDeclaration n, Object arg) {
-        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
+        printBeginComments(n.getBeginComments(), arg);
         printModifiers(n.getModifiers());
 
         printer.print("@interface ");
@@ -1425,9 +1425,9 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(AnnotationMemberDeclaration n, Object arg) {
-        printBeginComments(n.getBeginComments(), arg);
         printJavadoc(n.getJavaDoc(), arg);
         printMemberAnnotations(n.getAnnotations(), arg);
+        printBeginComments(n.getBeginComments(), arg);
         printModifiers(n.getModifiers());
 
         n.getType().accept(this, arg);

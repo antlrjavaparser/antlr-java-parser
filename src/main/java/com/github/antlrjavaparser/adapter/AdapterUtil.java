@@ -311,7 +311,11 @@ public final class AdapterUtil {
         }
 
         if (internalCommentList.size() > 0) {
-            node.setInternalComments(internalCommentList);
+            if (node.getInternalComments() != null) {
+                node.getInternalComments().addAll(internalCommentList);
+            } else {
+                node.setInternalComments(internalCommentList);
+            }
         }
     }
 
@@ -384,11 +388,19 @@ public final class AdapterUtil {
         }
 
         if (beginCommentList.size() > 0) {
-            node.setBeginComments(beginCommentList);
+            if (node.getBeginComments() != null) {
+                node.getBeginComments().addAll(beginCommentList);
+            } else {
+                node.setBeginComments(beginCommentList);
+            }
         }
 
         if (endCommentList.size() > 0) {
-            node.setEndComments(endCommentList);
+            if (node.getEndComments() != null) {
+                node.getEndComments().addAll(endCommentList);
+            } else {
+                node.setEndComments(endCommentList);
+            }
         }
     }
 }

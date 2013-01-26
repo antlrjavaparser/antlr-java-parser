@@ -34,6 +34,7 @@ public class NormalInterfaceDeclarationContextAdapter implements Adapter<ClassOr
          */
 
         ClassOrInterfaceDeclaration classOrInterfaceDeclaration = new ClassOrInterfaceDeclaration();
+        AdapterUtil.setModifiers(context.modifiers(), classOrInterfaceDeclaration, adapterParameters);
         AdapterUtil.setComments(classOrInterfaceDeclaration, context, adapterParameters);
 
         classOrInterfaceDeclaration.setInterface(true);
@@ -44,8 +45,6 @@ public class NormalInterfaceDeclarationContextAdapter implements Adapter<ClassOr
             classOrInterfaceDeclaration.setExtends(AdapterUtil.convertTypeList(typeList));
         }
 
-        // Set modifiers and annotations
-        AdapterUtil.setModifiers(context.modifiers(), classOrInterfaceDeclaration, adapterParameters);
 
         if (context.typeParameters() != null) {
             classOrInterfaceDeclaration.setTypeParameters(Adapters.getTypeParametersContextAdapter().adapt(context.typeParameters(), adapterParameters));

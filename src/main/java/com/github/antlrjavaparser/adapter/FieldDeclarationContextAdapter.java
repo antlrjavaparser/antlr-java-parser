@@ -27,6 +27,17 @@ import java.util.List;
 public class FieldDeclarationContextAdapter implements Adapter<FieldDeclaration, Java7Parser.FieldDeclarationContext> {
     public FieldDeclaration adapt(Java7Parser.FieldDeclarationContext context, AdapterParameters adapterParameters) {
 
+        /*
+            fieldDeclaration
+                :   modifiers
+                    type
+                    variableDeclarator
+                    (COMMA variableDeclarator
+                    )*
+                    SEMI
+                ;
+         */
+
         FieldDeclaration fieldDeclaration = new FieldDeclaration();
         AdapterUtil.setModifiers(context.modifiers(), fieldDeclaration, adapterParameters);
         AdapterUtil.setComments(fieldDeclaration, context, adapterParameters);

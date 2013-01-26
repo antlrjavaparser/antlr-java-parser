@@ -6,7 +6,7 @@ package something;
 import a.a; /* Import  */
 
 /* Comment */
-public /* Comment */ abstract /* Comment */ class /* Comment */ CDRInputStream /* Comment */ { /* End Comment */
+public /* Comment1 */ abstract /* Comment2 */ class /* Comment3 */ CDRInputStream /* Comment4 */ { /* End Comment */
 
     /* Comment */
     public final int read(byte b[]) throws IOException {
