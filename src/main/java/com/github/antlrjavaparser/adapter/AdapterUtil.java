@@ -185,6 +185,9 @@ public final class AdapterUtil {
                 AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(modifierContext.annotation(), adapterParameters);
                 annotations.add(annotationExpr);
             }
+
+            // Any comments that were not trapped by an annotation should be captured here
+            AdapterUtil.setComments(typeDeclaration, modifierContext, adapterParameters);
         }
 
         typeDeclaration.setAnnotations(annotations);
