@@ -508,15 +508,15 @@ WhiteSpace
     ;
 
 LineTerminator
-    :    ('\n'
-    |    '\r'
-    |    '\r\n')          -> channel(WHITESPACE)
+    :    ('\r\n'
+    |    '\n'
+    |    '\r')          -> channel(WHITESPACE)
     ;
 
 SlashComment
-    :   '/*' .*? '*/'    -> channel(COMMENTS) // match anything between /* and */
+    :    LineTerminator* '/*' .*? '*/' LineTerminator* -> channel(COMMENTS) // match anything between /* and */
     ;
 
 EndOfLineComment
-    :    '//' .*? LineTerminator -> channel(COMMENTS)
+    :    LineTerminator* '//' .*? LineTerminator+ -> channel(COMMENTS)
     ;

@@ -111,14 +111,19 @@ import com.github.antlrjavaparser.api.type.Type;
 import com.github.antlrjavaparser.api.type.VoidType;
 import com.github.antlrjavaparser.api.type.WildcardType;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author Julio Vilmar Gesser
  */
 
 public final class DumpVisitor implements VoidVisitor<Object> {
+
+    private static Pattern commentFormattingRegex = Pattern.compile("[\\s]*(.+)\\r?\\n?");
 
     private static class SourcePrinter {
 
@@ -150,6 +155,16 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             buf.append(arg);
         }
 
+        public void printRaw(String arg, boolean stillIndented) {
+            buf.append(arg);
+
+            indented = stillIndented;
+        }
+
+        public void printRaw(String arg) {
+            buf.append(arg);
+        }
+
         public void printLn(String arg) {
             print(arg);
             printLn();
@@ -167,6 +182,10 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         @Override
         public String toString() {
             return getSource();
+        }
+
+        public int getLevel() {
+            return level;
         }
     }
 
@@ -631,7 +650,7 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(BinaryExpr n, Object arg) {
-        printBeginComments(n.getBeginComments(), arg, false);
+        printBeginComments(n.getBeginComments(), arg);
         n.getLeft().accept(this, arg);
         printer.print(" ");
         switch (n.getOperator()) {
@@ -988,7 +1007,7 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(Parameter n, Object arg) {
-        printBeginComments(n.getBeginComments(), arg, false);
+        printBeginComments(n.getBeginComments(), arg);
         printAnnotations(n.getAnnotations(), arg);
         printModifiers(n.getModifiers());
 
@@ -1486,46 +1505,36 @@ public final class DumpVisitor implements VoidVisitor<Object> {
     }
 
     public void visit(LineComment n, Object arg) {
-        printer.print("//");
-        printer.printLn(n.getContent());
+        // No longer used
     }
 
     public void visit(BlockComment n, Object arg) {
-        printer.print("/*");
-        printer.print(n.getContent());
-        printer.printLn("*/");
+        // No longer used
     }
 
     @Override
     public void visit(Comment n, Object arg) {
-        printer.print(n.getContent());
+        // No longer used
     }
 
-    private void printBeginComments(List<Comment> beginComments, Object arg, boolean endWithNewLine) {
+    private void printBeginComments(List<Comment> beginComments, Object arg) {
         if (beginComments == null) {
             return;
         }
 
         for (Comment comment : beginComments) {
-            comment.accept(this, arg);
-
-            // Line comments must end with a new line.
-            // Otherwise, code may not compile
-            if (comment instanceof LineComment) {
-                printer.printLn();
-            } else if (endWithNewLine) {
-                printer.printLn();
-            }
+            printComment(comment, printer.getLevel());
         }
     }
 
-    private void printBeginComments(List<Comment> beginComments, Object arg) {
-       printBeginComments(beginComments, arg, true);
-    }
-
     private void printInternalComments(List<Comment> internalComments, Object arg) {
-        // For now, treat the same as beginning comments
-        printBeginComments(internalComments, arg);
+        if (internalComments == null) {
+            return;
+        }
+
+        for (Comment comment : internalComments) {
+            printComment(comment, printer.getLevel());
+        }
     }
 
     private void printEndComments(List<Comment> endComments, Object arg) {
@@ -1534,9 +1543,41 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
 
         for (Comment comment : endComments) {
-            printer.print(" ");
-            comment.accept(this, arg);
+            printComment(comment, 0);
         }
     }
 
+    private void printComment(Comment comment, int indentLevel) {
+
+        // Return if there's nothing to do
+        if (comment == null || comment.getContent() == null) {
+            return;
+        }
+
+        final StringBuilder indentString = new StringBuilder();
+        for (int i = 0; i < indentLevel; i++) {
+            indentString.append("    ");
+        }
+
+        // Comment ends with newline
+        boolean endsWithNewline = (comment.getContent().endsWith("\r\n") || comment.getContent().endsWith("\n"));
+
+        List<String> matchList = new ArrayList<String>();
+        Matcher regexMatcher = commentFormattingRegex.matcher(comment.getContent());
+        while (regexMatcher.find()) {
+            matchList.add(regexMatcher.group());
+        }
+
+        for (int i = 0; i < matchList.size(); i++) {
+
+            // We need to handle the last newline
+            if (i == matchList.size() - 1) {
+                printer.printRaw(indentString.toString() + " " + matchList.get(i).trim() + (endsWithNewline ? "\n" : ""), !endsWithNewline);
+            } else if (i == 0) {
+                printer.printRaw(indentString.toString() + matchList.get(i).trim() + "\n");
+            } else {
+                printer.printRaw(indentString.toString() + " " + matchList.get(i).trim() + "\n");
+            }
+        }
+    }
 }

@@ -1,25 +1,22 @@
-/* Comment */
-@PackageAnnotation
-package something;
+public abstract class CDRInputStream {
 
-/* Comment */
-import a.a; /* Import  */
-
-/* Comment */
-public /* Comment1 */ abstract /* Comment2 */ class /* Comment3 */ CDRInputStream /* Comment4 */ { /* End Comment */
-
-    /* Comment */
+    /**
+     * Javadoc
+     */
     public final int read(byte b[]) throws IOException {
 
         /* Comment */
-        return impl.read(b); // End of line
-
-        /* Comment */
         // This if statement is the best!
+        /*
+           Block Comment
+           */
         if (true) {
             /* Comment */
         } else { // Do something else
 
         } // end comment
+
+        /* Comment */
+        return impl.read(b); // End of line
     }
 }
