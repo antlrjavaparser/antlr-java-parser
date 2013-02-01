@@ -123,7 +123,7 @@ import java.util.regex.Pattern;
 
 public final class DumpVisitor implements VoidVisitor<Object> {
 
-    private static Pattern commentFormattingRegex = Pattern.compile("[\\s]*(.+)\\r?\\n?");
+    private static final CommentFormatter commentFormatter = new CommentFormatter();
 
     private static class SourcePrinter {
 
@@ -1554,30 +1554,11 @@ public final class DumpVisitor implements VoidVisitor<Object> {
             return;
         }
 
-        final StringBuilder indentString = new StringBuilder();
-        for (int i = 0; i < indentLevel; i++) {
-            indentString.append("    ");
-        }
+        String commentAsString = commentFormatter.format(comment, indentLevel);
 
         // Comment ends with newline
-        boolean endsWithNewline = (comment.getContent().endsWith("\r\n") || comment.getContent().endsWith("\n"));
+        boolean endsWithNewline = (commentAsString.endsWith("\r\n") || commentAsString.endsWith("\n"));
 
-        List<String> matchList = new ArrayList<String>();
-        Matcher regexMatcher = commentFormattingRegex.matcher(comment.getContent());
-        while (regexMatcher.find()) {
-            matchList.add(regexMatcher.group());
-        }
-
-        for (int i = 0; i < matchList.size(); i++) {
-
-            // We need to handle the last newline
-            if (i == matchList.size() - 1) {
-                printer.printRaw(indentString.toString() + " " + matchList.get(i).trim() + (endsWithNewline ? "\n" : ""), !endsWithNewline);
-            } else if (i == 0) {
-                printer.printRaw(indentString.toString() + matchList.get(i).trim() + "\n");
-            } else {
-                printer.printRaw(indentString.toString() + " " + matchList.get(i).trim() + "\n");
-            }
-        }
+        printer.printRaw(commentAsString, !endsWithNewline);
     }
 }
