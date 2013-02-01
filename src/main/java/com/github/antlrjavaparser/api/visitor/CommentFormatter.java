@@ -12,6 +12,10 @@ import java.util.regex.Pattern;
  */
 public class CommentFormatter {
 
+    public static enum CommentLocation {
+        BEGINNING, INTERNAL, END
+    }
+
     private static Pattern commentFormattingRegex = Pattern.compile("[\\s]*(.+)\\r?\\n?");
 
     /**
@@ -21,14 +25,14 @@ public class CommentFormatter {
      * @param indentLevel
      * @return
      */
-    public String format(Comment comment, int indentLevel) {
+    public String format(Comment comment, int indentLevel, CommentLocation commentLocation) {
 
         // Return if there's nothing to do
         if (comment == null || comment.getContent() == null) {
             return null;
         }
 
-        return format(comment.getContent(), indentLevel);
+        return format(comment.getContent(), indentLevel, commentLocation);
     }
 
     /**
@@ -38,7 +42,7 @@ public class CommentFormatter {
      * @param indentLevel
      * @return
      */
-    public String format(String comment, int indentLevel) {
+    public String format(String comment, int indentLevel, CommentLocation commentLocation) {
 
         // Return if there's nothing to do
         if (comment == null) {
@@ -63,13 +67,24 @@ public class CommentFormatter {
 
         for (int i = 0; i < matchList.size(); i++) {
 
-            // We need to handle the last newline
-            if (i == matchList.size() - 1) {
-                builder.append(indentString.toString() + " " + matchList.get(i).trim() + (endsWithNewline ? "\n" : ""));
-            } else if (i == 0) {
-                builder.append(indentString.toString() + matchList.get(i).trim() + "\n");
+            String indent;
+            String newline;
+
+            if (commentLocation.equals(CommentLocation.END)) {
+                indent = " ";
+                newline = "";
             } else {
-                builder.append(indentString.toString() + " " + matchList.get(i).trim() + "\n");
+                indent = indentString.toString();
+                newline = "\n";
+            }
+
+            // We need to handle the last newline
+            if (i == 0) {
+                builder.append(indent + matchList.get(i).trim() + newline);
+            } else if (i == matchList.size() - 1) {
+                builder.append(indent + " " + matchList.get(i).trim() + (endsWithNewline ? newline : ""));
+            } else {
+                builder.append(indent + " " + matchList.get(i).trim() + newline);
             }
         }
 

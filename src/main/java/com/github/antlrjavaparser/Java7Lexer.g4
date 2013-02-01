@@ -514,9 +514,9 @@ LineTerminator
     ;
 
 SlashComment
-    :    LineTerminator* '/*' .*? '*/' LineTerminator* -> channel(COMMENTS) // match anything between /* and */
+    :    '/*' .*? '*/' LineTerminator* -> channel(COMMENTS) // match anything between /* and */
     ;
 
 EndOfLineComment
-    :    LineTerminator* '//' .*? LineTerminator+ -> channel(COMMENTS)
+    :    '//' .*? LineTerminator+ -> channel(COMMENTS)
     ;

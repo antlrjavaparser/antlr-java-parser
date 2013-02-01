@@ -16,7 +16,7 @@ public class TestCommentFormatter {
 
         CommentFormatter formatter = new CommentFormatter();
 
-        System.out.println(formatter.format(comment, 1));
+        System.out.println(formatter.format(comment, 1, CommentFormatter.CommentLocation.BEGINNING));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class TestCommentFormatter {
         //System.out.println(formatter.formatStringAsJavadoc(input));
 
         Comment comment = new JavadocComment(formatter.formatStringAsJavadoc(input));
-        System.out.println(formatter.format(comment, 1));
+        System.out.println(formatter.format(comment, 1, CommentFormatter.CommentLocation.BEGINNING));
 
     }
 }

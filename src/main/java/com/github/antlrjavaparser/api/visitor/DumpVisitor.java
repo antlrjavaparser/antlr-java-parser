@@ -111,11 +111,8 @@ import com.github.antlrjavaparser.api.type.Type;
 import com.github.antlrjavaparser.api.type.VoidType;
 import com.github.antlrjavaparser.api.type.WildcardType;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author Julio Vilmar Gesser
@@ -1523,7 +1520,7 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
 
         for (Comment comment : beginComments) {
-            printComment(comment, printer.getLevel());
+            printComment(comment, printer.getLevel(), CommentFormatter.CommentLocation.BEGINNING);
         }
     }
 
@@ -1533,7 +1530,7 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
 
         for (Comment comment : internalComments) {
-            printComment(comment, printer.getLevel());
+            printComment(comment, printer.getLevel(), CommentFormatter.CommentLocation.INTERNAL);
         }
     }
 
@@ -1543,18 +1540,18 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         }
 
         for (Comment comment : endComments) {
-            printComment(comment, 0);
+            printComment(comment, 0, CommentFormatter.CommentLocation.END);
         }
     }
 
-    private void printComment(Comment comment, int indentLevel) {
+    private void printComment(Comment comment, int indentLevel, CommentFormatter.CommentLocation commentLocation) {
 
         // Return if there's nothing to do
         if (comment == null || comment.getContent() == null) {
             return;
         }
 
-        String commentAsString = commentFormatter.format(comment, indentLevel);
+        String commentAsString = commentFormatter.format(comment, indentLevel, commentLocation);
 
         // Comment ends with newline
         boolean endsWithNewline = (commentAsString.endsWith("\r\n") || commentAsString.endsWith("\n"));

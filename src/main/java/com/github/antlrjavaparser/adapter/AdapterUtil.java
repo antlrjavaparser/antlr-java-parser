@@ -349,13 +349,13 @@ public final class AdapterUtil {
                     adapterParameters.claimCommentToken(commentToken.getTokenIndex());
                 }
 
-                if (commentToken.getText().startsWith("/**")) {
+                if (commentToken.getText().trim().startsWith("/**")) {
                     JavadocComment javadocComment = new JavadocComment(commentToken.getText());
                     beginCommentList.add(javadocComment);
-                } else if (commentToken.getText().startsWith("/*")) {
+                } else if (commentToken.getText().trim().startsWith("/*")) {
                     BlockComment blockComment = new BlockComment(commentToken.getText());
                     beginCommentList.add(blockComment);
-                } else if (commentToken.getText().startsWith("//")) {
+                } else if (commentToken.getText().trim().startsWith("//")) {
                     LineComment lineComment = new LineComment(commentToken.getText());
                     beginCommentList.add(lineComment);
                 }
@@ -376,13 +376,13 @@ public final class AdapterUtil {
                         adapterParameters.claimCommentToken(commentToken.getTokenIndex());
                     }
 
-                    if (commentToken.getText().startsWith("/**")) {
+                    if (commentToken.getText().trim().startsWith("/**")) {
                         JavadocComment javadocComment = new JavadocComment(commentToken.getText());
                         endCommentList.add(javadocComment);
-                    } else if (commentToken.getText().startsWith("/*")) {
+                    } else if (commentToken.getText().trim().startsWith("/*")) {
                         BlockComment blockComment = new BlockComment(commentToken.getText());
                         endCommentList.add(blockComment);
-                    } else if (commentToken.getText().startsWith("//")) {
+                    } else if (commentToken.getText().trim().startsWith("//")) {
                         LineComment lineComment = new LineComment(commentToken.getText());
                         endCommentList.add(lineComment);
                     }
