@@ -25,6 +25,7 @@ public class ConditionalExpressionContextAdapter implements Adapter<Expression, 
     public Expression adapt(Java7Parser.ConditionalExpressionContext context, AdapterParameters adapterParameters) {
         Expression expression = Adapters.getConditionalOrExpressionContextAdapter().adapt(context.conditionalOrExpression(), adapterParameters);
         AdapterUtil.setComments(expression, context.conditionalExpression(), adapterParameters);
+        AdapterUtil.setPosition(expression, context);
 
         if (context.QUES() != null) {
             Expression thenExpression = Adapters.getExpressionContextAdapter().adapt(context.expression(), adapterParameters);

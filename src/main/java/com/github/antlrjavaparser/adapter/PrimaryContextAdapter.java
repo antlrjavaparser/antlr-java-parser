@@ -91,6 +91,7 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
         } else if (context.primitiveType() != null) {
             ClassExpr classExpr = new ClassExpr();
             AdapterUtil.setComments(classExpr, context, adapterParameters);
+            AdapterUtil.setPosition(classExpr, context);
 
             Type type = Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType(), adapterParameters);
 
@@ -107,6 +108,7 @@ public class PrimaryContextAdapter implements Adapter<Expression, Java7Parser.Pr
         } else if (context.VOID() != null) {
             ClassExpr classExpr = new ClassExpr();
             AdapterUtil.setComments(classExpr, context, adapterParameters);
+            AdapterUtil.setPosition(classExpr, context);
 
             classExpr.setType(new VoidType());
             return classExpr;

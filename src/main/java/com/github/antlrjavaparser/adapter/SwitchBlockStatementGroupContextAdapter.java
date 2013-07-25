@@ -43,6 +43,7 @@ public class SwitchBlockStatementGroupContextAdapter implements Adapter<SwitchEn
 
         SwitchEntryStmt switchEntryStmt = new SwitchEntryStmt();
         AdapterUtil.setComments(switchEntryStmt, context, adapterParameters);
+        AdapterUtil.setPosition(switchEntryStmt, context);
 
         if (context.blockStatement() != null && context.blockStatement().size() > 0) {
             List<Statement> blockStmtList = new LinkedList<Statement>();

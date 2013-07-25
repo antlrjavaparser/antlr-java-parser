@@ -28,6 +28,7 @@ public class PackageDeclarationContextAdapter implements Adapter<PackageDeclarat
 
         PackageDeclaration packageDeclaration = new PackageDeclaration();
         AdapterUtil.setComments(packageDeclaration, context, adapterParameters);
+        AdapterUtil.setPosition(packageDeclaration, context);
         packageDeclaration.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName(), adapterParameters));
 
         if (context.annotations() != null) {

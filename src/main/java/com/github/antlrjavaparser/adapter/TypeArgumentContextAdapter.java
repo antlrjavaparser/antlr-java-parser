@@ -36,6 +36,7 @@ public class TypeArgumentContextAdapter implements Adapter<Type, Java7Parser.Typ
         if (context.QUES() != null) {
             WildcardType wildcardType = new WildcardType();
             AdapterUtil.setComments(wildcardType, context, adapterParameters);
+            AdapterUtil.setPosition(wildcardType, context);
 
             if (context.type() != null) {
                 Type type = Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters);

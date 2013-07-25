@@ -27,6 +27,7 @@ public class BlockStatementContextAdapter implements Adapter<Statement, Java7Par
         if (context.classOrInterfaceDeclaration() != null) {
             TypeDeclarationStmt typeDeclarationStmt = new TypeDeclarationStmt();
             AdapterUtil.setComments(typeDeclarationStmt, context.classOrInterfaceDeclaration(), adapterParameters);
+            AdapterUtil.setPosition(typeDeclarationStmt, context);
             typeDeclarationStmt.setTypeDeclaration(Adapters.getClassOrInterfaceDeclarationContextAdapter().adapt(context.classOrInterfaceDeclaration(), adapterParameters));
             return typeDeclarationStmt;
         } else if (context.localVariableDeclarationStatement() != null) {

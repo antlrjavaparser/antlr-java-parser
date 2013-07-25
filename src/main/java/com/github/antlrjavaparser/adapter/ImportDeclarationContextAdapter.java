@@ -25,6 +25,8 @@ public class ImportDeclarationContextAdapter implements Adapter<ImportDeclaratio
 
         ImportDeclaration importDeclaration = new ImportDeclaration();
         AdapterUtil.setComments(importDeclaration, context, adapterParameters);
+        AdapterUtil.setPosition(importDeclaration, context);
+
         importDeclaration.setStatic(context.STATIC() != null);
         importDeclaration.setName(AdapterUtil.qualifiedName(context.Identifier()));
         importDeclaration.setAsterisk(context.STAR() != null);

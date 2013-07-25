@@ -45,6 +45,7 @@ public class TryWithResourcesContextAdapter implements Adapter<Statement, Java7P
 
         TryStmt tryStmt = new TryStmt();
         AdapterUtil.setComments(tryStmt, context, adapterParameters);
+        AdapterUtil.setPosition(tryStmt, context);
         tryStmt.setTryBlock(Adapters.getBlockContextAdapter().adapt(context.block(0), adapterParameters));
 
         // Set resources

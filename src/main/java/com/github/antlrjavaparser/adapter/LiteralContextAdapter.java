@@ -55,6 +55,7 @@ public class LiteralContextAdapter implements Adapter<LiteralExpr, Java7Parser.L
         }
 
         AdapterUtil.setComments(literalExpr, context, adapterParameters);
+        AdapterUtil.setPosition(literalExpr, context);
 
         return literalExpr;
 

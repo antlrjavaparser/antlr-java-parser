@@ -24,6 +24,7 @@ public class SingleElementAnnotationContextAdapter implements Adapter<SingleMemb
     public SingleMemberAnnotationExpr adapt(Java7Parser.SingleElementAnnotationContext context, AdapterParameters adapterParameters) {
         SingleMemberAnnotationExpr singleMemberAnnotationExpr = new SingleMemberAnnotationExpr();
         AdapterUtil.setComments(singleMemberAnnotationExpr, context, adapterParameters);
+        AdapterUtil.setPosition(singleMemberAnnotationExpr, context);
         singleMemberAnnotationExpr.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName(), adapterParameters));
         singleMemberAnnotationExpr.setMemberValue(Adapters.getElementValueContextAdapter().adapt(context.elementValue(), adapterParameters));
 
