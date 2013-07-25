@@ -61,14 +61,11 @@ public abstract class Node {
     public Node() {
     }
 
-    public Node(int beginLine, int beginColumn, int endLine, int endColumn, int beginIndex, int endIndex) {
+    public Node(int beginLine, int beginColumn, int endLine, int endColumn) {
         this.beginLine = beginLine;
         this.beginColumn = beginColumn;
         this.endLine = endLine;
         this.endColumn = endColumn;
-
-        this.beginIndex = beginIndex;
-        this.endIndex = endIndex;
     }
 
     /**
