@@ -49,6 +49,10 @@ public abstract class Node {
 
     private int endColumn;
 
+    private int beginIndex;
+
+    private int endIndex;
+
     /**
      * This attribute can store additional information from semantic analysis.
      */
@@ -57,11 +61,14 @@ public abstract class Node {
     public Node() {
     }
 
-    public Node(int beginLine, int beginColumn, int endLine, int endColumn) {
+    public Node(int beginLine, int beginColumn, int endLine, int endColumn, int beginIndex, int endIndex) {
         this.beginLine = beginLine;
         this.beginColumn = beginColumn;
         this.endLine = endLine;
         this.endColumn = endColumn;
+
+        this.beginIndex = beginIndex;
+        this.endIndex = endIndex;
     }
 
     /**
@@ -225,5 +232,21 @@ public abstract class Node {
 
     public void setEndComments(List<Comment> endComments) {
         this.endComments = endComments;
+    }
+
+    public int getBeginIndex() {
+        return beginIndex;
+    }
+
+    public void setBeginIndex(int beginIndex) {
+        this.beginIndex = beginIndex;
+    }
+
+    public int getEndIndex() {
+        return endIndex;
+    }
+
+    public void setEndIndex(int endIndex) {
+        this.endIndex = endIndex;
     }
 }
