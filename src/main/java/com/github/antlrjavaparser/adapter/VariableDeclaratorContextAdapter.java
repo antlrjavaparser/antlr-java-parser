@@ -26,6 +26,7 @@ public class VariableDeclaratorContextAdapter implements Adapter<VariableDeclara
 
         VariableDeclarator variableDeclarator = new VariableDeclarator();
         AdapterUtil.setComments(variableDeclarator, context, adapterParameters);
+        AdapterUtil.setPosition(variableDeclarator, context);
 
         VariableDeclaratorId variableDeclaratorId = new VariableDeclaratorId();
         variableDeclaratorId.setName(context.Identifier().getText());

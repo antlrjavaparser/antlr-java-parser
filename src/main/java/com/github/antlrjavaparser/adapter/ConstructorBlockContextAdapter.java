@@ -44,6 +44,7 @@ public class ConstructorBlockContextAdapter implements Adapter<BlockStmt, Java7P
 
         BlockStmt blockStmt = new BlockStmt();
         AdapterUtil.setComments(blockStmt, context, adapterParameters);
+        AdapterUtil.setPosition(blockStmt, context);
 
         List<Statement> statementList = new LinkedList<Statement>();
 

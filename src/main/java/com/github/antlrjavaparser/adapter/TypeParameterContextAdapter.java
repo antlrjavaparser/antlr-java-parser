@@ -25,6 +25,7 @@ public class TypeParameterContextAdapter implements Adapter<TypeParameter, Java7
 
         TypeParameter typeParameter = new TypeParameter();
         AdapterUtil.setComments(typeParameter, context, adapterParameters);
+        AdapterUtil.setPosition(typeParameter, context);
 
         typeParameter.setTypeBound(Adapters.getTypeBoundContextAdapter ().adapt(context.typeBound(), adapterParameters));
         typeParameter.setName(context.Identifier().getText());

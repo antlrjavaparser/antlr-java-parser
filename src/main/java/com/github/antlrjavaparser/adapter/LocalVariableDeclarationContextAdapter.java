@@ -31,6 +31,7 @@ public class LocalVariableDeclarationContextAdapter implements Adapter<VariableD
 
         VariableDeclarationExpr variableDeclarationExpr = new VariableDeclarationExpr();
         AdapterUtil.setComments(variableDeclarationExpr, context, adapterParameters);
+        AdapterUtil.setPosition(variableDeclarationExpr, context);
 
         int modifiers = 0;
         List<AnnotationExpr> annotations = new LinkedList<AnnotationExpr>();

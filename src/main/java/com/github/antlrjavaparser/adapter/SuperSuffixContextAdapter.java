@@ -33,6 +33,7 @@ public class SuperSuffixContextAdapter implements Adapter<MethodCallExpr, Java7P
 
         MethodCallExpr methodCallExpr = new MethodCallExpr();
         AdapterUtil.setComments(methodCallExpr, context, adapterParameters);
+        AdapterUtil.setPosition(methodCallExpr, context);
 
         methodCallExpr.setScope(new SuperExpr());
 

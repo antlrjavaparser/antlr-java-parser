@@ -27,6 +27,7 @@ public class TypeContextAdapter implements Adapter<Type, Java7Parser.TypeContext
         if (context.classOrInterfaceType() != null) {
             ReferenceType referenceType = new ReferenceType();
             AdapterUtil.setComments(referenceType, context, adapterParameters);
+            AdapterUtil.setPosition(referenceType, context);
 
             referenceType.setType(Adapters.getClassOrInterfaceTypeContextAdapter().adapt(context.classOrInterfaceType(), adapterParameters));
             if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
@@ -39,6 +40,7 @@ public class TypeContextAdapter implements Adapter<Type, Java7Parser.TypeContext
             if (context.LBRACKET() != null && context.LBRACKET().size() > 0) {
                 ReferenceType referenceType = new ReferenceType();
                 AdapterUtil.setComments(referenceType, context, adapterParameters);
+                AdapterUtil.setPosition(referenceType, context);
 
                 referenceType.setType(Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType(), adapterParameters));
                 referenceType.setArrayCount(context.LBRACKET().size());

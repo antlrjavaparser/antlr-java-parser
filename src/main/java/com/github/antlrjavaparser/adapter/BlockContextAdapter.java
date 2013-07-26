@@ -28,6 +28,7 @@ public class BlockContextAdapter implements Adapter<BlockStmt, Java7Parser.Block
     public BlockStmt adapt(Java7Parser.BlockContext context, AdapterParameters adapterParameters) {
         BlockStmt blockStmt = new BlockStmt();
         AdapterUtil.setComments(blockStmt, context, adapterParameters);
+        AdapterUtil.setPosition(blockStmt, context);
 
         List<Statement> blockStmtList = new LinkedList<Statement>();
         for (Java7Parser.BlockStatementContext blockStatementContext : context.blockStatement()) {

@@ -25,6 +25,7 @@ public class ParExpressionContextAdapter implements Adapter<Expression, Java7Par
     public Expression adapt(Java7Parser.ParExpressionContext context, AdapterParameters adapterParameters) {
         EnclosedExpr enclosedExpr = new EnclosedExpr();
         AdapterUtil.setComments(enclosedExpr, context, adapterParameters);
+        AdapterUtil.setPosition(enclosedExpr, context);
 
         enclosedExpr.setInner(Adapters.getExpressionContextAdapter().adapt(context.expression(), adapterParameters));
         return enclosedExpr;

@@ -24,6 +24,7 @@ public class QualifiedNameContextAdapter implements Adapter<NameExpr, Java7Parse
     public NameExpr adapt(Java7Parser.QualifiedNameContext context, AdapterParameters adapterParameters) {
         NameExpr nameExpr = AdapterUtil.qualifiedName(context.Identifier());
         AdapterUtil.setComments(nameExpr, context, adapterParameters);
+        AdapterUtil.setPosition(nameExpr, context);
         return nameExpr;
     }
 }

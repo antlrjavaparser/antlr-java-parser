@@ -29,6 +29,7 @@ public class UnaryExpressionContextAdapter implements Adapter<Expression, Java7P
         } else {
             UnaryExpr unaryExpr = new UnaryExpr();
             AdapterUtil.setComments(unaryExpr, context, adapterParameters);
+            AdapterUtil.setPosition(unaryExpr, context);
 
             UnaryExpr.Operator operator = null;
 

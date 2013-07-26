@@ -45,6 +45,7 @@ public class InterfaceBodyDeclarationContextAdapter implements Adapter<BodyDecla
         } else if (context.SEMI() != null) {
             BodyDeclaration bodyDeclaration = new EmptyMemberDeclaration();
             AdapterUtil.setComments(bodyDeclaration, context, adapterParameters);
+            AdapterUtil.setPosition(bodyDeclaration, context);
             return bodyDeclaration;
         }
 

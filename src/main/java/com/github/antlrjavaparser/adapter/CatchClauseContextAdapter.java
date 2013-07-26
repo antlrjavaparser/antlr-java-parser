@@ -42,9 +42,11 @@ public class CatchClauseContextAdapter implements Adapter<CatchClause, Java7Pars
 
         CatchClause catchClause = new CatchClause();
         AdapterUtil.setComments(catchClause, context, adapterParameters);
+        AdapterUtil.setPosition(catchClause, context);
 
         CatchParameter parameter = new CatchParameter();
         AdapterUtil.setComments(parameter, context.catchFormalParameter(), adapterParameters);
+        AdapterUtil.setPosition(parameter, context);
         AdapterUtil.setVariableModifiers(context.catchFormalParameter().variableModifiers(), parameter, adapterParameters);
 
         List<Type> typeList = new LinkedList<Type>();
