@@ -1,0 +1,16 @@
+public abstract class CDRInputStream {
+
+    /**
+     * Javadoc
+     */
+    public final int read(byte b[]) throws IOException {
+
+        if (true) {
+            /* Comment */
+        } else { // Do something else
+
+        } // end comment
+
+        return impl.read(b); // End of line
+    }
+}
