@@ -29,6 +29,7 @@ public class ArrayInitializerContextAdapter implements Adapter<ArrayInitializerE
 
         ArrayInitializerExpr arrayInitializerExpr = new ArrayInitializerExpr();
         AdapterUtil.setComments(arrayInitializerExpr, context, adapterParameters);
+        AdapterUtil.setPosition(arrayInitializerExpr, context);
 
         List<Expression> expressionList = new LinkedList<Expression>();
         for (Java7Parser.VariableInitializerContext variableInitializerContext : context.variableInitializer()) {

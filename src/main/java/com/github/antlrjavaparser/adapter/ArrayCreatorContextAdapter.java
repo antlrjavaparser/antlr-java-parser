@@ -39,6 +39,7 @@ public class ArrayCreatorContextAdapter implements Adapter<Expression, Java7Pars
 
         ArrayCreationExpr arrayCreationExpr = new ArrayCreationExpr();
         AdapterUtil.setComments(arrayCreationExpr, context, adapterParameters);
+        AdapterUtil.setPosition(arrayCreationExpr, context);
         arrayCreationExpr.setType(Adapters.getCreatedNameContextAdapter().adapt(context.createdName(), adapterParameters));
 
         if (context.arrayInitializer() != null) {

@@ -33,6 +33,7 @@ public class NormalClassDeclarationContextAdapter implements Adapter<TypeDeclara
         ClassOrInterfaceDeclaration classOrInterfaceDeclaration = new ClassOrInterfaceDeclaration();
         AdapterUtil.setModifiers(context.modifiers(), classOrInterfaceDeclaration, adapterParameters);
         AdapterUtil.setComments(classOrInterfaceDeclaration, context, adapterParameters);
+        AdapterUtil.setPosition(classOrInterfaceDeclaration, context);
         classOrInterfaceDeclaration.setInterface(false);
         classOrInterfaceDeclaration.setName(context.Identifier().getText());
 

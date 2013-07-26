@@ -47,6 +47,7 @@ public class PrimitiveTypeContextAdapter implements Adapter<PrimitiveType, Java7
         }
 
         AdapterUtil.setComments(primitiveType, context, adapterParameters);
+        AdapterUtil.setPosition(primitiveType, context);
 
         return primitiveType;
     }
