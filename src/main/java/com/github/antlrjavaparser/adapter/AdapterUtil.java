@@ -181,6 +181,10 @@ public final class AdapterUtil {
                 modifiers |= ModifierSet.STRICTFP;
             }
 
+            if (hasModifier(modifierContext.TRANSIENT())) {
+                modifiers |= ModifierSet.TRANSIENT;
+            }
+
             if (modifierContext.annotation() != null) {
                 AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(modifierContext.annotation(), adapterParameters);
                 annotations.add(annotationExpr);
