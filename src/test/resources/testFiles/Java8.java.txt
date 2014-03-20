@@ -1,0 +1,6 @@
+public class Java8Test {
+    public static void main() {
+
+        processElements(p -> doSomething(p));
+    }
+}

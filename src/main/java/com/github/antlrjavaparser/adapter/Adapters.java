@@ -139,6 +139,7 @@ public class Adapters {
     private static ConstructorBlockContextAdapter constructorBlockContextAdapter = new ConstructorBlockContextAdapter();
     private static ForeachStatementContextAdapter foreachStatementContextAdapter = new ForeachStatementContextAdapter();
     private static NormalForStatementContextAdapter normalForStatementContextAdapter = new NormalForStatementContextAdapter();
+    private static LambdaExpressionContextAdapter lambdaExpressionContextAdapter = new LambdaExpressionContextAdapter();
 
     private Adapters() {
 
@@ -626,5 +627,9 @@ public class Adapters {
 
     public static NormalForStatementContextAdapter getNormalForStatementContextAdapter() {
         return normalForStatementContextAdapter;
+    }
+
+    public static LambdaExpressionContextAdapter getLambdaExpressionContextAdapter() {
+        return lambdaExpressionContextAdapter;
     }
 }

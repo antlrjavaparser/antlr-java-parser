@@ -18,9 +18,18 @@
 package com.github.antlrjavaparser;
 
 import com.github.antlrjavaparser.api.CompilationUnit;
+import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Parser;
+import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.Recognizer;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.atn.ATNConfigSet;
 import org.antlr.v4.runtime.atn.PredictionMode;
+import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.misc.NotNull;
+import org.antlr.v4.runtime.misc.Nullable;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
@@ -29,6 +38,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.BitSet;
 
 /**
  * Created with IntelliJ IDEA.
@@ -87,4 +97,16 @@ public class JavaParser {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(javaSource.getBytes("UTF-8"));
         return parse(inputStream);
     }
+
+    public static void printLex(InputStream in) throws Exception {
+        Java7Lexer lex = new Java7Lexer(new ANTLRInputStream(in));
+        CommonTokenStream tokens = new CommonTokenStream(lex);
+
+        tokens.fill();
+
+        for (Token token : tokens.getTokens()) {
+            System.out.println(token.getType() + " " + token.getText());
+        }
+    }
+
 }

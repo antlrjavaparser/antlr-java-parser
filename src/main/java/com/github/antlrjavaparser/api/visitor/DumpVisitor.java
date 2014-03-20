@@ -66,6 +66,7 @@ import com.github.antlrjavaparser.api.expr.FieldAccessExpr;
 import com.github.antlrjavaparser.api.expr.InstanceOfExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralMinValueExpr;
+import com.github.antlrjavaparser.api.expr.LambdaExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralMinValueExpr;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
@@ -851,6 +852,20 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         printTypeArgs(n.getTypeArgs(), arg);
         printer.print(n.getName());
         printArguments(n.getArgs(), arg);
+        printEndComments(n.getEndComments(), arg);
+    }
+
+    public void visit(LambdaExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
+/*
+        if (n.getScope() != null) {
+            n.getScope().accept(this, arg);
+            printer.print(".");
+        }
+        printTypeArgs(n.getTypeArgs(), arg);
+        printer.print(n.getName());
+        printArguments(n.getArgs(), arg);
+*/
         printEndComments(n.getEndComments(), arg);
     }
 

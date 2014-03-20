@@ -61,6 +61,7 @@ import com.github.antlrjavaparser.api.expr.FieldAccessExpr;
 import com.github.antlrjavaparser.api.expr.InstanceOfExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralMinValueExpr;
+import com.github.antlrjavaparser.api.expr.LambdaExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralMinValueExpr;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
@@ -214,6 +215,8 @@ public interface VoidVisitor<A> {
     public void visit(BooleanLiteralExpr n, A arg);
 
     public void visit(NullLiteralExpr n, A arg);
+
+    public void visit(LambdaExpr n, A arg);
 
     public void visit(MethodCallExpr n, A arg);
 

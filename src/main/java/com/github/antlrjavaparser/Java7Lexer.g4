@@ -111,6 +111,7 @@ CATCH        : 'catch';
 CASE         : 'case';
 ENUM         : 'enum';
 ASSERT       : 'assert';
+LAMBDA       : '->';
 PLUSPLUS     : '++';
 SUBSUB       : '--';
 TILDE        : '~';

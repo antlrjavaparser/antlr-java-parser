@@ -61,6 +61,7 @@ import com.github.antlrjavaparser.api.expr.FieldAccessExpr;
 import com.github.antlrjavaparser.api.expr.InstanceOfExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralMinValueExpr;
+import com.github.antlrjavaparser.api.expr.LambdaExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralMinValueExpr;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
@@ -913,6 +914,28 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
         if (!nodesEquals(n1.getTypeArgs(), n2.getTypeArgs())) {
             return Boolean.FALSE;
         }
+
+        return Boolean.TRUE;
+    }
+
+    public Boolean visit(LambdaExpr n1, Node arg) {
+        LambdaExpr n2 = (LambdaExpr) arg;
+/*
+        if (!nodeEquals(n1.getScope(), n2.getScope())) {
+            return Boolean.FALSE;
+        }
+
+        if (!objEquals(n1.getName(), n2.getName())) {
+            return Boolean.FALSE;
+        }
+
+        if (!nodesEquals(n1.getArgs(), n2.getArgs())) {
+            return Boolean.FALSE;
+        }
+
+        if (!nodesEquals(n1.getTypeArgs(), n2.getTypeArgs())) {
+            return Boolean.FALSE;
+        }*/
 
         return Boolean.TRUE;
     }

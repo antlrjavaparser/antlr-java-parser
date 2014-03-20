@@ -18,6 +18,7 @@
 package com.github.antlrjavaparser.adapter;
 
 import com.github.antlrjavaparser.Java7Parser;
+import com.github.antlrjavaparser.ParseException;
 import com.github.antlrjavaparser.api.expr.AssignExpr;
 import com.github.antlrjavaparser.api.expr.Expression;
 
@@ -25,8 +26,9 @@ public class ExpressionContextAdapter implements Adapter<Expression, Java7Parser
     public Expression adapt(Java7Parser.ExpressionContext context, AdapterParameters adapterParameters) {
 
         Expression expression = null;
-        if (context.conditionalExpression() != null) {
-            expression = Adapters.getConditionalExpressionContextAdapter().adapt(context.conditionalExpression(), adapterParameters);
+
+        if (context.lambdaExpression() != null) {
+            expression = Adapters.getLambdaExpressionContextAdapter().adapt(context.lambdaExpression(), adapterParameters);
         }
 
         if (context.assignmentOperator() != null) {
@@ -92,6 +94,10 @@ public class ExpressionContextAdapter implements Adapter<Expression, Java7Parser
             assignExpr.setTarget(expression);
 
             return assignExpr;
+        }
+
+        if (expression == null) {
+            throw new ParseException("Unknown expression type");
         } else {
             return expression;
         }

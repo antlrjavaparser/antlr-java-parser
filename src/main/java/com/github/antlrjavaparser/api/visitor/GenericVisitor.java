@@ -61,6 +61,7 @@ import com.github.antlrjavaparser.api.expr.FieldAccessExpr;
 import com.github.antlrjavaparser.api.expr.InstanceOfExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralMinValueExpr;
+import com.github.antlrjavaparser.api.expr.LambdaExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralMinValueExpr;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
@@ -208,6 +209,8 @@ public interface GenericVisitor<R, A> {
     public R visit(BooleanLiteralExpr n, A arg);
 
     public R visit(NullLiteralExpr n, A arg);
+
+    public R visit(LambdaExpr n, A arg);
 
     public R visit(MethodCallExpr n, A arg);
 

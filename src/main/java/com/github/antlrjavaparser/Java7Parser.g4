@@ -869,10 +869,17 @@ expressionList
         )*
     ;
 
+/*
 expression
     :   conditionalExpression
         (assignmentOperator expression
         )?
+    ;
+*/
+
+expression
+    :   lambdaExpression
+        (assignmentOperator expression)?
     ;
 
 assignmentOperator
@@ -1151,4 +1158,30 @@ fieldHeader
 
 localVariableHeader
     :   variableModifiers type Identifier (LBRACKET RBRACKET)* (EQ|COMMA|SEMI)
+    ;
+
+inferredFormalParameterList
+    :   LPAREN
+        (inferredFormalParameters)?
+        RPAREN
+    ;
+
+inferredFormalParameters
+    :   Identifier (COMMA Identifier)*
+    ;
+
+lambdaExpression
+    :   lambdaParameters LAMBDA lambdaBody
+    |   conditionalExpression
+    ;
+
+lambdaParameters
+    :   Identifier
+    |   formalParameters
+    |   inferredFormalParameterList
+    ;
+
+lambdaBody
+    :   expression
+    |   block
     ;
