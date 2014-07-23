@@ -31,6 +31,7 @@ public class EnumConstantContextAdapter implements Adapter<EnumConstantDeclarati
 
         EnumConstantDeclaration enumConstantDeclaration = new EnumConstantDeclaration();
         AdapterUtil.setComments(enumConstantDeclaration, context, adapterParameters);
+        AdapterUtil.setPosition(enumConstantDeclaration, context);
 
         if (context.annotations() != null) {
             enumConstantDeclaration.setAnnotations(Adapters.getAnnotationsContextAdapter().adapt(context.annotations(), adapterParameters));

@@ -31,6 +31,7 @@ public class NormalAnnotationContextAdapter implements Adapter<NormalAnnotationE
         NormalAnnotationExpr normalAnnotationExpr = new NormalAnnotationExpr();
         normalAnnotationExpr.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName(), adapterParameters));
         AdapterUtil.setComments(normalAnnotationExpr, context, adapterParameters);
+        AdapterUtil.setPosition(normalAnnotationExpr, context);
 
         if (context.elementValuePairs() != null) {
             normalAnnotationExpr.setPairs(Adapters.getElementValuePairsContextAdapter().adapt(context.elementValuePairs(), adapterParameters));

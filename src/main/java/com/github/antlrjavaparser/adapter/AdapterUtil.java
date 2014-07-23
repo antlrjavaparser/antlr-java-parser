@@ -181,6 +181,10 @@ public final class AdapterUtil {
                 modifiers |= ModifierSet.STRICTFP;
             }
 
+            if (hasModifier(modifierContext.TRANSIENT())) {
+                modifiers |= ModifierSet.TRANSIENT;
+            }
+
             if (modifierContext.annotation() != null) {
                 AnnotationExpr annotationExpr = Adapters.getAnnotationContextAdapter().adapt(modifierContext.annotation(), adapterParameters);
                 annotations.add(annotationExpr);
@@ -320,6 +324,22 @@ public final class AdapterUtil {
                 node.setInternalComments(internalCommentList);
             }
         }
+    }
+
+    public static void setPosition(Node node, ParserRuleContext ctx) {
+        int beginLine = ctx.getStart().getLine();
+        int beginColumn = ctx.getStart().getCharPositionInLine();
+        int endLine = ctx.getStop().getLine();
+        int endTokenLength = ctx.getStop().getStopIndex() - ctx.getStop().getStartIndex();
+        int endColumn = ctx.getStop().getCharPositionInLine() + endTokenLength;
+
+        node.setBeginLine(beginLine);
+        node.setBeginColumn(beginColumn);
+        node.setEndLine(endLine);
+        node.setEndColumn(endColumn);
+
+        node.setBeginIndex(ctx.getStart().getStartIndex());
+        node.setEndIndex(ctx.getStop().getStopIndex());
     }
 
     public static void setComments(Node node, ParserRuleContext parserRuleContext, AdapterParameters adapterParameters) {

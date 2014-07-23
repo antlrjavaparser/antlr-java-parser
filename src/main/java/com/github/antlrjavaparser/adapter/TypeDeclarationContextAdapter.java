@@ -30,6 +30,7 @@ public class TypeDeclarationContextAdapter implements Adapter<TypeDeclaration, J
         } else if (context.SEMI() != null) {
             TypeDeclaration typeDeclaration = new EmptyTypeDeclaration();
             AdapterUtil.setComments(typeDeclaration, context, adapterParameters);
+            AdapterUtil.setPosition(typeDeclaration, context);
             return typeDeclaration;
         }
 

@@ -26,6 +26,7 @@ public class AnnotationTypeDeclarationContextAdapter implements Adapter<Annotati
         AnnotationDeclaration annotationDeclaration = new AnnotationDeclaration();
         AdapterUtil.setModifiers(context.modifiers(), annotationDeclaration, adapterParameters);
         AdapterUtil.setComments(annotationDeclaration, context, adapterParameters);
+        AdapterUtil.setPosition(annotationDeclaration, context);
         annotationDeclaration.setName(context.Identifier().getText());
         annotationDeclaration.setMembers(Adapters.getAnnotationTypeBodyContextAdapter().adapt(context.annotationTypeBody(), adapterParameters));
 

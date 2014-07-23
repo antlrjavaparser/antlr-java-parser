@@ -79,18 +79,22 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
         } else if (context.IF() != null) {
             IfStmt ifStmt = new IfStmt();
             AdapterUtil.setComments(ifStmt, context, adapterParameters);
+            AdapterUtil.setPosition(ifStmt, context);
 
             Expression conditionExpression = Adapters.getExpressionContextAdapter().adapt(context.parExpression().expression(), adapterParameters);
             AdapterUtil.setComments(conditionExpression, context.parExpression().expression(), adapterParameters);
+            AdapterUtil.setPosition(conditionExpression, context);
             ifStmt.setCondition(conditionExpression);
 
             Statement thenStatement = Adapters.getStatementContextAdapter().adapt(context.statement(0), adapterParameters);
             AdapterUtil.setComments(thenStatement, context.statement(0), adapterParameters);
+            AdapterUtil.setPosition(thenStatement, context);
             ifStmt.setThenStmt(thenStatement);
 
             if (context.ELSE() != null) {
                 Statement elseStatement = Adapters.getStatementContextAdapter().adapt(context.statement(1), adapterParameters);
                 AdapterUtil.setComments(elseStatement, context.statement(1), adapterParameters);
+                AdapterUtil.setPosition(elseStatement, context);
                 ifStmt.setElseStmt(elseStatement);
             }
 
@@ -104,12 +108,14 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
         } else if (context.WHILE() != null) {
             WhileStmt whileStmt = new WhileStmt();
             AdapterUtil.setComments(whileStmt, context, adapterParameters);
+            AdapterUtil.setPosition(whileStmt, context);
             whileStmt.setCondition(Adapters.getExpressionContextAdapter().adapt(context.parExpression().expression(), adapterParameters));
             whileStmt.setBody(Adapters.getStatementContextAdapter().adapt(context.statement(0), adapterParameters));
             return whileStmt;
         } else if (context.DO() != null) {
             DoStmt doStmt = new DoStmt();
             AdapterUtil.setComments(doStmt, context, adapterParameters);
+            AdapterUtil.setPosition(doStmt, context);
             doStmt.setBody(Adapters.getStatementContextAdapter().adapt(context.statement(0), adapterParameters));
             doStmt.setCondition(Adapters.getParExpressionContextAdapter().adapt(context.parExpression(), adapterParameters));
             return doStmt;
@@ -118,12 +124,14 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
         } else if (context.SWITCH() != null) {
             SwitchStmt switchStmt = new SwitchStmt();
             AdapterUtil.setComments(switchStmt, context, adapterParameters);
+            AdapterUtil.setPosition(switchStmt, context);
             switchStmt.setEntries(Adapters.getSwitchBlockStatementGroupsContextAdapter().adapt(context.switchBlockStatementGroups(), adapterParameters));
             switchStmt.setSelector(Adapters.getParExpressionContextAdapter().adapt(context.parExpression(), adapterParameters));
             return switchStmt;
         } else if (context.SYNCHRONIZED() != null) {
             SynchronizedStmt synchronizedStmt = new SynchronizedStmt();
             AdapterUtil.setComments(synchronizedStmt, context, adapterParameters);
+            AdapterUtil.setPosition(synchronizedStmt, context);
             synchronizedStmt.setExpr(Adapters.getParExpressionContextAdapter().adapt(context.parExpression(), adapterParameters));
             synchronizedStmt.setBlock(Adapters.getBlockContextAdapter().adapt(context.block(), adapterParameters));
             return synchronizedStmt;
@@ -132,6 +140,7 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
         } else if (context.RETURN() != null) {
             ReturnStmt returnStmt = new ReturnStmt();
             AdapterUtil.setComments(returnStmt, context, adapterParameters);
+            AdapterUtil.setPosition(returnStmt, context);
             if (context.expression(0) != null) {
                 returnStmt.setExpr(Adapters.getExpressionContextAdapter().adapt(context.expression(0), adapterParameters));
             }
@@ -139,11 +148,13 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
         } else if (context.THROW() != null) {
             ThrowStmt throwStmt = new ThrowStmt();
             AdapterUtil.setComments(throwStmt, context, adapterParameters);
+            AdapterUtil.setPosition(throwStmt, context);
             throwStmt.setExpr(Adapters.getExpressionContextAdapter().adapt(context.expression(0), adapterParameters));
             return throwStmt;
         } else if (context.BREAK() != null) {
             BreakStmt breakStmt = new BreakStmt();
             AdapterUtil.setComments(breakStmt, context, adapterParameters);
+            AdapterUtil.setPosition(breakStmt, context);
             if (context.Identifier() != null) {
                 breakStmt.setId(context.Identifier().getText());
             }
@@ -151,6 +162,7 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
         } else if (context.CONTINUE() != null) {
             ContinueStmt continueStmt = new ContinueStmt();
             AdapterUtil.setComments(continueStmt, context, adapterParameters);
+            AdapterUtil.setPosition(continueStmt, context);
             if (context.Identifier() != null) {
                 continueStmt.setId(context.Identifier().getText());
             }
@@ -159,16 +171,19 @@ public class StatementContextAdapter implements Adapter<Statement, Java7Parser.S
         } else if (context.Identifier() != null) {
             LabeledStmt labeledStmt = new LabeledStmt();
             AdapterUtil.setComments(labeledStmt, context, adapterParameters);
+            AdapterUtil.setPosition(labeledStmt, context);
             labeledStmt.setLabel(context.Identifier().getText());
             labeledStmt.setStmt(Adapters.getStatementContextAdapter().adapt(context.statement(0), adapterParameters));
             return labeledStmt;
         } else if (context.emptyStatement() != null) {
             Statement emptyStatement = new EmptyStmt();
             AdapterUtil.setComments(emptyStatement, context.emptyStatement(), adapterParameters);
+            AdapterUtil.setPosition(emptyStatement, context);
             return emptyStatement;
         } else if (context.expression() != null) {
             ExpressionStmt expressionStmt = new ExpressionStmt();
             AdapterUtil.setComments(expressionStmt, context, adapterParameters);
+            AdapterUtil.setPosition(expressionStmt, context);
             expressionStmt.setExpression(Adapters.getExpressionContextAdapter().adapt(context.expression(0), adapterParameters));
             return expressionStmt;
         }

@@ -28,6 +28,7 @@ public class ClassOrInterfaceTypeContextAdapter implements Adapter<ClassOrInterf
 
         ClassOrInterfaceType classOrInterfaceType = new ClassOrInterfaceType();
         AdapterUtil.setComments(classOrInterfaceType, context, adapterParameters);
+        AdapterUtil.setPosition(classOrInterfaceType, context);
 
         List<ClassOrInterfaceType> scopes = new LinkedList<ClassOrInterfaceType>();
 

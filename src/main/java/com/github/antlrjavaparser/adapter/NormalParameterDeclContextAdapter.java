@@ -31,6 +31,7 @@ public class NormalParameterDeclContextAdapter implements Adapter<Parameter, Jav
          */
         Parameter parameter = new Parameter();
         AdapterUtil.setComments(parameter, context, adapterParameters);
+        AdapterUtil.setPosition(parameter, context);
 
         AdapterUtil.setVariableModifiers(context.variableModifiers(), parameter, adapterParameters);
         parameter.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));

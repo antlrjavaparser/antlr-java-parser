@@ -35,6 +35,7 @@ public class EllipsisParameterDeclContextAdapter implements Adapter<Parameter, J
         Parameter parameter = new Parameter();
         AdapterUtil.setVariableModifiers(context.variableModifiers(), parameter, adapterParameters);
         AdapterUtil.setComments(parameter, context, adapterParameters);
+        AdapterUtil.setPosition(parameter, context);
 
         parameter.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
         parameter.setVarArgs(true);

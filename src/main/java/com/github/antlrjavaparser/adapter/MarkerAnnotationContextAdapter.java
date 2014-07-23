@@ -24,6 +24,7 @@ public class MarkerAnnotationContextAdapter implements Adapter<MarkerAnnotationE
     public MarkerAnnotationExpr adapt(Java7Parser.MarkerAnnotationContext context, AdapterParameters adapterParameters) {
         MarkerAnnotationExpr markerAnnotationExpr = new MarkerAnnotationExpr();
         AdapterUtil.setComments(markerAnnotationExpr, context, adapterParameters);
+        AdapterUtil.setPosition(markerAnnotationExpr, context);
         markerAnnotationExpr.setName(Adapters.getQualifiedNameContextAdapter().adapt(context.qualifiedName(), adapterParameters));
 
         return markerAnnotationExpr;
