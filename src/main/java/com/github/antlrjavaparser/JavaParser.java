@@ -18,18 +18,13 @@
 package com.github.antlrjavaparser;
 
 import com.github.antlrjavaparser.api.CompilationUnit;
-import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.Parser;
-import org.antlr.v4.runtime.RecognitionException;
-import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.atn.ATNConfigSet;
+import org.antlr.v4.runtime.atn.ParserATNSimulator;
+import org.antlr.v4.runtime.atn.PredictionContextCache;
 import org.antlr.v4.runtime.atn.PredictionMode;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.misc.Nullable;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
@@ -38,7 +33,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.BitSet;
 
 /**
  * Created with IntelliJ IDEA.
@@ -62,7 +56,16 @@ public class JavaParser {
     public static CompilationUnit parse(InputStream in) throws IOException, ParseException {
         Java7Lexer lex = new Java7Lexer(new ANTLRInputStream(in));
         CommonTokenStream tokens = new CommonTokenStream(lex);
+
         Java7Parser parser = new Java7Parser(tokens);
+
+        // Define new cache
+        PredictionContextCache cache = new PredictionContextCache(); //parser.getInterpreter().getSharedContextCache();
+
+        // Define new/clean DFA array
+        DFA [] decisionToDFA = new DFA[parser.getATN().getNumberOfDecisions()];
+
+        parser.setInterpreter(new ParserATNSimulator(parser, parser.getATN(), decisionToDFA, cache));
 
         parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
         ParseTree tree = parser.compilationUnit();
