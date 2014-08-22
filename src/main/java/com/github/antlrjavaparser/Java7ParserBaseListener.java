@@ -1,4 +1,4 @@
-// Generated from Java7Parser.g4 by ANTLR 4.2
+// Generated from Java7Parser.g4 by ANTLR 4.3
 
 package com.github.antlrjavaparser;
 

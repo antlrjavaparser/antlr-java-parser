@@ -1,4 +1,4 @@
-// Generated from Java7Parser.g4 by ANTLR 4.2
+// Generated from Java7Parser.g4 by ANTLR 4.3
 
 package com.github.antlrjavaparser;
 
@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class Java7Parser extends Parser {
+	static { RuntimeMetaData.checkVersion("4.3", RuntimeMetaData.VERSION); }
+
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
@@ -358,7 +360,7 @@ public class Java7Parser extends Parser {
 				setState(300); match(Identifier);
 				setState(303); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
+				_alt = 1;
 				do {
 					switch (_alt) {
 					case 1:
@@ -375,7 +377,7 @@ public class Java7Parser extends Parser {
 					setState(305); 
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
-				} while ( _alt!=2 && _alt!=-1 );
+				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 				setState(309);
 				_la = _input.LA(1);
 				if (_la==DOT) {
@@ -609,7 +611,7 @@ public class Java7Parser extends Parser {
 			setState(333);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,12,_ctx);
-			while ( _alt!=2 && _alt!=-1 ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -789,7 +791,7 @@ public class Java7Parser extends Parser {
 			setState(353);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,14,_ctx);
-			while ( _alt!=2 && _alt!=-1 ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -1312,7 +1314,7 @@ public class Java7Parser extends Parser {
 			setState(435);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,28,_ctx);
-			while ( _alt!=2 && _alt!=-1 ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -3200,7 +3202,7 @@ public class Java7Parser extends Parser {
 				{
 				setState(712); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,72,_ctx);
+				_alt = 1;
 				do {
 					switch (_alt) {
 					case 1:
@@ -3217,7 +3219,7 @@ public class Java7Parser extends Parser {
 					setState(714); 
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input,72,_ctx);
-				} while ( _alt!=2 && _alt!=-1 );
+				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 				setState(716); ellipsisParameterDecl();
 				((FormalParameterDeclsContext)_localctx).parameterType =  3;
 				}
@@ -3990,7 +3992,7 @@ public class Java7Parser extends Parser {
 				setState(812);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,84,_ctx);
-				while ( _alt!=2 && _alt!=-1 ) {
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
@@ -5239,7 +5241,7 @@ public class Java7Parser extends Parser {
 			setState(1022);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,106,_ctx);
-			while ( _alt!=2 && _alt!=-1 ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -6640,7 +6642,7 @@ public class Java7Parser extends Parser {
 			setState(1223);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,128,_ctx);
-			while ( _alt!=2 && _alt!=-1 ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -6775,7 +6777,7 @@ public class Java7Parser extends Parser {
 			setState(1244);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,130,_ctx);
-			while ( _alt!=2 && _alt!=-1 ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -7459,7 +7461,7 @@ public class Java7Parser extends Parser {
 				setState(1339);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,141,_ctx);
-				while ( _alt!=2 && _alt!=-1 ) {
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
@@ -7490,7 +7492,7 @@ public class Java7Parser extends Parser {
 				setState(1351);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,143,_ctx);
-				while ( _alt!=2 && _alt!=-1 ) {
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
@@ -7710,7 +7712,7 @@ public class Java7Parser extends Parser {
 				{
 				setState(1398); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,149,_ctx);
+				_alt = 1;
 				do {
 					switch (_alt) {
 					case 1:
@@ -7728,7 +7730,7 @@ public class Java7Parser extends Parser {
 					setState(1400); 
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input,149,_ctx);
-				} while ( _alt!=2 && _alt!=-1 );
+				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 				((ThisSuffixContext)_localctx).operationType =  1;
 				}
 				break;
@@ -7851,7 +7853,7 @@ public class Java7Parser extends Parser {
 				{
 				setState(1431); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,152,_ctx);
+				_alt = 1;
 				do {
 					switch (_alt) {
 					case 1:
@@ -7869,7 +7871,7 @@ public class Java7Parser extends Parser {
 					setState(1433); 
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input,152,_ctx);
-				} while ( _alt!=2 && _alt!=-1 );
+				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 				((IdentifierSuffixContext)_localctx).operationType =  2;
 				}
 				break;
@@ -8190,7 +8192,7 @@ public class Java7Parser extends Parser {
 				setState(1517);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,158,_ctx);
-				while ( _alt!=2 && _alt!=-1 ) {
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
@@ -8207,7 +8209,7 @@ public class Java7Parser extends Parser {
 				setState(1524);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,159,_ctx);
-				while ( _alt!=2 && _alt!=-1 ) {
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
@@ -8359,7 +8361,7 @@ public class Java7Parser extends Parser {
 				setState(1539);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,162,_ctx);
-				while ( _alt!=2 && _alt!=-1 ) {
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{

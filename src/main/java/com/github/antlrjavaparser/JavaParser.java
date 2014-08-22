@@ -54,20 +54,40 @@ public class JavaParser {
      * @return CompilationUnit representing the Java source code
      */
     public static CompilationUnit parse(InputStream in) throws IOException, ParseException {
+        return parse(in, null);
+    }
+
+    /**
+     * Parses the Java code contained in the {@link InputStream} and returns
+     * a {@link CompilationUnit} that represents it.
+     * @param in {@link InputStream} containing Java source code
+     * @param in {@link com.github.antlrjavaparser.ParserConfigurator} to configure the parser before processing.
+     * @return CompilationUnit representing the Java source code
+     */
+    public static CompilationUnit parse(InputStream in, ParserConfigurator parserConfigurator) throws IOException, ParseException {
         Java7Lexer lex = new Java7Lexer(new ANTLRInputStream(in));
         CommonTokenStream tokens = new CommonTokenStream(lex);
 
         Java7Parser parser = new Java7Parser(tokens);
 
         // Define new cache
-        PredictionContextCache cache = new PredictionContextCache(); //parser.getInterpreter().getSharedContextCache();
+        PredictionContextCache cache = new PredictionContextCache();
 
         // Define new/clean DFA array
-        DFA [] decisionToDFA = new DFA[parser.getATN().getNumberOfDecisions()];
+        DFA[] decisionToDFA = new DFA[parser.getATN().getNumberOfDecisions()];
+        for (int i = 0; i < parser.getATN().getNumberOfDecisions(); i++) {
+            decisionToDFA[i] = new DFA(parser.getATN().getDecisionState(i), i);
+        }
 
         parser.setInterpreter(new ParserATNSimulator(parser, parser.getATN(), decisionToDFA, cache));
 
         parser.getInterpreter().setPredictionMode(PredictionMode.SLL);
+
+        // If a configurator was passed in, call it to allow the parser to be configured
+        if (parserConfigurator != null) {
+            parserConfigurator.configure(parser);
+        }
+
         ParseTree tree = parser.compilationUnit();
         ParseTreeWalker walker = new ParseTreeWalker();
 
