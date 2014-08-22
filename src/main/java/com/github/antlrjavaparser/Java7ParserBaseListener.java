@@ -851,19 +851,6 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterResources(@NotNull Java7Parser.ResourcesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitResources(@NotNull Java7Parser.ResourcesContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterRelationalOp(@NotNull Java7Parser.RelationalOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -871,6 +858,19 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitRelationalOp(@NotNull Java7Parser.RelationalOpContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterResources(@NotNull Java7Parser.ResourcesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitResources(@NotNull Java7Parser.ResourcesContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -897,6 +897,19 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitType(@NotNull Java7Parser.TypeContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDefaultInterfaceMethodDeclaration(@NotNull Java7Parser.DefaultInterfaceMethodDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDefaultInterfaceMethodDeclaration(@NotNull Java7Parser.DefaultInterfaceMethodDeclarationContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

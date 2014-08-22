@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static org.junit.Assert.assertNotNull;
+
 /**
  * User: mdehaan
  * Date: 3/19/14
@@ -26,7 +28,12 @@ public class Java8Test {
             return;
         }
 
+
         CompilationUnit compilationUnit = JavaParser.parse(in);
+        assertNotNull(compilationUnit);
+
+        //JavaParser.printLex(in);
+
 
         System.out.println("Something");
         //JavaParser.printLex(in);

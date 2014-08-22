@@ -140,6 +140,7 @@ public class Adapters {
     private static ForeachStatementContextAdapter foreachStatementContextAdapter = new ForeachStatementContextAdapter();
     private static NormalForStatementContextAdapter normalForStatementContextAdapter = new NormalForStatementContextAdapter();
     private static LambdaExpressionContextAdapter lambdaExpressionContextAdapter = new LambdaExpressionContextAdapter();
+    private static DefaultInterfaceMethodDeclarationContextAdapter defaultInterfaceMethodDeclarationContextAdapter = new DefaultInterfaceMethodDeclarationContextAdapter();
 
     private Adapters() {
 
@@ -631,5 +632,9 @@ public class Adapters {
 
     public static LambdaExpressionContextAdapter getLambdaExpressionContextAdapter() {
         return lambdaExpressionContextAdapter;
+    }
+
+    public static DefaultInterfaceMethodDeclarationContextAdapter getDefaultInterfaceMethodDeclarationContextAdapter() {
+        return defaultInterfaceMethodDeclarationContextAdapter;
     }
 }

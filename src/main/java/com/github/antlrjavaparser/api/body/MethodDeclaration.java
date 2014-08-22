@@ -52,6 +52,8 @@ public final class MethodDeclaration extends BodyDeclaration {
 
     private BlockStmt body;
 
+    private boolean defaultMethod;
+
     public MethodDeclaration() {
     }
 
@@ -170,5 +172,13 @@ public final class MethodDeclaration extends BodyDeclaration {
 
     public void setTypeParameters(List<TypeParameter> typeParameters) {
         this.typeParameters = typeParameters;
+    }
+
+    public boolean isDefaultMethod() {
+        return defaultMethod;
+    }
+
+    public void setDefaultMethod(boolean defaultMethod) {
+        this.defaultMethod = defaultMethod;
     }
 }

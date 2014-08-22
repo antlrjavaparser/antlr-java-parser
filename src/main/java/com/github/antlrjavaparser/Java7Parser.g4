@@ -522,13 +522,18 @@ variableDeclarator
 interfaceBodyDeclaration
     :   interfaceFieldDeclaration
     |   interfaceMethodDeclaration
+    |   defaultInterfaceMethodDeclaration
     |   interfaceDeclaration
     |   classDeclaration
     |   SEMI
     ;
 
 interfaceMethodDeclaration
-    :    modifiers (typeParameters)? (type|VOID) Identifier formalParameters (LBRACKET RBRACKET)* (THROWS qualifiedNameList)? SEMI
+    :    modifiers (typeParameters)? (type|VOID) Identifier formalParameters (LBRACKET RBRACKET)* (THROWS qualifiedNameList)? (block | SEMI)
+    ;
+
+defaultInterfaceMethodDeclaration
+    :    ((DEFAULT modifiers) | (modifiers DEFAULT)) typeParameters? (type | VOID) Identifier formalParameters (LBRACKET RBRACKET)* (THROWS qualifiedNameList)? (block | SEMI)
     ;
 
 /**

@@ -715,17 +715,6 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitExpression(@NotNull Java7Parser.ExpressionContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link Java7Parser#resources}.
-	 * @param ctx the parse tree
-	 */
-	void enterResources(@NotNull Java7Parser.ResourcesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link Java7Parser#resources}.
-	 * @param ctx the parse tree
-	 */
-	void exitResources(@NotNull Java7Parser.ResourcesContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link Java7Parser#relationalOp}.
 	 * @param ctx the parse tree
 	 */
@@ -735,6 +724,17 @@ public interface Java7ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitRelationalOp(@NotNull Java7Parser.RelationalOpContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link Java7Parser#resources}.
+	 * @param ctx the parse tree
+	 */
+	void enterResources(@NotNull Java7Parser.ResourcesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Java7Parser#resources}.
+	 * @param ctx the parse tree
+	 */
+	void exitResources(@NotNull Java7Parser.ResourcesContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link Java7Parser#unaryExpression}.
@@ -757,6 +757,17 @@ public interface Java7ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitType(@NotNull Java7Parser.TypeContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link Java7Parser#defaultInterfaceMethodDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefaultInterfaceMethodDeclaration(@NotNull Java7Parser.DefaultInterfaceMethodDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Java7Parser#defaultInterfaceMethodDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefaultInterfaceMethodDeclaration(@NotNull Java7Parser.DefaultInterfaceMethodDeclarationContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link Java7Parser#additiveOp}.

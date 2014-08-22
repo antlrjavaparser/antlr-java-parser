@@ -37,18 +37,18 @@ public class TestAll extends TestCase {
             return;
         }
 
-        File testDirectory = new File("/tmp/java7-src");
+        File testDirectory = new File("/tmp/java8-src");
 
         listFiles(testDirectory, new Listener() {
 
-            private boolean skip = false;
+            private boolean skip = true;
 
             @Override
             public void enterFile(File file) {
 
-                //if (file.getPath().endsWith("\\tmp\\java-src\\src\\java\\util\\concurrent\\ScheduledFuture.java")) {
-//                    skip = false;
-//                }
+                if (file.getPath().endsWith("\\tmp\\java8-src\\java\\lang\\invoke\\MethodHandleInfo.java")) {
+                    skip = false;
+                }
 
                 if (file.getName().endsWith(".java") && !skip) {
 
