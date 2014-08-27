@@ -66,11 +66,13 @@ import com.github.antlrjavaparser.api.expr.FieldAccessExpr;
 import com.github.antlrjavaparser.api.expr.InstanceOfExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralMinValueExpr;
+import com.github.antlrjavaparser.api.expr.LambdaExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralMinValueExpr;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.MemberValuePair;
 import com.github.antlrjavaparser.api.expr.MethodCallExpr;
+import com.github.antlrjavaparser.api.expr.MethodReferenceExpr;
 import com.github.antlrjavaparser.api.expr.NameExpr;
 import com.github.antlrjavaparser.api.expr.NormalAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.NullLiteralExpr;
@@ -854,6 +856,20 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         printEndComments(n.getEndComments(), arg);
     }
 
+    public void visit(LambdaExpr n, Object arg) {
+        printBeginComments(n.getBeginComments(), arg);
+/*
+        if (n.getScope() != null) {
+            n.getScope().accept(this, arg);
+            printer.print(".");
+        }
+        printTypeArgs(n.getTypeArgs(), arg);
+        printer.print(n.getName());
+        printArguments(n.getArgs(), arg);
+*/
+        printEndComments(n.getEndComments(), arg);
+    }
+
     public void visit(ObjectCreationExpr n, Object arg) {
         printBeginComments(n.getBeginComments(), arg);
         if (n.getScope() != null) {
@@ -1557,5 +1573,12 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         boolean endsWithNewline = (commentAsString.endsWith("\r\n") || commentAsString.endsWith("\n"));
 
         printer.printRaw(commentAsString, !endsWithNewline);
+    }
+
+    @Override
+    public void visit(MethodReferenceExpr n, Object arg) {
+        // TODO: Print method reference data
+        printBeginComments(n.getBeginComments(), arg);
+        printEndComments(n.getEndComments(), arg);
     }
 }

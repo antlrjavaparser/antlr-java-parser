@@ -61,11 +61,13 @@ import com.github.antlrjavaparser.api.expr.FieldAccessExpr;
 import com.github.antlrjavaparser.api.expr.InstanceOfExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralMinValueExpr;
+import com.github.antlrjavaparser.api.expr.LambdaExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralMinValueExpr;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.MemberValuePair;
 import com.github.antlrjavaparser.api.expr.MethodCallExpr;
+import com.github.antlrjavaparser.api.expr.MethodReferenceExpr;
 import com.github.antlrjavaparser.api.expr.NameExpr;
 import com.github.antlrjavaparser.api.expr.NormalAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.NullLiteralExpr;
@@ -917,6 +919,28 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
         return Boolean.TRUE;
     }
 
+    public Boolean visit(LambdaExpr n1, Node arg) {
+        LambdaExpr n2 = (LambdaExpr) arg;
+/*
+        if (!nodeEquals(n1.getScope(), n2.getScope())) {
+            return Boolean.FALSE;
+        }
+
+        if (!objEquals(n1.getName(), n2.getName())) {
+            return Boolean.FALSE;
+        }
+
+        if (!nodesEquals(n1.getArgs(), n2.getArgs())) {
+            return Boolean.FALSE;
+        }
+
+        if (!nodesEquals(n1.getTypeArgs(), n2.getTypeArgs())) {
+            return Boolean.FALSE;
+        }*/
+
+        return Boolean.TRUE;
+    }
+
     public Boolean visit(NameExpr n1, Node arg) {
         NameExpr n2 = (NameExpr) arg;
 
@@ -1351,4 +1375,8 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
         return Boolean.TRUE;
     }
 
+    @Override
+    public Boolean visit(MethodReferenceExpr n, Node arg) {
+        return Boolean.TRUE;
+    }
 }

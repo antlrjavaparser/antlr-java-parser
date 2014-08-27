@@ -35,12 +35,18 @@ public class CastExpressionContextAdapter implements Adapter<Expression, Java7Pa
         AdapterUtil.setComments(castExpr, context, adapterParameters);
         AdapterUtil.setPosition(castExpr, context);
 
-        if (context.type() != null) {
+        if (context.unaryExpressionNotPlusMinus() != null) {
             castExpr.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
             castExpr.setExpr(Adapters.getUnaryExpressionNotPlusMinusContextAdapter().adapt(context.unaryExpressionNotPlusMinus(), adapterParameters));
         } else if (context.primitiveType() != null) {
             castExpr.setType(Adapters.getPrimitiveTypeContextAdapter().adapt(context.primitiveType(), adapterParameters));
             castExpr.setExpr(Adapters.getUnaryExpressionContextAdapter().adapt(context.unaryExpression(), adapterParameters));
+        } else if (context.lambdaExpression() != null) {
+            castExpr.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
+            castExpr.setExpr(Adapters.getLambdaExpressionContextAdapter().adapt(context.lambdaExpression(), adapterParameters));
+        } else if (context.methodReference() != null) {
+            castExpr.setType(Adapters.getTypeContextAdapter().adapt(context.type(), adapterParameters));
+            castExpr.setExpr(Adapters.getMethodReferenceContextAdapter().adapt(context.methodReference(), adapterParameters));
         }
 
         return castExpr;

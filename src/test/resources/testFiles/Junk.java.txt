@@ -1,0 +1,20 @@
+public class Junk {
+
+    public static class MyTest {
+        public static class MySubTest2 {
+
+            public static class MySubSubTest3 {
+
+            }
+
+        }
+    }
+
+    public class MyTest2 {
+
+    }
+
+    private class MyTest3 {
+
+    }
+}
