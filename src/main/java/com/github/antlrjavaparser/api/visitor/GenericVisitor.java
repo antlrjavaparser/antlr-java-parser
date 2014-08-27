@@ -61,11 +61,13 @@ import com.github.antlrjavaparser.api.expr.FieldAccessExpr;
 import com.github.antlrjavaparser.api.expr.InstanceOfExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralExpr;
 import com.github.antlrjavaparser.api.expr.IntegerLiteralMinValueExpr;
+import com.github.antlrjavaparser.api.expr.LambdaExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralExpr;
 import com.github.antlrjavaparser.api.expr.LongLiteralMinValueExpr;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.MemberValuePair;
 import com.github.antlrjavaparser.api.expr.MethodCallExpr;
+import com.github.antlrjavaparser.api.expr.MethodReferenceExpr;
 import com.github.antlrjavaparser.api.expr.NameExpr;
 import com.github.antlrjavaparser.api.expr.NormalAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.NullLiteralExpr;
@@ -209,6 +211,8 @@ public interface GenericVisitor<R, A> {
 
     public R visit(NullLiteralExpr n, A arg);
 
+    public R visit(LambdaExpr n, A arg);
+
     public R visit(MethodCallExpr n, A arg);
 
     public R visit(NameExpr n, A arg);
@@ -232,6 +236,8 @@ public interface GenericVisitor<R, A> {
     public R visit(NormalAnnotationExpr n, A arg);
 
     public R visit(MemberValuePair n, A arg);
+
+    public R visit(MethodReferenceExpr n, A arg);
 
     //- Statements ----------------------------------------
 
