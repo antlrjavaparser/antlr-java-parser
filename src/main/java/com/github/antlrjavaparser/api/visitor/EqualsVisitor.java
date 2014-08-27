@@ -67,6 +67,7 @@ import com.github.antlrjavaparser.api.expr.LongLiteralMinValueExpr;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.MemberValuePair;
 import com.github.antlrjavaparser.api.expr.MethodCallExpr;
+import com.github.antlrjavaparser.api.expr.MethodReferenceExpr;
 import com.github.antlrjavaparser.api.expr.NameExpr;
 import com.github.antlrjavaparser.api.expr.NormalAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.NullLiteralExpr;
@@ -1374,4 +1375,8 @@ public class EqualsVisitor implements GenericVisitor<Boolean, Node> {
         return Boolean.TRUE;
     }
 
+    @Override
+    public Boolean visit(MethodReferenceExpr n, Node arg) {
+        return Boolean.TRUE;
+    }
 }

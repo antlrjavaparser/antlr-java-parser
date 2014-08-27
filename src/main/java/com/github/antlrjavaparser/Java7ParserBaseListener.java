@@ -32,6 +32,19 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterArrayType(@NotNull Java7Parser.ArrayTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArrayType(@NotNull Java7Parser.ArrayTypeContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterExpressionList(@NotNull Java7Parser.ExpressionListContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -643,6 +656,19 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTypeName(@NotNull Java7Parser.TypeNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTypeName(@NotNull Java7Parser.TypeNameContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInclusiveOrExpression(@NotNull Java7Parser.InclusiveOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -871,6 +897,19 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitResources(@NotNull Java7Parser.ResourcesContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMethodReference(@NotNull Java7Parser.MethodReferenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMethodReference(@NotNull Java7Parser.MethodReferenceContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -1423,6 +1462,19 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTypeVariable(@NotNull Java7Parser.TypeVariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTypeVariable(@NotNull Java7Parser.TypeVariableContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCreator(@NotNull Java7Parser.CreatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1443,6 +1495,32 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitQualifiedNameList(@NotNull Java7Parser.QualifiedNameListContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAdditionalBound(@NotNull Java7Parser.AdditionalBoundContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAdditionalBound(@NotNull Java7Parser.AdditionalBoundContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterReferenceType(@NotNull Java7Parser.ReferenceTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitReferenceType(@NotNull Java7Parser.ReferenceTypeContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -1586,6 +1664,19 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitConstructorDeclaration(@NotNull Java7Parser.ConstructorDeclarationContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDims(@NotNull Java7Parser.DimsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDims(@NotNull Java7Parser.DimsContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

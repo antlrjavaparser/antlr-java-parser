@@ -72,6 +72,7 @@ import com.github.antlrjavaparser.api.expr.LongLiteralMinValueExpr;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.MemberValuePair;
 import com.github.antlrjavaparser.api.expr.MethodCallExpr;
+import com.github.antlrjavaparser.api.expr.MethodReferenceExpr;
 import com.github.antlrjavaparser.api.expr.NameExpr;
 import com.github.antlrjavaparser.api.expr.NormalAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.NullLiteralExpr;
@@ -1572,5 +1573,12 @@ public final class DumpVisitor implements VoidVisitor<Object> {
         boolean endsWithNewline = (commentAsString.endsWith("\r\n") || commentAsString.endsWith("\n"));
 
         printer.printRaw(commentAsString, !endsWithNewline);
+    }
+
+    @Override
+    public void visit(MethodReferenceExpr n, Object arg) {
+        // TODO: Print method reference data
+        printBeginComments(n.getBeginComments(), arg);
+        printEndComments(n.getEndComments(), arg);
     }
 }

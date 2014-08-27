@@ -17,6 +17,8 @@
 
 package com.github.antlrjavaparser.adapter;
 
+import com.github.antlrjavaparser.Java7Parser;
+
 public class Adapters {
     private static CompilationUnitContextAdapter compilationUnitContextAdapter = new CompilationUnitContextAdapter();
     private static PackageDeclarationContextAdapter packageDeclarationContextAdapter = new PackageDeclarationContextAdapter();
@@ -141,6 +143,7 @@ public class Adapters {
     private static NormalForStatementContextAdapter normalForStatementContextAdapter = new NormalForStatementContextAdapter();
     private static LambdaExpressionContextAdapter lambdaExpressionContextAdapter = new LambdaExpressionContextAdapter();
     private static DefaultInterfaceMethodDeclarationContextAdapter defaultInterfaceMethodDeclarationContextAdapter = new DefaultInterfaceMethodDeclarationContextAdapter();
+    private static MethodReferenceContextAdapter methodReferenceContextAdapter = new MethodReferenceContextAdapter();
 
     private Adapters() {
 
@@ -636,5 +639,9 @@ public class Adapters {
 
     public static DefaultInterfaceMethodDeclarationContextAdapter getDefaultInterfaceMethodDeclarationContextAdapter() {
         return defaultInterfaceMethodDeclarationContextAdapter;
+    }
+
+    public static MethodReferenceContextAdapter getMethodReferenceContextAdapter() {
+        return methodReferenceContextAdapter;
     }
 }

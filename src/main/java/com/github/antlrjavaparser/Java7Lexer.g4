@@ -95,6 +95,7 @@ TRUE         : 'true';
 FALSE        : 'false';
 AT           : '@';
 DEFAULT      : 'default';
+REF          : '::';
 COLON        : ':';
 IF           : 'if';
 ELSE         : 'else';

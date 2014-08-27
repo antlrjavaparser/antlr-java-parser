@@ -17,6 +17,8 @@ public class LambdaExpressionContextAdapter implements Adapter<Expression, Java7
 
         Expression expression = null;
         if (context.LAMBDA() != null) {
+
+            // TODO: Store Lambda data in tree
             return new LambdaExpr();
         }
 

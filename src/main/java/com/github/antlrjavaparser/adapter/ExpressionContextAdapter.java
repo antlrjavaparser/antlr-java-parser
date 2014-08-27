@@ -24,11 +24,10 @@ import com.github.antlrjavaparser.api.expr.Expression;
 
 public class ExpressionContextAdapter implements Adapter<Expression, Java7Parser.ExpressionContext> {
     public Expression adapt(Java7Parser.ExpressionContext context, AdapterParameters adapterParameters) {
-
         Expression expression = null;
 
-        if (context.lambdaExpression() != null) {
-            expression = Adapters.getLambdaExpressionContextAdapter().adapt(context.lambdaExpression(), adapterParameters);
+        if (context.methodReference() != null) {
+            expression = Adapters.getMethodReferenceContextAdapter().adapt(context.methodReference(), adapterParameters);
         }
 
         if (context.assignmentOperator() != null) {

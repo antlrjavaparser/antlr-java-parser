@@ -33,15 +33,16 @@ public class TestAll extends TestCase {
         //URL url = this.getClass().getResource("/testFiles/SimpleTest.java.txt");
         //File file = new File(url.getFile());
 
-        if (true) {
+        if (false) {
             return;
         }
 
-        File testDirectory = new File("/tmp/java8-src");
+        File testDirectory = new File("/tmp/java7-src");
 
         listFiles(testDirectory, new Listener() {
 
-            private boolean skip = true;
+            // Change to true when skipping files
+            private boolean skip = false;
 
             @Override
             public void enterFile(File file) {

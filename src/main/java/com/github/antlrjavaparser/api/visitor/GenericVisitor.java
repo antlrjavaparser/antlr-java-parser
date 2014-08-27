@@ -67,6 +67,7 @@ import com.github.antlrjavaparser.api.expr.LongLiteralMinValueExpr;
 import com.github.antlrjavaparser.api.expr.MarkerAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.MemberValuePair;
 import com.github.antlrjavaparser.api.expr.MethodCallExpr;
+import com.github.antlrjavaparser.api.expr.MethodReferenceExpr;
 import com.github.antlrjavaparser.api.expr.NameExpr;
 import com.github.antlrjavaparser.api.expr.NormalAnnotationExpr;
 import com.github.antlrjavaparser.api.expr.NullLiteralExpr;
@@ -235,6 +236,8 @@ public interface GenericVisitor<R, A> {
     public R visit(NormalAnnotationExpr n, A arg);
 
     public R visit(MemberValuePair n, A arg);
+
+    public R visit(MethodReferenceExpr n, A arg);
 
     //- Statements ----------------------------------------
 

@@ -405,10 +405,8 @@ typeParameters
 
 typeParameter
     :   Identifier
-        (EXTENDS typeBound
-        )?
+        (EXTENDS typeBound additionalBound*)?
     ;
-
 
 typeBound
     :   type
@@ -416,6 +414,9 @@ typeBound
         )*
     ;
 
+additionalBound
+    :   AMP classOrInterfaceType
+    ;
 
 enumDeclaration
     :   modifiers ENUM Identifier (IMPLEMENTS typeList)? enumBody
@@ -563,7 +564,7 @@ classOrInterfaceType
     ;
 
 identifierTypeArgument
-    :    Identifier typeArguments?
+    :    annotation* Identifier typeArguments?
     ;
 
 primitiveType
@@ -882,10 +883,18 @@ expression
     ;
 */
 
+/*
 expression
     :   lambdaExpression
         (assignmentOperator expression)?
     ;
+*/
+
+expression
+    :   methodReference
+        (assignmentOperator expression)?
+    ;
+
 
 assignmentOperator
 locals [int assignmentType]
@@ -905,7 +914,7 @@ locals [int assignmentType]
 
 conditionalExpression
     :   conditionalOrExpression
-        (QUES expression COLON conditionalExpression
+        (QUES expression COLON expression
         )?
     ;
 
@@ -1020,7 +1029,9 @@ unaryExpressionNotPlusMinus
 
 castExpression
     :   LPAREN primitiveType RPAREN unaryExpression
-    |   LPAREN type RPAREN unaryExpressionNotPlusMinus
+    |   LPAREN type additionalBound* RPAREN unaryExpressionNotPlusMinus
+    |   LPAREN type additionalBound* RPAREN lambdaExpression
+    |   LPAREN type additionalBound* RPAREN methodReference
     ;
 
 /**
@@ -1189,4 +1200,39 @@ lambdaParameters
 lambdaBody
     :   expression
     |   block
+    ;
+
+methodReference
+    :   (typeName REF typeArguments? Identifier
+    |   referenceType REF typeArguments? Identifier
+    |   primary REF typeArguments? Identifier
+    |   SUPER REF typeArguments? Identifier
+    |   typeName DOT SUPER REF typeArguments? Identifier
+    |   classOrInterfaceType REF typeArguments? NEW
+    |   arrayType REF NEW)
+    |   lambdaExpression
+    ;
+
+referenceType
+    :   classOrInterfaceType
+    |   typeVariable
+    |   arrayType
+    ;
+
+typeVariable
+    :   (annotation)* Identifier
+    ;
+
+typeName
+    :   Identifier (DOT Identifier)*
+    ;
+
+arrayType
+    :   primitiveType dims
+    |   classOrInterfaceType dims
+    |   typeVariable dims
+    ;
+
+dims
+    :   annotation* LBRACKET RBRACKET (annotation* LBRACKET RBRACKET)*
     ;

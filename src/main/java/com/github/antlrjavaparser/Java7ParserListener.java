@@ -22,6 +22,17 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitInnerCreator(@NotNull Java7Parser.InnerCreatorContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link Java7Parser#arrayType}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayType(@NotNull Java7Parser.ArrayTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Java7Parser#arrayType}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayType(@NotNull Java7Parser.ArrayTypeContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link Java7Parser#expressionList}.
 	 * @param ctx the parse tree
 	 */
@@ -539,6 +550,17 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitTrystatement(@NotNull Java7Parser.TrystatementContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link Java7Parser#typeName}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypeName(@NotNull Java7Parser.TypeNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Java7Parser#typeName}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypeName(@NotNull Java7Parser.TypeNameContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link Java7Parser#inclusiveOrExpression}.
 	 * @param ctx the parse tree
 	 */
@@ -735,6 +757,17 @@ public interface Java7ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitResources(@NotNull Java7Parser.ResourcesContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link Java7Parser#methodReference}.
+	 * @param ctx the parse tree
+	 */
+	void enterMethodReference(@NotNull Java7Parser.MethodReferenceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Java7Parser#methodReference}.
+	 * @param ctx the parse tree
+	 */
+	void exitMethodReference(@NotNull Java7Parser.MethodReferenceContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link Java7Parser#unaryExpression}.
@@ -1199,6 +1232,17 @@ public interface Java7ParserListener extends ParseTreeListener {
 	void exitAnnotationTypeBody(@NotNull Java7Parser.AnnotationTypeBodyContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link Java7Parser#typeVariable}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypeVariable(@NotNull Java7Parser.TypeVariableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Java7Parser#typeVariable}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypeVariable(@NotNull Java7Parser.TypeVariableContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link Java7Parser#creator}.
 	 * @param ctx the parse tree
 	 */
@@ -1219,6 +1263,28 @@ public interface Java7ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitQualifiedNameList(@NotNull Java7Parser.QualifiedNameListContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link Java7Parser#additionalBound}.
+	 * @param ctx the parse tree
+	 */
+	void enterAdditionalBound(@NotNull Java7Parser.AdditionalBoundContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Java7Parser#additionalBound}.
+	 * @param ctx the parse tree
+	 */
+	void exitAdditionalBound(@NotNull Java7Parser.AdditionalBoundContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link Java7Parser#referenceType}.
+	 * @param ctx the parse tree
+	 */
+	void enterReferenceType(@NotNull Java7Parser.ReferenceTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Java7Parser#referenceType}.
+	 * @param ctx the parse tree
+	 */
+	void exitReferenceType(@NotNull Java7Parser.ReferenceTypeContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link Java7Parser#multiplicativeOp}.
@@ -1340,6 +1406,17 @@ public interface Java7ParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConstructorDeclaration(@NotNull Java7Parser.ConstructorDeclarationContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link Java7Parser#dims}.
+	 * @param ctx the parse tree
+	 */
+	void enterDims(@NotNull Java7Parser.DimsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Java7Parser#dims}.
+	 * @param ctx the parse tree
+	 */
+	void exitDims(@NotNull Java7Parser.DimsContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link Java7Parser#resource}.
