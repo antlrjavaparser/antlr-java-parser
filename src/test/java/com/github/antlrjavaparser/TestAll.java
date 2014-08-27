@@ -33,7 +33,7 @@ public class TestAll extends TestCase {
         //URL url = this.getClass().getResource("/testFiles/SimpleTest.java.txt");
         //File file = new File(url.getFile());
 
-        if (false) {
+        if (true) {
             return;
         }
 
