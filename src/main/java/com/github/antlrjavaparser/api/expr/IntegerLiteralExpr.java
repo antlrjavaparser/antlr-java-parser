@@ -1,23 +1,21 @@
 /*
- * Copyright (C) 2007 J�lio Vilmar Gesser.
+ * Copyright (C) 2015 Julio Vilmar Gesser and Mike DeHaan
  *
- * This file is part of Java 1.5 parser and Abstract Syntax Tree.
+ * This file is part of antlr-java-parser.
  *
- * Java 1.5 parser and Abstract Syntax Tree is free software: you can redistribute it and/or modify
+ * antlr-java-parser is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Java 1.5 parser and Abstract Syntax Tree is distributed in the hope that it will be useful,
+ * antlr-java-parser is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with Java 1.5 parser and Abstract Syntax Tree.  If not, see <http://www.gnu.org/licenses/>.
- */
-/*
- * Created on 02/03/2007
+ * along with antlr-java-parser.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 package com.github.antlrjavaparser.api.expr;
 

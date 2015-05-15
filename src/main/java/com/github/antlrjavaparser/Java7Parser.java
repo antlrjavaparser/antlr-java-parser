@@ -1,5 +1,22 @@
-// Generated from Java7Parser.g4 by ANTLR 4.3
-
+/*
+ * Copyright (C) 2015 Julio Vilmar Gesser and Mike DeHaan
+ *
+ * This file is part of antlr-java-parser.
+ *
+ * antlr-java-parser is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * antlr-java-parser is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with antlr-java-parser.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 package com.github.antlrjavaparser;
 
 import org.antlr.v4.runtime.atn.*;
@@ -162,7 +179,7 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(ImportDeclarationContext.class);
 		}
 		public PackageDeclarationContext packageDeclaration() {
-			return getRuleContext(PackageDeclarationContext.class,0);
+			return getRuleContext(PackageDeclarationContext.class, 0);
 		}
 		public ImportDeclarationContext importDeclaration(int i) {
 			return getRuleContext(ImportDeclarationContext.class,i);
@@ -243,7 +260,7 @@ public class Java7Parser extends Parser {
 
 	public static class PackageDeclarationContext extends ParserRuleContext {
 		public QualifiedNameContext qualifiedName() {
-			return getRuleContext(QualifiedNameContext.class,0);
+			return getRuleContext(QualifiedNameContext.class, 0);
 		}
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public TerminalNode PACKAGE() { return getToken(Java7Parser.PACKAGE, 0); }
@@ -468,7 +485,7 @@ public class Java7Parser extends Parser {
 	public static class TypeDeclarationContext extends ParserRuleContext {
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public ClassOrInterfaceDeclarationContext classOrInterfaceDeclaration() {
-			return getRuleContext(ClassOrInterfaceDeclarationContext.class,0);
+			return getRuleContext(ClassOrInterfaceDeclarationContext.class, 0);
 		}
 		public TypeDeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -649,7 +666,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode ABSTRACT() { return getToken(Java7Parser.ABSTRACT, 0); }
 		public TerminalNode PRIVATE() { return getToken(Java7Parser.PRIVATE, 0); }
 		public AnnotationContext annotation() {
-			return getRuleContext(AnnotationContext.class,0);
+			return getRuleContext(AnnotationContext.class, 0);
 		}
 		public TerminalNode STATIC() { return getToken(Java7Parser.STATIC, 0); }
 		public TerminalNode VOLATILE() { return getToken(Java7Parser.VOLATILE, 0); }
@@ -901,10 +918,10 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeParametersContext.class,0);
 		}
 		public ClassBodyContext classBody() {
-			return getRuleContext(ClassBodyContext.class,0);
+			return getRuleContext(ClassBodyContext.class, 0);
 		}
 		public TypeListContext typeList() {
-			return getRuleContext(TypeListContext.class,0);
+			return getRuleContext(TypeListContext.class, 0);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TypeContext type() {
@@ -991,7 +1008,7 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.COMMA, i);
 		}
 		public TypeParameterContext typeParameter(int i) {
-			return getRuleContext(TypeParameterContext.class,i);
+			return getRuleContext(TypeParameterContext.class, i);
 		}
 		public TypeParametersContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1049,11 +1066,11 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(AdditionalBoundContext.class);
 		}
 		public AdditionalBoundContext additionalBound(int i) {
-			return getRuleContext(AdditionalBoundContext.class,i);
+			return getRuleContext(AdditionalBoundContext.class, i);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TypeBoundContext typeBound() {
-			return getRuleContext(TypeBoundContext.class,0);
+			return getRuleContext(TypeBoundContext.class, 0);
 		}
 		public TerminalNode EXTENDS() { return getToken(Java7Parser.EXTENDS, 0); }
 		public TypeParameterContext(ParserRuleContext parent, int invokingState) {
@@ -1119,7 +1136,7 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> AMP() { return getTokens(Java7Parser.AMP); }
 		public TypeContext type(int i) {
-			return getRuleContext(TypeContext.class,i);
+			return getRuleContext(TypeContext.class, i);
 		}
 		public List<TypeContext> type() {
 			return getRuleContexts(TypeContext.class);
@@ -1218,10 +1235,10 @@ public class Java7Parser extends Parser {
 	public static class EnumDeclarationContext extends ParserRuleContext {
 		public TerminalNode ENUM() { return getToken(Java7Parser.ENUM, 0); }
 		public TypeListContext typeList() {
-			return getRuleContext(TypeListContext.class,0);
+			return getRuleContext(TypeListContext.class, 0);
 		}
 		public EnumBodyContext enumBody() {
-			return getRuleContext(EnumBodyContext.class,0);
+			return getRuleContext(EnumBodyContext.class, 0);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TerminalNode IMPLEMENTS() { return getToken(Java7Parser.IMPLEMENTS, 0); }
@@ -1282,7 +1299,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(EnumConstantsContext.class,0);
 		}
 		public EnumBodyDeclarationsContext enumBodyDeclarations() {
-			return getRuleContext(EnumBodyDeclarationsContext.class,0);
+			return getRuleContext(EnumBodyDeclarationsContext.class, 0);
 		}
 		public TerminalNode RBRACE() { return getToken(Java7Parser.RBRACE, 0); }
 		public EnumBodyContext(ParserRuleContext parent, int invokingState) {
@@ -1409,7 +1426,7 @@ public class Java7Parser extends Parser {
 
 	public static class EnumConstantContext extends ParserRuleContext {
 		public ClassBodyContext classBody() {
-			return getRuleContext(ClassBodyContext.class,0);
+			return getRuleContext(ClassBodyContext.class, 0);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public ArgumentsContext arguments() {
@@ -1479,7 +1496,7 @@ public class Java7Parser extends Parser {
 
 	public static class EnumBodyDeclarationsContext extends ParserRuleContext {
 		public ClassBodyDeclarationContext classBodyDeclaration(int i) {
-			return getRuleContext(ClassBodyDeclarationContext.class,i);
+			return getRuleContext(ClassBodyDeclarationContext.class, i);
 		}
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public List<ClassBodyDeclarationContext> classBodyDeclaration() {
@@ -1591,7 +1608,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeParametersContext.class,0);
 		}
 		public TypeListContext typeList() {
-			return getRuleContext(TypeListContext.class,0);
+			return getRuleContext(TypeListContext.class, 0);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public InterfaceBodyContext interfaceBody() {
@@ -1599,7 +1616,7 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode INTERFACE() { return getToken(Java7Parser.INTERFACE, 0); }
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public TerminalNode EXTENDS() { return getToken(Java7Parser.EXTENDS, 0); }
 		public NormalInterfaceDeclarationContext(ParserRuleContext parent, int invokingState) {
@@ -1720,7 +1737,7 @@ public class Java7Parser extends Parser {
 	public static class ClassBodyContext extends ParserRuleContext {
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
 		public ClassBodyDeclarationContext classBodyDeclaration(int i) {
-			return getRuleContext(ClassBodyDeclarationContext.class,i);
+			return getRuleContext(ClassBodyDeclarationContext.class, i);
 		}
 		public List<ClassBodyDeclarationContext> classBodyDeclaration() {
 			return getRuleContexts(ClassBodyDeclarationContext.class);
@@ -1778,7 +1795,7 @@ public class Java7Parser extends Parser {
 	public static class InterfaceBodyContext extends ParserRuleContext {
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
 		public InterfaceBodyDeclarationContext interfaceBodyDeclaration(int i) {
-			return getRuleContext(InterfaceBodyDeclarationContext.class,i);
+			return getRuleContext(InterfaceBodyDeclarationContext.class, i);
 		}
 		public List<InterfaceBodyDeclarationContext> interfaceBodyDeclaration() {
 			return getRuleContexts(InterfaceBodyDeclarationContext.class);
@@ -1837,7 +1854,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public TerminalNode STATIC() { return getToken(Java7Parser.STATIC, 0); }
 		public MemberDeclContext memberDecl() {
-			return getRuleContext(MemberDeclContext.class,0);
+			return getRuleContext(MemberDeclContext.class, 0);
 		}
 		public BlockContext block() {
 			return getRuleContext(BlockContext.class,0);
@@ -2007,13 +2024,13 @@ public class Java7Parser extends Parser {
 		public List<TerminalNode> RBRACKET() { return getTokens(Java7Parser.RBRACKET); }
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public FormalParametersContext formalParameters() {
-			return getRuleContext(FormalParametersContext.class,0);
+			return getRuleContext(FormalParametersContext.class, 0);
 		}
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public BlockContext block() {
-			return getRuleContext(BlockContext.class,0);
+			return getRuleContext(BlockContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
@@ -2130,7 +2147,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeParametersContext.class,0);
 		}
 		public ConstructorBlockContext constructorBlock() {
-			return getRuleContext(ConstructorBlockContext.class,0);
+			return getRuleContext(ConstructorBlockContext.class, 0);
 		}
 		public TerminalNode THROWS() { return getToken(Java7Parser.THROWS, 0); }
 		public FormalParametersContext formalParameters() {
@@ -2138,7 +2155,7 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public QualifiedNameListContext qualifiedNameList() {
 			return getRuleContext(QualifiedNameListContext.class,0);
@@ -2207,7 +2224,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(ExplicitConstructorInvocationContext.class,0);
 		}
 		public BlockStatementContext blockStatement(int i) {
-			return getRuleContext(BlockStatementContext.class,i);
+			return getRuleContext(BlockStatementContext.class, i);
 		}
 		public TerminalNode RBRACE() { return getToken(Java7Parser.RBRACE, 0); }
 		public ConstructorBlockContext(ParserRuleContext parent, int invokingState) {
@@ -2277,7 +2294,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeContext.class,0);
 		}
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public TerminalNode COMMA(int i) {
 			return getToken(Java7Parser.COMMA, i);
@@ -2348,7 +2365,7 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> RBRACKET() { return getTokens(Java7Parser.RBRACKET); }
 		public VariableInitializerContext variableInitializer() {
-			return getRuleContext(VariableInitializerContext.class,0);
+			return getRuleContext(VariableInitializerContext.class, 0);
 		}
 		public TerminalNode EQ() { return getToken(Java7Parser.EQ, 0); }
 		public VariableDeclaratorContext(ParserRuleContext parent, int invokingState) {
@@ -2424,7 +2441,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(InterfaceFieldDeclarationContext.class,0);
 		}
 		public ClassDeclarationContext classDeclaration() {
-			return getRuleContext(ClassDeclarationContext.class,0);
+			return getRuleContext(ClassDeclarationContext.class, 0);
 		}
 		public InterfaceBodyDeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -2520,13 +2537,13 @@ public class Java7Parser extends Parser {
 		public List<TerminalNode> RBRACKET() { return getTokens(Java7Parser.RBRACKET); }
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public FormalParametersContext formalParameters() {
-			return getRuleContext(FormalParametersContext.class,0);
+			return getRuleContext(FormalParametersContext.class, 0);
 		}
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public BlockContext block() {
-			return getRuleContext(BlockContext.class,0);
+			return getRuleContext(BlockContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
@@ -2640,32 +2657,32 @@ public class Java7Parser extends Parser {
 
 	public static class DefaultInterfaceMethodDeclarationContext extends ParserRuleContext {
 		public TypeParametersContext typeParameters() {
-			return getRuleContext(TypeParametersContext.class,0);
+			return getRuleContext(TypeParametersContext.class, 0);
 		}
 		public TerminalNode THROWS() { return getToken(Java7Parser.THROWS, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TerminalNode VOID() { return getToken(Java7Parser.VOID, 0); }
 		public List<TerminalNode> LBRACKET() { return getTokens(Java7Parser.LBRACKET); }
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public TerminalNode LBRACKET(int i) {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
 		public QualifiedNameListContext qualifiedNameList() {
-			return getRuleContext(QualifiedNameListContext.class,0);
+			return getRuleContext(QualifiedNameListContext.class, 0);
 		}
 		public List<TerminalNode> RBRACKET() { return getTokens(Java7Parser.RBRACKET); }
 		public TerminalNode DEFAULT() { return getToken(Java7Parser.DEFAULT, 0); }
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public FormalParametersContext formalParameters() {
-			return getRuleContext(FormalParametersContext.class,0);
+			return getRuleContext(FormalParametersContext.class, 0);
 		}
 		public TypeContext type() {
 			return getRuleContext(TypeContext.class,0);
 		}
 		public BlockContext block() {
-			return getRuleContext(BlockContext.class,0);
+			return getRuleContext(BlockContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
@@ -2806,7 +2823,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeContext.class,0);
 		}
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public TerminalNode COMMA(int i) {
 			return getToken(Java7Parser.COMMA, i);
@@ -2869,7 +2886,7 @@ public class Java7Parser extends Parser {
 	public static class TypeContext extends ParserRuleContext {
 		public List<TerminalNode> LBRACKET() { return getTokens(Java7Parser.LBRACKET); }
 		public PrimitiveTypeContext primitiveType() {
-			return getRuleContext(PrimitiveTypeContext.class,0);
+			return getRuleContext(PrimitiveTypeContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
@@ -2971,7 +2988,7 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> DOT() { return getTokens(Java7Parser.DOT); }
 		public IdentifierTypeArgumentContext identifierTypeArgument(int i) {
-			return getRuleContext(IdentifierTypeArgumentContext.class,i);
+			return getRuleContext(IdentifierTypeArgumentContext.class, i);
 		}
 		public TerminalNode DOT(int i) {
 			return getToken(Java7Parser.DOT, i);
@@ -3027,7 +3044,7 @@ public class Java7Parser extends Parser {
 
 	public static class IdentifierTypeArgumentContext extends ParserRuleContext {
 		public AnnotationContext annotation(int i) {
-			return getRuleContext(AnnotationContext.class,i);
+			return getRuleContext(AnnotationContext.class, i);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public List<AnnotationContext> annotation() {
@@ -3148,7 +3165,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode LT() { return getToken(Java7Parser.LT, 0); }
 		public List<TerminalNode> COMMA() { return getTokens(Java7Parser.COMMA); }
 		public TypeArgumentContext typeArgument(int i) {
-			return getRuleContext(TypeArgumentContext.class,i);
+			return getRuleContext(TypeArgumentContext.class, i);
 		}
 		public TerminalNode GT() { return getToken(Java7Parser.GT, 0); }
 		public TerminalNode COMMA(int i) {
@@ -3221,7 +3238,7 @@ public class Java7Parser extends Parser {
 	public static class TypeArgumentContext extends ParserRuleContext {
 		public TerminalNode SUPER() { return getToken(Java7Parser.SUPER, 0); }
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public TerminalNode QUES() { return getToken(Java7Parser.QUES, 0); }
 		public TerminalNode EXTENDS() { return getToken(Java7Parser.EXTENDS, 0); }
@@ -3298,7 +3315,7 @@ public class Java7Parser extends Parser {
 
 	public static class QualifiedNameListContext extends ParserRuleContext {
 		public QualifiedNameContext qualifiedName(int i) {
-			return getRuleContext(QualifiedNameContext.class,i);
+			return getRuleContext(QualifiedNameContext.class, i);
 		}
 		public List<QualifiedNameContext> qualifiedName() {
 			return getRuleContexts(QualifiedNameContext.class);
@@ -3358,7 +3375,7 @@ public class Java7Parser extends Parser {
 
 	public static class FormalParametersContext extends ParserRuleContext {
 		public FormalParameterDeclsContext formalParameterDecls() {
-			return getRuleContext(FormalParameterDeclsContext.class,0);
+			return getRuleContext(FormalParameterDeclsContext.class, 0);
 		}
 		public TerminalNode RPAREN() { return getToken(Java7Parser.RPAREN, 0); }
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
@@ -3412,7 +3429,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(NormalParameterDeclContext.class,i);
 		}
 		public EllipsisParameterDeclContext ellipsisParameterDecl() {
-			return getRuleContext(EllipsisParameterDeclContext.class,0);
+			return getRuleContext(EllipsisParameterDeclContext.class, 0);
 		}
 		public List<TerminalNode> COMMA() { return getTokens(Java7Parser.COMMA); }
 		public TerminalNode COMMA(int i) {
@@ -3520,7 +3537,7 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> LBRACKET() { return getTokens(Java7Parser.LBRACKET); }
 		public VariableModifiersContext variableModifiers() {
-			return getRuleContext(VariableModifiersContext.class,0);
+			return getRuleContext(VariableModifiersContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
@@ -3584,10 +3601,10 @@ public class Java7Parser extends Parser {
 		public TerminalNode ELLIPSIS() { return getToken(Java7Parser.ELLIPSIS, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public VariableModifiersContext variableModifiers() {
-			return getRuleContext(VariableModifiersContext.class,0);
+			return getRuleContext(VariableModifiersContext.class, 0);
 		}
 		public EllipsisParameterDeclContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -3631,7 +3648,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(NonWildcardTypeArgumentsContext.class,0);
 		}
 		public PrimaryContext primary() {
-			return getRuleContext(PrimaryContext.class,0);
+			return getRuleContext(PrimaryContext.class, 0);
 		}
 		public TerminalNode DOT() { return getToken(Java7Parser.DOT, 0); }
 		public TerminalNode SUPER() { return getToken(Java7Parser.SUPER, 0); }
@@ -3774,7 +3791,7 @@ public class Java7Parser extends Parser {
 
 	public static class AnnotationsContext extends ParserRuleContext {
 		public AnnotationContext annotation(int i) {
-			return getRuleContext(AnnotationContext.class,i);
+			return getRuleContext(AnnotationContext.class, i);
 		}
 		public List<AnnotationContext> annotation() {
 			return getRuleContexts(AnnotationContext.class);
@@ -3891,7 +3908,7 @@ public class Java7Parser extends Parser {
 
 	public static class MarkerAnnotationContext extends ParserRuleContext {
 		public QualifiedNameContext qualifiedName() {
-			return getRuleContext(QualifiedNameContext.class,0);
+			return getRuleContext(QualifiedNameContext.class, 0);
 		}
 		public TerminalNode AT() { return getToken(Java7Parser.AT, 0); }
 		public MarkerAnnotationContext(ParserRuleContext parent, int invokingState) {
@@ -3931,7 +3948,7 @@ public class Java7Parser extends Parser {
 
 	public static class SingleElementAnnotationContext extends ParserRuleContext {
 		public ElementValueContext elementValue() {
-			return getRuleContext(ElementValueContext.class,0);
+			return getRuleContext(ElementValueContext.class, 0);
 		}
 		public QualifiedNameContext qualifiedName() {
 			return getRuleContext(QualifiedNameContext.class,0);
@@ -3979,11 +3996,11 @@ public class Java7Parser extends Parser {
 
 	public static class NormalAnnotationContext extends ParserRuleContext {
 		public QualifiedNameContext qualifiedName() {
-			return getRuleContext(QualifiedNameContext.class,0);
+			return getRuleContext(QualifiedNameContext.class, 0);
 		}
 		public TerminalNode RPAREN() { return getToken(Java7Parser.RPAREN, 0); }
 		public ElementValuePairsContext elementValuePairs() {
-			return getRuleContext(ElementValuePairsContext.class,0);
+			return getRuleContext(ElementValuePairsContext.class, 0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
 		public TerminalNode AT() { return getToken(Java7Parser.AT, 0); }
@@ -4039,7 +4056,7 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> COMMA() { return getTokens(Java7Parser.COMMA); }
 		public ElementValuePairContext elementValuePair(int i) {
-			return getRuleContext(ElementValuePairContext.class,i);
+			return getRuleContext(ElementValuePairContext.class, i);
 		}
 		public TerminalNode COMMA(int i) {
 			return getToken(Java7Parser.COMMA, i);
@@ -4095,7 +4112,7 @@ public class Java7Parser extends Parser {
 
 	public static class ElementValuePairContext extends ParserRuleContext {
 		public ElementValueContext elementValue() {
-			return getRuleContext(ElementValueContext.class,0);
+			return getRuleContext(ElementValueContext.class, 0);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TerminalNode EQ() { return getToken(Java7Parser.EQ, 0); }
@@ -4226,7 +4243,7 @@ public class Java7Parser extends Parser {
 
 	public static class ElementValueArrayInitializerContext extends ParserRuleContext {
 		public ElementValueContext elementValue(int i) {
-			return getRuleContext(ElementValueContext.class,i);
+			return getRuleContext(ElementValueContext.class, i);
 		}
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
 		public List<ElementValueContext> elementValue() {
@@ -4360,7 +4377,7 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(AnnotationTypeElementDeclarationContext.class);
 		}
 		public AnnotationTypeElementDeclarationContext annotationTypeElementDeclaration(int i) {
-			return getRuleContext(AnnotationTypeElementDeclarationContext.class,i);
+			return getRuleContext(AnnotationTypeElementDeclarationContext.class, i);
 		}
 		public TerminalNode RBRACE() { return getToken(Java7Parser.RBRACE, 0); }
 		public AnnotationTypeBodyContext(ParserRuleContext parent, int invokingState) {
@@ -4430,7 +4447,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(InterfaceFieldDeclarationContext.class,0);
 		}
 		public NormalClassDeclarationContext normalClassDeclaration() {
-			return getRuleContext(NormalClassDeclarationContext.class,0);
+			return getRuleContext(NormalClassDeclarationContext.class, 0);
 		}
 		public AnnotationTypeElementDeclarationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -4522,7 +4539,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode RPAREN() { return getToken(Java7Parser.RPAREN, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
 		public ModifiersContext modifiers() {
@@ -4583,7 +4600,7 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
 		public BlockStatementContext blockStatement(int i) {
-			return getRuleContext(BlockStatementContext.class,i);
+			return getRuleContext(BlockStatementContext.class, i);
 		}
 		public TerminalNode RBRACE() { return getToken(Java7Parser.RBRACE, 0); }
 		public BlockContext(ParserRuleContext parent, int invokingState) {
@@ -4701,7 +4718,7 @@ public class Java7Parser extends Parser {
 	public static class LocalVariableDeclarationStatementContext extends ParserRuleContext {
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public LocalVariableDeclarationContext localVariableDeclaration() {
-			return getRuleContext(LocalVariableDeclarationContext.class,0);
+			return getRuleContext(LocalVariableDeclarationContext.class, 0);
 		}
 		public LocalVariableDeclarationStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -4744,7 +4761,7 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> COMMA() { return getTokens(Java7Parser.COMMA); }
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public VariableModifiersContext variableModifiers() {
 			return getRuleContext(VariableModifiersContext.class,0);
@@ -4812,7 +4829,7 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
 		public ForstatementContext forstatement() {
-			return getRuleContext(ForstatementContext.class,0);
+			return getRuleContext(ForstatementContext.class, 0);
 		}
 		public EmptyStatementContext emptyStatement() {
 			return getRuleContext(EmptyStatementContext.class,0);
@@ -4830,27 +4847,27 @@ public class Java7Parser extends Parser {
 		public TerminalNode DO() { return getToken(Java7Parser.DO, 0); }
 		public TerminalNode RETURN() { return getToken(Java7Parser.RETURN, 0); }
 		public StatementContext statement(int i) {
-			return getRuleContext(StatementContext.class,i);
+			return getRuleContext(StatementContext.class, i);
 		}
 		public TerminalNode ASSERT() { return getToken(Java7Parser.ASSERT, 0); }
 		public TrystatementContext trystatement() {
 			return getRuleContext(TrystatementContext.class,0);
 		}
 		public ParExpressionContext parExpression() {
-			return getRuleContext(ParExpressionContext.class,0);
+			return getRuleContext(ParExpressionContext.class, 0);
 		}
 		public TerminalNode BREAK() { return getToken(Java7Parser.BREAK, 0); }
 		public TerminalNode SYNCHRONIZED() { return getToken(Java7Parser.SYNCHRONIZED, 0); }
 		public TerminalNode RBRACE() { return getToken(Java7Parser.RBRACE, 0); }
 		public TerminalNode CONTINUE() { return getToken(Java7Parser.CONTINUE, 0); }
 		public SwitchBlockStatementGroupsContext switchBlockStatementGroups() {
-			return getRuleContext(SwitchBlockStatementGroupsContext.class,0);
+			return getRuleContext(SwitchBlockStatementGroupsContext.class, 0);
 		}
 		public TerminalNode ELSE() { return getToken(Java7Parser.ELSE, 0); }
 		public TerminalNode SEMI() { return getToken(Java7Parser.SEMI, 0); }
 		public TerminalNode SWITCH() { return getToken(Java7Parser.SWITCH, 0); }
 		public BlockContext block() {
-			return getRuleContext(BlockContext.class,0);
+			return getRuleContext(BlockContext.class, 0);
 		}
 		public TerminalNode COLON() { return getToken(Java7Parser.COLON, 0); }
 		public StatementContext(ParserRuleContext parent, int invokingState) {
@@ -5102,7 +5119,7 @@ public class Java7Parser extends Parser {
 
 	public static class SwitchBlockStatementGroupsContext extends ParserRuleContext {
 		public SwitchBlockStatementGroupContext switchBlockStatementGroup(int i) {
-			return getRuleContext(SwitchBlockStatementGroupContext.class,i);
+			return getRuleContext(SwitchBlockStatementGroupContext.class, i);
 		}
 		public List<SwitchBlockStatementGroupContext> switchBlockStatementGroup() {
 			return getRuleContexts(SwitchBlockStatementGroupContext.class);
@@ -5159,7 +5176,7 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(BlockStatementContext.class);
 		}
 		public SwitchLabelContext switchLabel() {
-			return getRuleContext(SwitchLabelContext.class,0);
+			return getRuleContext(SwitchLabelContext.class, 0);
 		}
 		public BlockStatementContext blockStatement(int i) {
 			return getRuleContext(BlockStatementContext.class,i);
@@ -5216,7 +5233,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode DEFAULT() { return getToken(Java7Parser.DEFAULT, 0); }
 		public TerminalNode CASE() { return getToken(Java7Parser.CASE, 0); }
 		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
+			return getRuleContext(ExpressionContext.class, 0);
 		}
 		public TerminalNode COLON() { return getToken(Java7Parser.COLON, 0); }
 		public SwitchLabelContext(ParserRuleContext parent, int invokingState) {
@@ -5272,7 +5289,7 @@ public class Java7Parser extends Parser {
 	public static class TrystatementContext extends ParserRuleContext {
 		public int statementType;
 		public TryWithResourcesContext tryWithResources() {
-			return getRuleContext(TryWithResourcesContext.class,0);
+			return getRuleContext(TryWithResourcesContext.class, 0);
 		}
 		public TerminalNode FINALLY() { return getToken(Java7Parser.FINALLY, 0); }
 		public CatchesContext catches() {
@@ -5373,7 +5390,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(CatchesContext.class,0);
 		}
 		public ResourceSpecificationContext resourceSpecification() {
-			return getRuleContext(ResourceSpecificationContext.class,0);
+			return getRuleContext(ResourceSpecificationContext.class, 0);
 		}
 		public BlockContext block(int i) {
 			return getRuleContext(BlockContext.class,i);
@@ -5546,10 +5563,10 @@ public class Java7Parser extends Parser {
 	public static class ResourceContext extends ParserRuleContext {
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
+			return getRuleContext(ExpressionContext.class, 0);
 		}
 		public VariableModifiersContext variableModifiers() {
 			return getRuleContext(VariableModifiersContext.class,0);
@@ -5602,7 +5619,7 @@ public class Java7Parser extends Parser {
 
 	public static class CatchesContext extends ParserRuleContext {
 		public CatchClauseContext catchClause(int i) {
-			return getRuleContext(CatchClauseContext.class,i);
+			return getRuleContext(CatchClauseContext.class, i);
 		}
 		public List<CatchClauseContext> catchClause() {
 			return getRuleContexts(CatchClauseContext.class);
@@ -5657,12 +5674,12 @@ public class Java7Parser extends Parser {
 
 	public static class CatchClauseContext extends ParserRuleContext {
 		public CatchFormalParameterContext catchFormalParameter() {
-			return getRuleContext(CatchFormalParameterContext.class,0);
+			return getRuleContext(CatchFormalParameterContext.class, 0);
 		}
 		public TerminalNode CATCH() { return getToken(Java7Parser.CATCH, 0); }
 		public TerminalNode RPAREN() { return getToken(Java7Parser.RPAREN, 0); }
 		public BlockContext block() {
-			return getRuleContext(BlockContext.class,0);
+			return getRuleContext(BlockContext.class, 0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
 		public CatchClauseContext(ParserRuleContext parent, int invokingState) {
@@ -5710,14 +5727,14 @@ public class Java7Parser extends Parser {
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public List<TerminalNode> BAR() { return getTokens(Java7Parser.BAR); }
 		public TypeContext type(int i) {
-			return getRuleContext(TypeContext.class,i);
+			return getRuleContext(TypeContext.class, i);
 		}
 		public List<TypeContext> type() {
 			return getRuleContexts(TypeContext.class);
 		}
 		public List<TerminalNode> LBRACKET() { return getTokens(Java7Parser.LBRACKET); }
 		public VariableModifiersContext variableModifiers() {
-			return getRuleContext(VariableModifiersContext.class,0);
+			return getRuleContext(VariableModifiersContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
@@ -5846,16 +5863,16 @@ public class Java7Parser extends Parser {
 
 	public static class ForeachStatementContext extends ParserRuleContext {
 		public StatementContext statement() {
-			return getRuleContext(StatementContext.class,0);
+			return getRuleContext(StatementContext.class, 0);
 		}
 		public TerminalNode FOR() { return getToken(Java7Parser.FOR, 0); }
 		public TerminalNode RPAREN() { return getToken(Java7Parser.RPAREN, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
+			return getRuleContext(ExpressionContext.class, 0);
 		}
 		public VariableModifiersContext variableModifiers() {
 			return getRuleContext(VariableModifiersContext.class,0);
@@ -5906,13 +5923,13 @@ public class Java7Parser extends Parser {
 
 	public static class NormalForStatementContext extends ParserRuleContext {
 		public ForInitContext forInit() {
-			return getRuleContext(ForInitContext.class,0);
+			return getRuleContext(ForInitContext.class, 0);
 		}
 		public StatementContext statement() {
-			return getRuleContext(StatementContext.class,0);
+			return getRuleContext(StatementContext.class, 0);
 		}
 		public ExpressionListContext expressionList() {
-			return getRuleContext(ExpressionListContext.class,0);
+			return getRuleContext(ExpressionListContext.class, 0);
 		}
 		public TerminalNode FOR() { return getToken(Java7Parser.FOR, 0); }
 		public List<TerminalNode> SEMI() { return getTokens(Java7Parser.SEMI); }
@@ -6085,7 +6102,7 @@ public class Java7Parser extends Parser {
 
 	public static class ExpressionListContext extends ParserRuleContext {
 		public ExpressionContext expression(int i) {
-			return getRuleContext(ExpressionContext.class,i);
+			return getRuleContext(ExpressionContext.class, i);
 		}
 		public List<TerminalNode> COMMA() { return getTokens(Java7Parser.COMMA); }
 		public List<ExpressionContext> expression() {
@@ -6355,7 +6372,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public ConditionalOrExpressionContext conditionalOrExpression() {
-			return getRuleContext(ConditionalOrExpressionContext.class,0);
+			return getRuleContext(ConditionalOrExpressionContext.class, 0);
 		}
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
@@ -6413,7 +6430,7 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.BARBAR, i);
 		}
 		public ConditionalAndExpressionContext conditionalAndExpression(int i) {
-			return getRuleContext(ConditionalAndExpressionContext.class,i);
+			return getRuleContext(ConditionalAndExpressionContext.class, i);
 		}
 		public List<ConditionalAndExpressionContext> conditionalAndExpression() {
 			return getRuleContexts(ConditionalAndExpressionContext.class);
@@ -6475,7 +6492,7 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.AMPAMP, i);
 		}
 		public InclusiveOrExpressionContext inclusiveOrExpression(int i) {
-			return getRuleContext(InclusiveOrExpressionContext.class,i);
+			return getRuleContext(InclusiveOrExpressionContext.class, i);
 		}
 		public List<InclusiveOrExpressionContext> inclusiveOrExpression() {
 			return getRuleContexts(InclusiveOrExpressionContext.class);
@@ -6533,7 +6550,7 @@ public class Java7Parser extends Parser {
 
 	public static class InclusiveOrExpressionContext extends ParserRuleContext {
 		public ExclusiveOrExpressionContext exclusiveOrExpression(int i) {
-			return getRuleContext(ExclusiveOrExpressionContext.class,i);
+			return getRuleContext(ExclusiveOrExpressionContext.class, i);
 		}
 		public List<ExclusiveOrExpressionContext> exclusiveOrExpression() {
 			return getRuleContexts(ExclusiveOrExpressionContext.class);
@@ -6664,7 +6681,7 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(EqualityExpressionContext.class);
 		}
 		public EqualityExpressionContext equalityExpression(int i) {
-			return getRuleContext(EqualityExpressionContext.class,i);
+			return getRuleContext(EqualityExpressionContext.class, i);
 		}
 		public AndExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -6726,7 +6743,7 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.EQEQ, i);
 		}
 		public NotEqualityExpressionContext notEqualityExpression(int i) {
-			return getRuleContext(NotEqualityExpressionContext.class,i);
+			return getRuleContext(NotEqualityExpressionContext.class, i);
 		}
 		public EqualityExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -6785,7 +6802,7 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(InstanceOfExpressionContext.class);
 		}
 		public InstanceOfExpressionContext instanceOfExpression(int i) {
-			return getRuleContext(InstanceOfExpressionContext.class,i);
+			return getRuleContext(InstanceOfExpressionContext.class, i);
 		}
 		public TerminalNode BANGEQ(int i) {
 			return getToken(Java7Parser.BANGEQ, i);
@@ -6846,7 +6863,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(RelationalExpressionContext.class,0);
 		}
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public TerminalNode INSTANCEOF() { return getToken(Java7Parser.INSTANCEOF, 0); }
 		public InstanceOfExpressionContext(ParserRuleContext parent, int invokingState) {
@@ -6894,7 +6911,7 @@ public class Java7Parser extends Parser {
 
 	public static class RelationalExpressionContext extends ParserRuleContext {
 		public ShiftExpressionContext shiftExpression(int i) {
-			return getRuleContext(ShiftExpressionContext.class,i);
+			return getRuleContext(ShiftExpressionContext.class, i);
 		}
 		public List<ShiftExpressionContext> shiftExpression() {
 			return getRuleContexts(ShiftExpressionContext.class);
@@ -7035,7 +7052,7 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(ShiftOpContext.class);
 		}
 		public ShiftOpContext shiftOp(int i) {
-			return getRuleContext(ShiftOpContext.class,i);
+			return getRuleContext(ShiftOpContext.class, i);
 		}
 		public AdditiveExpressionContext additiveExpression(int i) {
 			return getRuleContext(AdditiveExpressionContext.class,i);
@@ -7120,7 +7137,7 @@ public class Java7Parser extends Parser {
 		enterRule(_localctx, 198, RULE_shiftOp);
 		try {
 			setState(1322);
-			switch ( getInterpreter().adaptivePredict(_input,140,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input, 140, _ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
@@ -7163,7 +7180,7 @@ public class Java7Parser extends Parser {
 
 	public static class AdditiveExpressionContext extends ParserRuleContext {
 		public AdditiveOpContext additiveOp(int i) {
-			return getRuleContext(AdditiveOpContext.class,i);
+			return getRuleContext(AdditiveOpContext.class, i);
 		}
 		public MultiplicativeExpressionContext multiplicativeExpression(int i) {
 			return getRuleContext(MultiplicativeExpressionContext.class,i);
@@ -7286,7 +7303,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(MultiplicativeOpContext.class,i);
 		}
 		public UnaryExpressionContext unaryExpression(int i) {
-			return getRuleContext(UnaryExpressionContext.class,i);
+			return getRuleContext(UnaryExpressionContext.class, i);
 		}
 		public List<MultiplicativeOpContext> multiplicativeOp() {
 			return getRuleContexts(MultiplicativeOpContext.class);
@@ -7413,7 +7430,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode SUBSUB() { return getToken(Java7Parser.SUBSUB, 0); }
 		public TerminalNode PLUS() { return getToken(Java7Parser.PLUS, 0); }
 		public UnaryExpressionNotPlusMinusContext unaryExpressionNotPlusMinus() {
-			return getRuleContext(UnaryExpressionNotPlusMinusContext.class,0);
+			return getRuleContext(UnaryExpressionNotPlusMinusContext.class, 0);
 		}
 		public TerminalNode SUB() { return getToken(Java7Parser.SUB, 0); }
 		public UnaryExpressionContext(ParserRuleContext parent, int invokingState) {
@@ -7527,7 +7544,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(SelectorContext.class,i);
 		}
 		public PrimaryContext primary() {
-			return getRuleContext(PrimaryContext.class,0);
+			return getRuleContext(PrimaryContext.class, 0);
 		}
 		public TerminalNode PLUSPLUS() { return getToken(Java7Parser.PLUSPLUS, 0); }
 		public TerminalNode SUBSUB() { return getToken(Java7Parser.SUBSUB, 0); }
@@ -7609,13 +7626,13 @@ public class Java7Parser extends Parser {
 
 	public static class CastExpressionContext extends ParserRuleContext {
 		public LambdaExpressionContext lambdaExpression() {
-			return getRuleContext(LambdaExpressionContext.class,0);
+			return getRuleContext(LambdaExpressionContext.class, 0);
 		}
 		public List<AdditionalBoundContext> additionalBound() {
 			return getRuleContexts(AdditionalBoundContext.class);
 		}
 		public UnaryExpressionContext unaryExpression() {
-			return getRuleContext(UnaryExpressionContext.class,0);
+			return getRuleContext(UnaryExpressionContext.class, 0);
 		}
 		public AdditionalBoundContext additionalBound(int i) {
 			return getRuleContext(AdditionalBoundContext.class,i);
@@ -7625,7 +7642,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(MethodReferenceContext.class,0);
 		}
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
 		public PrimitiveTypeContext primitiveType() {
@@ -7750,14 +7767,14 @@ public class Java7Parser extends Parser {
 		public int operationType;
 		public TerminalNode SUPER() { return getToken(Java7Parser.SUPER, 0); }
 		public ParExpressionContext parExpression() {
-			return getRuleContext(ParExpressionContext.class,0);
+			return getRuleContext(ParExpressionContext.class, 0);
 		}
 		public List<TerminalNode> Identifier() { return getTokens(Java7Parser.Identifier); }
 		public TerminalNode Identifier(int i) {
 			return getToken(Java7Parser.Identifier, i);
 		}
 		public ThisSuffixContext thisSuffix() {
-			return getRuleContext(ThisSuffixContext.class,0);
+			return getRuleContext(ThisSuffixContext.class, 0);
 		}
 		public TerminalNode VOID() { return getToken(Java7Parser.VOID, 0); }
 		public List<TerminalNode> LBRACKET() { return getTokens(Java7Parser.LBRACKET); }
@@ -7765,7 +7782,7 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
 		public PrimitiveTypeContext primitiveType() {
-			return getRuleContext(PrimitiveTypeContext.class,0);
+			return getRuleContext(PrimitiveTypeContext.class, 0);
 		}
 		public List<TerminalNode> RBRACKET() { return getTokens(Java7Parser.RBRACKET); }
 		public TerminalNode DOT(int i) {
@@ -7777,17 +7794,17 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> DOT() { return getTokens(Java7Parser.DOT); }
 		public SuperSuffixContext superSuffix() {
-			return getRuleContext(SuperSuffixContext.class,0);
+			return getRuleContext(SuperSuffixContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
 		}
 		public LiteralContext literal() {
-			return getRuleContext(LiteralContext.class,0);
+			return getRuleContext(LiteralContext.class, 0);
 		}
 		public TerminalNode THIS() { return getToken(Java7Parser.THIS, 0); }
 		public IdentifierSuffixContext identifierSuffix() {
-			return getRuleContext(IdentifierSuffixContext.class,0);
+			return getRuleContext(IdentifierSuffixContext.class, 0);
 		}
 		public PrimaryContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -8026,10 +8043,10 @@ public class Java7Parser extends Parser {
 	public static class ThisSuffixContext extends ParserRuleContext {
 		public int operationType;
 		public NonWildcardTypeArgumentsContext nonWildcardTypeArguments() {
-			return getRuleContext(NonWildcardTypeArgumentsContext.class,0);
+			return getRuleContext(NonWildcardTypeArgumentsContext.class, 0);
 		}
 		public ExpressionContext expression(int i) {
-			return getRuleContext(ExpressionContext.class,i);
+			return getRuleContext(ExpressionContext.class, i);
 		}
 		public TerminalNode DOT() { return getToken(Java7Parser.DOT, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
@@ -8037,11 +8054,11 @@ public class Java7Parser extends Parser {
 			return getRuleContexts(ExpressionContext.class);
 		}
 		public ArgumentsContext arguments() {
-			return getRuleContext(ArgumentsContext.class,0);
+			return getRuleContext(ArgumentsContext.class, 0);
 		}
 		public List<TerminalNode> LBRACKET() { return getTokens(Java7Parser.LBRACKET); }
 		public InnerCreatorContext innerCreator() {
-			return getRuleContext(InnerCreatorContext.class,0);
+			return getRuleContext(InnerCreatorContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
@@ -8146,7 +8163,7 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> LBRACKET() { return getTokens(Java7Parser.LBRACKET); }
 		public ArgumentsContext arguments() {
-			return getRuleContext(ArgumentsContext.class,0);
+			return getRuleContext(ArgumentsContext.class, 0);
 		}
 		public TerminalNode LBRACKET(int i) {
 			return getToken(Java7Parser.LBRACKET, i);
@@ -8161,7 +8178,7 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode DOT() { return getToken(Java7Parser.DOT, 0); }
 		public InnerCreatorContext innerCreator() {
-			return getRuleContext(InnerCreatorContext.class,0);
+			return getRuleContext(InnerCreatorContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
@@ -8306,14 +8323,14 @@ public class Java7Parser extends Parser {
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
+			return getRuleContext(ExpressionContext.class, 0);
 		}
 		public TerminalNode LBRACKET() { return getToken(Java7Parser.LBRACKET, 0); }
 		public ArgumentsContext arguments() {
 			return getRuleContext(ArgumentsContext.class,0);
 		}
 		public InnerCreatorContext innerCreator() {
-			return getRuleContext(InnerCreatorContext.class,0);
+			return getRuleContext(InnerCreatorContext.class, 0);
 		}
 		public TerminalNode RBRACKET() { return getToken(Java7Parser.RBRACKET, 0); }
 		public TerminalNode THIS() { return getToken(Java7Parser.THIS, 0); }
@@ -8406,7 +8423,7 @@ public class Java7Parser extends Parser {
 
 	public static class CreatorContext extends ParserRuleContext {
 		public NonWildcardTypeArgumentsContext nonWildcardTypeArguments() {
-			return getRuleContext(NonWildcardTypeArgumentsContext.class,0);
+			return getRuleContext(NonWildcardTypeArgumentsContext.class, 0);
 		}
 		public TerminalNode NEW() { return getToken(Java7Parser.NEW, 0); }
 		public ArrayCreatorContext arrayCreator() {
@@ -8478,7 +8495,7 @@ public class Java7Parser extends Parser {
 
 	public static class ArrayCreatorContext extends ParserRuleContext {
 		public ExpressionContext expression(int i) {
-			return getRuleContext(ExpressionContext.class,i);
+			return getRuleContext(ExpressionContext.class, i);
 		}
 		public TerminalNode NEW() { return getToken(Java7Parser.NEW, 0); }
 		public List<ExpressionContext> expression() {
@@ -8486,7 +8503,7 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> LBRACKET() { return getTokens(Java7Parser.LBRACKET); }
 		public CreatedNameContext createdName() {
-			return getRuleContext(CreatedNameContext.class,0);
+			return getRuleContext(CreatedNameContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
@@ -8495,7 +8512,7 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
 		public ArrayInitializerContext arrayInitializer() {
-			return getRuleContext(ArrayInitializerContext.class,0);
+			return getRuleContext(ArrayInitializerContext.class, 0);
 		}
 		public List<TerminalNode> RBRACKET() { return getTokens(Java7Parser.RBRACKET); }
 		public ArrayCreatorContext(ParserRuleContext parent, int invokingState) {
@@ -8686,7 +8703,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode LBRACE() { return getToken(Java7Parser.LBRACE, 0); }
 		public List<TerminalNode> COMMA() { return getTokens(Java7Parser.COMMA); }
 		public VariableInitializerContext variableInitializer(int i) {
-			return getRuleContext(VariableInitializerContext.class,i);
+			return getRuleContext(VariableInitializerContext.class, i);
 		}
 		public TerminalNode RBRACE() { return getToken(Java7Parser.RBRACE, 0); }
 		public TerminalNode COMMA(int i) {
@@ -8828,7 +8845,7 @@ public class Java7Parser extends Parser {
 
 	public static class InnerCreatorContext extends ParserRuleContext {
 		public NonWildcardTypeArgumentsContext nonWildcardTypeArguments() {
-			return getRuleContext(NonWildcardTypeArgumentsContext.class,0);
+			return getRuleContext(NonWildcardTypeArgumentsContext.class, 0);
 		}
 		public TerminalNode NEW() { return getToken(Java7Parser.NEW, 0); }
 		public IdentifierTypeArgumentContext identifierTypeArgument() {
@@ -8978,7 +8995,7 @@ public class Java7Parser extends Parser {
 
 	public static class ArgumentsContext extends ParserRuleContext {
 		public ExpressionListContext expressionList() {
-			return getRuleContext(ExpressionListContext.class,0);
+			return getRuleContext(ExpressionListContext.class, 0);
 		}
 		public TerminalNode RPAREN() { return getToken(Java7Parser.RPAREN, 0); }
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
@@ -9077,7 +9094,7 @@ public class Java7Parser extends Parser {
 	public static class ClassHeaderContext extends ParserRuleContext {
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public TerminalNode CLASS() { return getToken(Java7Parser.CLASS, 0); }
 		public ClassHeaderContext(ParserRuleContext parent, int invokingState) {
@@ -9123,7 +9140,7 @@ public class Java7Parser extends Parser {
 		}
 		public List<TerminalNode> Identifier() { return getTokens(Java7Parser.Identifier); }
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public EnumHeaderContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -9171,7 +9188,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TerminalNode INTERFACE() { return getToken(Java7Parser.INTERFACE, 0); }
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public InterfaceHeaderContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -9214,7 +9231,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode INTERFACE() { return getToken(Java7Parser.INTERFACE, 0); }
 		public TerminalNode AT() { return getToken(Java7Parser.AT, 0); }
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public AnnotationHeaderContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -9259,7 +9276,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode INTERFACE() { return getToken(Java7Parser.INTERFACE, 0); }
 		public TerminalNode AT() { return getToken(Java7Parser.AT, 0); }
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public TerminalNode CLASS() { return getToken(Java7Parser.CLASS, 0); }
 		public TypeHeaderContext(ParserRuleContext parent, int invokingState) {
@@ -9340,7 +9357,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(TypeContext.class,0);
 		}
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public MethodHeaderContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -9406,7 +9423,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode COMMA() { return getToken(Java7Parser.COMMA, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public List<TerminalNode> LBRACKET() { return getTokens(Java7Parser.LBRACKET); }
 		public TerminalNode RBRACKET(int i) {
@@ -9416,7 +9433,7 @@ public class Java7Parser extends Parser {
 			return getToken(Java7Parser.LBRACKET, i);
 		}
 		public ModifiersContext modifiers() {
-			return getRuleContext(ModifiersContext.class,0);
+			return getRuleContext(ModifiersContext.class, 0);
 		}
 		public List<TerminalNode> RBRACKET() { return getTokens(Java7Parser.RBRACKET); }
 		public TerminalNode EQ() { return getToken(Java7Parser.EQ, 0); }
@@ -9482,11 +9499,11 @@ public class Java7Parser extends Parser {
 		public TerminalNode COMMA() { return getToken(Java7Parser.COMMA, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public TypeContext type() {
-			return getRuleContext(TypeContext.class,0);
+			return getRuleContext(TypeContext.class, 0);
 		}
 		public List<TerminalNode> LBRACKET() { return getTokens(Java7Parser.LBRACKET); }
 		public VariableModifiersContext variableModifiers() {
-			return getRuleContext(VariableModifiersContext.class,0);
+			return getRuleContext(VariableModifiersContext.class, 0);
 		}
 		public TerminalNode RBRACKET(int i) {
 			return getToken(Java7Parser.RBRACKET, i);
@@ -9556,7 +9573,7 @@ public class Java7Parser extends Parser {
 	public static class InferredFormalParameterListContext extends ParserRuleContext {
 		public TerminalNode RPAREN() { return getToken(Java7Parser.RPAREN, 0); }
 		public InferredFormalParametersContext inferredFormalParameters() {
-			return getRuleContext(InferredFormalParametersContext.class,0);
+			return getRuleContext(InferredFormalParametersContext.class, 0);
 		}
 		public TerminalNode LPAREN() { return getToken(Java7Parser.LPAREN, 0); }
 		public InferredFormalParameterListContext(ParserRuleContext parent, int invokingState) {
@@ -9666,7 +9683,7 @@ public class Java7Parser extends Parser {
 			return getRuleContext(LambdaBodyContext.class,0);
 		}
 		public ConditionalExpressionContext conditionalExpression() {
-			return getRuleContext(ConditionalExpressionContext.class,0);
+			return getRuleContext(ConditionalExpressionContext.class, 0);
 		}
 		public TerminalNode LAMBDA() { return getToken(Java7Parser.LAMBDA, 0); }
 		public LambdaParametersContext lambdaParameters() {
@@ -9722,7 +9739,7 @@ public class Java7Parser extends Parser {
 
 	public static class LambdaParametersContext extends ParserRuleContext {
 		public InferredFormalParameterListContext inferredFormalParameterList() {
-			return getRuleContext(InferredFormalParameterListContext.class,0);
+			return getRuleContext(InferredFormalParameterListContext.class, 0);
 		}
 		public FormalParametersContext formalParameters() {
 			return getRuleContext(FormalParametersContext.class,0);
@@ -9865,7 +9882,7 @@ public class Java7Parser extends Parser {
 	public static class MethodReferenceContext extends ParserRuleContext {
 		public TerminalNode REF() { return getToken(Java7Parser.REF, 0); }
 		public LambdaExpressionContext lambdaExpression() {
-			return getRuleContext(LambdaExpressionContext.class,0);
+			return getRuleContext(LambdaExpressionContext.class, 0);
 		}
 		public TerminalNode NEW() { return getToken(Java7Parser.NEW, 0); }
 		public PrimaryContext primary() {
@@ -9878,7 +9895,7 @@ public class Java7Parser extends Parser {
 		public TerminalNode SUPER() { return getToken(Java7Parser.SUPER, 0); }
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public ArrayTypeContext arrayType() {
-			return getRuleContext(ArrayTypeContext.class,0);
+			return getRuleContext(ArrayTypeContext.class, 0);
 		}
 		public TypeArgumentsContext typeArguments() {
 			return getRuleContext(TypeArgumentsContext.class,0);
@@ -10108,7 +10125,7 @@ public class Java7Parser extends Parser {
 
 	public static class TypeVariableContext extends ParserRuleContext {
 		public AnnotationContext annotation(int i) {
-			return getRuleContext(AnnotationContext.class,i);
+			return getRuleContext(AnnotationContext.class, i);
 		}
 		public TerminalNode Identifier() { return getToken(Java7Parser.Identifier, 0); }
 		public List<AnnotationContext> annotation() {
@@ -10293,7 +10310,7 @@ public class Java7Parser extends Parser {
 
 	public static class DimsContext extends ParserRuleContext {
 		public AnnotationContext annotation(int i) {
-			return getRuleContext(AnnotationContext.class,i);
+			return getRuleContext(AnnotationContext.class, i);
 		}
 		public List<AnnotationContext> annotation() {
 			return getRuleContexts(AnnotationContext.class);
