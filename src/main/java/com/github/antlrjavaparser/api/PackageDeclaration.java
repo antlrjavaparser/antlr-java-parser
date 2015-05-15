@@ -27,22 +27,10 @@ import com.github.antlrjavaparser.api.visitor.VoidVisitor;
 import java.util.List;
 
 /**
- * <p>
  * This class represents the package declaration. The package declaration is
  * optional for the {@link CompilationUnit}.
- * </p>
+ *
  * The PackageDeclaration is constructed following the syntax:<br>
- * <code>
- * <table>
- * <tr valign=baseline>
- *   <td align=right>PackageDeclaration</td>
- *   <td align=center>::=</td>
- *   <td align=left>
- *       ( {@link AnnotationExpr} )* "package" {@link NameExpr} ) ";"
- *   </td>
- * </tr>
- * </table>
- * </code>
  *
  * @author Julio Vilmar Gesser
  */

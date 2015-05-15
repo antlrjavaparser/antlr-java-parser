@@ -31,24 +31,9 @@ import com.github.antlrjavaparser.api.visitor.VoidVisitor;
 import java.util.List;
 
 /**
- * <p>
  * This class represents the entire compilation unit. Each java file denotes a
  * compilation unit.
- * </p>
  * The CompilationUnit is constructed following the syntax:<br>
- * <code>
- * <table>
- * <tr valign=baseline>
- *   <td align=right>CompilationUnit</td>
- *   <td align=center>::=</td>
- *   <td align=left>
- *   ( {@link PackageDeclaration} )?<br>
- *   ( {@link ImportDeclaration} )*<br>
- *   ( {@link TypeDeclaration} )*<br>
- *   </td>
- * </tr>
- * </table>
- * </code>
  *
  * @author Julio Vilmar Gesser
  */

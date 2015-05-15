@@ -26,21 +26,8 @@ import com.github.antlrjavaparser.api.visitor.VoidVisitor;
 import java.util.List;
 
 /**
- * <p>
  * This class represents the declaration of a genetics argument.
- * </p>
  * The TypeParameter is constructed following the syntax:<br>
- * <code>
- * <table>
- * <tr valign=baseline>
- *   <td align=right>TypeParameter</td>
- *   <td align=center>::=</td>
- *   <td align=left>
- *       &lt;IDENTIFIER&gt; ( "extends" {@link ClassOrInterfaceType} ( "&" {@link ClassOrInterfaceType} )* )?
- *   </td>
- * </tr>
- * </table>
- * </code>
  *
  * @author Julio Vilmar Gesser
  */

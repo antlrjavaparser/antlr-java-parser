@@ -24,22 +24,9 @@ import com.github.antlrjavaparser.api.visitor.GenericVisitor;
 import com.github.antlrjavaparser.api.visitor.VoidVisitor;
 
 /**
- * <p>
  * This class represents a import declaration. Imports are optional for the
  * {@link CompilationUnit}.
- * </p>
  * The ImportDeclaration is constructed following the syntax:<br>
- * <code>
- * <table>
- * <tr valign=baseline>
- *   <td align=right>ImportDeclaration</td>
- *   <td align=center>::=</td>
- *   <td align=left>
- *       "import" ( "static" )? {@link NameExpr} ( "." "*" )? ";"
- *   </td>
- * </tr>
- * </table>
- * </code>
  *
  * @author Julio Vilmar Gesser
  */
