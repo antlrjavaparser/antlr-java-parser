@@ -980,9 +980,9 @@ shiftExpression
 
 shiftOp
     locals [int operatorType]
-    :    LT LT    {$operatorType = 1;}
-    |    GT GT GT {$operatorType = 2;}
-    |    GT GT    {$operatorType = 3;}
+    :    LSHIFT   {$operatorType = 1;}
+    |    RUSHIFT  {$operatorType = 2;}
+    |    RSHIFT   {$operatorType = 3;}
     ;
 
 
