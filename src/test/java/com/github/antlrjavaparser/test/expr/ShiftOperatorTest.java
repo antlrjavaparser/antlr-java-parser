@@ -4,7 +4,6 @@ import com.github.antlrjavaparser.JavaParser;
 import com.github.antlrjavaparser.api.CompilationUnit;
 import com.github.antlrjavaparser.api.body.ConstructorDeclaration;
 import com.github.antlrjavaparser.api.expr.BinaryExpr;
-import com.github.antlrjavaparser.api.stmt.BlockStmt;
 import com.github.antlrjavaparser.api.stmt.ExpressionStmt;
 import org.junit.Test;
 

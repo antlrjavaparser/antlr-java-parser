@@ -56,15 +56,20 @@ public class ShiftExpressionContextAdapter implements Adapter<Expression, Java7P
     }
 
     private BinaryExpr.Operator getOperator(Java7Parser.ShiftOpContext operatorContext) {
+
+        /*
+            :    LT LT    {$operatorType = 1;}
+            |    GT GT GT {$operatorType = 2;}
+            |    GT GT    {$operatorType = 3;}
+         */
+
         switch (operatorContext.operatorType) {
             case 1:
-                return BinaryExpr.Operator.lessEquals;
+                return BinaryExpr.Operator.lShift;
             case 2:
-                return BinaryExpr.Operator.greaterEquals;
+                return BinaryExpr.Operator.rUnsignedShift;
             case 3:
-                return BinaryExpr.Operator.less;
-            case 4:
-                return BinaryExpr.Operator.greater;
+                return BinaryExpr.Operator.rSignedShift;
         }
 
         return null;
