@@ -20,23 +20,15 @@
 package com.github.antlrjavaparser;
 
 import com.github.antlrjavaparser.api.CompilationUnit;
-import junit.framework.TestCase;
-import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.BailErrorStrategy;
-import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.DiagnosticErrorListener;
-import org.antlr.v4.runtime.atn.ParserATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
-import org.antlr.v4.runtime.atn.PredictionMode;
-import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import static org.junit.Assert.fail;
 
 /**
  * Created with IntelliJ IDEA.
@@ -45,7 +37,7 @@ import java.io.IOException;
  * Time: 10:53 PM
  * To change this template use File | Settings | File Templates.
  */
-public class TestAll extends TestCase {
+public class JavaSourceTest {
 
     @Test
     public void testValidJavaFiles() {
@@ -56,14 +48,13 @@ public class TestAll extends TestCase {
             return;
         }
 
-        File testDirectory = new File("/tmp/java7-src");
+        File testDirectory = new File("/tmp/java8-src");
 
         listFiles(testDirectory, new Listener() {
 
             // Change to true when skipping files
             private boolean skip = false;
 
-            @Override
             public void enterFile(File file) {
 
                 if (file.getPath().endsWith("\\tmp\\java8-src\\java\\lang\\invoke\\MethodHandleInfo.java")) {
@@ -77,7 +68,6 @@ public class TestAll extends TestCase {
 
                         FileInputStream fileInputStream = new FileInputStream(file);
                         CompilationUnit compilationUnit = JavaParser.parse(fileInputStream, new ParserConfigurator() {
-                            @Override
                             public void configure(Java7Parser parser) {
                                 parser.removeErrorListeners();
                                 parser.addErrorListener(new DiagnosticErrorListener());
@@ -104,7 +94,7 @@ public class TestAll extends TestCase {
         }
     }
 
-    private static interface Listener {
+    private interface Listener {
         void enterFile(File file);
     }
 }
