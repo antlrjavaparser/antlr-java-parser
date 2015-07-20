@@ -15,7 +15,7 @@ This is a test
 public class SimpleTest {
     public static void main(String args[]) {
         if (a == true && b == false && c == true) {
-
+	        Arrays.sort(entryArray, 0, size, Ordering.from(comparator).<K>onKeys());
         }
     }
 }

@@ -1,22 +1,5 @@
-/*
- * Copyright (C) 2015 Julio Vilmar Gesser and Mike DeHaan
- *
- * This file is part of antlr-java-parser.
- *
- * antlr-java-parser is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * antlr-java-parser is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with antlr-java-parser.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
+// Generated from Java7Parser.g4 by ANTLR 4.5
+
 package com.github.antlrjavaparser;
 
 
@@ -36,1856 +19,1728 @@ public class Java7ParserBaseListener implements Java7ParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInnerCreator(@NotNull Java7Parser.InnerCreatorContext ctx) { }
+	@Override public void enterCompilationUnit(Java7Parser.CompilationUnitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInnerCreator(@NotNull Java7Parser.InnerCreatorContext ctx) { }
-
+	@Override public void exitCompilationUnit(Java7Parser.CompilationUnitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayType(@NotNull Java7Parser.ArrayTypeContext ctx) { }
+	@Override public void enterPackageDeclaration(Java7Parser.PackageDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayType(@NotNull Java7Parser.ArrayTypeContext ctx) { }
-
+	@Override public void exitPackageDeclaration(Java7Parser.PackageDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpressionList(@NotNull Java7Parser.ExpressionListContext ctx) { }
+	@Override public void enterImportDeclaration(Java7Parser.ImportDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpressionList(@NotNull Java7Parser.ExpressionListContext ctx) { }
-
+	@Override public void exitImportDeclaration(Java7Parser.ImportDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeDeclaration(@NotNull Java7Parser.TypeDeclarationContext ctx) { }
+	@Override public void enterQualifiedImportName(Java7Parser.QualifiedImportNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeDeclaration(@NotNull Java7Parser.TypeDeclarationContext ctx) { }
-
+	@Override public void exitQualifiedImportName(Java7Parser.QualifiedImportNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotation(@NotNull Java7Parser.AnnotationContext ctx) { }
+	@Override public void enterTypeDeclaration(Java7Parser.TypeDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotation(@NotNull Java7Parser.AnnotationContext ctx) { }
-
+	@Override public void exitTypeDeclaration(Java7Parser.TypeDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumConstant(@NotNull Java7Parser.EnumConstantContext ctx) { }
+	@Override public void enterClassOrInterfaceDeclaration(Java7Parser.ClassOrInterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumConstant(@NotNull Java7Parser.EnumConstantContext ctx) { }
-
+	@Override public void exitClassOrInterfaceDeclaration(Java7Parser.ClassOrInterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLambdaParameters(@NotNull Java7Parser.LambdaParametersContext ctx) { }
+	@Override public void enterModifiers(Java7Parser.ModifiersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLambdaParameters(@NotNull Java7Parser.LambdaParametersContext ctx) { }
-
+	@Override public void exitModifiers(Java7Parser.ModifiersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSwitchBlockStatementGroups(@NotNull Java7Parser.SwitchBlockStatementGroupsContext ctx) { }
+	@Override public void enterModifier(Java7Parser.ModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSwitchBlockStatementGroups(@NotNull Java7Parser.SwitchBlockStatementGroupsContext ctx) { }
-
+	@Override public void exitModifier(Java7Parser.ModifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotationHeader(@NotNull Java7Parser.AnnotationHeaderContext ctx) { }
+	@Override public void enterVariableModifiers(Java7Parser.VariableModifiersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotationHeader(@NotNull Java7Parser.AnnotationHeaderContext ctx) { }
-
+	@Override public void exitVariableModifiers(Java7Parser.VariableModifiersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormalClassDeclaration(@NotNull Java7Parser.NormalClassDeclarationContext ctx) { }
+	@Override public void enterClassDeclaration(Java7Parser.ClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormalClassDeclaration(@NotNull Java7Parser.NormalClassDeclarationContext ctx) { }
-
+	@Override public void exitClassDeclaration(Java7Parser.ClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterImportDeclaration(@NotNull Java7Parser.ImportDeclarationContext ctx) { }
+	@Override public void enterNormalClassDeclaration(Java7Parser.NormalClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitImportDeclaration(@NotNull Java7Parser.ImportDeclarationContext ctx) { }
-
+	@Override public void exitNormalClassDeclaration(Java7Parser.NormalClassDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterThisSuffix(@NotNull Java7Parser.ThisSuffixContext ctx) { }
+	@Override public void enterTypeParameters(Java7Parser.TypeParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitThisSuffix(@NotNull Java7Parser.ThisSuffixContext ctx) { }
-
+	@Override public void exitTypeParameters(Java7Parser.TypeParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElementValuePairs(@NotNull Java7Parser.ElementValuePairsContext ctx) { }
+	@Override public void enterTypeParameter(Java7Parser.TypeParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElementValuePairs(@NotNull Java7Parser.ElementValuePairsContext ctx) { }
-
+	@Override public void exitTypeParameter(Java7Parser.TypeParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceMethodDeclaration(@NotNull Java7Parser.InterfaceMethodDeclarationContext ctx) { }
+	@Override public void enterTypeBound(Java7Parser.TypeBoundContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceMethodDeclaration(@NotNull Java7Parser.InterfaceMethodDeclarationContext ctx) { }
-
+	@Override public void exitTypeBound(Java7Parser.TypeBoundContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExclusiveOrExpression(@NotNull Java7Parser.ExclusiveOrExpressionContext ctx) { }
+	@Override public void enterAdditionalBound(Java7Parser.AdditionalBoundContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExclusiveOrExpression(@NotNull Java7Parser.ExclusiveOrExpressionContext ctx) { }
-
+	@Override public void exitAdditionalBound(Java7Parser.AdditionalBoundContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstanceOfExpression(@NotNull Java7Parser.InstanceOfExpressionContext ctx) { }
+	@Override public void enterEnumDeclaration(Java7Parser.EnumDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstanceOfExpression(@NotNull Java7Parser.InstanceOfExpressionContext ctx) { }
-
+	@Override public void exitEnumDeclaration(Java7Parser.EnumDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceBodyDeclaration(@NotNull Java7Parser.InterfaceBodyDeclarationContext ctx) { }
+	@Override public void enterEnumBody(Java7Parser.EnumBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceBodyDeclaration(@NotNull Java7Parser.InterfaceBodyDeclarationContext ctx) { }
-
+	@Override public void exitEnumBody(Java7Parser.EnumBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumConstants(@NotNull Java7Parser.EnumConstantsContext ctx) { }
+	@Override public void enterEnumConstants(Java7Parser.EnumConstantsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumConstants(@NotNull Java7Parser.EnumConstantsContext ctx) { }
-
+	@Override public void exitEnumConstants(Java7Parser.EnumConstantsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMarkerAnnotation(@NotNull Java7Parser.MarkerAnnotationContext ctx) { }
+	@Override public void enterEnumConstant(Java7Parser.EnumConstantContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMarkerAnnotation(@NotNull Java7Parser.MarkerAnnotationContext ctx) { }
-
+	@Override public void exitEnumConstant(Java7Parser.EnumConstantContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCatchClause(@NotNull Java7Parser.CatchClauseContext ctx) { }
+	@Override public void enterEnumBodyDeclarations(Java7Parser.EnumBodyDeclarationsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCatchClause(@NotNull Java7Parser.CatchClauseContext ctx) { }
-
+	@Override public void exitEnumBodyDeclarations(Java7Parser.EnumBodyDeclarationsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTryWithResources(@NotNull Java7Parser.TryWithResourcesContext ctx) { }
+	@Override public void enterInterfaceDeclaration(Java7Parser.InterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTryWithResources(@NotNull Java7Parser.TryWithResourcesContext ctx) { }
-
+	@Override public void exitInterfaceDeclaration(Java7Parser.InterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSingleElementAnnotation(@NotNull Java7Parser.SingleElementAnnotationContext ctx) { }
+	@Override public void enterNormalInterfaceDeclaration(Java7Parser.NormalInterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSingleElementAnnotation(@NotNull Java7Parser.SingleElementAnnotationContext ctx) { }
-
+	@Override public void exitNormalInterfaceDeclaration(Java7Parser.NormalInterfaceDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumBody(@NotNull Java7Parser.EnumBodyContext ctx) { }
+	@Override public void enterTypeList(Java7Parser.TypeListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumBody(@NotNull Java7Parser.EnumBodyContext ctx) { }
-
+	@Override public void exitTypeList(Java7Parser.TypeListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumDeclaration(@NotNull Java7Parser.EnumDeclarationContext ctx) { }
+	@Override public void enterClassBody(Java7Parser.ClassBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumDeclaration(@NotNull Java7Parser.EnumDeclarationContext ctx) { }
-
+	@Override public void exitClassBody(Java7Parser.ClassBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterQualifiedImportName(@NotNull Java7Parser.QualifiedImportNameContext ctx) { }
+	@Override public void enterInterfaceBody(Java7Parser.InterfaceBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitQualifiedImportName(@NotNull Java7Parser.QualifiedImportNameContext ctx) { }
-
+	@Override public void exitInterfaceBody(Java7Parser.InterfaceBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterForeachStatement(@NotNull Java7Parser.ForeachStatementContext ctx) { }
+	@Override public void enterClassBodyDeclaration(Java7Parser.ClassBodyDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitForeachStatement(@NotNull Java7Parser.ForeachStatementContext ctx) { }
-
+	@Override public void exitClassBodyDeclaration(Java7Parser.ClassBodyDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeParameter(@NotNull Java7Parser.TypeParameterContext ctx) { }
+	@Override public void enterMemberDecl(Java7Parser.MemberDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeParameter(@NotNull Java7Parser.TypeParameterContext ctx) { }
-
+	@Override public void exitMemberDecl(Java7Parser.MemberDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExplicitConstructorInvocation(@NotNull Java7Parser.ExplicitConstructorInvocationContext ctx) { }
+	@Override public void enterMethodDeclaration(Java7Parser.MethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExplicitConstructorInvocation(@NotNull Java7Parser.ExplicitConstructorInvocationContext ctx) { }
-
+	@Override public void exitMethodDeclaration(Java7Parser.MethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumBodyDeclarations(@NotNull Java7Parser.EnumBodyDeclarationsContext ctx) { }
+	@Override public void enterConstructorDeclaration(Java7Parser.ConstructorDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumBodyDeclarations(@NotNull Java7Parser.EnumBodyDeclarationsContext ctx) { }
-
+	@Override public void exitConstructorDeclaration(Java7Parser.ConstructorDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeBound(@NotNull Java7Parser.TypeBoundContext ctx) { }
+	@Override public void enterConstructorBlock(Java7Parser.ConstructorBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeBound(@NotNull Java7Parser.TypeBoundContext ctx) { }
-
+	@Override public void exitConstructorBlock(Java7Parser.ConstructorBlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotationMethodDeclaration(@NotNull Java7Parser.AnnotationMethodDeclarationContext ctx) { }
+	@Override public void enterFieldDeclaration(Java7Parser.FieldDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotationMethodDeclaration(@NotNull Java7Parser.AnnotationMethodDeclarationContext ctx) { }
-
+	@Override public void exitFieldDeclaration(Java7Parser.FieldDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableInitializer(@NotNull Java7Parser.VariableInitializerContext ctx) { }
+	@Override public void enterVariableDeclarator(Java7Parser.VariableDeclaratorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableInitializer(@NotNull Java7Parser.VariableInitializerContext ctx) { }
-
+	@Override public void exitVariableDeclarator(Java7Parser.VariableDeclaratorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlock(@NotNull Java7Parser.BlockContext ctx) { }
+	@Override public void enterInterfaceBodyDeclaration(Java7Parser.InterfaceBodyDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlock(@NotNull Java7Parser.BlockContext ctx) { }
-
+	@Override public void exitInterfaceBodyDeclaration(Java7Parser.InterfaceBodyDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConditionalExpression(@NotNull Java7Parser.ConditionalExpressionContext ctx) { }
+	@Override public void enterInterfaceMethodDeclaration(Java7Parser.InterfaceMethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConditionalExpression(@NotNull Java7Parser.ConditionalExpressionContext ctx) { }
-
+	@Override public void exitInterfaceMethodDeclaration(Java7Parser.InterfaceMethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAndExpression(@NotNull Java7Parser.AndExpressionContext ctx) { }
+	@Override public void enterDefaultInterfaceMethodDeclaration(Java7Parser.DefaultInterfaceMethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAndExpression(@NotNull Java7Parser.AndExpressionContext ctx) { }
-
+	@Override public void exitDefaultInterfaceMethodDeclaration(Java7Parser.DefaultInterfaceMethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLocalVariableDeclarationStatement(@NotNull Java7Parser.LocalVariableDeclarationStatementContext ctx) { }
+	@Override public void enterInterfaceFieldDeclaration(Java7Parser.InterfaceFieldDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLocalVariableDeclarationStatement(@NotNull Java7Parser.LocalVariableDeclarationStatementContext ctx) { }
-
+	@Override public void exitInterfaceFieldDeclaration(Java7Parser.InterfaceFieldDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSuperSuffix(@NotNull Java7Parser.SuperSuffixContext ctx) { }
+	@Override public void enterType(Java7Parser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSuperSuffix(@NotNull Java7Parser.SuperSuffixContext ctx) { }
-
+	@Override public void exitType(Java7Parser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFieldDeclaration(@NotNull Java7Parser.FieldDeclarationContext ctx) { }
+	@Override public void enterClassOrInterfaceType(Java7Parser.ClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFieldDeclaration(@NotNull Java7Parser.FieldDeclarationContext ctx) { }
-
+	@Override public void exitClassOrInterfaceType(Java7Parser.ClassOrInterfaceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormalInterfaceDeclaration(@NotNull Java7Parser.NormalInterfaceDeclarationContext ctx) { }
+	@Override public void enterIdentifierTypeArgument(Java7Parser.IdentifierTypeArgumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormalInterfaceDeclaration(@NotNull Java7Parser.NormalInterfaceDeclarationContext ctx) { }
-
+	@Override public void exitIdentifierTypeArgument(Java7Parser.IdentifierTypeArgumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterModifiers(@NotNull Java7Parser.ModifiersContext ctx) { }
+	@Override public void enterPrimitiveType(Java7Parser.PrimitiveTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitModifiers(@NotNull Java7Parser.ModifiersContext ctx) { }
-
+	@Override public void exitPrimitiveType(Java7Parser.PrimitiveTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeHeader(@NotNull Java7Parser.TypeHeaderContext ctx) { }
+	@Override public void enterTypeArguments(Java7Parser.TypeArgumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeHeader(@NotNull Java7Parser.TypeHeaderContext ctx) { }
-
+	@Override public void exitTypeArguments(Java7Parser.TypeArgumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParExpression(@NotNull Java7Parser.ParExpressionContext ctx) { }
+	@Override public void enterTypeArgument(Java7Parser.TypeArgumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParExpression(@NotNull Java7Parser.ParExpressionContext ctx) { }
-
+	@Override public void exitTypeArgument(Java7Parser.TypeArgumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCatches(@NotNull Java7Parser.CatchesContext ctx) { }
+	@Override public void enterQualifiedNameList(Java7Parser.QualifiedNameListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCatches(@NotNull Java7Parser.CatchesContext ctx) { }
-
+	@Override public void exitQualifiedNameList(Java7Parser.QualifiedNameListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSwitchLabel(@NotNull Java7Parser.SwitchLabelContext ctx) { }
+	@Override public void enterFormalParameters(Java7Parser.FormalParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSwitchLabel(@NotNull Java7Parser.SwitchLabelContext ctx) { }
-
+	@Override public void exitFormalParameters(Java7Parser.FormalParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeParameters(@NotNull Java7Parser.TypeParametersContext ctx) { }
+	@Override public void enterFormalParameterDecls(Java7Parser.FormalParameterDeclsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeParameters(@NotNull Java7Parser.TypeParametersContext ctx) { }
-
+	@Override public void exitFormalParameterDecls(Java7Parser.FormalParameterDeclsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterQualifiedName(@NotNull Java7Parser.QualifiedNameContext ctx) { }
+	@Override public void enterNormalParameterDecl(Java7Parser.NormalParameterDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitQualifiedName(@NotNull Java7Parser.QualifiedNameContext ctx) { }
-
+	@Override public void exitNormalParameterDecl(Java7Parser.NormalParameterDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassDeclaration(@NotNull Java7Parser.ClassDeclarationContext ctx) { }
+	@Override public void enterEllipsisParameterDecl(Java7Parser.EllipsisParameterDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassDeclaration(@NotNull Java7Parser.ClassDeclarationContext ctx) { }
-
+	@Override public void exitEllipsisParameterDecl(Java7Parser.EllipsisParameterDeclContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLocalVariableHeader(@NotNull Java7Parser.LocalVariableHeaderContext ctx) { }
+	@Override public void enterExplicitConstructorInvocation(Java7Parser.ExplicitConstructorInvocationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLocalVariableHeader(@NotNull Java7Parser.LocalVariableHeaderContext ctx) { }
-
+	@Override public void exitExplicitConstructorInvocation(Java7Parser.ExplicitConstructorInvocationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTrystatement(@NotNull Java7Parser.TrystatementContext ctx) { }
+	@Override public void enterQualifiedName(Java7Parser.QualifiedNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTrystatement(@NotNull Java7Parser.TrystatementContext ctx) { }
-
+	@Override public void exitQualifiedName(Java7Parser.QualifiedNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeName(@NotNull Java7Parser.TypeNameContext ctx) { }
+	@Override public void enterAnnotations(Java7Parser.AnnotationsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeName(@NotNull Java7Parser.TypeNameContext ctx) { }
-
+	@Override public void exitAnnotations(Java7Parser.AnnotationsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInclusiveOrExpression(@NotNull Java7Parser.InclusiveOrExpressionContext ctx) { }
+	@Override public void enterAnnotation(Java7Parser.AnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInclusiveOrExpression(@NotNull Java7Parser.InclusiveOrExpressionContext ctx) { }
-
+	@Override public void exitAnnotation(Java7Parser.AnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArguments(@NotNull Java7Parser.ArgumentsContext ctx) { }
+	@Override public void enterMarkerAnnotation(Java7Parser.MarkerAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArguments(@NotNull Java7Parser.ArgumentsContext ctx) { }
-
+	@Override public void exitMarkerAnnotation(Java7Parser.MarkerAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEqualityExpression(@NotNull Java7Parser.EqualityExpressionContext ctx) { }
+	@Override public void enterSingleElementAnnotation(Java7Parser.SingleElementAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEqualityExpression(@NotNull Java7Parser.EqualityExpressionContext ctx) { }
-
+	@Override public void exitSingleElementAnnotation(Java7Parser.SingleElementAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFormalParameters(@NotNull Java7Parser.FormalParametersContext ctx) { }
+	@Override public void enterNormalAnnotation(Java7Parser.NormalAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFormalParameters(@NotNull Java7Parser.FormalParametersContext ctx) { }
-
+	@Override public void exitNormalAnnotation(Java7Parser.NormalAnnotationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCastExpression(@NotNull Java7Parser.CastExpressionContext ctx) { }
+	@Override public void enterElementValuePairs(Java7Parser.ElementValuePairsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCastExpression(@NotNull Java7Parser.CastExpressionContext ctx) { }
-
+	@Override public void exitElementValuePairs(Java7Parser.ElementValuePairsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceHeader(@NotNull Java7Parser.InterfaceHeaderContext ctx) { }
+	@Override public void enterElementValuePair(Java7Parser.ElementValuePairContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceHeader(@NotNull Java7Parser.InterfaceHeaderContext ctx) { }
-
+	@Override public void exitElementValuePair(Java7Parser.ElementValuePairContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeArgument(@NotNull Java7Parser.TypeArgumentContext ctx) { }
+	@Override public void enterElementValue(Java7Parser.ElementValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeArgument(@NotNull Java7Parser.TypeArgumentContext ctx) { }
-
+	@Override public void exitElementValue(Java7Parser.ElementValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInferredFormalParameterList(@NotNull Java7Parser.InferredFormalParameterListContext ctx) { }
+	@Override public void enterElementValueArrayInitializer(Java7Parser.ElementValueArrayInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInferredFormalParameterList(@NotNull Java7Parser.InferredFormalParameterListContext ctx) { }
-
+	@Override public void exitElementValueArrayInitializer(Java7Parser.ElementValueArrayInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLambdaBody(@NotNull Java7Parser.LambdaBodyContext ctx) { }
+	@Override public void enterAnnotationTypeDeclaration(Java7Parser.AnnotationTypeDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLambdaBody(@NotNull Java7Parser.LambdaBodyContext ctx) { }
-
+	@Override public void exitAnnotationTypeDeclaration(Java7Parser.AnnotationTypeDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotations(@NotNull Java7Parser.AnnotationsContext ctx) { }
+	@Override public void enterAnnotationTypeBody(Java7Parser.AnnotationTypeBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotations(@NotNull Java7Parser.AnnotationsContext ctx) { }
-
+	@Override public void exitAnnotationTypeBody(Java7Parser.AnnotationTypeBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterForInit(@NotNull Java7Parser.ForInitContext ctx) { }
+	@Override public void enterAnnotationTypeElementDeclaration(Java7Parser.AnnotationTypeElementDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitForInit(@NotNull Java7Parser.ForInitContext ctx) { }
-
+	@Override public void exitAnnotationTypeElementDeclaration(Java7Parser.AnnotationTypeElementDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLambdaExpression(@NotNull Java7Parser.LambdaExpressionContext ctx) { }
+	@Override public void enterAnnotationMethodDeclaration(Java7Parser.AnnotationMethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLambdaExpression(@NotNull Java7Parser.LambdaExpressionContext ctx) { }
-
+	@Override public void exitAnnotationMethodDeclaration(Java7Parser.AnnotationMethodDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSelector(@NotNull Java7Parser.SelectorContext ctx) { }
+	@Override public void enterBlock(Java7Parser.BlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSelector(@NotNull Java7Parser.SelectorContext ctx) { }
-
+	@Override public void exitBlock(Java7Parser.BlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableDeclarator(@NotNull Java7Parser.VariableDeclaratorContext ctx) { }
+	@Override public void enterBlockStatement(Java7Parser.BlockStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableDeclarator(@NotNull Java7Parser.VariableDeclaratorContext ctx) { }
-
+	@Override public void exitBlockStatement(Java7Parser.BlockStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotationTypeDeclaration(@NotNull Java7Parser.AnnotationTypeDeclarationContext ctx) { }
+	@Override public void enterLocalVariableDeclarationStatement(Java7Parser.LocalVariableDeclarationStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotationTypeDeclaration(@NotNull Java7Parser.AnnotationTypeDeclarationContext ctx) { }
-
+	@Override public void exitLocalVariableDeclarationStatement(Java7Parser.LocalVariableDeclarationStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpression(@NotNull Java7Parser.ExpressionContext ctx) { }
+	@Override public void enterLocalVariableDeclaration(Java7Parser.LocalVariableDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpression(@NotNull Java7Parser.ExpressionContext ctx) { }
-
+	@Override public void exitLocalVariableDeclaration(Java7Parser.LocalVariableDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelationalOp(@NotNull Java7Parser.RelationalOpContext ctx) { }
+	@Override public void enterStatement(Java7Parser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRelationalOp(@NotNull Java7Parser.RelationalOpContext ctx) { }
-
+	@Override public void exitStatement(Java7Parser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterResources(@NotNull Java7Parser.ResourcesContext ctx) { }
+	@Override public void enterEmptyStatement(Java7Parser.EmptyStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitResources(@NotNull Java7Parser.ResourcesContext ctx) { }
-
+	@Override public void exitEmptyStatement(Java7Parser.EmptyStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodReference(@NotNull Java7Parser.MethodReferenceContext ctx) { }
+	@Override public void enterSwitchBlockStatementGroups(Java7Parser.SwitchBlockStatementGroupsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodReference(@NotNull Java7Parser.MethodReferenceContext ctx) { }
-
+	@Override public void exitSwitchBlockStatementGroups(Java7Parser.SwitchBlockStatementGroupsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnaryExpression(@NotNull Java7Parser.UnaryExpressionContext ctx) { }
+	@Override public void enterSwitchBlockStatementGroup(Java7Parser.SwitchBlockStatementGroupContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnaryExpression(@NotNull Java7Parser.UnaryExpressionContext ctx) { }
-
+	@Override public void exitSwitchBlockStatementGroup(Java7Parser.SwitchBlockStatementGroupContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterType(@NotNull Java7Parser.TypeContext ctx) { }
+	@Override public void enterSwitchLabel(Java7Parser.SwitchLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitType(@NotNull Java7Parser.TypeContext ctx) { }
-
+	@Override public void exitSwitchLabel(Java7Parser.SwitchLabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDefaultInterfaceMethodDeclaration(@NotNull Java7Parser.DefaultInterfaceMethodDeclarationContext ctx) { }
+	@Override public void enterTrystatement(Java7Parser.TrystatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDefaultInterfaceMethodDeclaration(@NotNull Java7Parser.DefaultInterfaceMethodDeclarationContext ctx) { }
-
+	@Override public void exitTrystatement(Java7Parser.TrystatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAdditiveOp(@NotNull Java7Parser.AdditiveOpContext ctx) { }
+	@Override public void enterTryWithResources(Java7Parser.TryWithResourcesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAdditiveOp(@NotNull Java7Parser.AdditiveOpContext ctx) { }
-
+	@Override public void exitTryWithResources(Java7Parser.TryWithResourcesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceFieldDeclaration(@NotNull Java7Parser.InterfaceFieldDeclarationContext ctx) { }
+	@Override public void enterResourceSpecification(Java7Parser.ResourceSpecificationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceFieldDeclaration(@NotNull Java7Parser.InterfaceFieldDeclarationContext ctx) { }
-
+	@Override public void exitResourceSpecification(Java7Parser.ResourceSpecificationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMemberDecl(@NotNull Java7Parser.MemberDeclContext ctx) { }
+	@Override public void enterResources(Java7Parser.ResourcesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMemberDecl(@NotNull Java7Parser.MemberDeclContext ctx) { }
-
+	@Override public void exitResources(Java7Parser.ResourcesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElementValueArrayInitializer(@NotNull Java7Parser.ElementValueArrayInitializerContext ctx) { }
+	@Override public void enterResource(Java7Parser.ResourceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElementValueArrayInitializer(@NotNull Java7Parser.ElementValueArrayInitializerContext ctx) { }
-
+	@Override public void exitResource(Java7Parser.ResourceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassHeader(@NotNull Java7Parser.ClassHeaderContext ctx) { }
+	@Override public void enterCatches(Java7Parser.CatchesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassHeader(@NotNull Java7Parser.ClassHeaderContext ctx) { }
-
+	@Override public void exitCatches(Java7Parser.CatchesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimary(@NotNull Java7Parser.PrimaryContext ctx) { }
+	@Override public void enterCatchClause(Java7Parser.CatchClauseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimary(@NotNull Java7Parser.PrimaryContext ctx) { }
-
+	@Override public void exitCatchClause(Java7Parser.CatchClauseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEllipsisParameterDecl(@NotNull Java7Parser.EllipsisParameterDeclContext ctx) { }
+	@Override public void enterCatchFormalParameter(Java7Parser.CatchFormalParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEllipsisParameterDecl(@NotNull Java7Parser.EllipsisParameterDeclContext ctx) { }
-
+	@Override public void exitCatchFormalParameter(Java7Parser.CatchFormalParameterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormalParameterDecl(@NotNull Java7Parser.NormalParameterDeclContext ctx) { }
+	@Override public void enterForstatement(Java7Parser.ForstatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormalParameterDecl(@NotNull Java7Parser.NormalParameterDeclContext ctx) { }
-
+	@Override public void exitForstatement(Java7Parser.ForstatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterShiftExpression(@NotNull Java7Parser.ShiftExpressionContext ctx) { }
+	@Override public void enterForeachStatement(Java7Parser.ForeachStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitShiftExpression(@NotNull Java7Parser.ShiftExpressionContext ctx) { }
-
+	@Override public void exitForeachStatement(Java7Parser.ForeachStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIdentifierSuffix(@NotNull Java7Parser.IdentifierSuffixContext ctx) { }
+	@Override public void enterNormalForStatement(Java7Parser.NormalForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIdentifierSuffix(@NotNull Java7Parser.IdentifierSuffixContext ctx) { }
-
+	@Override public void exitNormalForStatement(Java7Parser.NormalForStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassBody(@NotNull Java7Parser.ClassBodyContext ctx) { }
+	@Override public void enterForInit(Java7Parser.ForInitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassBody(@NotNull Java7Parser.ClassBodyContext ctx) { }
-
+	@Override public void exitForInit(Java7Parser.ForInitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstructorBlock(@NotNull Java7Parser.ConstructorBlockContext ctx) { }
+	@Override public void enterParExpression(Java7Parser.ParExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstructorBlock(@NotNull Java7Parser.ConstructorBlockContext ctx) { }
-
+	@Override public void exitParExpression(Java7Parser.ParExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCreatedName(@NotNull Java7Parser.CreatedNameContext ctx) { }
+	@Override public void enterExpressionList(Java7Parser.ExpressionListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCreatedName(@NotNull Java7Parser.CreatedNameContext ctx) { }
-
+	@Override public void exitExpressionList(Java7Parser.ExpressionListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceDeclaration(@NotNull Java7Parser.InterfaceDeclarationContext ctx) { }
+	@Override public void enterExpression(Java7Parser.ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceDeclaration(@NotNull Java7Parser.InterfaceDeclarationContext ctx) { }
-
+	@Override public void exitExpression(Java7Parser.ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPackageDeclaration(@NotNull Java7Parser.PackageDeclarationContext ctx) { }
+	@Override public void enterAssignmentOperator(Java7Parser.AssignmentOperatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPackageDeclaration(@NotNull Java7Parser.PackageDeclarationContext ctx) { }
-
+	@Override public void exitAssignmentOperator(Java7Parser.AssignmentOperatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConditionalAndExpression(@NotNull Java7Parser.ConditionalAndExpressionContext ctx) { }
+	@Override public void enterConditionalExpression(Java7Parser.ConditionalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConditionalAndExpression(@NotNull Java7Parser.ConditionalAndExpressionContext ctx) { }
-
+	@Override public void exitConditionalExpression(Java7Parser.ConditionalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAdditiveExpression(@NotNull Java7Parser.AdditiveExpressionContext ctx) { }
+	@Override public void enterConditionalOrExpression(Java7Parser.ConditionalOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAdditiveExpression(@NotNull Java7Parser.AdditiveExpressionContext ctx) { }
-
+	@Override public void exitConditionalOrExpression(Java7Parser.ConditionalOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeArguments(@NotNull Java7Parser.TypeArgumentsContext ctx) { }
+	@Override public void enterConditionalAndExpression(Java7Parser.ConditionalAndExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeArguments(@NotNull Java7Parser.TypeArgumentsContext ctx) { }
-
+	@Override public void exitConditionalAndExpression(Java7Parser.ConditionalAndExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassCreatorRest(@NotNull Java7Parser.ClassCreatorRestContext ctx) { }
+	@Override public void enterInclusiveOrExpression(Java7Parser.InclusiveOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassCreatorRest(@NotNull Java7Parser.ClassCreatorRestContext ctx) { }
-
+	@Override public void exitInclusiveOrExpression(Java7Parser.InclusiveOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayCreator(@NotNull Java7Parser.ArrayCreatorContext ctx) { }
+	@Override public void enterExclusiveOrExpression(Java7Parser.ExclusiveOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayCreator(@NotNull Java7Parser.ArrayCreatorContext ctx) { }
-
+	@Override public void exitExclusiveOrExpression(Java7Parser.ExclusiveOrExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCatchFormalParameter(@NotNull Java7Parser.CatchFormalParameterContext ctx) { }
+	@Override public void enterAndExpression(Java7Parser.AndExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCatchFormalParameter(@NotNull Java7Parser.CatchFormalParameterContext ctx) { }
-
+	@Override public void exitAndExpression(Java7Parser.AndExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEmptyStatement(@NotNull Java7Parser.EmptyStatementContext ctx) { }
+	@Override public void enterEqualityExpression(Java7Parser.EqualityExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEmptyStatement(@NotNull Java7Parser.EmptyStatementContext ctx) { }
-
+	@Override public void exitEqualityExpression(Java7Parser.EqualityExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterModifier(@NotNull Java7Parser.ModifierContext ctx) { }
+	@Override public void enterNotEqualityExpression(Java7Parser.NotEqualityExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitModifier(@NotNull Java7Parser.ModifierContext ctx) { }
-
+	@Override public void exitNotEqualityExpression(Java7Parser.NotEqualityExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatement(@NotNull Java7Parser.StatementContext ctx) { }
+	@Override public void enterInstanceOfExpression(Java7Parser.InstanceOfExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(@NotNull Java7Parser.StatementContext ctx) { }
-
+	@Override public void exitInstanceOfExpression(Java7Parser.InstanceOfExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterfaceBody(@NotNull Java7Parser.InterfaceBodyContext ctx) { }
+	@Override public void enterRelationalExpression(Java7Parser.RelationalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInterfaceBody(@NotNull Java7Parser.InterfaceBodyContext ctx) { }
-
+	@Override public void exitRelationalExpression(Java7Parser.RelationalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassBodyDeclaration(@NotNull Java7Parser.ClassBodyDeclarationContext ctx) { }
+	@Override public void enterRelationalOp(Java7Parser.RelationalOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassBodyDeclaration(@NotNull Java7Parser.ClassBodyDeclarationContext ctx) { }
-
+	@Override public void exitRelationalOp(Java7Parser.RelationalOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeList(@NotNull Java7Parser.TypeListContext ctx) { }
+	@Override public void enterShiftExpression(Java7Parser.ShiftExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeList(@NotNull Java7Parser.TypeListContext ctx) { }
-
+	@Override public void exitShiftExpression(Java7Parser.ShiftExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLocalVariableDeclaration(@NotNull Java7Parser.LocalVariableDeclarationContext ctx) { }
+	@Override public void enterShiftOp(Java7Parser.ShiftOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLocalVariableDeclaration(@NotNull Java7Parser.LocalVariableDeclarationContext ctx) { }
-
+	@Override public void exitShiftOp(Java7Parser.ShiftOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMultiplicativeExpression(@NotNull Java7Parser.MultiplicativeExpressionContext ctx) { }
+	@Override public void enterAdditiveExpression(Java7Parser.AdditiveExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMultiplicativeExpression(@NotNull Java7Parser.MultiplicativeExpressionContext ctx) { }
-
+	@Override public void exitAdditiveExpression(Java7Parser.AdditiveExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignmentOperator(@NotNull Java7Parser.AssignmentOperatorContext ctx) { }
+	@Override public void enterAdditiveOp(Java7Parser.AdditiveOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssignmentOperator(@NotNull Java7Parser.AssignmentOperatorContext ctx) { }
-
+	@Override public void exitAdditiveOp(Java7Parser.AdditiveOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInferredFormalParameters(@NotNull Java7Parser.InferredFormalParametersContext ctx) { }
+	@Override public void enterMultiplicativeExpression(Java7Parser.MultiplicativeExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInferredFormalParameters(@NotNull Java7Parser.InferredFormalParametersContext ctx) { }
-
+	@Override public void exitMultiplicativeExpression(Java7Parser.MultiplicativeExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterShiftOp(@NotNull Java7Parser.ShiftOpContext ctx) { }
+	@Override public void enterMultiplicativeOp(Java7Parser.MultiplicativeOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitShiftOp(@NotNull Java7Parser.ShiftOpContext ctx) { }
-
+	@Override public void exitMultiplicativeOp(Java7Parser.MultiplicativeOpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCompilationUnit(@NotNull Java7Parser.CompilationUnitContext ctx) { }
+	@Override public void enterUnaryExpression(Java7Parser.UnaryExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCompilationUnit(@NotNull Java7Parser.CompilationUnitContext ctx) { }
-
+	@Override public void exitUnaryExpression(Java7Parser.UnaryExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElementValue(@NotNull Java7Parser.ElementValueContext ctx) { }
+	@Override public void enterUnaryExpressionNotPlusMinus(Java7Parser.UnaryExpressionNotPlusMinusContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElementValue(@NotNull Java7Parser.ElementValueContext ctx) { }
-
+	@Override public void exitUnaryExpressionNotPlusMinus(Java7Parser.UnaryExpressionNotPlusMinusContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassOrInterfaceType(@NotNull Java7Parser.ClassOrInterfaceTypeContext ctx) { }
+	@Override public void enterCastExpression(Java7Parser.CastExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassOrInterfaceType(@NotNull Java7Parser.ClassOrInterfaceTypeContext ctx) { }
-
+	@Override public void exitCastExpression(Java7Parser.CastExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUnaryExpressionNotPlusMinus(@NotNull Java7Parser.UnaryExpressionNotPlusMinusContext ctx) { }
+	@Override public void enterPrimary(Java7Parser.PrimaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUnaryExpressionNotPlusMinus(@NotNull Java7Parser.UnaryExpressionNotPlusMinusContext ctx) { }
-
+	@Override public void exitPrimary(Java7Parser.PrimaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotationTypeElementDeclaration(@NotNull Java7Parser.AnnotationTypeElementDeclarationContext ctx) { }
+	@Override public void enterSuperSuffix(Java7Parser.SuperSuffixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotationTypeElementDeclaration(@NotNull Java7Parser.AnnotationTypeElementDeclarationContext ctx) { }
-
+	@Override public void exitSuperSuffix(Java7Parser.SuperSuffixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlockStatement(@NotNull Java7Parser.BlockStatementContext ctx) { }
+	@Override public void enterThisSuffix(Java7Parser.ThisSuffixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlockStatement(@NotNull Java7Parser.BlockStatementContext ctx) { }
-
+	@Override public void exitThisSuffix(Java7Parser.ThisSuffixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnnotationTypeBody(@NotNull Java7Parser.AnnotationTypeBodyContext ctx) { }
+	@Override public void enterIdentifierSuffix(Java7Parser.IdentifierSuffixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAnnotationTypeBody(@NotNull Java7Parser.AnnotationTypeBodyContext ctx) { }
-
+	@Override public void exitIdentifierSuffix(Java7Parser.IdentifierSuffixContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTypeVariable(@NotNull Java7Parser.TypeVariableContext ctx) { }
+	@Override public void enterTypeParamCall(Java7Parser.TypeParamCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTypeVariable(@NotNull Java7Parser.TypeVariableContext ctx) { }
-
+	@Override public void exitTypeParamCall(Java7Parser.TypeParamCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCreator(@NotNull Java7Parser.CreatorContext ctx) { }
+	@Override public void enterSelector(Java7Parser.SelectorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCreator(@NotNull Java7Parser.CreatorContext ctx) { }
-
+	@Override public void exitSelector(Java7Parser.SelectorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterQualifiedNameList(@NotNull Java7Parser.QualifiedNameListContext ctx) { }
+	@Override public void enterCreator(Java7Parser.CreatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitQualifiedNameList(@NotNull Java7Parser.QualifiedNameListContext ctx) { }
-
+	@Override public void exitCreator(Java7Parser.CreatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAdditionalBound(@NotNull Java7Parser.AdditionalBoundContext ctx) { }
+	@Override public void enterArrayCreator(Java7Parser.ArrayCreatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAdditionalBound(@NotNull Java7Parser.AdditionalBoundContext ctx) { }
-
+	@Override public void exitArrayCreator(Java7Parser.ArrayCreatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReferenceType(@NotNull Java7Parser.ReferenceTypeContext ctx) { }
+	@Override public void enterVariableInitializer(Java7Parser.VariableInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReferenceType(@NotNull Java7Parser.ReferenceTypeContext ctx) { }
-
+	@Override public void exitVariableInitializer(Java7Parser.VariableInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMultiplicativeOp(@NotNull Java7Parser.MultiplicativeOpContext ctx) { }
+	@Override public void enterArrayInitializer(Java7Parser.ArrayInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMultiplicativeOp(@NotNull Java7Parser.MultiplicativeOpContext ctx) { }
-
+	@Override public void exitArrayInitializer(Java7Parser.ArrayInitializerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFormalParameterDecls(@NotNull Java7Parser.FormalParameterDeclsContext ctx) { }
+	@Override public void enterCreatedName(Java7Parser.CreatedNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFormalParameterDecls(@NotNull Java7Parser.FormalParameterDeclsContext ctx) { }
-
+	@Override public void exitCreatedName(Java7Parser.CreatedNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormalAnnotation(@NotNull Java7Parser.NormalAnnotationContext ctx) { }
+	@Override public void enterInnerCreator(Java7Parser.InnerCreatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormalAnnotation(@NotNull Java7Parser.NormalAnnotationContext ctx) { }
-
+	@Override public void exitInnerCreator(Java7Parser.InnerCreatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelationalExpression(@NotNull Java7Parser.RelationalExpressionContext ctx) { }
+	@Override public void enterClassCreatorRest(Java7Parser.ClassCreatorRestContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRelationalExpression(@NotNull Java7Parser.RelationalExpressionContext ctx) { }
-
+	@Override public void exitClassCreatorRest(Java7Parser.ClassCreatorRestContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConditionalOrExpression(@NotNull Java7Parser.ConditionalOrExpressionContext ctx) { }
+	@Override public void enterNonWildcardTypeArguments(Java7Parser.NonWildcardTypeArgumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConditionalOrExpression(@NotNull Java7Parser.ConditionalOrExpressionContext ctx) { }
-
+	@Override public void exitNonWildcardTypeArguments(Java7Parser.NonWildcardTypeArgumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterForstatement(@NotNull Java7Parser.ForstatementContext ctx) { }
+	@Override public void enterArguments(Java7Parser.ArgumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitForstatement(@NotNull Java7Parser.ForstatementContext ctx) { }
-
+	@Override public void exitArguments(Java7Parser.ArgumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIdentifierTypeArgument(@NotNull Java7Parser.IdentifierTypeArgumentContext ctx) { }
+	@Override public void enterLiteral(Java7Parser.LiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIdentifierTypeArgument(@NotNull Java7Parser.IdentifierTypeArgumentContext ctx) { }
-
+	@Override public void exitLiteral(Java7Parser.LiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnumHeader(@NotNull Java7Parser.EnumHeaderContext ctx) { }
+	@Override public void enterClassHeader(Java7Parser.ClassHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnumHeader(@NotNull Java7Parser.EnumHeaderContext ctx) { }
-
+	@Override public void exitClassHeader(Java7Parser.ClassHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodDeclaration(@NotNull Java7Parser.MethodDeclarationContext ctx) { }
+	@Override public void enterEnumHeader(Java7Parser.EnumHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodDeclaration(@NotNull Java7Parser.MethodDeclarationContext ctx) { }
-
+	@Override public void exitEnumHeader(Java7Parser.EnumHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterResourceSpecification(@NotNull Java7Parser.ResourceSpecificationContext ctx) { }
+	@Override public void enterInterfaceHeader(Java7Parser.InterfaceHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitResourceSpecification(@NotNull Java7Parser.ResourceSpecificationContext ctx) { }
-
+	@Override public void exitInterfaceHeader(Java7Parser.InterfaceHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstructorDeclaration(@NotNull Java7Parser.ConstructorDeclarationContext ctx) { }
+	@Override public void enterAnnotationHeader(Java7Parser.AnnotationHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConstructorDeclaration(@NotNull Java7Parser.ConstructorDeclarationContext ctx) { }
-
+	@Override public void exitAnnotationHeader(Java7Parser.AnnotationHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDims(@NotNull Java7Parser.DimsContext ctx) { }
+	@Override public void enterTypeHeader(Java7Parser.TypeHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDims(@NotNull Java7Parser.DimsContext ctx) { }
-
+	@Override public void exitTypeHeader(Java7Parser.TypeHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterResource(@NotNull Java7Parser.ResourceContext ctx) { }
+	@Override public void enterMethodHeader(Java7Parser.MethodHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitResource(@NotNull Java7Parser.ResourceContext ctx) { }
-
+	@Override public void exitMethodHeader(Java7Parser.MethodHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterElementValuePair(@NotNull Java7Parser.ElementValuePairContext ctx) { }
+	@Override public void enterFieldHeader(Java7Parser.FieldHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitElementValuePair(@NotNull Java7Parser.ElementValuePairContext ctx) { }
-
+	@Override public void exitFieldHeader(Java7Parser.FieldHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormalForStatement(@NotNull Java7Parser.NormalForStatementContext ctx) { }
+	@Override public void enterLocalVariableHeader(Java7Parser.LocalVariableHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormalForStatement(@NotNull Java7Parser.NormalForStatementContext ctx) { }
-
+	@Override public void exitLocalVariableHeader(Java7Parser.LocalVariableHeaderContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNotEqualityExpression(@NotNull Java7Parser.NotEqualityExpressionContext ctx) { }
+	@Override public void enterInferredFormalParameterList(Java7Parser.InferredFormalParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNotEqualityExpression(@NotNull Java7Parser.NotEqualityExpressionContext ctx) { }
-
+	@Override public void exitInferredFormalParameterList(Java7Parser.InferredFormalParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodHeader(@NotNull Java7Parser.MethodHeaderContext ctx) { }
+	@Override public void enterInferredFormalParameters(Java7Parser.InferredFormalParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodHeader(@NotNull Java7Parser.MethodHeaderContext ctx) { }
-
+	@Override public void exitInferredFormalParameters(Java7Parser.InferredFormalParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterArrayInitializer(@NotNull Java7Parser.ArrayInitializerContext ctx) { }
+	@Override public void enterLambdaExpression(Java7Parser.LambdaExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitArrayInitializer(@NotNull Java7Parser.ArrayInitializerContext ctx) { }
-
+	@Override public void exitLambdaExpression(Java7Parser.LambdaExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrimitiveType(@NotNull Java7Parser.PrimitiveTypeContext ctx) { }
+	@Override public void enterLambdaParameters(Java7Parser.LambdaParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrimitiveType(@NotNull Java7Parser.PrimitiveTypeContext ctx) { }
-
+	@Override public void exitLambdaParameters(Java7Parser.LambdaParametersContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVariableModifiers(@NotNull Java7Parser.VariableModifiersContext ctx) { }
+	@Override public void enterLambdaBody(Java7Parser.LambdaBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVariableModifiers(@NotNull Java7Parser.VariableModifiersContext ctx) { }
-
+	@Override public void exitLambdaBody(Java7Parser.LambdaBodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNonWildcardTypeArguments(@NotNull Java7Parser.NonWildcardTypeArgumentsContext ctx) { }
+	@Override public void enterMethodReference(Java7Parser.MethodReferenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNonWildcardTypeArguments(@NotNull Java7Parser.NonWildcardTypeArgumentsContext ctx) { }
-
+	@Override public void exitMethodReference(Java7Parser.MethodReferenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFieldHeader(@NotNull Java7Parser.FieldHeaderContext ctx) { }
+	@Override public void enterReferenceType(Java7Parser.ReferenceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFieldHeader(@NotNull Java7Parser.FieldHeaderContext ctx) { }
-
+	@Override public void exitReferenceType(Java7Parser.ReferenceTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassOrInterfaceDeclaration(@NotNull Java7Parser.ClassOrInterfaceDeclarationContext ctx) { }
+	@Override public void enterTypeVariable(Java7Parser.TypeVariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassOrInterfaceDeclaration(@NotNull Java7Parser.ClassOrInterfaceDeclarationContext ctx) { }
-
+	@Override public void exitTypeVariable(Java7Parser.TypeVariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLiteral(@NotNull Java7Parser.LiteralContext ctx) { }
+	@Override public void enterTypeName(Java7Parser.TypeNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLiteral(@NotNull Java7Parser.LiteralContext ctx) { }
-
+	@Override public void exitTypeName(Java7Parser.TypeNameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArrayType(Java7Parser.ArrayTypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArrayType(Java7Parser.ArrayTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSwitchBlockStatementGroup(@NotNull Java7Parser.SwitchBlockStatementGroupContext ctx) { }
+	@Override public void enterDims(Java7Parser.DimsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSwitchBlockStatementGroup(@NotNull Java7Parser.SwitchBlockStatementGroupContext ctx) { }
+	@Override public void exitDims(Java7Parser.DimsContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEveryRule(@NotNull ParserRuleContext ctx) { }
+	@Override public void enterEveryRule(ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEveryRule(@NotNull ParserRuleContext ctx) { }
+	@Override public void exitEveryRule(ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitTerminal(@NotNull TerminalNode node) { }
+	@Override public void visitTerminal(TerminalNode node) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitErrorNode(@NotNull ErrorNode node) { }
+	@Override public void visitErrorNode(ErrorNode node) { }
 }
