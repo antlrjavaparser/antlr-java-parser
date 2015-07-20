@@ -26,6 +26,18 @@
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/**
+ * Updated - July 20, 2015 - Bowen Cai
+ *
+ *  add support to method call with explicit type arguments
+ *  e.g., https://github.com/google/guava/blob/master/guava/src/com/google/common/collect/ImmutableSortedMap.java#LC338
+ *  com.google.common.collect.ImmutableSortedMap line 338:
+ * Arrays.sort(entryArray, 0, size, Ordering.from(comparator).<K>onKeys());
+ *
+ * see line 1075 selector
+ *
+ */
+ 
 /*
  *  Updated - December 14, 2012 - Mike De Haan,
  *      Added multi-catch, diamond type arguments, try with resources, and underscores in literals to support Java 7.
@@ -1072,6 +1084,27 @@ locals [int operationType]
     |   DOT THIS                                            {$operationType = 6;}
     |   innerCreator                                        {$operationType = 7;}
     ;
+/*
+selector
+locals [int operationType]
+    :   DOT Identifier (arguments)?     {$operationType = 1;}
+    |   DOT THIS                        {$operationType = 2;}
+    |   DOT SUPER superSuffix           {$operationType = 3;}
+    |   innerCreator                    {$operationType = 4;}
+    |   LBRACKET expression RBRACKET    {$operationType = 5;}
+    ;
+*/
+/*
+method call with explicit type arguments
+e.g., 
+https://github.com/google/guava/blob/master/guava/src/com/google/common/collect/ImmutableSortedMap.java#LC338
+
+com.google.common.collect.ImmutableSortedMap line 338:
+Arrays.sort(entryArray, 0, size, Ordering.from(comparator).<K>onKeys());
+*/
+typeParamCall
+    :   DOT (typeArguments) Identifier (arguments)
+    ;
 
 selector
 locals [int operationType]
@@ -1080,6 +1113,7 @@ locals [int operationType]
     |   DOT SUPER superSuffix           {$operationType = 3;}
     |   innerCreator                    {$operationType = 4;}
     |   LBRACKET expression RBRACKET    {$operationType = 5;}
+    |   typeParamCall                   {$operationType = 6;}
     ;
 
 creator
