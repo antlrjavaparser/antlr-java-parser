@@ -1,22 +1,5 @@
-/*
- * Copyright (C) 2015 Julio Vilmar Gesser and Mike DeHaan
- *
- * This file is part of antlr-java-parser.
- *
- * antlr-java-parser is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * antlr-java-parser is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with antlr-java-parser.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
+// Generated from Java7Lexer.g4 by ANTLR 4.5.1
+
 package com.github.antlrjavaparser;
 
 import org.antlr.v4.runtime.Lexer;
@@ -30,7 +13,7 @@ import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class Java7Lexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.3", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -56,21 +39,6 @@ public class Java7Lexer extends Lexer {
 		"DEFAULT_MODE"
 	};
 
-	public static final String[] tokenNames = {
-		"'\\u0000'", "'\\u0001'", "'\\u0002'", "'\\u0003'", "'\\u0004'", "'\\u0005'", 
-		"'\\u0006'", "'\\u0007'", "'\b'", "'\t'", "'\n'", "'\\u000B'", "'\f'", 
-		"'\r'", "'\\u000E'", "'\\u000F'", "'\\u0010'", "'\\u0011'", "'\\u0012'", 
-		"'\\u0013'", "'\\u0014'", "'\\u0015'", "'\\u0016'", "'\\u0017'", "'\\u0018'", 
-		"'\\u0019'", "'\\u001A'", "'\\u001B'", "'\\u001C'", "'\\u001D'", "'\\u001E'", 
-		"'\\u001F'", "' '", "'!'", "'\"'", "'#'", "'$'", "'%'", "'&'", "'''", 
-		"'('", "')'", "'*'", "'+'", "','", "'-'", "'.'", "'/'", "'0'", "'1'", 
-		"'2'", "'3'", "'4'", "'5'", "'6'", "'7'", "'8'", "'9'", "':'", "';'", 
-		"'<'", "'='", "'>'", "'?'", "'@'", "'A'", "'B'", "'C'", "'D'", "'E'", 
-		"'F'", "'G'", "'H'", "'I'", "'J'", "'K'", "'L'", "'M'", "'N'", "'O'", 
-		"'P'", "'Q'", "'R'", "'S'", "'T'", "'U'", "'V'", "'W'", "'X'", "'Y'", 
-		"'Z'", "'['", "'\\'", "']'", "'^'", "'_'", "'`'", "'a'", "'b'", "'c'", 
-		"'d'", "'e'", "'f'", "'g'", "'h'"
-	};
 	public static final String[] ruleNames = {
 		"SEMI", "PACKAGE", "IMPORT", "DOT", "STAR", "CLASS", "IMPLEMENTS", "PUBLIC", 
 		"PROTECTED", "PRIVATE", "ABSTRACT", "STATIC", "FINAL", "STRICTFP", "COMMA", 
@@ -100,6 +68,71 @@ public class Java7Lexer extends Lexer {
 		"WhiteSpace", "LineTerminator", "SlashComment", "EndOfLineComment"
 	};
 
+	private static final String[] _LITERAL_NAMES = {
+		null, "';'", "'package'", "'import'", "'.'", "'*'", "'class'", "'implements'", 
+		"'public'", "'protected'", "'private'", "'abstract'", "'static'", "'final'", 
+		"'strictfp'", "','", "'{'", "'}'", "'['", "']'", "'('", "')'", "'void'", 
+		"'interface'", "'throw'", "'throws'", "'='", "'native'", "'synchronized'", 
+		"'transient'", "'volatile'", "'boolean'", "'char'", "'byte'", "'short'", 
+		"'int'", "'long'", "'float'", "'double'", "'?'", "'extends'", "'...'", 
+		"'this'", "'super'", "'null'", "'true'", "'false'", "'@'", "'default'", 
+		"'::'", "':'", "'if'", "'else'", "'for'", "'while'", "'do'", "'try'", 
+		"'finally'", "'switch'", "'return'", "'break'", "'continue'", "'catch'", 
+		"'case'", "'enum'", "'assert'", "'->'", "'++'", "'--'", "'~'", "'!'", 
+		"'new'", "'/'", "'%'", "'+'", "'-'", "'=='", "'!='", "'&'", "'^'", "'|'", 
+		"'&&'", "'||'", "'^='", "'+='", "'-='", "'*='", "'/='", "'&='", "'|='", 
+		"'%='", "'>'", "'<'", "'instanceof'", "'const'", "'goto'"
+	};
+	private static final String[] _SYMBOLIC_NAMES = {
+		null, "SEMI", "PACKAGE", "IMPORT", "DOT", "STAR", "CLASS", "IMPLEMENTS", 
+		"PUBLIC", "PROTECTED", "PRIVATE", "ABSTRACT", "STATIC", "FINAL", "STRICTFP", 
+		"COMMA", "LBRACE", "RBRACE", "LBRACKET", "RBRACKET", "LPAREN", "RPAREN", 
+		"VOID", "INTERFACE", "THROW", "THROWS", "EQ", "NATIVE", "SYNCHRONIZED", 
+		"TRANSIENT", "VOLATILE", "BOOLEAN", "CHAR", "BYTE", "SHORT", "INT", "LONG", 
+		"FLOAT", "DOUBLE", "QUES", "EXTENDS", "ELLIPSIS", "THIS", "SUPER", "NULL", 
+		"TRUE", "FALSE", "AT", "DEFAULT", "REF", "COLON", "IF", "ELSE", "FOR", 
+		"WHILE", "DO", "TRY", "FINALLY", "SWITCH", "RETURN", "BREAK", "CONTINUE", 
+		"CATCH", "CASE", "ENUM", "ASSERT", "LAMBDA", "PLUSPLUS", "SUBSUB", "TILDE", 
+		"BANG", "NEW", "SLASH", "PERCENT", "PLUS", "SUB", "EQEQ", "BANGEQ", "AMP", 
+		"CARET", "BAR", "AMPAMP", "BARBAR", "CARETEQ", "PLUSEQ", "SUBEQ", "STAREQ", 
+		"SLASHEQ", "AMPEQ", "BAREQ", "PERCENTEQ", "GT", "LT", "INSTANCEOF", "CONST", 
+		"GOTO", "IntegerLiteral", "FloatingPointLiteral", "CharacterLiteral", 
+		"StringLiteral", "Identifier", "WhiteSpace", "LineTerminator", "SlashComment", 
+		"EndOfLineComment"
+	};
+	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+
+	/**
+	 * @deprecated Use {@link #VOCABULARY} instead.
+	 */
+	@Deprecated
+	public static final String[] tokenNames;
+	static {
+		tokenNames = new String[_SYMBOLIC_NAMES.length];
+		for (int i = 0; i < tokenNames.length; i++) {
+			tokenNames[i] = VOCABULARY.getLiteralName(i);
+			if (tokenNames[i] == null) {
+				tokenNames[i] = VOCABULARY.getSymbolicName(i);
+			}
+
+			if (tokenNames[i] == null) {
+				tokenNames[i] = "<INVALID>";
+			}
+		}
+	}
+
+	@Override
+	@Deprecated
+	public String[] getTokenNames() {
+		return tokenNames;
+	}
+
+	@Override
+
+	public Vocabulary getVocabulary() {
+		return VOCABULARY;
+	}
+
 
 	public static final int WHITESPACE = 1;
 	public static final int COMMENTS = 2;
@@ -112,9 +145,6 @@ public class Java7Lexer extends Lexer {
 
 	@Override
 	public String getGrammarFileName() { return "Java7Lexer.g4"; }
-
-	@Override
-	public String[] getTokenNames() { return tokenNames; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -131,33 +161,46 @@ public class Java7Lexer extends Lexer {
 	@Override
 	public void action(RuleContext _localctx, int ruleIndex, int actionIndex) {
 		switch (ruleIndex) {
-		case 150: WhiteSpace_action((RuleContext)_localctx, actionIndex); break;
-
-		case 151: LineTerminator_action((RuleContext)_localctx, actionIndex); break;
-
-		case 152: SlashComment_action((RuleContext)_localctx, actionIndex); break;
-
-		case 153: EndOfLineComment_action((RuleContext)_localctx, actionIndex); break;
+		case 150:
+			WhiteSpace_action((RuleContext)_localctx, actionIndex);
+			break;
+		case 151:
+			LineTerminator_action((RuleContext)_localctx, actionIndex);
+			break;
+		case 152:
+			SlashComment_action((RuleContext)_localctx, actionIndex);
+			break;
+		case 153:
+			EndOfLineComment_action((RuleContext)_localctx, actionIndex);
+			break;
 		}
 	}
 	private void WhiteSpace_action(RuleContext _localctx, int actionIndex) {
 		switch (actionIndex) {
-		case 0: _channel = WHITESPACE; break;
-		}
-	}
-	private void SlashComment_action(RuleContext _localctx, int actionIndex) {
-		switch (actionIndex) {
-		case 2: _channel = COMMENTS; break;
+		case 0:
+			_channel = WHITESPACE;
+			break;
 		}
 	}
 	private void LineTerminator_action(RuleContext _localctx, int actionIndex) {
 		switch (actionIndex) {
-		case 1: _channel = WHITESPACE; break;
+		case 1:
+			_channel = WHITESPACE;
+			break;
+		}
+	}
+	private void SlashComment_action(RuleContext _localctx, int actionIndex) {
+		switch (actionIndex) {
+		case 2:
+			_channel = COMMENTS;
+			break;
 		}
 	}
 	private void EndOfLineComment_action(RuleContext _localctx, int actionIndex) {
 		switch (actionIndex) {
-		case 3: _channel = COMMENTS; break;
+		case 3:
+			_channel = COMMENTS;
+			break;
 		}
 	}
 
