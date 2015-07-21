@@ -28,6 +28,9 @@ import com.github.antlrjavaparser.api.expr.ObjectCreationExpr;
 import com.github.antlrjavaparser.api.expr.SuperExpr;
 import com.github.antlrjavaparser.api.expr.ThisExpr;
 import com.github.antlrjavaparser.api.expr.UnaryExpr;
+import com.github.antlrjavaparser.api.type.Type;
+
+import java.util.List;
 
 public class UnaryExpressionNotPlusMinusContextAdapter implements Adapter<Expression, Java7Parser.UnaryExpressionNotPlusMinusContext> {
     public Expression adapt(Java7Parser.UnaryExpressionNotPlusMinusContext context, AdapterParameters adapterParameters) {
